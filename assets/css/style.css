@@ -1,0 +1,619 @@
+body{
+  font-family: 'HanyiSentyDiary';
+}
+@font-face {
+  font-family: 'HanyiSentyDiary';
+  src: url('../fonts/HanyiSentyDiary.woff') format('woff'),
+  url('../fonts/HanyiSentyDiary.ttf') format('truetype'),
+  url('../fonts/HanyiSentyDiary.eot') format('embedded-opentype');  
+}
+
+/*頂端的部分*/
+.top {
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  width: 1000px;
+  height: 330px;
+  background-color: rgb(237, 235, 228);
+  display: block;
+  
+}
+.icon{
+  transition: .5s;
+}
+.icon:hover{
+  transform: scale(1.2);
+}
+.icon_name{
+  padding-left: 5px;
+  font-size: 30px;
+}
+
+.AboutMe {
+  padding-top: 20px;
+  padding-left: 20px;
+  float: left;
+  height: 330px;
+}
+
+.MySelf1 {
+
+  margin-left: 20px;
+  float: left;
+  font-size: 20px;
+  height: 330px;
+  padding-right: 40px;
+  padding-left: 20px;
+}
+
+.MySelf2 {
+
+  margin-left: 20px;
+  float: left;
+  border-left: 1px solid #5f656d;
+  height: 330px;
+}
+
+.me {
+  width: 230px;
+  border-radius: 50%;
+  border: 1px solid rgb(41, 146, 122);
+  transition: .5s;
+}
+
+.name {
+
+  font-size: 50px;
+  line-height: 20px;
+}
+
+.ENname {
+  font-size: 40px;
+  line-height: 20px;
+}
+
+.Said {
+  font-size: 25px;
+}
+
+.Contact {
+  padding-left: 40px;
+  padding-top: 18px;
+}
+
+.hr_test {
+
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  border-top: 1px solid #5f656d;
+  height: 2px;
+  width: 1000px;
+}
+
+/*專業技能*/
+.Skill1 {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  width: 1000px;
+  height: 330px;
+  background-color: rgb(250, 246, 233);
+  display: block;
+}
+
+.title {
+  padding-left: 20px;
+  font-size: 30px;
+}
+
+.special {
+
+  float: left;
+  font-size: 30px;
+  height: 330px;
+}
+
+.skill-box {
+  width: 100%;
+  border-radius: 5px;
+  position: absolute;
+  max-width: 1000px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+}
+
+.skill-box>h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.skill-box>.skills-circle>ul {
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+
+.skill-box>.skills-circle>ul>li {
+  width: 150px;
+  height: 150px;
+  background-color: #ddd;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.skill-box>.skills-circle>ul>li>span {
+  color: #7a7;
+}
+
+.skill-box>.skills-circle>ul>li>span.text,
+.skill-box>.skills-circle>ul>li>span~b {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin-top: -8px;
+  z-index: 1;
+}
+
+.skill-box>.skills-circle>ul>li>span.text~b,
+.skill-box>.skills-circle>ul>li>span~b~b {
+  font-weight: normal;
+  margin-top: 15px;
+}
+
+.skill-box>.skills-circle>ul>li>span.bar-circle-right,
+.skill-box>.skills-circle>ul>li>span.bar-circle-left {
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #B0DAB9;
+  clip: rect(0, 75px, 150px, 0);
+}
+
+.skill-box>.skills-circle>ul>li>span.bar-circle-left {
+  background: #ddd;
+}
+
+.skill-box>.skills-circle>ul>li>span.bar-circle-cover {
+  display: block;
+  width: 95%;
+  height: 95%;
+  border-radius: 50%;
+  background-color: #eee;
+  z-index: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*程式技能*/
+.Skill2 {
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  width: 1000px;
+  height: 385px;
+  background-color: rgb(250, 246, 233);
+  display: block;
+}
+
+.code {
+
+  float: left;
+  font-size: 20px;
+  height: 330px;
+}
+
+.container_code {
+  width: 450px;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.skills {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.code_in {
+  padding-left: 20px;
+  width: 1000px;
+  font-size: 30px;
+}
+
+.html {
+  width: 90%;
+  background-color: #f36c43;
+  border-radius: 10px;
+}
+
+.java {
+  width: 80%;
+  background-color: #e21515;
+  border-radius: 10px;
+}
+
+.cc {
+  width: 65%;
+  background-color: #5ece71;
+  border-radius: 10px;
+}
+
+.python {
+  width: 60%;
+  background-color: #47b9c3;
+  border-radius: 10px;
+}
+
+.code_left {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.code_right {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*經歷*/
+.set_exp {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  width: 1000px;
+  height: 1050px;
+  background-color: rgb(250, 246, 233);
+  display: block;
+}
+
+.title {
+  padding-left: 20px;
+}
+
+
+
+.wrap {
+  width: 1000px;
+  margin: auto;
+  position: relative;
+  z-index: 5;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+h1~p {
+  line-height: 1.7;
+}
+
+.wrap:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  clear: both;
+}
+
+.timeline {
+  padding-left: auto;
+  padding-right: 50px;
+}
+
+.timeline li {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 20px 0;
+  position: relative;
+  list-style-type: none;
+}
+
+.timeline li:nth-child(odd) {
+  float: left;
+  padding-right: 100px;
+}
+
+.timeline li:nth-child(even) {
+  float: right;
+  padding-left: 100px;
+  transform: translateY(50%);
+}
+
+.timeline li:nth-child(odd)::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  top: 0;
+  height: 100%;
+  background-color: #ccc;
+  right: 0;
+}
+
+.timeline li:last-child::after {
+  height: 50%;
+}
+
+.timeline li:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #aaa;
+  z-index: 2;
+}
+
+.timeline li:nth-child(odd)::before {
+  right: -10px;
+}
+
+.timeline li:nth-child(even)::before {
+  left: -10px;
+}
+
+.in_exp {
+  display: block;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #888;
+  font-family: 'HanyiSentyDiary';
+  font-size: 23px;
+}
+
+.in_exp:hover {
+  background-color: #18bcda;
+
+}
+
+.in_exp:hover h2,
+.in_exp:hover p {
+  color: #fff;
+}
+
+.timeline h2 {
+  color: #333;
+  
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+.timeline p {
+  color: #666;
+  
+  font-weight: 100;
+  line-height: 1.5;
+}
+
+.timeline h2::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100px;
+  background-color: #aaa;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.timeline li:nth-child(odd) h2::after {
+  right: 0;
+}
+
+.timeline li:nth-child(even) h2::after {
+  left: 0;
+}
+/*作品集*/
+.project {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0px;
+  width: 1000px;
+  height: 1900px;
+  background-color: rgb(250, 246, 233);
+  display: block;
+}
+.pp {
+
+  float: left;
+  font-size: 20px;
+  height: 330px;
+}
+.project img{
+  width: 300px;
+  box-shadow: 5px 5px 10px black;
+  border-radius: 3px;
+}
+.pic1{
+  position:relative;
+  left: 30px;
+  top: 20px;
+  width: 300px;
+  z-index: 3;
+  transition: 0.5s;
+}
+.pic1:hover{
+  transform: scale(1.2);
+}
+.pic2{
+  position:relative;
+  left: 80px;
+  top: -130px;
+  width: 300px;
+  z-index: 2;
+  transition: 0.5s;
+}
+.pic2:hover{
+  z-index: 3;
+  transform: scale(1.2);
+}
+.word{
+  position: relative;
+  left:160px;
+  top: -70px;
+  width: 500px;
+  font-size: 25px;
+}
+.pro_table{
+  margin-bottom: -80px;
+}
+.inbb{
+  background-color: #efff92;
+  position: relative;
+  z-index: 8;
+  float: right;
+  width: 80px;
+  height: 30px;
+  margin-left: 20px;
+  border-width:2px;
+  border-style:solid;
+  border-color:#ff7300;
+  border-radius: 5px ;
+  padding:3px;
+}
+.inbb:hover{
+  background-color: #f3ce27;
+  border-color:#dba378;
+}
+.word>a:link{
+  text-decoration:none;
+  text-align: center;
+  color: #333;
+} 
+
+.word>a:visited{
+  text-decoration:none;
+  text-align: center;
+  color: #333;
+} 
+
+.word>a:hover{
+  text-decoration:none;
+  text-align: center;
+  color: #333;
+}
+
+.word>a:active {
+  text-decoration:none;
+  text-align: center;
+  color: #333;
+}
+
+/*證照*/
+
+.set {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom:0px;
+  width: 1000px;
+  height: auto; /* 改成 auto 來讓背景高度隨內容調整 */
+  background-color: rgb(250, 246, 233);
+  display: block;
+}
+
+main{
+	width:1000px;
+	margin:0 auto;
+	display:block;
+}
+
+main>ul li{
+	float:left;
+	margin-right:1px;
+	list-style-type:none;
+}
+
+ul li a{
+	font-size:30px;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	display:block;
+	width:100px;
+	padding:15px 20px;
+	background:#C15757;
+}
+
+ul li a:hover{
+	background:#D26161;
+	color:#FFF;
+}
+
+ul li a.current{
+	background:#F5F4F2;
+	color:#C15757;
+}
+
+#contents{
+	clear:both;
+	margin-bottom:150px;
+}
+
+#contents div{
+	padding:30px 20px;
+	background:#F5F4F2;
+}
+
+#contents p{
+	margin-top:10px;
+  margin-left: 15px;
+	color:#C15757;
+  font-size: 23px;
+}
+
+
+.picin{
+  margin:0 auto;
+  margin-top: 20px;
+}
+
+#tab1{
+  height: 550px;
+}
+#tab2{
+  height: 550px;
+}
+#tab3{
+  height: 1000px;
+}
+#tab4{
+  height: 550px;
+}
+.picbig{
+  width: 300px;
+  transition: 0.5s;
+}
+.picbig:hover{
+  transform: scale(1.5);
+}
+.footer{
+  text-align: center;
+}
+
