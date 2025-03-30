@@ -901,3 +901,21 @@ footer.entry-meta .meta-in {
   height: 2px;
   background-color: #aaa; /* 下劃線顏色 */
 }
+/* 統一圖片容器的高度，確保四張圖的容器一致 */
+.school-img-container {
+  height: 150px;               /* 根據需要調整 */
+  display: flex;               /* 使用 Flexbox */
+  align-items: center;         /* 垂直置中 */
+  justify-content: center;     /* 水平置中 */
+  margin-bottom: 10px;         /* 與文字稍微分開 */
+}
+
+/* 保持圖片的比例，不會被壓扁 */
+.imgschool {
+  max-height: 120px;           /* 圖片最大高度，可自行調整 */
+  object-fit: contain;         /* 保持原比例 */
+  display: block;              /* 讓 margin auto 生效 (若需要) */
+}
+
+
+
