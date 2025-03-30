@@ -910,11 +910,20 @@ footer.entry-meta .meta-in {
   margin-bottom: 10px;         /* 與文字稍微分開 */
 }
 
-/* 保持圖片的比例，不會被壓扁 */
+/* 只影響學校圖片，不會動到其他圖片 */
 .imgschool {
-  max-height: 120px;           /* 圖片最大高度，可自行調整 */
-  object-fit: contain;         /* 保持原比例 */
-  display: block;              /* 讓 margin auto 生效 (若需要) */
+  display: block;          /* 讓 margin: 0 auto; 生效 */
+  margin: 0 auto;          /* 水平置中 */
+  max-height: 150px;       /* 限制圖片高度 */
+  object-fit: contain;     /* 保持圖片比例，不會被壓扁 */
+}
+
+/* 使三個欄位在同一列時頂端對齊 */
+.school-col {
+  display: flex;           /* 需要 Bootstrap 3 時可自定義 .d-flex */
+  flex-direction: column;  /* 讓圖片和文字垂直排列 */
+  align-items: center;     /* 水平置中 */
+  justify-content: flex-start; /* 頂端對齊 */
 }
 
 
