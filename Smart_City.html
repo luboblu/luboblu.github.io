@@ -1,237 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
-	
-	<title>Right Sidebar | Initio - Free, multipurpose html5 template by GetTemplate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="智慧城市大型語言模型代理人系統 – 國科會計畫介紹">
+  <meta name="author" content="國科會-智慧城市專案團隊">
+  
+  <title>智慧城市大型語言模型代理人系統 專案介紹</title>
 
-	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
-	
-	<!-- Bootstrap -->
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-	<!-- Icon font -->
-	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<!-- Fonts -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-	<!-- Custom styles -->
-	<link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+  
+  <!-- Bootstrap -->
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+  <!-- Icon font -->
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-	<!-- 新增：自訂字體大小設定 -->
-	<style>
-		/* 調整整體字體大小與行高 */
-		body {
-			font-size: 20px; /* 原本 18px -> 調整為 20px */
-			line-height: 1.8; /* 原本 1.6 -> 調整為 1.8 */
-		}
-		/* 主標題 */
-		.main-title {
-			font-size: 42px; /* 原本 36px -> 調整為 42px */
-			font-weight: bold;
-		}
-		/* 副標題 */
-		.sub-title {
-			font-size: 32px; /* 原本 28px -> 調整為 32px */
-		}
-		/* 小標題 */
-		.small-title {
-			font-size: 28px; /* 原本 24px -> 調整為 28px */
-		}
-		/* 調整段落文字 */
-		p {
-			font-size: 20px; /* 與 body 同步 */
-		}
-		/* 其他標題 (h2, h3, h4) */
-		h2, h3, h4 {
-			font-size: 28px; /* 原本 26px -> 調整為 28px */
-		}
-	</style>
-
-	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  <!-- 自訂樣式 -->
+  <style>
+    body {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    .main-title {
+      font-size: 42px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .sub-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .small-title {
+      font-size: 24px;
+    }
+    p {
+      font-size: 20px;
+    }
+    h2, h3, h4 {
+      font-size: 28px;
+    }
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+    .team-member {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .team-member img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .team-member .name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .team-member .role {
+      font-size: 18px;
+      color: #666;
+    }
+    /* 導覽列樣式 */
+    .navbar-nav > li > a {
+      font-size: 18px;
+    }
+  </style>
+  
+  <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
 </head>
 <body>
 
+<!-- Header 與導覽列 -->
 <header id="header">
-	<div id="head" class="parallax" parallax-speed="2">
-		<h1 id="logo" class="text-center">
-			<img class="img-circle" src="assets/images/bob_photo.png" alt="">
-			<span class="title">盧信廷</span>
-			<span class="tagline">台北大學資訊管理研究所<br>
-				<a href="">hsintinglubob@gmail.com</a></span>
-		</h1>
-	</div>
+  <div id="head" class="parallax" parallax-speed="2" style="padding: 30px 0;">
+    <h1 id="logo" class="text-center">
+      <img class="img-circle" src="assets/images/bob_photo.png" alt="智慧城市 Logo">
+      <span class="main-title">Smart City Large Language Model Agent System</span><br>
+      <span class="sub-title">智慧城市大型語言模型代理人系統</span>
+    </h1>
+  </div>
 
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-					<span class="sr-only">Toggle navigation</span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span> 
-				</button>
-			</div>
-			
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="about.html">About</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li><a href="sidebar-right.html">Right Sidebar</a></li>
-							<li><a href="single.html">Blog Post</a></li>
-						</ul>
-					</li>
-					<li><a href="blog.html">Blog</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->			
-		</div>	
-	</nav>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+        </button>
+      </div>
+      
+      <div class="navbar-collapse collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="#introduction">專案介紹</a></li>
+          <li><a href="#background">背景與動機</a></li>
+          <li><a href="#functions">系統功能</a></li>
+          <li><a href="#market">市場分析</a></li>
+          <li><a href="#contribution">預期效益</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
 </header>
 
+<!-- 主要內容 -->
 <main id="main">
-	<div class="container">
-		<div class="row topspace">
-			<!-- Article main content -->
-			<article class="post hentry post-maincontent">
-				<header class="entry-header my-custom-header">
-				  <!-- 小標 / 項目名 (上方) -->
-				  <p class="small-title">III x NTPU AI Agent Project</p>
-				  
-				  <!-- 主標題 -->
-				  <h1 class="main-title">
-					Smart City Large Language Model Agent System
-				  </h1>
-				  
-				  <!-- 副標 / 說明 -->
-				  <h2 class="sub-title">
-					智慧城市大型語言模型代理人系統
-				  </h2>
-				</header>
+  <div class="container">
+    <article class="post hentry post-maincontent">
+      <header class="entry-header my-custom-header">
+        <!-- 小標 / 項目名 (上方) -->
+        <p class="small-title">III x NTPU AI Agent Project</p>
+        
+        <!-- 主標題 -->
+        <h1 class="main-title">
+          Smart City Large Language Model Agent System
+        </h1>
+      </header>
 
-				<p><img src="assets/images/smart city.png" alt=""></p>
-                
-                <!-- 計畫介紹內容開始 -->
-                <section id="introduction">
-                  <h2>計畫介紹</h2>
-                  <p>本計畫由國立臺北大學的團隊攜手業界共同推動，致力於打造一個先進的智慧城市語言模型代理人系統。該系統結合最新的大型語言模型技術（採用 Llama 3.2: 3B 模型），並整合交通部開源 API 提供的即時路況資訊，旨在為使用者帶來快速、準確的交通查詢服務。</p>
-                  
-                  <h3>系統特色與架構</h3>
-                  <ul>
-                    <li><strong>即時交通查詢與資料整合：</strong> 系統能夠即時解析使用者的查詢，並透過 API 取得最新的交通資料，進而回應查詢需求。</li>
-                    <li><strong>先進的大型語言模型：</strong> 採用前沿的 Llama 3.2 模型，提供自然語言理解與生成，讓查詢回應更具智慧與人性化。</li>
-                    <li><strong>穩健的系統架構：</strong> 後端以 Flask 框架搭建，並利用 Docker 容器化技術與 Google Cloud Run 部署，確保系統具有高效能與高度可用性。</li>
-                    <li><strong>未來擴充性：</strong> 除了現有功能，系統未來將引入 GPS 定位與更多個人化服務，進一步提升使用體驗與實際應用價值。</li>
-                  </ul>
-                  
-                  <h3>團隊與成果展示</h3>
-                  <p>計畫成果於 2024 年 11 月 7 日在國立臺北大學展示，由戴敏育教授領導，團隊成員包括多位研究助理（盧信廷、籃勗祐、陳柏臻）。不論在技術實現或系統設計上，皆展現了學術與產業緊密結合的優勢，為智慧城市未來的交通管理與服務提供全新的解決方案。</p>
-                </section>
-                <!-- 計畫介紹內容結束 -->
-			</article>
-			<!-- /Article -->
-
-			<!-- Sidebar (如有需要可取消註解) -->
-			<!--
-			<aside class="col-md-4 sidebar sidebar-left">
-				<div class="widget">
-					<h4>Lorem ipsum dolor sit</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel.</p>
-				</div>
-				<div class="widget">
-					<h4>Lorem ipsum dolor sit</h4>
-					<ul>
-						<li><a href="">Lorem ipsum </a>dolor sit amet.</li>
-						<li>Nostrum, dolores labore tempore error.</li>
-						<li>Qui esse impedit vitae repellat.</li>
-						<li>Aliquam, laborum corporis molestiae nihil.</li>
-						<li>Voluptate, labore non adipisci nihil!</li>
-					</ul>
-				</div>
-			</aside>
-			-->
-			<!-- /Sidebar -->
-			
-		</div>
-	</div>	<!-- /container -->
-	
+      <p><img src="assets/images/smart city.png" alt="智慧城市圖示"></p>
+      
+      <!-- 專案介紹區塊 -->
+      <section id="introduction" class="section">
+        <h2 class="section-title"><span>專案介紹</span></h2>
+        <p>
+          本計畫由國立臺北大學的團隊攜手業界共同推動，致力於打造一個先進的智慧城市語言模型代理人系統。該系統結合最新的大型語言模型技術（採用 Llama 3.2: 3B 模型），並整合交通部開源 API 提供的即時路況資訊，旨在為使用者帶來快速、準確的交通查詢服務。
+        </p>
+      </section>
+      
+      <!-- 背景與動機 -->
+      <section id="background" class="section">
+        <h2 class="section-title"><span>背景與動機</span></h2>
+        <p>
+          隨著智慧城市概念的普及與都市化進程加速，市民對交通狀況的即時掌握與智慧服務需求日益增加。本計畫旨在整合先進語言模型技術與即時交通數據，提供精準的交通查詢與智能回應，進一步推動智慧城市建設。
+        </p>
+      </section>
+      
+      <!-- 系統功能 -->
+      <section id="functions" class="section">
+        <h2 class="section-title"><span>系統功能</span></h2>
+        <ul>
+          <li><strong>即時交通查詢與資料整合：</strong> 系統能夠即時解析使用者的查詢，並透過 API 取得最新的交通資料，回應查詢需求。</li>
+          <li><strong>先進的大型語言模型：</strong> 採用 Llama 3.2 模型，提供自然語言理解與生成，使回應更具智慧與人性化。</li>
+          <li><strong>穩健的系統架構：</strong> 後端使用 Flask 框架搭建，結合 Docker 容器化技術與 Google Cloud Run 部署，確保高效能與高可用性。</li>
+          <li><strong>未來擴充性：</strong> 未來將引入 GPS 定位與更多個性化服務，進一步提升使用體驗與應用價值。</li>
+        </ul>
+      </section>
+      
+      <!-- 市場分析 -->
+      <section id="market" class="section">
+        <h2 class="section-title"><span>市場分析</span></h2>
+        <p>
+          目前智慧城市相關解決方案多停留在基礎資訊查詢層面，缺乏智慧互動與全面數據整合。本計畫利用先進的語言模型與即時交通數據，能夠滿足市民對智慧城市服務的需求，並在市場中展現明顯競爭優勢。
+        </p>
+      </section>
+      
+      <!-- 預期效益與展望 -->
+      <section id="contribution" class="section">
+        <h2 class="section-title"><span>預期效益</span></h2>
+        <p>
+          計畫成果預計將於2024年11月7日在國立臺北大學展示，由戴敏育教授領導，團隊成員包括盧信廷、籃勗祐、陳柏臻。此系統不僅能提升交通資訊服務品質，還將作為智慧城市建設的示範，推動相關產業的數位轉型與創新發展。
+        </p>
+      </section>
+      
+    </article>
+  </div> <!-- /container -->
 </main>
 
 <footer id="footer" class="topspace">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Contact</h3>
-				<div class="widget-body">
-					<p>+234 23 9873237<br>
-						<a href="mailto:#">some.email@somewhere.com</a><br>
-						<br>
-						234 Hidden Pond Road, Ashland City, TN 37015
-					</p>	
-				</div>
-			</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 widget">
+        <h3 class="widget-title">Contact</h3>
+        <div class="widget-body">
+          <p>+886 966465569<br>
+            <a href="mailto:contact@nsc.gov.tw">hsintinglubob@gmail.com</a><br>
+          </p>
+        </div>
+      </div>
 
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Follow me</h3>
-				<div class="widget-body">
-					<p class="follow-me-icons">
-						<a href=""><i class="fa fa-twitter fa-2"></i></a>
-						<a href=""><i class="fa fa-dribbble fa-2"></i></a>
-						<a href=""><i class="fa fa-github fa-2"></i></a>
-						<a href=""><i class="fa fa-facebook fa-2"></i></a>
-					</p>
-				</div>
-			</div>
+      <div class="col-md-3 widget">
+        <h3 class="widget-title">Follow us</h3>
+        <div class="widget-body">
+          <p class="follow-me-icons">
+            <a href=""><i class="fa fa-github fa-2"></i></a>
+            <a href=""><i class="fa fa-facebook fa-2"></i></a>
+          </p>
+        </div>
+      </div>
 
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Text widget</h3>
-				<div class="widget-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-				</div>
-			</div>
+      <div class="col-md-3 widget">
+        <h3 class="widget-title">Text widget</h3>
+        <div class="widget-body">
+          <p>
+            本計畫結合先進語言模型與即時交通數據，致力於提升智慧城市交通資訊服務品質，推動城市數位轉型。
+          </p>
+        </div>
+      </div>
 
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Form widget</h3>
-				<div class="widget-body">
-					<p>+234 23 9873237<br>
-						<a href="mailto:#">some.email@somewhere.com</a><br>
-						<br>
-						234 Hidden Pond Road, Ashland City, TN 37015
-					</p>	
-				</div>
-			</div>
-
-		</div> <!-- /row of widgets -->
-	</div>
+      <div class="col-md-3 widget">
+        <h3 class="widget-title">Form widget</h3>
+        <div class="widget-body">
+          <p>+886 966465569<br>
+            <a href="mailto:contact@nsc.gov.tw">hsintinglubob@gmail.com</a><br>
+          </p>
+        </div>
+      </div>
+    </div> <!-- /row of widgets -->
+  </div>
 </footer>
 
 <footer id="underfooter">
-	<div class="container">
-		<div class="row">
-			
-			<div class="col-md-6 widget">
-				<div class="widget-body">
-					<p>234 Hidden Pond Road, Ashland City, TN 37015 </p>
-				</div>
-			</div>
-
-			<div class="col-md-6 widget">
-				<div class="widget-body">
-					<p class="text-right">
-						Copyright &copy; 2014, Your awesome name here<br> 
-						Design: <a href="http://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> 
-					</p>
-				</div>
-			</div>
-
-		</div> <!-- /row of widgets -->
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 widget">
+        <div class="widget-body">
+        </div>
+      </div>
+      <div class="col-md-6 widget">
+        <div class="widget-body">
+          <p class="text-right">
+            Copyright &copy; <br>
+            Design: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a>
+          </p>
+        </div>
+      </div>
+    </div> <!-- /row of widgets -->
+  </div>
 </footer>
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
