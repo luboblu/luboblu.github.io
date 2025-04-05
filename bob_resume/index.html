@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+
+	<title>BobLu Resume</title>
+
+	<!-- Bootstrap -->
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icons -->
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+	<style>
+	    /* 新增：Flex 排版讓每個卡片區塊高度一致 */
+	    .flex-row {
+	        display: flex;
+	        flex-wrap: wrap;
+	    }
+	    .flex-col {
+	        display: flex;
+	        flex-direction: column;
+	    }
+	    /* 可選：讓每個卡片自動撐滿高度並置中內容 */
+	    .cert-card {
+	        flex: 1;
+	        display: flex;
+	        flex-direction: column;
+	        justify-content: center;
+	        align-items: center;
+	    }
+	</style>
+</head>
+<body class="home">
+
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="2">
+		<h1 id="logo" class="text-center">
+			<img class="img-circle" src="assets/images/bob_photo.png" alt="">
+			<span class="title">盧信廷</span>
+			<span class="tagline">台北大學資訊管理研究所<br>
+				<a href="">hsintinglubob@gmail.com</a>
+			</span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+				</button>
+			</div>
+			
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">首頁Home</a></li>
+					<li><a href="#Educational Background">學習經歷Educational Background</a></li>
+					<li><a href="#Seminar presentation">研討會發表Seminar presentation</a></li>
+					<li><a href="#certifications">證書Certifications</a></li>
+					<li><a href="#recentworks">計畫Projects</a></li>
+					<li><a href="#school">就讀學校</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->			
+		</div>	
+	</nav>
+</header>
+
+<main id="main">
+	<div class="container">
+		
+		<div class="row section topspace">
+			<div class="col-md-12">
+				<p class="lead text-center text-muted">
+					目前就讀台北大學資訊管理研究所
+				</p>
+			</div>
+		</div> <!-- / section -->
+		
+		<!-- 學習經歷部分，新增 flex 排版 -->
+		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="Educational Background">
+			<h2 class="section-title"><span>學習經歷Educational Background</span></h2>
+			<!-- First Educational Background -->
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="#eduModal1" data-toggle="modal">
+				  <img src="assets/images/FJUproject.png" class="cert-img" alt="優秀專題">
+				</a>
+				<h4 class="cert-title">輔仁大學第40屆優秀專題</h4>
+				<p class="cert-date">發證日期: 2023/05/27</p>
+			  </div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#eduModal2" data-toggle="modal">
+					<img src="assets/images/AIHackthon.png" class="cert-img" alt="AI Hackthon">
+				  </a>
+				  <h4 class="cert-title">2023叡揚資訊黑克松競賽</h4>
+				  <p class="cert-date">發證日期: 2023/09/13</p>
+				</div>
+			  </div>
+			  <div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#eduModal4" data-toggle="modal">
+					<img src="assets/images/ICT.png" class="cert-img" alt="conference">
+				  </a>
+				  <h4 class="cert-title">第28屆大專院校資訊應用服務創新競賽</h4>
+				  <p class="cert-date">發證日期: 2023/11/04</p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="Seminar presentation">
+			<h2 class="section-title"><span>研討會發表Seminar presentation</span></h2>
+			<!-- First Educational Background -->
+			<div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#eduModal3" data-toggle="modal">
+					<img src="assets/images/conference.png" class="cert-img" alt="conference">
+				  </a>
+				  <h4 class="cert-title">國際品質管理研討會</h4>
+				  <p class="cert-date">發證日期: 2023/11/18</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="IMP_Conference.html" target="_blank">
+					<img src="assets/images/IMP_Conference.jpg" class="cert-img" alt="conference">
+				  </a>
+				  <h4 class="cert-title">IMP2024第29屆資訊管理暨實務研討會</h4>
+				  <p class="cert-date">發證日期: 2024/11/21</p>
+				</div>
+			  </div>
+			  
+			
+		</div>
+		<!-- ConferenceModal -->
+		
+		  
+		<!-- 證照部分，新增 flex 排版 -->
+		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="certifications">
+			<h2 class="section-title"><span>證書Certifications</span></h2>
+			<!-- First certification -->
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="#certModal1" data-toggle="modal">
+				  <img src="assets/images/AI900.png" class="cert-img" alt="AI證照">
+				</a>
+				<h4 class="cert-title">AI-900: Microsoft Azure AI Fundamentals</h4>
+				<p class="cert-date">發證日期: 2023/06/07</p>
+			  </div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#certModal3" data-toggle="modal">
+					<img src="assets/images/AWS.png" class="cert-img" alt="金融科技證照">
+				  </a>
+				  <h4 class="cert-title">AWS雲端數據分析與爬蟲工作坊</h4>
+				  <p class="cert-date">發證日期: 2023/09/22</p>
+				</div>
+			  </div>
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="#certModal2" data-toggle="modal">
+				  <img src="assets/images/finance.jpg" class="cert-img" alt="金融科技證照">
+				</a>
+				<h4 class="cert-title">第17屆 金融科技力證照</h4>
+				<p class="cert-date">發證日期: 2024/04/20</p>
+			  </div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#certModal4" data-toggle="modal">
+					<img src="assets/images/TOEIC.jpg" class="cert-img" alt="金融科技證照">
+				  </a>
+				  <h4 class="cert-title">多益815分</h4>
+				  <p class="cert-date">發證日期: 2024/04/28</p>
+				</div>
+			  </div>
+			  <div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#certModal5" data-toggle="modal">
+					<img src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg" class="cert-img" alt="金融科技證照">
+				  </a>
+				  <h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Selflearning</h4>
+				  <p class="cert-date">發證日期: 2025/03/18</p>
+				</div>
+			  </div>
+			  <div class="col-sm-6 col-md-4 flex-col">
+				<div class="cert-card text-center">
+				  <a href="#certModal6" data-toggle="modal">
+					<img src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg" class="cert-img" alt="金融科技證照">
+				  </a>
+				  <h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Workshop</h4>
+				  <p class="cert-date">發證日期: 2025/03/18</p>
+				</div>
+			  </div>
+			  
+		</div>
+		
+		<!-- Modal 區塊與其他部分保持不變 -->
+		<!-- eduModal 1 -->
+		<div class="modal fade" id="eduModal1" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel1">輔仁大學第40屆優秀專題</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/FJUproject.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期: 2023/05/27</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- eduModal 2 -->
+		<div class="modal fade" id="eduModal2" tabindex="-1" role="dialog" aria-labelledby="certModalLabel2" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel2">2023叡揚資訊黑克松競賽</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/AIHackthon.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期: 2023/09/13</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<!-- eduModal 3 -->
+		<div class="modal fade" id="eduModal3" tabindex="-1" role="dialog" aria-labelledby="certModalLabel3" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel3">國際品質管理研討會</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/conference.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期: 2023/11/18</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<!-- eduModal 4 -->
+		<div class="modal fade" id="eduModal4" tabindex="-1" role="dialog" aria-labelledby="certModalLabel3" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel4">第28屆大專院校資訊應用服務創新競賽</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/ICT.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期: 2023/11/04</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 1 for Certification -->
+		<div class="modal fade" id="certModal1" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel1">AI-900: Microsoft Azure AI Fundamentals</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/AI900.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2023/06/07</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 2 for Certification -->
+		<div class="modal fade" id="certModal2" tabindex="-1" role="dialog" aria-labelledby="certModalLabel2" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel2">第17屆 金融科技力證照</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/finance.jpg" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2024/05/22<br>主辦單位：台灣金融研訓院</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 3 for Certification -->
+		<div class="modal fade" id="certModal3" tabindex="-1" role="dialog" aria-labelledby="certModalLabel3" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel3">AWS雲端數據分析與爬蟲工作坊</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/AWS.png" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2023/09/22</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 4 for Certification -->
+		<div class="modal fade" id="certModal4" tabindex="-1" role="dialog" aria-labelledby="certModalLabel4" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel4">多益815分</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/TOEIC.jpg" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2024/04/28</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 5 for Certification -->
+		<div class="modal fade" id="certModal5" tabindex="-1" role="dialog" aria-labelledby="certModalLabel5" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel5">NVIDIA_Build_With_RAG_Agent_Selflearning</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2025/03/18</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!-- Modal 6 for Certification -->
+		<div class="modal fade" id="certModal6" tabindex="-1" role="dialog" aria-labelledby="certModalLabel6" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content text-center">
+				<div class="modal-header">
+				  <h4 class="modal-title w-100" id="certModalLabel6">NVIDIA_Build_With_RAG_Agent_Workshop</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <img src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg" alt="證照大圖" style="max-width: 100%; height: auto;">
+				  <p class="mt-3">發證日期：2025/03/18</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<div class="row section topspace" style="margin-bottom: 100px;" id="recentworks">
+			<div class="row section recentworks topspace">
+				<h2 class="section-title"><span>計畫Projects</span></h2>
+				<div class="row thumbnails recentworks">
+					<!-- 作品 1 -->
+					<div class="col-12 col-md-4 text-center">
+						<a class="thumbnail" href="cancer.html">
+							<span class="img">
+								<img src="assets/images/cancer_project.png" alt="">
+								<span class="cover"><span class="more">See details &rarr;</span></span>
+							</span>
+							<span class="title">大學專題-癌資機模人</span>
+						</a>
+					</div>
+					<!-- 作品 2 -->
+					<div class="col-12 col-md-4 text-center">
+						<a class="thumbnail" href="marketing.html">
+							<span class="img">
+								<img src="assets/images/氛享海報.png" alt="">
+								<span class="cover"><span class="more">See details &rarr;</span></span>
+							</span>
+							<span class="title">國科會-氛享水晶Bot</span>
+						</a>
+					</div>
+					<!-- 作品 3 -->
+					<div class="col-12 col-md-4 text-center">
+						<a class="thumbnail" href="Smart_City.html">
+							<span class="img">
+								<img src="assets/images/smart city.png" alt="">
+								<span class="cover"><span class="more">See details &rarr;</span></span>
+							</span>
+							<span class="title">Smart City Large Language Model Agent System</span>
+						</a>
+					</div>
+				</div>
+			</div> 
+			<!-- /section -->
+
+			<div class="row section clients topspace" id="school">
+				<h2 class="section-title text-center"><span>就讀學校</span></h2>
+				<!-- 第一張圖片 -->
+				<div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
+				  <img src="assets/images/250px-延平高中.png" alt="延平高中" class="imgschool">
+				  <p>延平高中<br>2017/09 - 2020/06</p>
+				</div>
+				<!-- 第二張圖片 -->
+				<div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
+				  <img src="assets/images/FJU.png" alt="輔仁大學" class="imgschool">
+				  <p>輔仁大學<br>2020/09 - 2024/06</p>
+				</div>
+				<!-- 第三張圖片 -->
+				<div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
+				  <img src="assets/images/NTPU.jpg" alt="國立臺北大學" class="imgschool">
+				  <p>國立臺北大學<br>2025/02 - 2027/01</p>
+				</div>
+			</div>
+	</div>	<!-- /container -->
+</main>
+
+<footer id="footer" class="topspace">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="widget-body">
+					<p>+234 23 9873237<br>
+					<a href="mailto:some.email@somewhere.com">hsintinglubob@gmail.com</a><br>
+					</p>	
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Follow me</h3>
+				<div class="widget-body">
+					<p class="follow-me-icons">
+						<a href=""><i class="fa fa-github fa-2"></i></a>
+						<a href=""><i class="fa fa-facebook fa-2"></i></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Text widget</h3>
+				<div class="widget-body">
+					<p>hello!</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Form widget</h3>
+				<div class="widget-body">
+					<p>+886 966465569<br>
+						<a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br>
+					</p>	
+				</div>
+			</div>
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+<footer id="underfooter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p>234 Hidden Pond Road, Ashland City, TN 37015</p>
+				</div>
+			</div>
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Copyright &copy; 2014, Your awesome name here<br> 
+						Design: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a>
+					</p>
+				</div>
+			</div>
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+<!-- JavaScript libs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
