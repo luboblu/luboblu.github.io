@@ -519,59 +519,9 @@
 	</div>
 </footer>
 
-<script>
-	function enableSorting(containerId, selectId) {
-	  const selectEl = document.getElementById(selectId);
-	  selectEl.addEventListener("change", function () {
-		const order = this.value;
-		const container = document.getElementById(containerId);
-		const items = Array.from(container.querySelectorAll(".flex-col"));
-	
-		items.sort((a, b) => {
-		  const dateA = new Date(getDateString(a));
-		  const dateB = new Date(getDateString(b));
-		  return order === "asc" ? dateA - dateB : dateB - dateA;
-		});
-	
-		items.forEach(item => container.appendChild(item));
-	  });
-	
-	  // 預設排序觸發一次
-	  selectEl.dispatchEvent(new Event("change"));
-	}
-	
-	function getDateString(card) {
-	  const text = card.querySelector(".cert-date")?.innerText || "";
-	  const match = text.match(/\d{4}\/\d{2}\/\d{2}/);
-	  return match ? match[0].replaceAll("/", "-") : "1970-01-01";
-	}
-	
-	window.addEventListener("DOMContentLoaded", function () {
-	  enableSorting("Educational Background", "sortEdu");
-	  enableSorting("Seminar presentation", "sortSeminar");
-	  enableSorting("certifications", "sortCerts");
-	});
-	</script>
-	
-	<script>
-	  const addSortDropdown = (id, selectId) => {
-		const target = document.getElementById(id);
-		const sortDiv = document.createElement("div");
-		sortDiv.className = "sort-controls";
-		sortDiv.innerHTML = `<label for="${selectId}">排序方式：</label>
-		  <select id="${selectId}">
-			<option value="desc">由新到舊</option>
-			<option value="asc">由舊到新</option>
-		  </select>`;
-		target?.parentNode?.insertBefore(sortDiv, target);
-	  };
-	  document.addEventListener("DOMContentLoaded", () => {
-		addSortDropdown("Educational Background", "sortEdu");
-		addSortDropdown("Seminar presentation", "sortSeminar");
-		addSortDropdown("certifications", "sortCerts");
-	  });
-	</script>
-	</body>
-	</html>
-	
-	
+<!-- JavaScript libs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
