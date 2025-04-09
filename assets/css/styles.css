@@ -224,12 +224,22 @@ a:hover {
 
 
 **********************************************************************/
-#head {
-  background: #f4f4f4 url(../images/bg_head.jpg) top center;
+#head::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url(../images/bg_head.jpg) center center no-repeat;
   background-size: cover;
-  color: #7C7C7C;
-  padding: 30px 0 35px 0;
+  opacity: 0.1; /* 控制淡化程度 */
+  z-index: 0;
 }
+
+#head {
+  position: relative;
+  z-index: 1;
+  color: #333;
+}
+
 #head img.img-circle {
   display: block;
   width: 140px;
