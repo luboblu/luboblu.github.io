@@ -37,6 +37,10 @@
 	    .sort-controls {
 	        text-align: right;
 	        margin-bottom: 15px;
+	        width: 100%;
+	    }
+	    .sort-controls label {
+	        margin-right: 10px;
 	    }
 	</style>
 </head>
@@ -90,9 +94,17 @@
 			</div>
 		</div> <!-- / section -->
 		
-		<!-- 學習經歷部分，新增 flex 排版 -->
+		<!-- 學習經歷部分，新增 flex 排版與排序控件 -->
 		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="Educational Background">
-			<h2 class="section-title"><span>學習經歷Educational Background</span></h2>
+			<h2 class="section-title"><span>學習經歷 Educational Background</span></h2>
+			<div class="sort-controls">
+				<label>排序方式: 
+				    <select class="sort-order">
+				        <option value="desc">新到舊</option>
+				        <option value="asc">舊到新</option>
+				    </select>
+				</label>
+			</div>
 			<!-- First Educational Background -->
 			<div class="col-sm-6 col-md-4 flex-col">
 			  <div class="cert-card text-center">
@@ -104,37 +116,46 @@
 			  </div>
 			</div>
 			<div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#eduModal2" data-toggle="modal">
-					<img src="assets/images/AIHackthon.png" class="cert-img" alt="AI Hackthon">
-				  </a>
-				  <h4 class="cert-title">2023叡揚資訊黑克松競賽</h4>
-				  <p class="cert-date">發證日期: 2023/09/13</p>
-				</div>
+			  <div class="cert-card text-center">
+				<a href="#eduModal2" data-toggle="modal">
+				  <img src="assets/images/AIHackthon.png" class="cert-img" alt="AI Hackthon">
+				</a>
+				<h4 class="cert-title">2023叡揚資訊黑克松競賽</h4>
+				<p class="cert-date">發證日期: 2023/09/13</p>
 			  </div>
-			  <div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#eduModal4" data-toggle="modal">
-					<img src="assets/images/ICT.png" class="cert-img" alt="conference">
-				  </a>
-				  <h4 class="cert-title">第28屆大專院校資訊應用服務創新競賽</h4>
-				  <p class="cert-date">發證日期: 2023/11/04</p>
-				</div>
 			</div>
 			<div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-					<a href="III_TechDay.html">
-						<img src="assets/images/III_TechDay_PPT_photo.png" class="cert-img" alt="conference">
-					  </a>
-				  <h4 class="cert-title">資策會科技日</h4>
-				  <p class="cert-date">參加日期: 2024/11/07</p>
-				</div>
+			  <div class="cert-card text-center">
+				<a href="#eduModal4" data-toggle="modal">
+				  <img src="assets/images/ICT.png" class="cert-img" alt="conference">
+				</a>
+				<h4 class="cert-title">第28屆大專院校資訊應用服務創新競賽</h4>
+				<p class="cert-date">發證日期: 2023/11/04</p>
+			  </div>
 			</div>
-			
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="III_TechDay.html">
+				  <img src="assets/images/III_TechDay_PPT_photo.png" class="cert-img" alt="conference">
+				</a>
+				<h4 class="cert-title">資策會科技日</h4>
+				<p class="cert-date">參加日期: 2024/11/07</p>
+			  </div>
+			</div>
 		</div>
+		
+		<!-- 研討會發表部分 -->
 		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="Seminar presentation">
-			<h2 class="section-title"><span>研討會發表Seminar presentation</span></h2>
-			<!-- First Educational Background -->
+			<h2 class="section-title"><span>研討會發表 Seminar presentation</span></h2>
+			<div class="sort-controls">
+				<label>排序方式: 
+				    <select class="sort-order">
+				        <option value="desc">新到舊</option>
+				        <option value="asc">舊到新</option>
+				    </select>
+				</label>
+			</div>
+			<!-- First Seminar Presentation -->
 			<div class="col-sm-6 col-md-4 flex-col">
 				<div class="cert-card text-center">
 				  <a href="#eduModal3" data-toggle="modal">
@@ -152,16 +173,20 @@
 				  <h4 class="cert-title">IMP2024第29屆資訊管理暨實務研討會</h4>
 				  <p class="cert-date">發證日期: 2024/11/21</p>
 				</div>
-			  </div>
-			  
-			
+			</div>
 		</div>
-		<!-- ConferenceModal -->
 		
-		  
-		<!-- 證照部分，新增 flex 排版 -->
+		<!-- 證書部分 -->
 		<div class="row section topspace flex-row" style="margin-bottom: 100px;" id="certifications">
-			<h2 class="section-title"><span>證書Certifications</span></h2>
+			<h2 class="section-title"><span>證書 Certifications</span></h2>
+			<div class="sort-controls">
+				<label>排序方式: 
+				    <select class="sort-order">
+				        <option value="desc">新到舊</option>
+				        <option value="asc">舊到新</option>
+				    </select>
+				</label>
+			</div>
 			<!-- First certification -->
 			<div class="col-sm-6 col-md-4 flex-col">
 			  <div class="cert-card text-center">
@@ -173,14 +198,14 @@
 			  </div>
 			</div>
 			<div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#certModal3" data-toggle="modal">
-					<img src="assets/images/AWS.png" class="cert-img" alt="金融科技證照">
-				  </a>
-				  <h4 class="cert-title">AWS雲端數據分析與爬蟲工作坊</h4>
-				  <p class="cert-date">發證日期: 2023/09/22</p>
-				</div>
+			  <div class="cert-card text-center">
+				<a href="#certModal3" data-toggle="modal">
+				  <img src="assets/images/AWS.png" class="cert-img" alt="金融科技證照">
+				</a>
+				<h4 class="cert-title">AWS雲端數據分析與爬蟲工作坊</h4>
+				<p class="cert-date">發證日期: 2023/09/22</p>
 			  </div>
+			</div>
 			<div class="col-sm-6 col-md-4 flex-col">
 			  <div class="cert-card text-center">
 				<a href="#certModal2" data-toggle="modal">
@@ -191,36 +216,35 @@
 			  </div>
 			</div>
 			<div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#certModal4" data-toggle="modal">
-					<img src="assets/images/TOEIC.jpg" class="cert-img" alt="金融科技證照">
-				  </a>
-				  <h4 class="cert-title">多益815分</h4>
-				  <p class="cert-date">發證日期: 2024/04/28</p>
-				</div>
+			  <div class="cert-card text-center">
+				<a href="#certModal4" data-toggle="modal">
+				  <img src="assets/images/TOEIC.jpg" class="cert-img" alt="金融科技證照">
+				</a>
+				<h4 class="cert-title">多益815分</h4>
+				<p class="cert-date">發證日期: 2024/04/28</p>
 			  </div>
-			  <div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#certModal5" data-toggle="modal">
-					<img src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg" class="cert-img" alt="金融科技證照">
-				  </a>
-				  <h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Selflearning</h4>
-				  <p class="cert-date">發證日期: 2025/03/18</p>
-				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="#certModal5" data-toggle="modal">
+				  <img src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg" class="cert-img" alt="金融科技證照">
+				</a>
+				<h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Selflearning</h4>
+				<p class="cert-date">發證日期: 2025/03/18</p>
 			  </div>
-			  <div class="col-sm-6 col-md-4 flex-col">
-				<div class="cert-card text-center">
-				  <a href="#certModal6" data-toggle="modal">
-					<img src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg" class="cert-img" alt="金融科技證照">
-				  </a>
-				  <h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Workshop</h4>
-				  <p class="cert-date">發證日期: 2025/03/18</p>
-				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 flex-col">
+			  <div class="cert-card text-center">
+				<a href="#certModal6" data-toggle="modal">
+				  <img src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg" class="cert-img" alt="金融科技證照">
+				</a>
+				<h4 class="cert-title">NVIDIA_Build_With_<br>RAG_Agent_Workshop</h4>
+				<p class="cert-date">發證日期: 2025/03/18</p>
 			  </div>
-			  
+			</div>
 		</div>
 		
-		<!-- Modal 區塊與其他部分保持不變 -->
+		<!-- Modal 區塊 (不受排序控制影響) -->
 		<!-- eduModal 1 -->
 		<div class="modal fade" id="eduModal1" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
@@ -401,7 +425,7 @@
 		
 		<div class="row section topspace" style="margin-bottom: 100px;" id="recentworks">
 			<div class="row section recentworks topspace">
-				<h2 class="section-title"><span>計畫Projects</span></h2>
+				<h2 class="section-title"><span>計畫 Projects</span></h2>
 				<div class="row thumbnails recentworks">
 					<!-- 作品 1 -->
 					<div class="col-12 col-md-4 text-center">
@@ -523,5 +547,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="assets/js/template.js"></script>
+
+<!-- 排序功能腳本 -->
+<script>
+$(document).ready(function(){
+    // 當排序下拉選單改變時，重新排序該區塊中的卡片
+    $('.sort-order').on('change', function(){
+        var order = $(this).val(); // 取得 'asc' 或 'desc'
+        // 取得目前下拉選單所在區塊（.flex-row）
+        var container = $(this).closest('.flex-row');
+        // 以陣列方式取得該區塊所有直接子層的 .flex-col (卡片容器)
+        var cards = container.children('.flex-col').get();
+        
+        cards.sort(function(a, b){
+            var dateA_str = $(a).find('.cert-date').text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+            var dateB_str = $(b).find('.cert-date').text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+            var dateA = dateA_str ? new Date(dateA_str[1].replace(/\//g, '-')) : new Date();
+            var dateB = dateB_str ? new Date(dateB_str[1].replace(/\//g, '-')) : new Date();
+            if(order === 'asc'){
+                return dateA - dateB;
+            } else {
+                return dateB - dateA;
+            }
+        });
+        // 以新排序順序重新附加卡片至 container
+        $(cards).appendTo(container);
+    });
+    // 頁面載入時，預設執行一次排序
+    $('.sort-order').trigger('change');
+});
+</script>
+
 </body>
 </html>
