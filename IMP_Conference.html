@@ -1,166 +1,381 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="IMP2024 論文展示介紹">
-  <meta name="author" content="盧信廷">
-  <title>IMP2024 論文展示介紹</title>
-  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    body {
-      font-size: 20px;
-      line-height: 1.8;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
-    }
-    .main-title {
-      font-size: 42px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #2a7d7d;
-    }
-    .sub-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #3a9191;
-    }
-    .section-title {
-      font-size: 32px;
-      font-weight: bold;
-      color: #2a7d7d;
-      border-bottom: 2px solid #3a9191;
-      padding-bottom: 10px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-    .img-inline {
-      max-width: 100%;
-      height: auto;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .content-section {
-      background-color: #fff;
-      padding: 30px;
-      margin: 30px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    #footer {
-      background-color: #2a7d7d;
-      color: white;
-      padding: 40px 0;
-    }
-    #footer a {
-      color: #e3f2f2;
-    }
-    .btn-primary {
-      background-color: #2a7d7d;
-      border-color: #2a7d7d;
-    }
-    .btn-primary:hover {
-      background-color: #3a9191;
-      border-color: #3a9191;
-    }
-  </style>
-</head>
-<body>
-  <div id="head" class="parallax" parallax-speed="2">
-    <h1 id="logo" class="text-center">
-      <img class="img-circle" src="assets/images/bob_photo.png" alt="">
-      <span class="title">IMP2024第29屆資訊管理暨實務研討會</span>
-    </h1>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="IMP2024 論文展示介紹" />
+    <meta name="author" content="盧信廷" />
+    <title data-i18n="title">IMP2024 論文展示介紹</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- 引入 i18next 與 jquery-i18next -->
+    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
+    <style>
+      body {
+        font-size: 20px;
+        line-height: 1.8;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+      }
+      .main-title {
+        font-size: 42px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #2a7d7d;
+      }
+      .sub-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #3a9191;
+      }
+      .section-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #2a7d7d;
+        border-bottom: 2px solid #3a9191;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .img-inline {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      .content-section {
+        background-color: #fff;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      #footer {
+        background-color: #2a7d7d;
+        color: white;
+        padding: 40px 0;
+      }
+      #footer a {
+        color: #e3f2f2;
+      }
+      .btn-primary {
+        background-color: #2a7d7d;
+        border-color: #2a7d7d;
+      }
+      .btn-primary:hover {
+        background-color: #3a9191;
+        border-color: #3a9191;
+      }
+      /* 語言切換按鈕 */
+      .language-switcher {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 頁首 -->
+    <div id="head" class="parallax" parallax-speed="2">
+      <h1 id="logo" class="text-center">
+        <img class="img-circle" src="assets/images/bob_photo.png" alt="" />
+        <span class="title" data-i18n="header.title"
+          >IMP2024 第29屆資訊管理暨實務研討會</span
+        >
+      </h1>
+    </div>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="index.html" data-i18n="nav.home">首頁HOME</a>
+            </li>
+            <li><a href="#intro" data-i18n="nav.intro">研討會簡介</a></li>
+            <li>
+              <a href="#certificate" data-i18n="nav.certificate">證書展示</a>
+            </li>
+            <li><a href="#photo" data-i18n="nav.photo">研討會照片</a></li>
+            <li>
+              <a href="#download" data-i18n="nav.download">論文與摘要下載</a>
+            </li>
+          </ul>
+          <!-- 語言切換按鈕 -->
+          <div class="navbar-text pull-right language-switcher">
+            <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
+            <button id="btn-en" class="btn btn-default btn-xs">English</button>
+          </div>
+        </div>
       </div>
-      <div class="navbar-collapse collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">首頁HOME</a></li>
-          <li><a href="#intro">研討會簡介</a></li>
-          <li><a href="#certificate">證書展示</a></li>
-          <li><a href="#photo">研討會照片</a></li>
-          <li><a href="#download">論文與摘要下載</a></li>
+    </nav>
+
+    <!-- 主要內容 -->
+    <main class="container">
+      <!-- IMP2024 簡介區 -->
+      <section id="intro" class="content-section">
+        <h2 class="section-title" data-i18n="section.intro_title">
+          📄 IMP2024 簡介
+        </h2>
+        <p data-i18n="intro.p">
+          IMP2024
+          第29屆資訊管理暨實務研討會由台北商業大學主辦，聚焦於智慧城市、人工智慧應用、大型語言模型等前沿議題。
+          本研究團隊投稿之研究主題為智慧城市中的大型語言模型代理人系統，並於
+          2024/11/21 發表並獲得參與證書。
+        </p>
+      </section>
+
+      <!-- 證書展示區 -->
+      <section id="certificate" class="content-section text-center">
+        <h2 class="section-title" data-i18n="section.certificate_title">
+          🎖️ 參與證書
+        </h2>
+        <img
+          src="assets/images/IMP_Conference.jpg"
+          alt="IMP2024 證書"
+          class="img-inline"
+          style="max-width: 70%"
+        />
+      </section>
+
+      <!-- 研討會照片區 -->
+      <section id="photo" class="content-section">
+        <h2 class="section-title" data-i18n="section.photo_title">
+          📸 研討會照片
+        </h2>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <img
+              src="assets/images/IMP.jpg"
+              alt="IMP2024 參加照片"
+              class="img-inline"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 論文與摘要下載區 -->
+      <section id="download" class="content-section">
+        <h2 class="section-title" data-i18n="section.download_title">
+          📁 論文與摘要下載
+        </h2>
+        <ul>
+          <li>
+            <a
+              href="assets/files/IMP2024英文_論文全文.pdf"
+              download
+              data-i18n="download.file1"
+              >📘 IMP2024 英文論文全文 PDF</a
+            >
+          </li>
+          <li>
+            <a
+              href="assets/files/IMP2024英文_摘要.pdf"
+              download
+              data-i18n="download.file2"
+              >📄 IMP2024 英文摘要 PDF</a
+            >
+          </li>
+          <li>
+            <a
+              href="assets/files/IMP2024英文_論文全文.docx"
+              download
+              data-i18n="download.file3"
+              >📘 IMP2024 英文論文全文 WORD</a
+            >
+          </li>
+          <li>
+            <a
+              href="assets/files/IMP2024英文_摘要.docx.docx"
+              download
+              data-i18n="download.file4"
+              >📄 IMP2024 英文摘要 WORD</a
+            >
+          </li>
+          <li>
+            <a
+              href="assets/files/20241121_IMP2024_Large Language Model and AI Agent System for Smart City.pptx"
+              download
+              data-i18n="download.file5"
+              >📊 IMP2024 英文展示簡報 PPTX</a
+            >
+          </li>
         </ul>
-      </div>
-    </div>
-  </nav>
+      </section>
+    </main>
 
-  <main class="container">
-    <section id="intro" class="content-section">
-      <h2 class="section-title">📄 IMP2024 簡介</h2>
-      <p>
-        IMP2024 第29屆資訊管理暨實務研討會由台北商業大學主辦，聚焦於智慧城市、人工智慧應用、大型語言模型等前沿議題。
-        本研究團隊投稿之研究主題為智慧城市中的大型語言模型代理人系統，並於 2024/11/21 發表並獲得參與證書。
-      </p>
-    </section>
-
-    <section id="certificate" class="content-section text-center">
-      <h2 class="section-title">🎖️ 參與證書</h2>
-      <img src="assets/images/IMP_Conference.jpg" alt="IMP2024 證書" class="img-inline" style="max-width: 70%;">
-    </section>
-
-    <section id="photo" class="content-section">
-      <h2 class="section-title">📸 研討會照片</h2>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <img src="assets/images/IMP.jpg" alt="IMP2024 參加照片" class="img-inline">
+    <!-- 頁尾 -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="widget-title" data-i18n="footer.contact">聯絡資訊</h3>
+            <p data-i18n="footer.contact_text">
+              聯絡人：盧信廷<br />
+              E-mail:
+              <a href="mailto:hsintinglubob@gmail.com"
+                >hsintinglubob@gmail.com</a
+              >
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h3 class="widget-title" data-i18n="footer.partner">合作單位</h3>
+            <p data-i18n="footer.partner_text">國立台北大學 資訊管理研究所</p>
+          </div>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <section id="download" class="content-section">
-      <h2 class="section-title">📁 論文與摘要下載</h2>
-      <ul>
-        <li><a href="assets/files/IMP2024英文_論文全文.pdf" download>📘 IMP2024 英文論文全文 PDF</a></li>
-        <li><a href="assets/files/IMP2024英文_摘要.pdf" download>📄 IMP2024 英文摘要 PDF</a></li>
-        <li><a href="assets/files/IMP2024英文_論文全文.docx" download>📘 IMP2024 英文論文全文 WORD</a></li>
-        <li><a href="assets/files/IMP2024英文_摘要.docx.docx" download>📄 IMP2024 英文摘要 WORD</a></li>
-        <li><a href="assets/files/20241121_IMP2024_Large Language Model and AI Agent System for Smart City.pptx" download>📊 IMP2024 英文展示簡報 PPTX</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="widget-title">聯絡資訊</h3>
-          <p>聯絡人：盧信廷<br>
-             E-mail: <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a></p>
-        </div>
-        <div class="col-md-6">
-          <h3 class="widget-title">合作單位</h3>
-          <p>國立台北大學 資訊管理研究所</p>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="text-center">
+          <p data-i18n="underfooter.copy">© 2024 IMP2024 論文展示頁</p>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <footer id="underfooter">
-    <div class="container">
-      <div class="text-center">
-        <p>© 2024 IMP2024 論文展示頁</p>
-      </div>
-    </div>
-  </footer>
+    <!-- JavaScript libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-</body>
+    <!-- i18next 初始化與語言切換 -->
+    <script>
+      var resources = {
+        en: {
+          translation: {
+            title: "IMP2024 - Conference Presentation",
+            header: {
+              title:
+                "IMP2024 - 29th Conference on Information Management & Practice",
+            },
+            nav: {
+              home: "Home",
+              intro: "Conference Introduction",
+              certificate: "Certificate",
+              photo: "Photos",
+              download: "Downloads",
+            },
+            section: {
+              intro_title: "📄 IMP2024 Introduction",
+              certificate_title: "🎖️ Participation Certificate",
+              photo_title: "📸 Conference Photos",
+              download_title: "📁 Paper and Abstract Downloads",
+            },
+            intro: {
+              p: "IMP2024 - The 29th Conference on Information Management & Practice, organized by Taipei University of Business, focuses on cutting-edge topics such as smart cities, AI applications, and large language models. Our research team submitted a paper titled 'Large Language Model Agent System for Smart Cities', which was presented on 2024/11/21 and awarded a certificate of participation.",
+            },
+            download: {
+              file1: "📘 IMP2024 Full Paper PDF (English)",
+              file2: "📄 IMP2024 Abstract PDF (English)",
+              file3: "📘 IMP2024 Full Paper WORD (English)",
+              file4: "📄 IMP2024 Abstract WORD (English)",
+              file5: "📊 IMP2024 Presentation PPTX (English)",
+            },
+            footer: {
+              contact: "Contact Information",
+              contact_text:
+                "Contact: Lu Hsin-Ting, E-mail: hsintinglubob@gmail.com",
+              partner: "Partners",
+              partner_text:
+                "Graduate Institute of Information Management, National Taipei University",
+            },
+            underfooter: {
+              copy: "© 2024 IMP2024 Conference Presentation Page",
+            },
+          },
+        },
+        zh: {
+          translation: {
+            title: "IMP2024 論文展示介紹",
+            header: {
+              title: "IMP2024 第29屆資訊管理暨實務研討會",
+            },
+            nav: {
+              home: "首頁",
+              intro: "研討會簡介",
+              certificate: "證書展示",
+              photo: "研討會照片",
+              download: "論文與摘要下載",
+            },
+            section: {
+              intro_title: "📄 IMP2024 簡介",
+              certificate_title: "🎖️ 參與證書",
+              photo_title: "📸 研討會照片",
+              download_title: "📁 論文與摘要下載",
+            },
+            intro: {
+              p: "IMP2024 第29屆資訊管理暨實務研討會由台北商業大學主辦，聚焦於智慧城市、人工智慧應用、大型語言模型等前沿議題。本研究團隊投稿之研究主題為智慧城市中的大型語言模型代理人系統，並於 2024/11/21 發表並獲得參與證書。",
+            },
+            download: {
+              file1: "📘 IMP2024 英文論文全文 PDF",
+              file2: "📄 IMP2024 英文摘要 PDF",
+              file3: "📘 IMP2024 英文論文全文 WORD",
+              file4: "📄 IMP2024 英文摘要 WORD",
+              file5: "📊 IMP2024 英文展示簡報 PPTX",
+            },
+            footer: {
+              contact: "聯絡資訊",
+              contact_text: "聯絡人：盧信廷 E-mail: hsintinglubob@gmail.com",
+              partner: "合作單位",
+              partner_text: "國立台北大學 資訊管理研究所",
+            },
+            underfooter: {
+              copy: "© 2024 IMP2024 論文展示頁",
+            },
+          },
+        },
+      };
+
+      i18next.init(
+        {
+          lng: "en",
+          debug: true,
+          resources: resources,
+          interpolation: { escapeValue: false },
+        },
+        function (err, t) {
+          jqueryI18next.init(i18next, $);
+          $("body").localize();
+        }
+      );
+
+      $("#btn-en").on("click", function () {
+        i18next.changeLanguage("en", function () {
+          $("body").localize();
+        });
+      });
+      $("#btn-zh").on("click", function () {
+        i18next.changeLanguage("zh", function () {
+          $("body").localize();
+        });
+      });
+    </script>
+  </body>
 </html>

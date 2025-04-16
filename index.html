@@ -68,7 +68,7 @@
       }
       /* 自訂排序按鈕樣式：採用圖片上效果的淺藍色按鈕 */
       .btn-sort {
-        background-color: #e7f3f9;  /* 未選狀態淺藍底 */
+        background-color: #e7f3f9; /* 未選狀態淺藍底 */
         color: #333;
         border: 1px solid #d0e5ee;
         padding: 6px 12px;
@@ -131,22 +131,21 @@
           </div>
 
           <!-- 保留 id 以免手機版漢堡選單失效 -->
-          <div id="bs-example-navbar-collapse-1" class="navbar-collapse collapse">
+          <div
+            id="bs-example-navbar-collapse-1"
+            class="navbar-collapse collapse"
+          >
             <ul class="nav navbar-nav">
               <li class="active">
                 <a href="index.html" data-i18n="nav.home">首頁Home</a>
               </li>
               <li>
-                <a
-                  href="#Educational Background"
-                  data-i18n="nav.education"
+                <a href="#Educational Background" data-i18n="nav.education"
                   >學習經歷Educational Background</a
                 >
               </li>
               <li>
-                <a
-                  href="#Seminar presentation"
-                  data-i18n="nav.seminar"
+                <a href="#Seminar presentation" data-i18n="nav.seminar"
                   >研討會發表Seminar presentation</a
                 >
               </li>
@@ -165,7 +164,9 @@
             <!-- 語言切換按鈕 -->
             <div class="navbar-text pull-right language-switcher">
               <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
-              <button id="btn-en" class="btn btn-default btn-xs">English</button>
+              <button id="btn-en" class="btn btn-default btn-xs">
+                English
+              </button>
             </div>
           </div>
           <!--/.nav-collapse -->
@@ -181,49 +182,103 @@
             <p class="lead text-center text-muted" data-i18n="main.intro">
               I am currently studying at the Graduate Institute of Information
               Management, Taipei University, and working as a research assistant
-              at the <a href="https://www.aifitesg.org/" target="_blank"
+              at the
+              <a href="https://www.aifitesg.org/" target="_blank"
                 >Intelligent Financial Innovation Technology Lab (IFIT Lab)</a
               >.
             </p>
           </div>
         </div>
         <!-- 學習經歷部分 -->
-        <div class="row section topspace flex-row" style="margin-bottom: 100px" id="Educational Background">
+        <div
+          class="row section topspace flex-row"
+          style="margin-bottom: 100px"
+          id="Educational Background"
+        >
           <h2 class="section-title">
-            <span data-i18n="section.education">學習經歷 Educational Background</span>
+            <span data-i18n="section.education"
+              >學習經歷 Educational Background</span
+            >
           </h2>
           <!-- 排序按鈕 -->
           <div class="sort-controls">
             <label data-i18n="sort.label">排序方式:</label>
             <div class="btn-group" role="group">
-              <button type="button" class="btn-sort" data-sort="desc" data-i18n="sort.desc">新到舊</button>
-              <button type="button" class="btn-sort" data-sort="asc" data-i18n="sort.asc">舊到新</button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="desc"
+                data-i18n="sort.desc"
+              >
+                新到舊
+              </button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="asc"
+                data-i18n="sort.asc"
+              >
+                舊到新
+              </button>
             </div>
           </div>
           <!-- 卡片 1: 輔仁大學第40屆優秀專題 -->
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#eduModal1" data-toggle="modal">
-                <img src="assets/images/FJUproject.png" class="cert-img" alt="優秀專題" />
+                <img
+                  src="assets/images/FJUproject.png"
+                  class="cert-img"
+                  alt="優秀專題"
+                />
               </a>
               <h4 class="cert-title">
-                <span data-i18n="education.fju_title">輔仁大學第40屆優秀專題</span>
+                <span data-i18n="education.fju_title"
+                  >輔仁大學第40屆優秀專題</span
+                >
               </h4>
-              <p class="cert-date" data-i18n="education.fju_date">發證日期: 2023/05/27</p>
+              <p class="cert-date" data-i18n="education.fju_date">
+                發證日期: 2023/05/27
+              </p>
             </div>
             <!-- 將 eduModal1 嵌入卡片內 -->
-            <div class="modal fade" id="eduModal1" tabindex="-1" role="dialog" aria-labelledby="eduModalLabel1" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="eduModal1"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="eduModalLabel1"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="eduModalLabel1" data-i18n="education.fju_title">輔仁大學第40屆優秀專題</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="eduModalLabel1"
+                      data-i18n="education.fju_title"
+                    >
+                      輔仁大學第40屆優秀專題
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/FJUproject.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="education.fju_date">發證日期: 2023/05/27</p>
+                    <img
+                      src="assets/images/FJUproject.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="education.fju_date">
+                      發證日期: 2023/05/27
+                    </p>
                   </div>
                 </div>
               </div>
@@ -233,26 +288,59 @@
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#eduModal2" data-toggle="modal">
-                <img src="assets/images/AIHackthon.png" class="cert-img" alt="AI Hackthon" />
+                <img
+                  src="assets/images/AIHackthon.png"
+                  class="cert-img"
+                  alt="AI Hackthon"
+                />
               </a>
               <h4 class="cert-title">
-                <span data-i18n="education.innohack_title">2023叡揚資訊黑克松競賽</span>
+                <span data-i18n="education.innohack_title"
+                  >2023叡揚資訊黑克松競賽</span
+                >
               </h4>
-              <p class="cert-date" data-i18n="education.innohack_date">發證日期: 2023/09/13</p>
+              <p class="cert-date" data-i18n="education.innohack_date">
+                發證日期: 2023/09/13
+              </p>
             </div>
             <!-- 嵌入 eduModal2 -->
-            <div class="modal fade" id="eduModal2" tabindex="-1" role="dialog" aria-labelledby="eduModalLabel2" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="eduModal2"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="eduModalLabel2"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="eduModalLabel2" data-i18n="education.innohack_title">2023叡揚資訊黑克松競賽</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="eduModalLabel2"
+                      data-i18n="education.innohack_title"
+                    >
+                      2023叡揚資訊黑克松競賽
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/AIHackthon.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="education.innohack_date">發證日期: 2023/09/13</p>
+                    <img
+                      src="assets/images/AIHackthon.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="education.innohack_date">
+                      發證日期: 2023/09/13
+                    </p>
                   </div>
                 </div>
               </div>
@@ -262,26 +350,59 @@
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#eduModal4" data-toggle="modal">
-                <img src="assets/images/ICT.png" class="cert-img" alt="conference" />
+                <img
+                  src="assets/images/ICT.png"
+                  class="cert-img"
+                  alt="conference"
+                />
               </a>
               <h4 class="cert-title">
-                <span data-i18n="education.ict_title">第28屆大專院校資訊應用服務創新競賽</span>
+                <span data-i18n="education.ict_title"
+                  >第28屆大專院校資訊應用服務創新競賽</span
+                >
               </h4>
-              <p class="cert-date" data-i18n="education.ict_date">發證日期: 2023/11/04</p>
+              <p class="cert-date" data-i18n="education.ict_date">
+                發證日期: 2023/11/04
+              </p>
             </div>
             <!-- 嵌入 eduModal4 -->
-            <div class="modal fade" id="eduModal4" tabindex="-1" role="dialog" aria-labelledby="eduModalLabel4" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="eduModal4"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="eduModalLabel4"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="eduModalLabel4" data-i18n="education.ict_title">第28屆大專院校資訊應用服務創新競賽</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="eduModalLabel4"
+                      data-i18n="education.ict_title"
+                    >
+                      第28屆大專院校資訊應用服務創新競賽
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/ICT.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="education.ict_date">發證日期: 2023/11/04</p>
+                    <img
+                      src="assets/images/ICT.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="education.ict_date">
+                      發證日期: 2023/11/04
+                    </p>
                   </div>
                 </div>
               </div>
@@ -289,103 +410,256 @@
           </div>
           <!-- 卡片 4: 資策會科技日（連結至獨立頁面，不使用 modal） -->
           <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
+            <div class="cert-card text-center thumbnail">
+              <!-- 這裡用 thumbnail 或自訂 class 都可以 -->
               <a href="III_TechDay.html">
-                <img src="assets/images/III_TechDay_PPT_photo.png" class="cert-img" alt="conference" />
+                <span class="img">
+                  <img
+                    src="assets/images/III_TechDay_PPT_photo.png"
+                    class="cert-img"
+                    alt="conference"
+                  />
+                  <!-- 滑鼠懸停要出現的區塊 -->
+                  <span class="cover">
+                    <span class="more">See details &rarr;</span>
+                  </span>
+                </span>
               </a>
-              <h4 class="cert-title">
-                <span data-i18n="education.iii_title">資策會科技日</span>
+
+              <h4 class="cert-title" data-i18n="education.iii_title">
+                資策會科技日
               </h4>
-              <p class="cert-date" data-i18n="education.iii_date">參加日期: 2024/11/07</p>
+              <p class="cert-date" data-i18n="education.iii_date">
+                參加日期: 2024/11/07
+              </p>
             </div>
           </div>
         </div>
 
         <!-- 研討會發表部分 -->
-        <div class="row section topspace flex-row" style="margin-bottom: 100px" id="Seminar presentation">
+        <div
+          class="row section topspace flex-row"
+          style="margin-bottom: 100px"
+          id="Seminar presentation"
+        >
           <h2 class="section-title">
-            <span data-i18n="section.seminar">研討會發表 Seminar presentation</span>
+            <span data-i18n="section.seminar"
+              >研討會發表 Seminar presentation</span
+            >
           </h2>
           <div class="sort-controls">
             <label data-i18n="sort.label">排序方式:</label>
             <div class="btn-group" role="group">
-              <button type="button" class="btn-sort" data-sort="desc" data-i18n="sort.desc">新到舊</button>
-              <button type="button" class="btn-sort" data-sort="asc" data-i18n="sort.asc">舊到新</button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="desc"
+                data-i18n="sort.desc"
+              >
+                新到舊
+              </button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="asc"
+                data-i18n="sort.asc"
+              >
+                舊到新
+              </button>
             </div>
           </div>
           <!-- 卡片 1: 國際品質管理研討會 -->
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#eduModal3" data-toggle="modal">
-                <img src="assets/images/conference.png" class="cert-img" alt="conference" />
+                <img
+                  src="assets/images/conference.png"
+                  class="cert-img"
+                  alt="conference"
+                />
               </a>
-              <h4 class="cert-title" data-i18n="seminar.title1">國際品質管理研討會</h4>
-              <p class="cert-date" data-i18n="seminar.date1">發證日期: 2023/11/18</p>
+              <h4 class="cert-title" data-i18n="seminar.title1">
+                國際品質管理研討會
+              </h4>
+              <p class="cert-date" data-i18n="seminar.date1">
+                發證日期: 2023/11/18
+              </p>
             </div>
             <!-- 嵌入 eduModal3 -->
-            <div class="modal fade" id="eduModal3" tabindex="-1" role="dialog" aria-labelledby="eduModalLabel3" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="eduModal3"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="eduModalLabel3"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="eduModalLabel3" data-i18n="seminar.title1">國際品質管理研討會</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="eduModalLabel3"
+                      data-i18n="seminar.title1"
+                    >
+                      國際品質管理研討會
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/conference.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="seminar.date1">發證日期: 2023/11/18</p>
+                    <img
+                      src="assets/images/conference.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="seminar.date1">
+                      發證日期: 2023/11/18
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 卡片 2: IMP2024第29屆資訊管理暨實務研討會（連結至獨立頁面，不使用 modal） -->
           <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="IMP_Conference.html">
-                <img src="assets/images/IMP_Conference.jpg" class="cert-img" alt="conference" />
+            <div class="cert-card text-center thumbnail">
+              <a href="quality.html">
+                <span class="img">
+                  <img
+                    src="assets/images/quality.png"
+                    class="cert-img"
+                    alt="conference"
+                  />
+                  <span class="cover">
+                    <span class="more">See details &rarr;</span>
+                  </span>
+                </span>
               </a>
-              <h4 class="cert-title" data-i18n="seminar.title2">IMP2024第29屆資訊管理暨實務研討會</h4>
-              <p class="cert-date" data-i18n="seminar.date2">發證日期: 2024/11/21</p>
+              <h4 class="cert-title" data-i18n="seminar.title3">
+                品質學報接受稿件刊登
+              </h4>
+              <p class="cert-date" data-i18n="seminar.date3">
+                接受日期: 2024/08/31
+              </p>
+            </div>
+          </div>
+          <!-- 卡片 3: IMP2024第29屆資訊管理暨實務研討會（連結至獨立頁面，不使用 modal） -->
+          <div class="col-sm-6 col-md-4 flex-col">
+            <div class="cert-card text-center thumbnail">
+              <a href="IMP_Conference.html">
+                <span class="img">
+                  <img
+                    src="assets/images/IMP_Conference.jpg"
+                    class="cert-img"
+                    alt="conference"
+                  />
+                  <span class="cover">
+                    <span class="more">See details &rarr;</span>
+                  </span>
+                </span>
+              </a>
+              <h4 class="cert-title" data-i18n="seminar.title2">
+                IMP2024第29屆資訊管理暨實務研討會
+              </h4>
+              <p class="cert-date" data-i18n="seminar.date2">
+                發證日期: 2024/11/21
+              </p>
             </div>
           </div>
         </div>
 
         <!-- 證書部分 -->
-        <div class="row section topspace flex-row" style="margin-bottom: 100px" id="certifications">
+        <div
+          class="row section topspace flex-row"
+          style="margin-bottom: 100px"
+          id="certifications"
+        >
           <h2 class="section-title">
             <span data-i18n="section.certifications">證書 Certifications</span>
           </h2>
           <div class="sort-controls">
             <label data-i18n="sort.label">排序方式:</label>
             <div class="btn-group" role="group">
-              <button type="button" class="btn-sort" data-sort="desc" data-i18n="sort.desc">新到舊</button>
-              <button type="button" class="btn-sort" data-sort="asc" data-i18n="sort.asc">舊到新</button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="desc"
+                data-i18n="sort.desc"
+              >
+                新到舊
+              </button>
+              <button
+                type="button"
+                class="btn-sort"
+                data-sort="asc"
+                data-i18n="sort.asc"
+              >
+                舊到新
+              </button>
             </div>
           </div>
           <!-- 卡片 1: AI-900 -->
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#certModal1" data-toggle="modal">
-                <img src="assets/images/AI900.png" class="cert-img" alt="AI證照" />
+                <img
+                  src="assets/images/AI900.png"
+                  class="cert-img"
+                  alt="AI證照"
+                />
               </a>
-              <h4 class="cert-title" data-i18n="certs.ai900_title">AI-900: Microsoft Azure AI Fundamentals</h4>
-              <p class="cert-date" data-i18n="certs.ai900_date">Issuance date: 2023/06/07</p>
+              <h4 class="cert-title" data-i18n="certs.ai900_title">
+                AI-900: Microsoft Azure AI Fundamentals
+              </h4>
+              <p class="cert-date" data-i18n="certs.ai900_date">
+                Issuance date: 2023/06/07
+              </p>
             </div>
             <!-- 嵌入 certModal1 -->
-            <div class="modal fade" id="certModal1" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal1"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel1"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel1" data-i18n="certs.ai900_title">AI-900: Microsoft Azure AI Fundamentals</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel1"
+                      data-i18n="certs.ai900_title"
+                    >
+                      AI-900: Microsoft Azure AI Fundamentals
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/AI900.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="certs.ai900_date">Issuance date: 2023/06/07</p>
+                    <img
+                      src="assets/images/AI900.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="certs.ai900_date">
+                      Issuance date: 2023/06/07
+                    </p>
                   </div>
                 </div>
               </div>
@@ -395,24 +669,57 @@
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#certModal3" data-toggle="modal">
-                <img src="assets/images/AWS.png" class="cert-img" alt="金融科技證照" />
+                <img
+                  src="assets/images/AWS.png"
+                  class="cert-img"
+                  alt="金融科技證照"
+                />
               </a>
-              <h4 class="cert-title" data-i18n="certs.aws_title">AWS Cloud Data Analysis and Web Crawler Workshop</h4>
-              <p class="cert-date" data-i18n="certs.aws_date">Issuance date: 2023/09/22</p>
+              <h4 class="cert-title" data-i18n="certs.aws_title">
+                AWS Cloud Data Analysis and Web Crawler Workshop
+              </h4>
+              <p class="cert-date" data-i18n="certs.aws_date">
+                Issuance date: 2023/09/22
+              </p>
             </div>
             <!-- 嵌入 certModal3 -->
-            <div class="modal fade" id="certModal3" tabindex="-1" role="dialog" aria-labelledby="certModalLabel3" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal3"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel3"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel3" data-i18n="certs.aws_title">AWS Cloud Data Analysis and Web Crawler Workshop</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel3"
+                      data-i18n="certs.aws_title"
+                    >
+                      AWS Cloud Data Analysis and Web Crawler Workshop
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/AWS.png" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="certs.aws_date">Issuance date: 2023/09/22</p>
+                    <img
+                      src="assets/images/AWS.png"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="certs.aws_date">
+                      Issuance date: 2023/09/22
+                    </p>
                   </div>
                 </div>
               </div>
@@ -422,24 +729,57 @@
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#certModal2" data-toggle="modal">
-                <img src="assets/images/finance.jpg" class="cert-img" alt="金融科技證照" />
+                <img
+                  src="assets/images/finance.jpg"
+                  class="cert-img"
+                  alt="金融科技證照"
+                />
               </a>
-              <h4 class="cert-title" data-i18n="certs.fin_title">17th FinTech Competency Certificate</h4>
-              <p class="cert-date" data-i18n="certs.fin_date">Issuance date: 2024/04/20</p>
+              <h4 class="cert-title" data-i18n="certs.fin_title">
+                17th FinTech Competency Certificate
+              </h4>
+              <p class="cert-date" data-i18n="certs.fin_date">
+                Issuance date: 2024/04/20
+              </p>
             </div>
             <!-- 嵌入 certModal2 -->
-            <div class="modal fade" id="certModal2" tabindex="-1" role="dialog" aria-labelledby="certModalLabel2" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal2"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel2"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel2" data-i18n="certs.fin_title">17th FinTech Competency Certificate</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel2"
+                      data-i18n="certs.fin_title"
+                    >
+                      17th FinTech Competency Certificate
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/finance.jpg" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="certs.fin_date">Issuance date: 2024/04/20</p>
+                    <img
+                      src="assets/images/finance.jpg"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="certs.fin_date">
+                      Issuance date: 2024/04/20
+                    </p>
                   </div>
                 </div>
               </div>
@@ -449,24 +789,57 @@
           <div class="col-sm-6 col-md-4 flex-col">
             <div class="cert-card text-center">
               <a href="#certModal4" data-toggle="modal">
-                <img src="assets/images/TOEIC.jpg" class="cert-img" alt="金融科技證照" />
+                <img
+                  src="assets/images/TOEIC.jpg"
+                  class="cert-img"
+                  alt="金融科技證照"
+                />
               </a>
-              <h4 class="cert-title" data-i18n="certs.toeic_title">TOEIC 815</h4>
-              <p class="cert-date" data-i18n="certs.toeic_date">Issuance date: 2024/04/28</p>
+              <h4 class="cert-title" data-i18n="certs.toeic_title">
+                TOEIC 815
+              </h4>
+              <p class="cert-date" data-i18n="certs.toeic_date">
+                Issuance date: 2024/04/28
+              </p>
             </div>
             <!-- 嵌入 certModal4 -->
-            <div class="modal fade" id="certModal4" tabindex="-1" role="dialog" aria-labelledby="certModalLabel4" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal4"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel4"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel4" data-i18n="certs.toeic_title">TOEIC 815</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel4"
+                      data-i18n="certs.toeic_title"
+                    >
+                      TOEIC 815
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="assets/images/TOEIC.jpg" alt="大圖" style="max-width: 100%; height: auto" />
-                    <p class="mt-3" data-i18n="certs.toeic_date">Issuance date: 2024/04/28</p>
+                    <img
+                      src="assets/images/TOEIC.jpg"
+                      alt="大圖"
+                      style="max-width: 100%; height: auto"
+                    />
+                    <p class="mt-3" data-i18n="certs.toeic_date">
+                      Issuance date: 2024/04/28
+                    </p>
                   </div>
                 </div>
               </div>
@@ -485,17 +858,36 @@
               <h4 class="cert-title" data-i18n="certs.nvidia_self_title">
                 NVIDIA_Build_With_RAG_Agent_Selflearning
               </h4>
-              <p class="cert-date" data-i18n="certs.nvidia_self_date">Issuance date: 2025/03/18</p>
+              <p class="cert-date" data-i18n="certs.nvidia_self_date">
+                Issuance date: 2025/03/18
+              </p>
             </div>
             <!-- 嵌入 certModal5 -->
-            <div class="modal fade" id="certModal5" tabindex="-1" role="dialog" aria-labelledby="certModalLabel5" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal5"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel5"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel5" data-i18n="certs.nvidia_self_title">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel5"
+                      data-i18n="certs.nvidia_self_title"
+                    >
                       NVIDIA_Build_With_RAG_Agent_Selflearning
                     </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
@@ -505,7 +897,9 @@
                       alt="大圖"
                       style="max-width: 100%; height: auto"
                     />
-                    <p class="mt-3" data-i18n="certs.nvidia_self_date">Issuance date: 2025/03/18</p>
+                    <p class="mt-3" data-i18n="certs.nvidia_self_date">
+                      Issuance date: 2025/03/18
+                    </p>
                   </div>
                 </div>
               </div>
@@ -524,17 +918,36 @@
               <h4 class="cert-title" data-i18n="certs.nvidia_ws_title">
                 NVIDIA_Build_With_RAG_Agent_Workshop
               </h4>
-              <p class="cert-date" data-i18n="certs.nvidia_ws_date">Issuance date: 2025/03/18</p>
+              <p class="cert-date" data-i18n="certs.nvidia_ws_date">
+                Issuance date: 2025/03/18
+              </p>
             </div>
             <!-- 嵌入 certModal6 -->
-            <div class="modal fade" id="certModal6" tabindex="-1" role="dialog" aria-labelledby="certModalLabel6" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="certModal6"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="certModalLabel6"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                   <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel6" data-i18n="certs.nvidia_ws_title">
+                    <h4
+                      class="modal-title w-100"
+                      id="certModalLabel6"
+                      data-i18n="certs.nvidia_ws_title"
+                    >
                       NVIDIA_Build_With_RAG_Agent_Workshop
                     </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 15px">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      style="position: absolute; top: 10px; right: 15px"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
@@ -544,7 +957,9 @@
                       alt="大圖"
                       style="max-width: 100%; height: auto"
                     />
-                    <p class="mt-3" data-i18n="certs.nvidia_ws_date">Issuance date: 2025/03/18</p>
+                    <p class="mt-3" data-i18n="certs.nvidia_ws_date">
+                      Issuance date: 2025/03/18
+                    </p>
                   </div>
                 </div>
               </div>
@@ -553,7 +968,11 @@
         </div>
 
         <!-- Projects & School 區塊 -->
-        <div class="row section topspace" style="margin-bottom: 100px" id="recentworks">
+        <div
+          class="row section topspace"
+          style="margin-bottom: 100px"
+          id="recentworks"
+        >
           <div class="row section recentworks topspace">
             <h2 class="section-title">
               <span data-i18n="section.projects">計畫 Projects</span>
@@ -564,7 +983,9 @@
                 <a class="thumbnail" href="cancer.html">
                   <span class="img">
                     <img src="assets/images/cancer_project.png" alt="" />
-                    <span class="cover"><span class="more">See details &rarr;</span></span>
+                    <span class="cover"
+                      ><span class="more">See details &rarr;</span></span
+                    >
                   </span>
                   <span class="title">大學專題-癌資機模人</span>
                 </a>
@@ -574,7 +995,9 @@
                 <a class="thumbnail" href="marketing.html">
                   <span class="img">
                     <img src="assets/images/氛享海報.png" alt="" />
-                    <span class="cover"><span class="more">See details &rarr;</span></span>
+                    <span class="cover"
+                      ><span class="more">See details &rarr;</span></span
+                    >
                   </span>
                   <span class="title">國科會-氛享水晶Bot</span>
                 </a>
@@ -584,15 +1007,23 @@
                 <a class="thumbnail" href="Smart_City.html">
                   <span class="img">
                     <img src="assets/images/smart city.png" alt="" />
-                    <span class="cover"><span class="more">See details &rarr;</span></span>
+                    <span class="cover"
+                      ><span class="more">See details &rarr;</span></span
+                    >
                   </span>
-                  <span class="title">Smart City Large Language Model Agent System</span>
+                  <span class="title"
+                    >Smart City Large Language Model Agent System</span
+                  >
                 </a>
               </div>
             </div>
           </div>
           <!-- School 區塊 -->
-          <div class="row section topspace" style="margin-bottom: 100px" id="school">
+          <div
+            class="row section topspace"
+            style="margin-bottom: 100px"
+            id="school"
+          >
             <div class="row section recentworks topspace">
               <h2 class="section-title">
                 <span data-i18n="section.school">就讀學校 School</span>
@@ -600,23 +1031,38 @@
               <div class="row thumbnails recentworks">
                 <!-- 第一張圖片 -->
                 <div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
-                  <img src="assets/images/250px-延平高中.png" alt="延平高中" class="imgschool" />
+                  <img
+                    src="assets/images/250px-延平高中.png"
+                    alt="延平高中"
+                    class="imgschool"
+                  />
                   <p>
-                    延平高中<br />Taipei Yanping Senior High School<br />2017/09 - 2020/06
+                    延平高中<br />Taipei Yanping Senior High School<br />2017/09
+                    - 2020/06
                   </p>
                 </div>
                 <!-- 第二張圖片 -->
                 <div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
-                  <img src="assets/images/FJU.png" alt="輔仁大學" class="imgschool" />
+                  <img
+                    src="assets/images/FJU.png"
+                    alt="輔仁大學"
+                    class="imgschool"
+                  />
                   <p>
-                    輔仁大學<br />Fu Jen Catholic University<br />2020/09 - 2024/06
+                    輔仁大學<br />Fu Jen Catholic University<br />2020/09 -
+                    2024/06
                   </p>
                 </div>
                 <!-- 第三張圖片 -->
                 <div class="col-lg-4 col-md-4 col-sm-12 text-center school-col">
-                  <img src="assets/images/NTPU.jpg" alt="國立臺北大學" class="imgschool" />
+                  <img
+                    src="assets/images/NTPU.jpg"
+                    alt="國立臺北大學"
+                    class="imgschool"
+                  />
                   <p>
-                    國立臺北大學<br />National Taipei University (NTPU)<br />2025/02 - 2027/01
+                    國立臺北大學<br />National Taipei University (NTPU)<br />2025/02
+                    - 2027/01
                   </p>
                 </div>
               </div>
@@ -635,7 +1081,9 @@
             <div class="widget-body">
               <p>
                 +234 23 9873237<br />
-                <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                ><br />
               </p>
             </div>
           </div>
@@ -651,18 +1099,24 @@
           </div>
 
           <div class="col-md-3 widget">
-            <h3 class="widget-title" data-i18n="footer.textwidget">Text widget</h3>
+            <h3 class="widget-title" data-i18n="footer.textwidget">
+              Text widget
+            </h3>
             <div class="widget-body">
               <p>hello!</p>
             </div>
           </div>
 
           <div class="col-md-3 widget">
-            <h3 class="widget-title" data-i18n="footer.formwidget">Form widget</h3>
+            <h3 class="widget-title" data-i18n="footer.formwidget">
+              Form widget
+            </h3>
             <div class="widget-body">
               <p>
                 +886 966465569<br />
-                <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                ><br />
               </p>
             </div>
           </div>
@@ -684,7 +1138,9 @@
               <p class="text-right">
                 Copyright &copy; 2014, Your awesome name here<br />
                 Design:
-                <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a>
+                <a href="https://www.gettemplate.com" rel="designer"
+                  >Initio by GetTemplate</a
+                >
               </p>
             </div>
           </div>
@@ -712,10 +1168,20 @@
           $(this).addClass("active");
 
           cards.sort(function (a, b) {
-            var dateA_str = $(a).find(".cert-date").text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
-            var dateB_str = $(b).find(".cert-date").text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
-            var dateA = dateA_str ? new Date(dateA_str[1].replace(/\//g, "-")) : new Date();
-            var dateB = dateB_str ? new Date(dateB_str[1].replace(/\//g, "-")) : new Date();
+            var dateA_str = $(a)
+              .find(".cert-date")
+              .text()
+              .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+            var dateB_str = $(b)
+              .find(".cert-date")
+              .text()
+              .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+            var dateA = dateA_str
+              ? new Date(dateA_str[1].replace(/\//g, "-"))
+              : new Date();
+            var dateB = dateB_str
+              ? new Date(dateB_str[1].replace(/\//g, "-"))
+              : new Date();
             return order === "asc" ? dateA - dateB : dateB - dateA;
           });
           $(cards).appendTo(container);
@@ -787,9 +1253,13 @@
               title2:
                 "IMP2024 — The 29th Workshop on Information Management & Practice",
               date2: "Issuance date: 2024/11/21",
+              title3:
+                "The Journal of Quality has accepted the manuscript for publication",
+              date3: "Accepted Date: 2024/08/31",
             },
             education: {
-              fju_title: "Fu Jen Catholic University's 40th Outstanding Projects",
+              fju_title:
+                "Fu Jen Catholic University's 40th Outstanding Projects",
               fju_date: "Issuance date: 2023/05/27",
               innohack_title: "2023 Ruiyang Information Hackathon Competition",
               innohack_date: "Issuance date: 2023/09/13",
@@ -856,6 +1326,8 @@
               date1: "發證日期: 2023/11/18",
               title2: "IMP2024第29屆資訊管理暨實務研討會",
               date2: "發證日期: 2024/11/21",
+              title3: "品質學報接受稿件刊登",
+              date3: "接受日期: 2024/08/31",
             },
             education: {
               fju_title: "輔仁大學第40屆優秀專題",
@@ -876,7 +1348,7 @@
           lng: "en", // 預設語言設為英文
           debug: true,
           resources: resources,
-          interpolation: { escapeValue: false } // 允許 HTML 不被跳脫
+          interpolation: { escapeValue: false }, // 允許 HTML 不被跳脫
         },
         function (err, t) {
           jqueryI18next.init(i18next, $);

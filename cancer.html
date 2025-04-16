@@ -1,390 +1,701 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="輔仁大學癌症資訊聊天機器人專題介紹">
-  <meta name="author" content="輔仁大學癌症專題團隊">
-  
-  <title>輔仁大學癌症資訊聊天機器人專題介紹</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="輔仁大學癌症資訊聊天機器人專題介紹" />
+    <meta name="author" content="輔仁大學癌症專題團隊" />
 
-  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
-  
-  <!-- Bootstrap -->
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-  <!-- Icon font -->
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+    <title data-i18n="title">輔仁大學癌症資訊聊天機器人專題介紹</title>
 
-  <!-- 自訂樣式 -->
-  <style>
-    body {
-      font-size: 20px;
-      line-height: 1.8;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
-    }
-    .main-title {
-      font-size: 42px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #2a7d7d;
-    }
-    .sub-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #3a9191;
-    }
-    p {
-      font-size: 20px;
-    }
-    h2, h3, h4 {
-      font-size: 28px;
-    }
-    .section-title {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-size: 32px;
-      font-weight: bold;
-      color: #2a7d7d;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #3a9191;
-    }
-    /* 導覽列樣式 */
-    .navbar-nav > li > a {
-      font-size: 18px;
-    }
-    /* 內容區塊樣式 */
-    .content-section {
-      background-color: #fff;
-      padding: 30px;
-      margin: 30px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    /* 修改後的圖片樣式：讓圖片不會超出容器，太大自動縮放，太小則維持原尺寸以便點擊放大 */
-    .img-inline {
-      display: block;
-      margin: 0 auto 30px auto;
-      max-width: 100%;
-      height: auto;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      border-radius: 8px;
-    }
-    /* 點擊放大效果：第二、第三張圖片增加 zoomable-img class */
-    .zoomable-img {
-      cursor: pointer;
-    }
-    /* 頁尾樣式 */
-    #footer {
-      background-color: #2a7d7d;
-      color: white;
-      padding: 40px 0;
-    }
-    #footer a {
-      color: #e3f2f2;
-    }
-    /* 按鈕樣式 */
-    .btn-primary {
-      background-color: #2a7d7d;
-      border-color: #2a7d7d;
-    }
-    .btn-primary:hover {
-      background-color: #3a9191;
-      border-color: #3a9191;
-    }
- 
-  .modal-dialog.modal-bigger {
-    width: 90%;
-    max-width: 1200px;
-  }
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
 
-  </style>
-</head>
-<body>
-  <div id="head" class="parallax" parallax-speed="2">
-		<h1 id="logo" class="text-center">
-			<img class="img-circle" src="assets/images/cancer_project.png" alt="">
-			<span class="title">盧信廷</span>
-			<span class="tagline">台北大學資訊管理研究所<br>
-				<a href="">hsintinglubob@gmail.com</a>
-			</span>
-		</h1>
-	</div>
-<!-- Header 與導覽列 -->
-<header id="header">
-  <!-- 保留新版本的導覽列部分 -->
-  <div id="head" class="parallax" parallax-speed="2" style="padding: 30px 0;">
-    <!-- 此處可依需求放置標語或其他元素 -->
-  </div>
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" 
-                class="navbar-toggle" 
-                data-toggle="collapse" 
-                data-target="#navbar-collapse">
-          <span class="sr-only">Toggle navigation</span> 
-          <span class="icon-bar"></span> 
-          <span class="icon-bar"></span> 
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      
-      <div class="navbar-collapse collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">HOME</a></li>
-          <li><a href="#introduction">計畫介紹</a></li>
-          <li><a href="#background">背景與動機</a></li>
-          <li><a href="#functions">系統功能</a></li>
-          <li><a href="#details">專題詳細介紹</a></li>
-          <li><a href="#future">未來展望</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+    <!-- 引入 i18next 與 jquery-i18next -->
+    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
-<!-- ===================== 重點：取代「第一張海報」的舊版本圖片配置 ===================== -->
-<!-- 刪除原先的新版本：
-     <div class="container" style="margin-top: 20px;">
-       <img src="assets/images/cancer_project.png" alt="第一張海報" class="img-inline">
-     </div>
--->
-
-<!-- 在 main 內容區一開始，插入舊版本 <article> 以及對 cancer_project 的排版 -->
-<main id="main">
-  <div class="container" style="margin-top: 20px;">
-    <article class="post hentry post-maincontent">
-      <header class="entry-header my-custom-header">
-        <!-- 小標 / 項目名 -->
-        <p class="small-title">輔仁大學第40屆專題</p>
-        <!-- 主標題 -->
-        <h1 class="main-title">癌症資訊聊天機器人專題</h1>
-        <!-- 副標 / 說明 -->
-        <h2 class="sub-title">結合 AI 與大數據提供癌症健康資訊</h2>
-      </header>
-      <!-- 舊版中對 cancer_project.png 的配置 -->
-      <p>
-        <img src="assets/images/cancer_project.png" alt="癌症專題圖" class="img-inline">
-      </p>
-    </article>
-  </div>
-
-  <!-- 以下保留新版本的其餘結構，如計畫介紹、背景與動機、功能介紹等 -->
-  <div class="container">
-    <!-- 計畫介紹：第二張介紹圖片 (可點擊放大) -->
-    <article class="post hentry post-maincontent content-section">
-      <section id="introduction">
-        <h2 class="section-title">計畫介紹</h2>
-        <div class="row">
-          <div class="col-md-7">
-            <p>
-              本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。
-              結合先進的 AI 語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，
-              並提供情緒管理與使用回饋等多元功能。
-            </p>
-            <p>
-              指導教授：鄭美娟<br>
-              團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤
-            </p>
-          </div>
-          <div class="col-md-5">
-            <!-- 第二張圖片：加入 zoomable-img 與 data-caption -->
-            <a href="#imgModal" data-toggle="modal">
-            <img src="assets/images/cancer1.png" alt="專題介紹" class="img-inline zoomable-img" data-caption="專題介紹"></a>
-          </div>
-        </div>
-      </section>
-    </article>
-
-    <!-- 背景與動機 (純文字) -->
-    <section id="background" class="content-section">
-      <h2 class="section-title">背景與動機</h2>
-      <p>
-        疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技的進步，透過 AI 與大數據提供準確且即時的癌症健康資訊，
-        能有效支援癌友與其家屬面對疾病挑戰。
-      </p>
-      <p>
-        科技正在以驚人的速度發展和進步，疾病迅速地蔓延和擴散，為了有效預防疾病的發生，人們想要快速理解資訊、
-        細節並致力於正確的健康知識，癌症資訊聊天機器人由此而生！
-      </p>
-    </section>
-
-    <!-- 系統功能：第三張圖片 (可點擊放大) -->
-    <section id="functions" class="content-section">
-      <h2 class="section-title">系統功能</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h3>癌資機模人提供哪些服務？</h3>
-          <ul>
-            <li><strong>多元資訊整合：</strong>結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。</li>
-            <li><strong>即時互動服務：</strong>利用 Line 平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。</li>
-            <li><strong>情緒與回饋管理：</strong>提供情緒指數分析與回饋機制，協助使用者調適心情。</li>
-            <li><strong>先進技術支援：</strong>採用 AI 語言模型輔助查詢，並利用大數據技術分析用戶需求。</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <!-- 第三張圖片：加入 zoomable-img 與 data-caption -->
-          <a href="#imgModal1" data-toggle="modal">
-          <img src="assets/images/cancer2.png" alt="服務功能展示" class="img-inline zoomable-img" data-caption="服務功能展示"></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 專題詳細介紹 (純文字) -->
-    <section id="details" class="content-section">
-      <h2 class="section-title">專題詳細介紹</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <p>
-            本專題整合了大量的醫療資訊來源，並與多位臨床醫師與專業護理師合作，確保訊息的正確性與即時性。
-            透過 AI、大數據、自然語言處理及雲端服務的結合，讓癌症資訊能夠更快速且方便地傳遞給有需要的使用者。
-          </p>
-        </div>
-        <div class="col-md-6">
-          <ul>
-            <li><strong>關鍵字查詢：</strong>輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。</li>
-            <li><strong>醫師健康解說：</strong>提供專業醫師解說影片及文章。</li>
-            <li><strong>常見問題與解答：</strong>彙整常見疑問並提供標準答案。</li>
-            <li><strong>情緒指數分析：</strong>記錄與分析使用者心情，提供回饋與建議。</li>
-            <li><strong>ChatGPT 查詢：</strong>整合 AI 模型進行深度查詢。</li>
-            <li><strong>回饋使用體驗：</strong>讓使用者對系統體驗進行評分與留言。</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 未來展望 (純文字) -->
-    <section id="future" class="content-section">
-      <h2 class="section-title">未來展望</h2>
-      <p>
-        未來將持續整合更多醫學中心與研究單位的專業資源，並不斷優化互動介面與功能，協助更多人群在面對疾病時能獲得最佳的醫療資訊與心理支持。
-      </p>
-      <p>
-        同時，我們也期待能將此系統擴充到其他疾病領域，例如糖尿病、高血壓等常見慢性疾病，促進全民健康。
-      </p>
-      <div class="text-center" style="margin-top: 20px;">
-        <a href="#" class="btn btn-lg btn-primary">加入 Line Bot 好友</a>
-      </div>
-    </section>
-  </div>
-</main>
-
-<!-- 頁尾 -->
-<footer id="footer" class="topspace">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">聯絡我們</h3>
-        <div class="widget-body">
-          <p>+886 966465569<br>
-             <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br>
-          </p>  
-        </div>
-      </div>
-
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">關注我們</h3>
-        <div class="widget-body">
-          <p class="follow-me-icons">
-            <a href=""><i class="fa fa-github fa-2"></i></a>
-            <a href=""><i class="fa fa-facebook fa-2"></i></a>
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-6 widget">
-        <h3 class="widget-title">專題宗旨</h3>
-        <div class="widget-body">
-          <p>
-            本專題致力於利用先進 AI 與大數據技術，提供癌症健康資訊與情緒管理，支援癌友與家屬在面對疾病挑戰時獲得有效資訊與支持。
-            抗癌之路不再孤獨，我們與您同行。
-          </p>
-        </div>
-      </div>
-    </div> <!-- /row of widgets -->
-  </div>
-</footer>
-
-<footer id="underfooter">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 widget">
-        <div class="widget-body text-center">
-          <p>© 2025 輔仁大學資訊管理學系第40屆專題 - 癌症資訊聊天機器人</p>
-        </div>
-      </div>
-    </div> <!-- /row of widgets -->
-  </div>
-</footer>
-
-<!-- Modal 1 -->
-<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-bigger" role="document">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="assets/images/cancer1.png" alt="證照大圖" style="width: 100%; height: auto;">
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal 2 -->
-<div class="modal fade" id="imgModal1" tabindex="-1" role="dialog" aria-labelledby="certModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-bigger" role="document">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:10px; right:15px;">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="assets/images/cancer2.png" alt="證照大圖" style="width: 100%; height: auto;">
-      </div>
-    </div>
-  </div>
-</div>
-<!-- JavaScript libs -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="assets/js/template.js"></script>
-<script>
-  $(document).ready(function() {
-    // 平滑滾動到錨點
-    $('a[href*="#"]:not([href="#"])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-          && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-          return false;
-        }
+    <!-- 自訂樣式 -->
+    <style>
+      body {
+        font-size: 20px;
+        line-height: 1.8;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
       }
-    });
-    
-    // 點擊可放大圖片
-    $('.zoomable-img').click(function() {
-      var imgSrc = $(this).attr('src');
-      var captionText = $(this).data('caption') || '';
-      $('#modalImg').attr('src', imgSrc);
-      $('#modalCaption').text(captionText);
-      $('#imgModal').modal('show');
-    });
-  });
-</script>
-</body>
+      .main-title {
+        font-size: 42px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #2a7d7d;
+      }
+      .sub-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #3a9191;
+      }
+      p {
+        font-size: 20px;
+      }
+      h2,
+      h3,
+      h4 {
+        font-size: 28px;
+      }
+      .section-title {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #2a7d7d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3a9191;
+      }
+      /* 導覽列樣式 */
+      .navbar-nav > li > a {
+        font-size: 18px;
+      }
+      /* 內容區塊樣式 */
+      .content-section {
+        background-color: #fff;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      /* 修改後的圖片樣式：讓圖片不會超出容器 */
+      .img-inline {
+        display: block;
+        margin: 0 auto 30px auto;
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+      /* 點擊放大效果：增加 zoomable-img class */
+      .zoomable-img {
+        cursor: pointer;
+      }
+      /* 頁尾樣式 */
+      #footer {
+        background-color: #2a7d7d;
+        color: white;
+        padding: 40px 0;
+      }
+      #footer a {
+        color: #e3f2f2;
+      }
+      /* 按鈕樣式 */
+      .btn-primary {
+        background-color: #2a7d7d;
+        border-color: #2a7d7d;
+      }
+      .btn-primary:hover {
+        background-color: #3a9191;
+        border-color: #3a9191;
+      }
+
+      .modal-dialog.modal-bigger {
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      /* 語言切換按鈕：放在導覽列右側 */
+      .language-switcher {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 頁首（Logo 與聯絡資訊） -->
+    <div id="head" class="parallax" parallax-speed="2">
+      <h1 id="logo" class="text-center">
+        <img class="img-circle" src="assets/images/cancer_project.png" alt="" />
+        <span class="title" data-i18n="header.smallTitle"
+          >輔仁大學第40屆專題</span
+        >
+        <br />
+        <span class="main-title" data-i18n="header.mainTitle"
+          >癌症資訊聊天機器人專題</span
+        >
+        <br />
+        <span class="sub-title" data-i18n="header.subTitle"
+          >結合 AI 與大數據提供癌症健康資訊</span
+        >
+      </h1>
+    </div>
+
+    <!-- Header 與導覽列 -->
+    <header id="header">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active">
+                <a href="index.html" data-i18n="nav.home">HOME</a>
+              </li>
+              <li>
+                <a href="#introduction" data-i18n="nav.introduction"
+                  >計畫介紹</a
+                >
+              </li>
+              <li>
+                <a href="#background" data-i18n="nav.background">背景與動機</a>
+              </li>
+              <li>
+                <a href="#functions" data-i18n="nav.functions">系統功能</a>
+              </li>
+              <li>
+                <a href="#details" data-i18n="nav.details">專題詳細介紹</a>
+              </li>
+              <li><a href="#future" data-i18n="nav.future">未來展望</a></li>
+            </ul>
+            <div class="navbar-text pull-right language-switcher">
+              <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
+              <button id="btn-en" class="btn btn-default btn-xs">
+                English
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 主要內容 -->
+    <main id="main">
+      <div class="container" style="margin-top: 20px">
+        <article class="post hentry post-maincontent">
+          <header class="entry-header my-custom-header">
+            <p class="small-title" data-i18n="header.smallTitle">
+              輔仁大學第40屆專題
+            </p>
+            <h1 class="main-title" data-i18n="header.mainTitle">
+              癌症資訊聊天機器人專題
+            </h1>
+            <h2 class="sub-title" data-i18n="header.subTitle">
+              結合 AI 與大數據提供癌症健康資訊
+            </h2>
+          </header>
+          <p>
+            <img
+              src="assets/images/cancer_project.png"
+              alt="癌症專題圖"
+              class="img-inline"
+            />
+          </p>
+        </article>
+      </div>
+
+      <!-- 計畫介紹 -->
+      <div class="container">
+        <article
+          class="post hentry post-maincontent content-section"
+          id="introduction"
+        >
+          <h2 class="section-title" data-i18n="section.introductionTitle">
+            計畫介紹
+          </h2>
+          <div class="row">
+            <div class="col-md-7">
+              <p data-i18n="introduction.text">
+                本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的
+                AI
+                語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />
+                指導教授：鄭美娟<br />
+                團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤
+              </p>
+            </div>
+            <div class="col-md-5">
+              <a href="#imgModal" data-toggle="modal">
+                <img
+                  src="assets/images/cancer1.png"
+                  alt="專題介紹"
+                  class="img-inline zoomable-img"
+                  data-caption="專題介紹"
+                />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 背景與動機 -->
+        <section id="background" class="content-section">
+          <h2 class="section-title" data-i18n="section.backgroundTitle">
+            背景與動機
+          </h2>
+          <p data-i18n="background.text1">
+            疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技的進步，透過
+            AI 與大數據提供準確且即時的癌症健康資訊，
+            能有效支援癌友與其家屬面對疾病挑戰。
+          </p>
+          <p data-i18n="background.text2">
+            科技正以驚人速度進步，面對疾病蔓延的現實，迅速獲取正確健康資訊顯得尤為重要，因此癌症資訊聊天機器人應運而生！
+          </p>
+        </section>
+
+        <!-- 系統功能 -->
+        <section id="functions" class="content-section">
+          <h2 class="section-title" data-i18n="section.functionsTitle">
+            系統功能
+          </h2>
+          <div class="row">
+            <div class="col-md-6">
+              <h3 data-i18n="functions.headline">癌資機模人提供哪些服務？</h3>
+              <ul>
+                <li data-i18n="functions.item1">
+                  <strong>多元資訊整合：</strong
+                  >結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。
+                </li>
+                <li data-i18n="functions.item2">
+                  <strong>即時互動服務：</strong>利用 Line
+                  平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。
+                </li>
+                <li data-i18n="functions.item3">
+                  <strong>情緒與回饋管理：</strong
+                  >提供情緒指數分析與回饋機制，協助使用者調適心情。
+                </li>
+                <li data-i18n="functions.item4">
+                  <strong>先進技術支援：</strong>採用 AI
+                  語言模型輔助查詢，並利用大數據技術分析用戶需求。
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <a href="#imgModal1" data-toggle="modal">
+                <img
+                  src="assets/images/cancer2.png"
+                  alt="服務功能展示"
+                  class="img-inline zoomable-img"
+                  data-caption="服務功能展示"
+                />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 專題詳細介紹 -->
+        <section id="details" class="content-section">
+          <h2 class="section-title" data-i18n="section.detailsTitle">
+            專題詳細介紹
+          </h2>
+          <div class="row">
+            <div class="col-md-6">
+              <p data-i18n="details.text1">
+                本專題整合了大量的醫療資訊來源，並與多位臨床醫師與專業護理師合作，確保訊息的正確性與即時性。透過
+                AI、大數據、自然語言處理及雲端服務的結合，
+                讓癌症資訊能夠更快速且方便地傳遞給有需要的使用者。
+              </p>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li data-i18n="details.listItem1">
+                  <strong>關鍵字查詢：</strong
+                  >輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。
+                </li>
+                <li data-i18n="details.listItem2">
+                  <strong>醫師健康解說：</strong>提供專業醫師解說影片及文章。
+                </li>
+                <li data-i18n="details.listItem3">
+                  <strong>常見問題與解答：</strong>彙整常見疑問並提供標準答案。
+                </li>
+                <li data-i18n="details.listItem4">
+                  <strong>情緒指數分析：</strong
+                  >記錄與分析使用者心情，提供回饋與建議。
+                </li>
+                <li data-i18n="details.listItem5">
+                  <strong>ChatGPT 查詢：</strong>整合 AI 模型進行深度查詢。
+                </li>
+                <li data-i18n="details.listItem6">
+                  <strong>回饋使用體驗：</strong
+                  >讓使用者對系統體驗進行評分與留言。
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 未來展望 -->
+        <section id="future" class="content-section">
+          <h2 class="section-title" data-i18n="section.futureTitle">
+            未來展望
+          </h2>
+          <p data-i18n="future.text1">
+            未來將持續整合更多醫學中心與研究單位的專業資源，並不斷優化互動介面與功能，協助更多人群在面對疾病時獲得最佳的醫療資訊與心理支持。
+          </p>
+          <p data-i18n="future.text2">
+            同時，我們也期待能將此系統擴充到其他疾病領域，例如糖尿病、高血壓等常見慢性疾病，促進全民健康。
+          </p>
+          <div class="text-center" style="margin-top: 20px">
+            <a href="#" class="btn btn-lg btn-primary" data-i18n="future.button"
+              >加入 Line Bot 好友</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.contactTitle">
+              聯絡我們
+            </h3>
+            <div class="widget-body">
+              <p data-i18n="footer.contactText">
+                +886 966465569<br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.followTitle">
+              關注我們
+            </h3>
+            <div class="widget-body">
+              <p class="follow-me-icons">
+                <a href=""><i class="fa fa-github fa-2"></i></a>
+                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 widget">
+            <h3 class="widget-title" data-i18n="footer.missionTitle">
+              專題宗旨
+            </h3>
+            <div class="widget-body">
+              <p data-i18n="footer.missionText">
+                本專題致力於利用先進 AI
+                與大數據技術，提供癌症健康資訊與情緒管理，支援癌友與家屬在面對疾病挑戰時獲得有效資訊與支持。抗癌之路不再孤獨，我們與您同行。
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 widget">
+            <div class="widget-body text-center">
+              <p data-i18n="underfooter.copy">
+                © 2025 輔仁大學資訊管理學系第40屆專題 - 癌症資訊聊天機器人
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <!-- Modal 1 (放大專題介紹圖片) -->
+    <div
+      class="modal fade"
+      id="imgModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="imgModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-bigger" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              id="modalImg"
+              src="assets/images/cancer1.png"
+              alt="放大圖片"
+              style="width: 100%; height: auto"
+            />
+            <!-- 可加入圖片說明 -->
+            <p id="modalCaption"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 (放大系統功能展示圖片) -->
+    <div
+      class="modal fade"
+      id="imgModal1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="imgModalLabel1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-bigger" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/cancer2.png"
+              alt="放大圖片"
+              style="width: 100%; height: auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+
+    <!-- i18next 初始化與語言切換 -->
+    <script>
+      var resources = {
+        en: {
+          translation: {
+            title: "Introduction to Fu Jen University Cancer Chatbot Project",
+            header: {
+              smallTitle: "Fu Jen University 40th Project",
+              mainTitle: "Cancer Information Chatbot Project",
+              subTitle:
+                "Combining AI and Big Data to Provide Cancer Health Information",
+            },
+            nav: {
+              home: "HOME",
+              introduction: "Project Introduction",
+              background: "Background & Motivation",
+              functions: "System Functions",
+              details: "Project Details",
+              future: "Future Outlook",
+            },
+            section: {
+              introductionTitle: "Project Introduction",
+              backgroundTitle: "Background & Motivation",
+              functionsTitle: "System Functions",
+              detailsTitle: "Project Details",
+              futureTitle: "Future Outlook",
+            },
+            introduction: {
+              text: "This project is developed by the 40th Project Team of the Department of Information Management at Fu Jen University. It aims to build a cancer chatbot system by integrating advanced AI language models and big data analytics, helping patients and their families to quickly access accurate and timely health information. (Supervisor:Mei-Juan Cheng; Team: Hsi-Yu Chen,Kai-Chieh Yang,Hsin-Ting Lu,xu-You Lan,Chia-Yu Liu)",
+            },
+            background: {
+              text1:
+                "Diseases have always been a major challenge for humanity, and cancer is a significant global public health issue. With technological advances, providing accurate and timely cancer health information through AI and big data can effectively support patients and their families.",
+              text2:
+                "Rapid technological development calls for swift access to accurate health knowledge. The cancer chatbot was thus born to meet this need!",
+            },
+            functions: {
+              headline: "What services does the cancer chatbot provide?",
+              item1:
+                "Multi-source Information Integration: Combining doctor's explanatory videos, illustrated health knowledge, keyword search, and FAQs.",
+              item2:
+                "Real-time Interactive Service: Enable interactions via the Line platform with the chatbot, allowing users to access information anytime.",
+              item3:
+                "Emotional and Feedback Management: Provide mood analysis and feedback mechanisms to help users adjust their feelings.",
+              item4:
+                "Advanced Technology Support: Utilize AI language models and big data analytics to assist with user queries.",
+            },
+            details: {
+              text1:
+                "This project consolidates extensive medical information resources and collaborates with clinical doctors and professional nurses to ensure both accuracy and timeliness. Integrating AI, big data, natural language processing, and cloud services, it facilitates the rapid and convenient delivery of cancer information to those in need.",
+              listItem1:
+                "Keyword Search: Enter the name of a cancer or its symptoms and the system automatically searches for matching health information.",
+              listItem2:
+                "Doctor's Health Explanations: Offers explanatory videos and articles by professional physicians.",
+              listItem3:
+                "FAQs: Compiles common questions and provides standard answers.",
+              listItem4:
+                "Mood Analysis: Records and analyzes users’ emotions, offering feedback and suggestions.",
+              listItem5:
+                "ChatGPT Query: Integrates AI models for in-depth queries.",
+              listItem6:
+                "Feedback: Allows users to rate and provide comments on their experience.",
+            },
+            future: {
+              text1:
+                "In the future, we will continue to integrate more professional resources from medical centers and research institutions, and further optimize the interface and functionalities to help more people receive the best medical and emotional support.",
+              text2:
+                "We also aim to expand the system to cover other disease areas, such as diabetes and hypertension, to promote overall public health.",
+              button: "Add Line Bot Friend",
+            },
+            footer: {
+              contactTitle: "Contact Us",
+              contactText:
+                "Phone: +886 966465569  E-mail: hsintinglubob@gmail.com",
+              followTitle: "Follow Us",
+              missionTitle: "Project Mission",
+              missionText:
+                "This project is dedicated to employing advanced AI and big data technology to provide cancer health information and emotional management, thereby supporting patients and families in facing the challenges of the disease. You are not alone in your fight against cancer—we are with you.",
+            },
+            underfooter: {
+              copy: "© 2025 Fu Jen University Department of Information Management 40th Project - Cancer Chatbot",
+            },
+          },
+        },
+        zh: {
+          translation: {
+            title: "輔仁大學癌症資訊聊天機器人專題介紹",
+            header: {
+              smallTitle: "輔仁大學第40屆專題",
+              mainTitle: "癌症資訊聊天機器人專題",
+              subTitle: "結合 AI 與大數據提供癌症健康資訊",
+            },
+            nav: {
+              home: "HOME",
+              introduction: "計畫介紹",
+              background: "背景與動機",
+              functions: "系統功能",
+              details: "專題詳細介紹",
+              future: "未來展望",
+            },
+            section: {
+              introductionTitle: "計畫介紹",
+              backgroundTitle: "背景與動機",
+              functionsTitle: "系統功能",
+              detailsTitle: "專題詳細介紹",
+              futureTitle: "未來展望",
+            },
+            introduction: {
+              text: "本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的 AI 語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。（指導教授：鄭美娟；團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤）",
+            },
+            background: {
+              text1:
+                "疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技進步，透過 AI 與大數據提供準確且即時的癌症健康資訊，能有效支援癌友與家屬面對疾病挑戰。",
+              text2:
+                "科技飛速發展，快速獲取正確健康知識尤為重要，因此癌症資訊聊天機器人應運而生！",
+            },
+            functions: {
+              headline: "癌資機模人提供哪些服務？",
+              item1:
+                "多元資訊整合：結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。",
+              item2:
+                "即時互動服務：利用 Line 平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。",
+              item3:
+                "情緒與回饋管理：提供情緒指數分析與回饋機制，協助使用者調適心情。",
+              item4:
+                "先進技術支援：採用 AI 語言模型輔助查詢，並利用大數據技術分析用戶需求。",
+            },
+            details: {
+              text1:
+                "本專題整合了大量醫療資訊來源，並與多位臨床醫師及專業護理師合作，確保訊息正確與即時。透過 AI、大數據、自然語言處理及雲端服務的結合，使癌症資訊能更快速、方便地傳遞給有需要者。",
+              listItem1:
+                "關鍵字查詢：輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。",
+              listItem2: "醫師健康解說：提供專業醫師解說影片及文章。",
+              listItem3: "常見問題與解答：彙整常見疑問並提供標準答案。",
+              listItem4: "情緒指數分析：記錄與分析使用者心情，提供回饋與建議。",
+              listItem5: "ChatGPT 查詢：整合 AI 模型進行深度查詢。",
+              listItem6: "回饋使用體驗：讓使用者對系統體驗進行評分與留言。",
+            },
+            future: {
+              text1:
+                "未來將持續整合更多醫學中心與研究單位的專業資源，不斷優化介面與功能，協助更多人獲得最佳醫療與心理支持。",
+              text2:
+                "同時，我們也期盼將系統擴充至其他疾病領域，如糖尿病、高血壓等，促進全民健康。",
+              button: "加入 Line Bot 好友",
+            },
+            footer: {
+              contactTitle: "聯絡我們",
+              contactText:
+                "電話：+886 966465569  E-mail:hsintinglubob@gmail.com",
+              followTitle: "關注我們",
+              missionTitle: "專題宗旨",
+              missionText:
+                "本專題致力於利用先進 AI 與大數據技術，提供癌症健康資訊與情緒管理，支援癌友及家屬面對疾病挑戰。抗癌之路不再孤單，我們與您同行。",
+            },
+            underfooter: {
+              copy: "© 2025 輔仁大學資訊管理學系第40屆專題 - 癌症資訊聊天機器人",
+            },
+          },
+        },
+      };
+
+      i18next.init(
+        {
+          lng: "en", // 預設語言
+          debug: true,
+          resources: resources,
+          interpolation: { escapeValue: false },
+        },
+        function (err, t) {
+          jqueryI18next.init(i18next, $);
+          $("body").localize();
+        }
+      );
+
+      $("#btn-en").on("click", function () {
+        i18next.changeLanguage("en", function () {
+          $("body").localize();
+        });
+      });
+      $("#btn-zh").on("click", function () {
+        i18next.changeLanguage("zh", function () {
+          $("body").localize();
+        });
+      });
+
+      // 點擊放大圖片 (若未經 template.js 處理，此段也可保留)
+      $(document).ready(function () {
+        $(".zoomable-img").click(function () {
+          var imgSrc = $(this).attr("src");
+          var captionText = $(this).data("caption") || "";
+          $("#modalImg").attr("src", imgSrc);
+          $("#modalCaption").text(captionText);
+          $("#imgModal").modal("show");
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -1,260 +1,535 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="氛享水晶BOT – 水晶香氛行銷創新解決方案">
-  <meta name="author" content="國科會-氛享水晶BOT專案團隊">
-  
-  <title>氛享水晶BOT 專案介紹</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="氛享水晶BOT – 水晶香氛行銷創新解決方案" />
+    <meta name="author" content="國科會-氛享水晶BOT專案團隊" />
 
-  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
-  
-  <!-- Bootstrap -->
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-  <!-- Icon font -->
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+    <title data-i18n="title">氛享水晶BOT 專案介紹</title>
 
-  <!-- 自訂樣式 -->
-  <style>
-    body {
-      font-size: 20px;
-      line-height: 1.8;
-    }
-    .main-title {
-      font-size: 42px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-    .sub-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    .small-title {
-      font-size: 24px;
-    }
-    p {
-      font-size: 20px;
-    }
-    h2, h3, h4 {
-      font-size: 28px;
-    }
-    .section-title {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-size: 32px;
-      font-weight: bold;
-      color: #333;
-    }
-    .team-member {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .team-member img {
-      max-width: 150px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    .team-member .name {
-      font-weight: bold;
-      font-size: 20px;
-    }
-    .team-member .role {
-      font-size: 18px;
-      color: #666;
-    }
-    /* 導覽列樣式 */
-    .navbar-nav > li > a {
-      font-size: 18px;
-    }
-  </style>
-  
-  <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
-</head>
-<body>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
 
-<!-- Header 與導覽列 -->
-<header id="header">
-  <div id="head" class="parallax" parallax-speed="2" style="padding: 30px 0;">
-    <h1 id="logo" class="text-center">
-      <!-- 標題與 Logo，可替換成水晶香氛相關圖片 -->
-      <img class="img-circle" src="assets/images/bob_photo.png" alt="氛享水晶BOT Logo">
-      <span class="main-title">氛享水晶BOT</span><br>
-      <span class="sub-title">水晶香氛行銷創新解決方案</span>
-    </h1>
-  </div>
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-          <span class="sr-only">Toggle navigation</span> 
-          <span class="icon-bar"></span> 
-          <span class="icon-bar"></span> 
-          <span class="icon-bar"></span> 
-        </button>
+    <!-- 引入 i18next 與 jquery-i18next -->
+    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
+
+    <!-- 自訂樣式 -->
+    <style>
+      body {
+        font-size: 20px;
+        line-height: 1.8;
+      }
+      .main-title {
+        font-size: 42px;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .sub-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      .small-title {
+        font-size: 24px;
+      }
+      p {
+        font-size: 20px;
+      }
+      h2,
+      h3,
+      h4 {
+        font-size: 28px;
+      }
+      .section-title {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+      }
+      .team-member {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .team-member img {
+        max-width: 150px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .team-member .name {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .team-member .role {
+        font-size: 18px;
+        color: #666;
+      }
+      /* 導覽列樣式 */
+      .navbar-nav > li > a {
+        font-size: 18px;
+      }
+      /* 語言切換按鈕：放在導覽列右側 */
+      .language-switcher {
+        margin-top: 8px;
+      }
+      /* 區塊式呈現 */
+      .section-block {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Header 與導覽列 -->
+    <header id="header">
+      <div
+        id="head"
+        class="parallax"
+        parallax-speed="2"
+        style="padding: 30px 0"
+      >
+        <h1 id="logo" class="text-center">
+          <!-- 可替換為水晶香氛相關 Logo 圖片 -->
+          <img
+            class="img-circle"
+            src="assets/images/bob_photo.png"
+            alt="氛享水晶BOT Logo"
+          />
+          <br />
+          <span class="main-title" data-i18n="header.mainTitle"
+            >氛享水晶BOT</span
+          ><br />
+          <span class="sub-title" data-i18n="header.subTitle"
+            >水晶香氛行銷創新解決方案</span
+          >
+        </h1>
       </div>
-      
-      <div class="navbar-collapse collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#introduction">專案介紹</a></li>
-          <li><a href="#background">背景與動機</a></li>
-          <li><a href="#functions">系統功能</a></li>
-          <li><a href="#market">市場分析</a></li>
-          <li><a href="#contribution">預期效益</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </nav>
-</header>
 
-<!-- 主要內容 -->
-<main id="main">
-  <div class="container">
-    <article class="post hentry post-maincontent">
-		<header class="entry-header my-custom-header">
-		  <!-- 小標 / 項目名 (上方) -->
-		  <p class="small-title">國科會-氛享水晶Bot</p>
-		  
-		  <!-- 主標題 -->
-		  <h1 class="main-title">
-			National Science Council – Crystal Fragrance BOT: A Chatbot Solution for Modern Traditional Marketing
-		  </h1>
-		  
-		 
-		</header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+            >
+              <span class="sr-only" data-i18n="nav.toggle"
+                >Toggle navigation</span
+              >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
 
-		<p><img src="assets/images/氛享海報.png" alt=""></p>
-    <!-- 專案介紹區塊 -->
-    <section id="introduction" class="section">
-      <h2 class="section-title"><span>專案介紹</span></h2>
-      <p>
-        氛享水晶BOT 專案以水晶香氛產業為切入點，結合聊天機器人與 AI 技術，提供 24 小時即時的商品與課程資訊查詢、常見問題解答以及個性化推播服務。透過直覺式圖文介面，使用者能夠快速獲取精準資訊，同時享受與智能客服般的對話體驗。
-      </p>
-    </section>
-    
-    <!-- 前言與背景 -->
-    <section id="background" class="section">
-      <h2 class="section-title"><span>背景與動機</span></h2>
-      <p>
-        傳統水晶香氛產業依賴品牌口碑與線下銷售，然而隨著數位時代來臨以及通訊軟體普及，消費者對即時、互動式資訊的需求日益增加。透過聊天機器人技術，水晶香氛企業能突破傳統限制，提供24小時不間斷的資訊服務，並以數據化方式精準捕捉消費者需求，進一步提升品牌忠誠度與市場競爭力。
-      </p>
-    </section>
-    
-    <!-- 系統功能 -->
-    <section id="functions" class="section">
-      <h2 class="section-title"><span>系統功能</span></h2>
-      <ul>
-        <li><strong>商品與課程資訊查詢：</strong> 提供直觀的圖文選單，展示水晶香氛產品與體驗課程的詳細資訊。</li>
-        <li><strong>常見問題與解答：</strong> 統整消費者常見疑問，快速回應查詢，提升使用體驗。</li>
-        <li><strong>即時推播：</strong> 根據節慶、促銷活動或熱門產品動態，定期推送個性化資訊。</li>
-        <li><strong>智能回覆：</strong> 結合 OpenAI GPT3.5 模型，針對使用者問題提供精準且個性化的回應。</li>
-      </ul>
-    </section>
-    
-    <!-- 市場分析 -->
-    <section id="market" class="section">
-      <h2 class="section-title"><span>市場分析</span></h2>
-      <p>
-        調查顯示，消費者最關注的是能夠清楚展示各項服務功能的介面，以及方便查詢的產品資訊。市場競爭中，雖有其他品牌利用聊天機器人進行推廣，但多數僅停留在簡單資訊提供階段，本專案藉由客製化、數據化推播及智能回覆，期望能在激烈的市場中脫穎而出。
-      </p>
-    </section>
-    
-    <!-- 預期效益與展望 -->
-    <section id="contribution" class="section">
-      <h2 class="section-title"><span>預期效益與展望</span></h2>
-      <p>
-        氛享水晶BOT 將為水晶香氛企業帶來以下效益：
-      </p>
-      <ul>
-        <li>提升消費者資訊獲取效率與互動體驗，增強品牌忠誠度。</li>
-        <li>透過數據分析，幫助企業了解消費趨勢，制定精準行銷策略。</li>
-        <li>降低客服人力成本，實現自動化、全天候的智能客服服務。</li>
-        <li>作為數位轉型的示範案例，未來可拓展至其他傳統產業。</li>
-      </ul>
-      <p>
-        隨著 AI 與大數據技術不斷進步，氛享水晶BOT 將持續優化服務內容與互動流程，為消費者帶來更優質、便捷的體驗，進一步推動水晶香氛產業的數位化轉型。
-      </p>
-    </section>
-    
-  </div> <!-- /container -->
-</main>
+          <div class="navbar-collapse collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active">
+                <a href="index.html" data-i18n="nav.home">Home</a>
+              </li>
+              <li>
+                <a href="#introduction" data-i18n="nav.introduction"
+                  >專案介紹</a
+                >
+              </li>
+              <li>
+                <a href="#background" data-i18n="nav.background">背景與動機</a>
+              </li>
+              <li>
+                <a href="#functions" data-i18n="nav.functions">系統功能</a>
+              </li>
+              <li>
+                <a href="#market" data-i18n="nav.market">市場分析</a>
+              </li>
+              <li>
+                <a href="#contribution" data-i18n="nav.contribution"
+                  >預期效益與展望</a
+                >
+              </li>
+            </ul>
+            <div class="navbar-text pull-right language-switcher">
+              <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
+              <button id="btn-en" class="btn btn-default btn-xs">
+                English
+              </button>
+            </div>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
 
-<footer id="footer" class="topspace">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">Contact</h3>
-        <div class="widget-body">
-          <p>+886 966465569<br>
-            <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br>
-            <br>
-            234 Hidden Pond Road, Ashland City, TN 37015
+    <!-- 主要內容 -->
+    <main id="main">
+      <div class="container">
+        <!-- 頁首說明 -->
+        <article class="post hentry post-maincontent">
+          <header class="entry-header my-custom-header">
+            <!-- 小標 / 項目名 -->
+            <p class="small-title" data-i18n="header.smallTitle">
+              國科會-氛享水晶Bot
+            </p>
+            <!-- 主標題 -->
+            <h1 class="main-title">
+              <span data-i18n="header.enTitle"
+                >National Science Council – Crystal Fragrance BOT: A Chatbot
+                Solution for Modern Traditional Marketing</span
+              >
+            </h1>
+          </header>
+          <p>
+            <img src="assets/images/氛享海報.png" alt="專案海報" />
           </p>
-        </div>
-      </div>
+        </article>
 
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">Follow us</h3>
-        <div class="widget-body">
-          <p class="follow-me-icons">
-            <a href=""><i class="fa fa-twitter fa-2"></i></a>
-            <a href=""><i class="fa fa-dribbble fa-2"></i></a>
-            <a href=""><i class="fa fa-github fa-2"></i></a>
-            <a href=""><i class="fa fa-facebook fa-2"></i></a>
+        <!-- 專案介紹區塊 (區塊式) -->
+        <section id="introduction" class="section section-block">
+          <h2 class="section-title">
+            <span data-i18n="section.introductionTitle">專案介紹</span>
+          </h2>
+          <p data-i18n="introduction.text">
+            氛享水晶BOT 專案以水晶香氛產業為切入點，結合聊天機器人與 AI
+            技術，提供 24
+            小時即時的商品與課程資訊查詢、常見問題解答以及個性化推播服務。透過直覺式圖文介面，使用者能夠快速獲取精準資訊，同時享受與智能客服般的對話體驗。
           </p>
-        </div>
-      </div>
+        </section>
 
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">Text widget</h3>
-        <div class="widget-body">
-          <p>氛享水晶BOT 專案利用創新技術與數據分析，為水晶香氛產業帶來全新的行銷解決方案，協助企業與消費者建立更緊密的連結。</p>
-        </div>
-      </div>
-
-      <div class="col-md-3 widget">
-        <h3 class="widget-title">Form widget</h3>
-        <div class="widget-body">
-          <p>+886 966465569<br>
-            <a href="mailto:hsintinglubob@gmail.com">hsintinglubob@gmail.com</a><br>
-            <br>
-            234 Hidden Pond Road, Ashland City, TN 37015
+        <!-- 前言與背景 (區塊式) -->
+        <section id="background" class="section section-block">
+          <h2 class="section-title">
+            <span data-i18n="section.backgroundTitle">背景與動機</span>
+          </h2>
+          <p data-i18n="background.text">
+            傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代來臨與通訊軟體普及，消費者對即時、互動式資訊的需求日益增加。透過聊天機器人技術，企業能提供全天候資訊服務並以數據化方式精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。
           </p>
-        </div>
-      </div>
-    </div> <!-- /row of widgets -->
-  </div>
-</footer>
+        </section>
 
-<footer id="underfooter">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 widget">
-        <div class="widget-body">
-          <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
-        </div>
-      </div>
-      <div class="col-md-6 widget">
-        <div class="widget-body">
-          <p class="text-right">
-            Copyright &copy; 2014, Your awesome name here<br>
-            Design: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a>
+        <!-- 系統功能 (區塊式) -->
+        <section id="functions" class="section section-block">
+          <h2 class="section-title">
+            <span data-i18n="section.functionsTitle">系統功能</span>
+          </h2>
+          <ul>
+            <li data-i18n="functions.item1">
+              <strong>商品與課程資訊查詢：</strong
+              >提供直觀圖文選單，展示產品與體驗課程的詳細資訊。
+            </li>
+            <li data-i18n="functions.item2">
+              <strong>常見問題與解答：</strong>統整常見疑問，快速回應查詢。
+            </li>
+            <li data-i18n="functions.item3">
+              <strong>即時推播：</strong
+              >根據節慶、促銷活動或熱門產品動態，定期推送個性化資訊。
+            </li>
+            <li data-i18n="functions.item4">
+              <strong>智能回覆：</strong>結合 OpenAI GPT3.5
+              模型，提供精準且個性化的回應。
+            </li>
+          </ul>
+        </section>
+
+        <!-- 市場分析 (區塊式) -->
+        <section id="market" class="section section-block">
+          <h2 class="section-title">
+            <span data-i18n="section.marketTitle">市場分析</span>
+          </h2>
+          <p data-i18n="market.text">
+            調查顯示，消費者關注能夠清楚展示各項服務功能的介面與方便查詢的產品資訊。本專案藉由客製化、數據化推播及智能回覆，在市場中期望能脫穎而出。
           </p>
-        </div>
-      </div>
-    </div> <!-- /row of widgets -->
-  </div>
-</footer>
+        </section>
 
-<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="assets/js/template.js"></script>
-</body>
+        <!-- 預期效益與展望 (區塊式) -->
+        <section id="contribution" class="section section-block">
+          <h2 class="section-title">
+            <span data-i18n="section.contributionTitle">預期效益與展望</span>
+          </h2>
+          <p data-i18n="contribution.text1">
+            氛享水晶BOT
+            將提升消費者資訊獲取效率與互動體驗，增強品牌忠誠度；透過數據分析幫助企業精準行銷；並降低客服成本，實現全天候智能服務。
+          </p>
+          <p data-i18n="contribution.text2">
+            未來，本專案亦可作為數位轉型示範，進一步拓展至其他傳統產業，創造更多附加價值。
+          </p>
+        </section>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.contactTitle">
+              Contact
+            </h3>
+            <div class="widget-body">
+              <p>
+                +886 966465569<br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                ><br />
+                <br />
+                234 Hidden Pond Road, Ashland City, TN 37015
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.followTitle">
+              Follow us
+            </h3>
+            <div class="widget-body">
+              <p class="follow-me-icons">
+                <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+                <a href=""><i class="fa fa-github fa-2"></i></a>
+                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.textWidgetTitle">
+              Text widget
+            </h3>
+            <div class="widget-body">
+              <p data-i18n="footer.textWidget">
+                氛享水晶BOT
+                專案利用創新技術與數據分析，為水晶香氛產業帶來全新行銷解決方案，協助企業與消費者建立更緊密的連結。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title" data-i18n="footer.formWidgetTitle">
+              Form widget
+            </h3>
+            <div class="widget-body">
+              <p>
+                +886 966465569<br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                ><br />
+                <br />
+                234 Hidden Pond Road, Ashland City, TN 37015
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right">
+                Copyright &copy; 2014, Your awesome name here<br />
+                Design:
+                <a href="https://www.gettemplate.com" rel="designer"
+                  >Initio by GetTemplate</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <!-- JavaScript libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+
+    <!-- i18next 初始化與語言切換 -->
+    <script>
+      var resources = {
+        en: {
+          translation: {
+            title: "Crystal Fragrance BOT Project Introduction",
+            header: {
+              smallTitle: "NSC – Crystal Fragrance BOT",
+              mainTitle: "Crystal Fragrance BOT",
+              subTitle:
+                "An Innovative Chatbot Solution for Traditional Marketing",
+              enTitle:
+                "National Science Council – Crystal Fragrance BOT: A Chatbot Solution for Modern Traditional Marketing",
+            },
+            nav: {
+              home: "Home",
+              introduction: "Project Introduction",
+              background: "Background & Motivation",
+              functions: "System Functions",
+              market: "Market Analysis",
+              contribution: "Expected Benefits & Outlook",
+            },
+            section: {
+              introductionTitle: "Project Introduction",
+              backgroundTitle: "Background & Motivation",
+              functionsTitle: "System Functions",
+              marketTitle: "Market Analysis",
+              contributionTitle: "Expected Benefits & Outlook",
+            },
+            introduction: {
+              text: "Crystal Fragrance BOT project is developed with a focus on the crystal fragrance industry. Combining chatbot and AI technology, it provides 24/7 instant product and course information inquiries, FAQ responses, and personalized push notifications. Users can quickly access accurate information via an intuitive interface and enjoy an interactive chatbot experience.",
+            },
+            background: {
+              text: "Traditional crystal fragrance businesses rely on brand reputation and offline sales. With the digital era and widespread communication apps, consumers increasingly demand real-time and interactive information. By leveraging chatbot technology, companies can offer non-stop service and capture consumer needs through data, thereby enhancing brand loyalty and market competitiveness.",
+            },
+            functions: {
+              item1:
+                "Product & Course Inquiry: Display detailed information via an intuitive visual menu.",
+              item2:
+                "FAQ Response: Quickly answer common inquiries to improve user experience.",
+              item3:
+                "Real-Time Push: Send personalized updates based on events, promotions, or popular products.",
+              item4:
+                "Intelligent Reply: Utilize OpenAI GPT-3.5 model to provide precise and personalized responses.",
+            },
+            market: {
+              text: "Research indicates consumers value interfaces that clearly display service features and easily accessible product information. While some brands use chatbots for promotion, most only offer basic information. Our project aims to stand out with customization, data-driven push notifications, and intelligent responses.",
+            },
+            contribution: {
+              text1:
+                "Crystal Fragrance BOT is expected to enhance consumer information access, boost brand loyalty, provide insights through data analysis, reduce customer service costs, and serve as a model for digital transformation that can expand into other traditional industries.",
+              text2:
+                "In the future, this project can also serve as a model for digital transformation, expanding to other traditional industries and creating greater added value.",
+            },
+            footer: {
+              contactTitle: "Contact",
+              textWidgetTitle: "Text widget",
+              formWidgetTitle: "Form widget",
+              contactText:
+                "Phone: +886 966465569  E-mail: hsintinglubob@gmail.com",
+              followTitle: "Follow us",
+            },
+          },
+        },
+        zh: {
+          translation: {
+            title: "氛享水晶BOT 專案介紹",
+            header: {
+              smallTitle: "國科會-氛享水晶Bot",
+              mainTitle: "氛享水晶BOT",
+              subTitle: "水晶香氛行銷創新解決方案",
+              enTitle: "國科會-氛享水晶Bot",
+            },
+            nav: {
+              home: "Home",
+              introduction: "專案介紹",
+              background: "背景與動機",
+              functions: "系統功能",
+              market: "市場分析",
+              contribution: "預期效益與展望",
+            },
+            section: {
+              introductionTitle: "專案介紹",
+              backgroundTitle: "背景與動機",
+              functionsTitle: "系統功能",
+              marketTitle: "市場分析",
+              contributionTitle: "預期效益與展望",
+            },
+            introduction: {
+              text: "氛享水晶BOT 專案以水晶香氛產業為切入點，結合聊天機器人與 AI 技術，提供 24 小時即時的商品與課程資訊查詢、常見問題解答以及個性化推播服務，讓使用者快速獲取精準資訊並享受智能客服對話體驗。",
+            },
+            background: {
+              text: "傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代與通訊軟體普及，消費者對即時互動資訊的需求日益增加。透過聊天機器人技術，企業可提供全天候服務並精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。",
+            },
+            functions: {
+              item1: "商品與課程查詢：以直觀圖文選單展示詳細產品及課程資訊。",
+              item2: "常見問題解答：統整常見疑問，快速回應查詢。",
+              item3: "即時推播：根據節慶或促銷定期推送個性化資訊。",
+              item4: "智能回覆：結合 OpenAI GPT-3.5 模型提供個性化回應。",
+            },
+            market: {
+              text: "調查顯示，消費者最在意的是能清楚展示各項服務功能的介面與方便查詢的產品資訊。本專案透過客製化數據推播與智能回覆，有望在激烈競爭中脫穎而出。",
+            },
+            contribution: {
+              text1:
+                "氛享水晶BOT 將提升消費者資訊獲取效率、強化品牌忠誠度，並透過數據分析幫助企業精準行銷，同時降低客服成本，成為數位轉型的典範。",
+              text2:
+                "未來，本專案亦可作為數位轉型示範，進一步拓展至其他傳統產業，創造更多附加價值。",
+            },
+            footer: {
+              contactTitle: "Contact",
+              textWidgetTitle: "Text widget",
+              formWidgetTitle: "Form widget",
+              contactText:
+                "電話：+886 966465569 E-mail: hsintinglubob@gmail.com",
+              followTitle: "Follow us",
+            },
+          },
+        },
+      };
+
+      i18next.init(
+        {
+          lng: "en", // 預設語言
+          debug: true,
+          resources: resources,
+          interpolation: { escapeValue: false },
+        },
+        function (err, t) {
+          jqueryI18next.init(i18next, $);
+          $("body").localize();
+        }
+      );
+
+      $("#btn-en").on("click", function () {
+        i18next.changeLanguage("en", function () {
+          $("body").localize();
+        });
+      });
+      $("#btn-zh").on("click", function () {
+        i18next.changeLanguage("zh", function () {
+          $("body").localize();
+        });
+      });
+
+      // 點擊放大圖片效果
+      $(document).ready(function () {
+        $(".zoomable-img").click(function () {
+          var imgSrc = $(this).attr("src");
+          var captionText = $(this).data("caption") || "";
+          $("#modalImg").attr("src", imgSrc);
+          $("#modalCaption").text(captionText);
+          $("#imgModal").modal("show");
+        });
+      });
+    </script>
+  </body>
 </html>
