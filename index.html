@@ -98,6 +98,126 @@
         color: #333;
         border-color: #a9c6d3;
       }
+
+      /* 證書分頁樣式 */
+      .cert-pagination-container {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .cert-page {
+        display: none;
+      }
+
+      .cert-page.active {
+        display: block;
+      }
+
+      .cert-pagination-wrapper {
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      .cert-pagination-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .cert-nav-btn {
+        background: #e7f3f9;
+        border: 1px solid #d0e5ee;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .cert-nav-btn:hover:not(:disabled) {
+        background: #d0e5ee;
+      }
+
+      .cert-nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .cert-page-indicators {
+        display: flex;
+        gap: 10px;
+      }
+
+      .page-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .page-dot.active {
+        background: #333;
+      }
+
+      .page-jump-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .page-jump-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .page-jump-input {
+        width: 50px;
+        padding: 4px 8px;
+        border: 1px solid #d0e5ee;
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      .page-jump-input.invalid,
+      .page-jump-input.error {
+        border-color: #ff6b6b;
+        animation: shake 0.5s;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
+      .page-jump-btn {
+        background: #e7f3f9;
+        border: 1px solid #d0e5ee;
+        padding: 4px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .page-jump-btn:hover {
+        background: #d0e5ee;
+      }
+
+      .jump-separator {
+        color: #999;
+        margin: 0 5px;
+      }
     </style>
   </head>
   <body class="home">
@@ -320,7 +440,7 @@
                       id="eduModalLabel2"
                       data-i18n="education.innohack_title"
                     >
-                      2023叡揚資訊黑克松競賽
+                      2023叡揚資訊黑客松競賽
                     </h4>
                     <button
                       type="button"
@@ -584,6 +704,8 @@
           <h2 class="section-title">
             <span data-i18n="section.certifications">證書 Certifications</span>
           </h2>
+
+          <!-- 排序控制 -->
           <div class="sort-controls">
             <label data-i18n="sort.label">排序方式:</label>
             <div class="btn-group" role="group">
@@ -605,529 +727,235 @@
               </button>
             </div>
           </div>
-          <!-- 卡片 1: AI-900 -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal1" data-toggle="modal">
-                <img
-                  src="assets/images/AI900.png"
-                  class="cert-img"
-                  alt="AI證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.ai900_title">
-                AI-900: Microsoft Azure AI Fundamentals
-              </h4>
-              <p class="cert-date" data-i18n="certs.ai900_date">
-                Issuance date: 2023/06/07
-              </p>
-            </div>
-            <!-- 嵌入 certModal1 -->
-            <div
-              class="modal fade"
-              id="certModal1"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel1"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel1"
-                      data-i18n="certs.ai900_title"
-                    >
+
+          <!-- 分頁容器 -->
+          <div class="cert-pagination-container">
+            <!-- 第一頁 -->
+            <div class="cert-page active" data-page="1">
+              <div class="row">
+                <!-- 卡片 1: AI-900 -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal1" data-toggle="modal">
+                      <img
+                        src="assets/images/AI900.png"
+                        class="cert-img"
+                        alt="AI證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.ai900_title">
                       AI-900: Microsoft Azure AI Fundamentals
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/AI900.png"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.ai900_date">
+                    <p class="cert-date" data-i18n="certs.ai900_date">
                       Issuance date: 2023/06/07
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 2: AWS -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal3" data-toggle="modal">
-                <img
-                  src="assets/images/AWS.png"
-                  class="cert-img"
-                  alt="金融科技證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.aws_title">
-                AWS Cloud Data Analysis and Web Crawler Workshop
-              </h4>
-              <p class="cert-date" data-i18n="certs.aws_date">
-                Issuance date: 2023/09/22
-              </p>
-            </div>
-            <!-- 嵌入 certModal3 -->
-            <div
-              class="modal fade"
-              id="certModal3"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel3"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel3"
-                      data-i18n="certs.aws_title"
-                    >
+
+                <!-- 卡片 2: AWS -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal3" data-toggle="modal">
+                      <img
+                        src="assets/images/AWS.png"
+                        class="cert-img"
+                        alt="金融科技證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.aws_title">
                       AWS Cloud Data Analysis and Web Crawler Workshop
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/AWS.png"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.aws_date">
+                    <p class="cert-date" data-i18n="certs.aws_date">
                       Issuance date: 2023/09/22
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 3: 金融科技力證照 -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal2" data-toggle="modal">
-                <img
-                  src="assets/images/finance.jpg"
-                  class="cert-img"
-                  alt="金融科技證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.fin_title">
-                17th FinTech Competency Certificate
-              </h4>
-              <p class="cert-date" data-i18n="certs.fin_date">
-                Issuance date: 2024/04/20
-              </p>
-            </div>
-            <!-- 嵌入 certModal2 -->
-            <div
-              class="modal fade"
-              id="certModal2"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel2"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel2"
-                      data-i18n="certs.fin_title"
-                    >
+
+                <!-- 卡片 3: 金融科技力證照 -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal2" data-toggle="modal">
+                      <img
+                        src="assets/images/finance.jpg"
+                        class="cert-img"
+                        alt="金融科技證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.fin_title">
                       17th FinTech Competency Certificate
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/finance.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.fin_date">
+                    <p class="cert-date" data-i18n="certs.fin_date">
                       Issuance date: 2024/04/20
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 4: TOEIC -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal4" data-toggle="modal">
-                <img
-                  src="assets/images/TOEIC.jpg"
-                  class="cert-img"
-                  alt="金融科技證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.toeic_title">
-                TOEIC 815
-              </h4>
-              <p class="cert-date" data-i18n="certs.toeic_date">
-                Issuance date: 2024/04/28
-              </p>
-            </div>
-            <!-- 嵌入 certModal4 -->
-            <div
-              class="modal fade"
-              id="certModal4"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel4"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel4"
-                      data-i18n="certs.toeic_title"
-                    >
+
+                <!-- 卡片 4: TOEIC -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal4" data-toggle="modal">
+                      <img
+                        src="assets/images/TOEIC.jpg"
+                        class="cert-img"
+                        alt="金融科技證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.toeic_title">
                       TOEIC 815
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/TOEIC.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.toeic_date">
+                    <p class="cert-date" data-i18n="certs.toeic_date">
                       Issuance date: 2024/04/28
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 5: NVIDIA Selflearning -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal5" data-toggle="modal">
-                <img
-                  src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg"
-                  class="cert-img"
-                  alt="金融科技證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.nvidia_self_title">
-                NVIDIA_Build_With_RAG_Agent_Selflearning
-              </h4>
-              <p class="cert-date" data-i18n="certs.nvidia_self_date">
-                Issuance date: 2025/03/18
-              </p>
-            </div>
-            <!-- 嵌入 certModal5 -->
-            <div
-              class="modal fade"
-              id="certModal5"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel5"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel5"
-                      data-i18n="certs.nvidia_self_title"
-                    >
+
+                <!-- 卡片 5: NVIDIA Selflearning -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal5" data-toggle="modal">
+                      <img
+                        src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg"
+                        class="cert-img"
+                        alt="NVIDIA證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.nvidia_self_title">
                       NVIDIA_Build_With_RAG_Agent_Selflearning
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.nvidia_self_date">
+                    <p class="cert-date" data-i18n="certs.nvidia_self_date">
                       Issuance date: 2025/03/18
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 6: NVIDIA Workshop -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal6" data-toggle="modal">
-                <img
-                  src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg"
-                  class="cert-img"
-                  alt="金融科技證照"
-                />
-              </a>
-              <h4 class="cert-title" data-i18n="certs.nvidia_ws_title">
-                NVIDIA_Build_With_RAG_Agent_Workshop
-              </h4>
-              <p class="cert-date" data-i18n="certs.nvidia_ws_date">
-                Issuance date: 2025/03/18
-              </p>
-            </div>
-            <!-- 嵌入 certModal6 -->
-            <div
-              class="modal fade"
-              id="certModal6"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel6"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4
-                      class="modal-title w-100"
-                      id="certModalLabel6"
-                      data-i18n="certs.nvidia_ws_title"
-                    >
+
+                <!-- 卡片 6: NVIDIA Workshop -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal6" data-toggle="modal">
+                      <img
+                        src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg"
+                        class="cert-img"
+                        alt="NVIDIA證照"
+                      />
+                    </a>
+                    <h4 class="cert-title" data-i18n="certs.nvidia_ws_title">
                       NVIDIA_Build_With_RAG_Agent_Workshop
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.nvidia_ws_date">
+                    <p class="cert-date" data-i18n="certs.nvidia_ws_date">
                       Issuance date: 2025/03/18
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- 卡片 7: Generative_AI_With_Diffusion_Model_Certification -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal7" data-toggle="modal">
-                <img
-                  src="assets/images/Hsin-Ting_Lu_Generative_AI_With_Diffusion_Model_Certification_page-0001.jpg"
-                  class="cert-img"
-                  alt="Generative_AI_With_Diffusion_Model_Certification"
-                />
-              </a>
-              <h4 class="cert-title">
-                Generative_AI_With_<br />Diffusion_Model_Certification
-              </h4>
-              <p class="cert-date" data-i18n="certs.nvidia_GenAI_date">
-                Issuance date: 2025/04/29
-              </p>
-            </div>
-            <!-- 嵌入 certModal7 -->
-            <div
-              class="modal fade"
-              id="certModal7"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel1"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel1">
-                      Generative_AI_With_Diffusion_Model_Certification
+
+            <!-- 第二頁 -->
+            <div class="cert-page" data-page="2" style="display: none">
+              <div class="row">
+                <!-- 卡片 7: Generative_AI_With_Diffusion_Model_Certification -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal7" data-toggle="modal">
+                      <img
+                        src="assets/images/Hsin-Ting_Lu_Generative_AI_With_Diffusion_Model_Certification_page-0001.jpg"
+                        class="cert-img"
+                        alt="Generative_AI_With_Diffusion_Model_Certification"
+                      />
+                    </a>
+                    <h4 class="cert-title">
+                      Generative_AI_With_<br />Diffusion_Model_Certification
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/Hsin-Ting_Lu_Generative_AI_With_Diffusion_Model_Certification_page-0001.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.nvidia_GenAI_date">
+                    <p class="cert-date" data-i18n="certs.nvidia_GenAI_date">
                       Issuance date: 2025/04/29
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 8: Google Analystics Certification -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal8" data-toggle="modal">
-                <img
-                  src="assets/images/GA4.png"
-                  class="cert-img"
-                  alt="Google Analystics Certification"
-                />
-              </a>
-              <h4 class="cert-title">Google Analystics Certification</h4>
-              <p class="cert-date" data-i18n="certs.GA4_date">
-                Issuance date: 2025/04/29
-              </p>
-            </div>
-            <!-- 嵌入 certModal8 -->
-            <div
-              class="modal fade"
-              id="certModal8"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel1"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel1">
-                      Google Analystics Certification
-                    </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/GA4.png"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.GA4_date">
+
+                <!-- 卡片 8: Google Analytics Certification -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal8" data-toggle="modal">
+                      <img
+                        src="assets/images/GA4.png"
+                        class="cert-img"
+                        alt="Google Analytics Certification"
+                      />
+                    </a>
+                    <h4 class="cert-title">Google Analytics Certification</h4>
+                    <p class="cert-date" data-i18n="certs.GA4_date">
                       Issuance date: 2025/04/29
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- 卡片 8: Google_Cybersecurity_Professional_CertificateV2 -->
-          <div class="col-sm-6 col-md-4 flex-col">
-            <div class="cert-card text-center">
-              <a href="#certModal9" data-toggle="modal">
-                <img
-                  src="assets/images/GoogleCybersecurityProfessionalCertificateV2_Badge.jpg"
-                  class="cert-img"
-                  alt="Google Analystics Certification"
-                />
-              </a>
-              <h4 class="cert-title">
-                Google_Cybersecurity_<br />Professional_CertificateV2
-              </h4>
-              <p class="cert-date" data-i18n="certs.cybersecurity_date">
-                Issuance date: 2025/05/15
-              </p>
-            </div>
-            <!-- 嵌入 certModal8 -->
-            <div
-              class="modal fade"
-              id="certModal9"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="certModalLabel1"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header">
-                    <h4 class="modal-title w-100" id="certModalLabel1">
-                      Google_Cybersecurity_Professional_CertificateV2
+
+                <!-- 卡片 9: Google_Cybersecurity_Professional_CertificateV2 -->
+                <div class="col-sm-6 col-md-4 flex-col">
+                  <div class="cert-card text-center">
+                    <a href="#certModal9" data-toggle="modal">
+                      <img
+                        src="assets/images/GoogleCybersecurityProfessionalCertificateV2_Badge.jpg"
+                        class="cert-img"
+                        alt="Google Cybersecurity Certification"
+                      />
+                    </a>
+                    <h4 class="cert-title">
+                      Google_Cybersecurity_<br />Professional_CertificateV2
                     </h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                      style="position: absolute; top: 10px; right: 15px"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img
-                      src="assets/images/GoogleCybersecurityProfessionalCertificateV2_Badge.jpg"
-                      alt="大圖"
-                      style="max-width: 100%; height: auto"
-                    />
-                    <p class="mt-3" data-i18n="certs.GA4_date">
+                    <p class="cert-date" data-i18n="certs.cybersecurity_date">
                       Issuance date: 2025/05/15
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 分頁導航 -->
+          <div class="cert-pagination-wrapper">
+            <!-- 主要導航 -->
+            <div class="cert-pagination-nav">
+              <button class="cert-nav-btn" id="certPrevBtn" disabled>
+                <i class="fa fa-chevron-left"></i>
+              </button>
+
+              <div class="cert-page-indicators">
+                <span class="page-dot active" data-page="1"></span>
+                <span class="page-dot" data-page="2"></span>
+              </div>
+
+              <button class="cert-nav-btn" id="certNextBtn">
+                <i class="fa fa-chevron-right"></i>
+              </button>
+            </div>
+
+            <!-- 跳轉功能 -->
+            <div class="page-jump-wrapper">
+              <div class="page-jump-container">
+                <span class="page-info">
+                  <span data-i18n="page.current">第</span>
+                  <span id="currentPageDisplay">1</span>
+                  <span data-i18n="page.of">頁，共</span>
+                  <span id="totalPageDisplay">2</span>
+                  <span data-i18n="page.total">頁</span>
+                </span>
+                <span class="jump-separator">|</span>
+                <span class="page-jump-label" data-i18n="page.jump">跳至</span>
+                <input
+                  type="number"
+                  id="pageJumpInput"
+                  class="page-jump-input"
+                  min="1"
+                  max="2"
+                  value="1"
+                />
+                <span data-i18n="page.page">頁</span>
+                <button
+                  id="pageJumpBtn"
+                  class="page-jump-btn"
+                  data-i18n="page.go"
+                >
+                  GO
+                </button>
               </div>
             </div>
           </div>
@@ -1339,30 +1167,446 @@
       </div>
     </footer>
 
+    <!-- 所有證照Modal統一放在這裡 -->
+    <!-- Modal 1: AI-900 -->
+    <div
+      class="modal fade"
+      id="certModal1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel1"
+              data-i18n="certs.ai900_title"
+            >
+              AI-900: Microsoft Azure AI Fundamentals
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/AI900.png"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.ai900_date">
+              Issuance date: 2023/06/07
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: FinTech -->
+    <div
+      class="modal fade"
+      id="certModal2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel2"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel2"
+              data-i18n="certs.fin_title"
+            >
+              17th FinTech Competency Certificate
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/finance.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.fin_date">
+              Issuance date: 2024/04/20
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: AWS -->
+    <div
+      class="modal fade"
+      id="certModal3"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel3"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel3"
+              data-i18n="certs.aws_title"
+            >
+              AWS Cloud Data Analysis and Web Crawler Workshop
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/AWS.png"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.aws_date">
+              Issuance date: 2023/09/22
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: TOEIC -->
+    <div
+      class="modal fade"
+      id="certModal4"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel4"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel4"
+              data-i18n="certs.toeic_title"
+            >
+              TOEIC 815
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/TOEIC.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.toeic_date">
+              Issuance date: 2024/04/28
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5: NVIDIA Selflearning -->
+    <div
+      class="modal fade"
+      id="certModal5"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel5"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel5"
+              data-i18n="certs.nvidia_self_title"
+            >
+              NVIDIA_Build_With_RAG_Agent_Selflearning
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/nvidia_certification_build_rag_agent_selflearning_page-0001.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.nvidia_self_date">
+              Issuance date: 2025/03/18
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6: NVIDIA Workshop -->
+    <div
+      class="modal fade"
+      id="certModal6"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel6"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="certModalLabel6"
+              data-i18n="certs.nvidia_ws_title"
+            >
+              NVIDIA_Build_With_RAG_Agent_Workshop
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/nvidia_certification_build_rag_agent_workshop_page-0001.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.nvidia_ws_date">
+              Issuance date: 2025/03/18
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 7: Generative AI -->
+    <div
+      class="modal fade"
+      id="certModal7"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel7"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4 class="modal-title w-100" id="certModalLabel7">
+              Generative_AI_With_Diffusion_Model_Certification
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/Hsin-Ting_Lu_Generative_AI_With_Diffusion_Model_Certification_page-0001.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.nvidia_GenAI_date">
+              Issuance date: 2025/04/29
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 8: Google Analytics -->
+    <div
+      class="modal fade"
+      id="certModal8"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel8"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4 class="modal-title w-100" id="certModalLabel8">
+              Google Analytics Certification
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/GA4.png"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.GA4_date">
+              Issuance date: 2025/04/29
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 9: Google Cybersecurity -->
+    <div
+      class="modal fade"
+      id="certModal9"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certModalLabel9"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4 class="modal-title w-100" id="certModalLabel9">
+              Google_Cybersecurity_Professional_CertificateV2
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="position: absolute; top: 10px; right: 15px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/GoogleCybersecurityProfessionalCertificateV2_Badge.jpg"
+              alt="大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="certs.cybersecurity_date">
+              Issuance date: 2025/05/15
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- JavaScript libs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/template.js"></script>
 
-    <!-- 排序功能腳本 (使用按鈕群組) -->
+    <!-- 排序功能腳本 (修復版本) -->
     <script>
       $(document).ready(function () {
+        // 分頁變數
+        var currentPage = 1;
+        var totalPages = 2;
+
         // 為所有自訂排序按鈕加入 click 事件
         $(".btn-sort").on("click", function () {
           var order = $(this).data("sort");
           var container = $(this).closest(".flex-row");
-          var cards = container.children(".flex-col").get();
+
+          // 檢查是否為證照區塊
+          if (container.attr("id") === "certifications") {
+            // 證照區塊的特殊排序邏輯
+            sortCertifications(order);
+          } else {
+            // 其他區塊的原本邏輯
+            var cards = container.children(".flex-col").get();
+            cards.sort(function (a, b) {
+              var dateA_str = $(a)
+                .find(".cert-date")
+                .text()
+                .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+              var dateB_str = $(b)
+                .find(".cert-date")
+                .text()
+                .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+              var dateA = dateA_str
+                ? new Date(dateA_str[1].replace(/\//g, "-"))
+                : new Date();
+              var dateB = dateB_str
+                ? new Date(dateB_str[1].replace(/\//g, "-"))
+                : new Date();
+              return order === "asc" ? dateA - dateB : dateB - dateA;
+            });
+            $(cards).appendTo(container);
+          }
 
           // 移除同一排序區塊中其他按鈕的 active class，再為自己加上
           $(this).siblings(".btn-sort").removeClass("active");
           $(this).addClass("active");
+        });
 
-          cards.sort(function (a, b) {
-            var dateA_str = $(a)
+        // 證照專用排序函數
+        function sortCertifications(order) {
+          // 收集所有證照卡片
+          var allCards = [];
+          $(".cert-page .flex-col").each(function () {
+            allCards.push($(this));
+          });
+
+          // 排序所有卡片
+          allCards.sort(function (a, b) {
+            var dateA_str = a
               .find(".cert-date")
               .text()
               .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
-            var dateB_str = $(b)
+            var dateB_str = b
               .find(".cert-date")
               .text()
               .match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
@@ -1374,12 +1618,144 @@
               : new Date();
             return order === "asc" ? dateA - dateB : dateB - dateA;
           });
-          $(cards).appendTo(container);
+
+          // 清空所有頁面
+          $(".cert-page .row").empty();
+
+          // 重新分配到頁面 (每頁6個)
+          for (var i = 0; i < allCards.length; i++) {
+            var pageNum = Math.floor(i / 6) + 1;
+            var targetPage = $('.cert-page[data-page="' + pageNum + '"] .row');
+            if (targetPage.length > 0) {
+              targetPage.append(allCards[i]);
+            }
+          }
+
+          // 排序後重置到第一頁
+          currentPage = 1;
+          updatePagination();
+        }
+
+        // 更新分頁顯示
+        function updatePagination() {
+          // 隱藏所有頁面
+          $(".cert-page").removeClass("active").hide();
+
+          // 顯示當前頁面
+          $('.cert-page[data-page="' + currentPage + '"]')
+            .addClass("active")
+            .fadeIn(500);
+
+          // 更新指示器
+          $(".page-dot").removeClass("active");
+          $('.page-dot[data-page="' + currentPage + '"]').addClass("active");
+
+          // 更新按鈕狀態
+          $("#certPrevBtn").prop("disabled", currentPage === 1);
+          $("#certNextBtn").prop("disabled", currentPage === totalPages);
+
+          // 更新跳轉輸入框
+          $("#pageJumpInput").val(currentPage);
+          $("#pageJumpInput").attr("max", totalPages);
+
+          // 更新頁面顯示
+          $("#currentPageDisplay").text(currentPage);
+          $("#totalPageDisplay").text(totalPages);
+        }
+
+        // 頁數跳轉功能
+        function jumpToPage(targetPage) {
+          // 驗證頁數範圍
+          if (targetPage < 1 || targetPage > totalPages || isNaN(targetPage)) {
+            // 顯示錯誤提示
+            $("#pageJumpInput").addClass("error");
+            setTimeout(function () {
+              $("#pageJumpInput").removeClass("error");
+              $("#pageJumpInput").val(currentPage); // 恢復當前頁數
+            }, 1000);
+            return false;
+          }
+
+          if (targetPage !== currentPage) {
+            currentPage = parseInt(targetPage);
+            updatePagination();
+            return true;
+          }
+          return false;
+        }
+
+        // 上一頁按鈕
+        $("#certPrevBtn").on("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+          }
         });
+
+        // 下一頁按鈕
+        $("#certNextBtn").on("click", function () {
+          if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+          }
+        });
+
+        // 點擊圓點切換頁面
+        $(".page-dot").on("click", function () {
+          var targetPage = parseInt($(this).data("page"));
+          jumpToPage(targetPage);
+        });
+
+        // 頁數跳轉按鈕
+        $("#pageJumpBtn").on("click", function () {
+          var targetPage = parseInt($("#pageJumpInput").val());
+          jumpToPage(targetPage);
+        });
+
+        // 頁數輸入框：Enter鍵跳轉
+        $("#pageJumpInput").on("keypress", function (e) {
+          if (e.which === 13) {
+            // Enter鍵
+            var targetPage = parseInt($(this).val());
+            jumpToPage(targetPage);
+          }
+        });
+
+        // 頁數輸入框：實時驗證
+        $("#pageJumpInput").on("input", function () {
+          var value = parseInt($(this).val());
+          if (value < 1 || value > totalPages || isNaN(value)) {
+            $(this).addClass("invalid");
+          } else {
+            $(this).removeClass("invalid");
+          }
+        });
+
+        // 鍵盤支援 (左右箭頭)
+        $(document).on("keydown", function (e) {
+          if (
+            $("#certifications").is(":visible") &&
+            !$("#pageJumpInput").is(":focus")
+          ) {
+            if (e.keyCode === 37 && currentPage > 1) {
+              // 左箭頭
+              currentPage--;
+              updatePagination();
+            } else if (e.keyCode === 39 && currentPage < totalPages) {
+              // 右箭頭
+              currentPage++;
+              updatePagination();
+            }
+          }
+        });
+
         // 初始化：預設每個排序區塊點擊「新到舊」
         $(".sort-controls").each(function () {
           $(this).find(".btn-sort[data-sort='desc']").trigger("click");
         });
+
+        // 分頁初始化
+        updatePagination();
       });
     </script>
 
@@ -1437,7 +1813,7 @@
               nvidia_ws_title: "NVIDIA_Build_With_ RAG_Agent_Workshop",
               nvidia_ws_date: "Issuance date: 2025/03/18",
               nvidia_GenAI_date: "Issuance date: 2025/04/29",
-              GA4: "Issuance date: 2025/04/29",
+              GA4_date: "Issuance date: 2025/04/29",
               cybersecurity_date: "Issuance date: 2025/05/15",
             },
             seminar: {
@@ -1460,6 +1836,14 @@
               ict_date: "Issuance date: 2023/11/04",
               iii_title: "III Technology Day",
               iii_date: "Participation date: 2024/11/07",
+            },
+            page: {
+              current: "Page",
+              of: "of",
+              total: "",
+              jump: "Go to",
+              page: "",
+              go: "GO",
             },
           },
         },
@@ -1528,12 +1912,20 @@
             education: {
               fju_title: "輔仁大學第40屆優秀專題",
               fju_date: "發證日期: 2023/05/27",
-              innohack_title: "2023叡揚資訊黑克松競賽",
+              innohack_title: "2023叡揚資訊黑客松競賽",
               innohack_date: "發證日期: 2023/09/13",
               ict_title: "第28屆大專院校資訊應用服務創新競賽",
               ict_date: "發證日期: 2023/11/04",
               iii_title: "資策會科技日",
               iii_date: "參加日期: 2024/11/07",
+            },
+            page: {
+              current: "第",
+              of: "頁，共",
+              total: "頁",
+              jump: "跳至",
+              page: "頁",
+              go: "GO",
             },
           },
         },
