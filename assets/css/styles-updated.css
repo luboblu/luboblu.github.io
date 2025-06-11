@@ -60,6 +60,10 @@ body {
   margin-top: 40px;
 }
 
+.mb-100 {
+  margin-bottom: 100px;
+}
+
 .text-end {
   text-align: right;
 }
@@ -304,13 +308,21 @@ a:hover {
 /*********************************************************************
                                 CONTENT
 **********************************************************************/
+/* 主要內容區 */
 #main {
   position: relative;
   z-index: 1;
   background: white;
   padding-bottom: 50px;
 }
-
+/* 確保各區塊間距一致 */
+#Educational Background,
+#Seminar presentation,
+#certifications,
+#recentworks,
+#school {
+  padding-top: 20px; /* 為錨點預留空間 */
+}
 img {
   max-width: 100%;
   height: auto;
