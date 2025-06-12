@@ -1,6 +1,7 @@
 // 全域變數
 let currentPage = 1;
-let totalPages = 2;
+let totalPages = 3;
+let currentSortOrder = "desc"; // 新增：記錄當前排序狀態
 
 // 證照資料
 const certifications = [
@@ -123,6 +124,48 @@ const certifications = [
     date: { key: "certs.rapidLLM_date", default: "Issuance date: 2025/06/10" },
     dateValue: "2025/06/10",
   },
+  {
+    id: "cert11",
+    modalId: "certModal11",
+    image: "assets/images/AI_Powered_Performance_Ads_Certification.jpg",
+    title: {
+      key: "",
+      default: "AI-Powered Performance Ads Certification",
+    },
+    date: {
+      key: "certs.ai_performance_date",
+      default: "Issuance date: 2025/06/12",
+    },
+    dateValue: "2025/06/12",
+  },
+  {
+    id: "cert12",
+    modalId: "certModal12",
+    image: "assets/images/AI_Powered_Shopping_Ads_Certification.jpg",
+    title: {
+      key: "",
+      default: "AI-Powered Shopping ads Certification",
+    },
+    date: {
+      key: "certs.ai_shopping_date",
+      default: "Issuance date: 2025/06/11",
+    },
+    dateValue: "2025/06/11",
+  },
+  {
+    id: "cert13",
+    modalId: "certModal13",
+    image: "assets/images/Google_Ads_Apps_Certification.jpg",
+    title: {
+      key: "",
+      default: "Google Ads Apps Certification",
+    },
+    date: {
+      key: "certs.google_ads_apps_date",
+      default: "Issuance date: 2025/06/11",
+    },
+    dateValue: "2025/06/11",
+  },
 ];
 
 // i18next 資源
@@ -181,6 +224,10 @@ const resources = {
         GA4_date: "Issuance date: 2025/04/29",
         cybersecurity_date: "Issuance date: 2025/05/15",
         rapidLLM_date: "Issuance date: 2025/06/10",
+        ai_performance_date: "Issuance date: 2025/06/12",
+        ai_shopping_date: "Issuance date: 2025/06/11",
+        google_ads_apps_date: "Issuance date: 2025/06/11",
+        total_count: "Total Certifications:",
       },
       seminar: {
         title1: "International Quality Management Seminar",
@@ -266,6 +313,10 @@ const resources = {
         GA4_date: "發證日期: 2025/04/29",
         cybersecurity_date: "發證日期: 2025/05/15",
         rapidLLM_date: "發證日期: 2025/06/10",
+        ai_performance_date: "發證日期: 2025/06/12",
+        ai_shopping_date: "發證日期: 2025/06/11",
+        google_ads_apps_date: "發證日期: 2025/06/11",
+        total_count: "證照總數：",
       },
       seminar: {
         title1: "國際品質管理研討會",
@@ -325,19 +376,20 @@ function sortCards(container, order) {
 
 // 證照專用排序
 function sortCertifications(order) {
-  // 根據日期排序證照資料
-  const sortedCerts = [...certifications].sort((a, b) => {
-    const dateA = new Date(a.dateValue.replace(/\//g, "-"));
-    const dateB = new Date(b.dateValue.replace(/\//g, "-"));
-    return order === "asc" ? dateA - dateB : dateB - dateA;
-  });
+  // 記錄當前排序狀態
+  currentSortOrder = order;
 
-  // 重新渲染證照
-  renderCertifications(sortedCerts);
+  // 重新渲染證照（會根據currentSortOrder排序）
+  renderCertifications();
 
-  // 排序後重置到第一頁
-  currentPage = 1;
+  // 保持在當前頁面，不要重置到第一頁
   updatePagination();
+}
+
+// 更新證照總數顯示
+function updateCertCount() {
+  const totalCount = certifications.length;
+  $("#totalCertCount").text(totalCount);
 }
 
 // 生成證照卡片HTML
@@ -388,26 +440,74 @@ function createCertModal(cert) {
 }
 
 // 渲染證照
-function renderCertifications(certs = certifications) {
+function renderCertifications() {
+  // 根據當前排序狀態排序證照
+  const sortedCerts = [...certifications].sort((a, b) => {
+    const dateA = new Date(a.dateValue.replace(/\//g, "-"));
+    const dateB = new Date(b.dateValue.replace(/\//g, "-"));
+    return currentSortOrder === "asc" ? dateA - dateB : dateB - dateA;
+  });
+
   // 清空現有內容
   $(".cert-page .row").empty();
   $("#certification-modals").empty();
 
-  // 分配證照到頁面（每頁6個）
-  certs.forEach((cert, index) => {
-    const pageNum = Math.floor(index / 6) + 1;
-    const targetPage = $(`.cert-page[data-page="${pageNum}"] .row`);
+  // 計算總頁數
+  totalPages = Math.ceil(sortedCerts.length / 6);
 
-    if (targetPage.length > 0) {
-      targetPage.append(createCertCard(cert));
+  // 確保當前頁面有效
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+  if (currentPage < 1) {
+    currentPage = 1;
+  }
+
+  // 分配證照到頁面（每頁6個）
+  sortedCerts.forEach((cert, index) => {
+    const pageNum = Math.floor(index / 6) + 1;
+    let targetPage = $(`.cert-page[data-page="${pageNum}"]`);
+
+    // 如果頁面不存在，創建新頁面
+    if (targetPage.length === 0) {
+      const newPage = `<div class="cert-page" data-page="${pageNum}"><div class="row"></div></div>`;
+      $(".cert-pagination-container").append(newPage);
+      targetPage = $(`.cert-page[data-page="${pageNum}"]`);
     }
+
+    targetPage.find(".row").append(createCertCard(cert));
 
     // 生成對應的Modal
     $("#certification-modals").append(createCertModal(cert));
   });
 
+  // 更新分頁指示器
+  updatePageIndicators();
+
   // 重新本地化
   $("body").localize();
+}
+
+// 更新分頁指示器
+function updatePageIndicators() {
+  // 清空現有指示器
+  $(".page-dots").empty();
+
+  // 生成新的指示器
+  for (let i = 1; i <= totalPages; i++) {
+    const dotClass = i === currentPage ? "active" : "";
+    const ariaSelected = i === currentPage ? "true" : "false";
+    const dot = `<span class="page-dot ${dotClass}" data-page="${i}" 
+                      role="button" aria-label="第 ${i} 頁" 
+                      aria-selected="${ariaSelected}"></span>`;
+    $(".page-dots").append(dot);
+  }
+
+  // 重新綁定點擊事件
+  $(".page-dot").on("click", function () {
+    const targetPage = parseInt($(this).data("page"));
+    jumpToPage(targetPage);
+  });
 }
 
 // 更新分頁顯示
@@ -515,8 +615,12 @@ $(document).ready(function () {
     }
   });
 
+  // 初始化：先設定預設排序為 desc（新到舊）
+  currentSortOrder = "desc";
+
   // 生成證照內容
   renderCertifications();
+  updateCertCount();
 
   // 分頁事件處理
   $("#certPrevBtn").on("click", function () {
@@ -531,12 +635,6 @@ $(document).ready(function () {
       currentPage++;
       updatePagination();
     }
-  });
-
-  // 點擊圓點切換頁面
-  $(".page-dot").on("click", function () {
-    const targetPage = parseInt($(this).data("page"));
-    jumpToPage(targetPage);
   });
 
   // 頁數跳轉按鈕
@@ -581,9 +679,23 @@ $(document).ready(function () {
     }
   });
 
-  // 初始化：預設每個排序區塊點擊「新到舊」
+  // 初始化：設定每個區塊的預設排序為「新到舊」
   $(".sort-controls").each(function () {
-    $(this).find('.btn-sort[data-sort="desc"]').trigger("click");
+    const section = $(this).closest("section");
+    const descButton = $(this).find('.btn-sort[data-sort="desc"]');
+
+    // 設定按鈕狀態
+    descButton.addClass("active").attr("aria-pressed", "true");
+    descButton
+      .siblings(".btn-sort")
+      .removeClass("active")
+      .attr("aria-pressed", "false");
+
+    // 如果不是證照區塊，執行排序
+    if (section.attr("id") !== "certifications") {
+      const cardsContainer = section.find(".row").last();
+      sortCards(cardsContainer, "desc");
+    }
   });
 
   // 分頁初始化
