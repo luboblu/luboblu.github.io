@@ -470,6 +470,7 @@
                 >證書 Certifications</span
               >
             </h2>
+
             <!-- 新增證照總數顯示 -->
             <div class="cert-count-display">
               <span class="cert-count-badge">
@@ -536,19 +537,22 @@
                   <!-- 證書卡片將由JavaScript動態生成 -->
                 </div>
               </div>
-            </div>
-            <!-- 第三頁 -->
-            <div
-              class="cert-page"
-              data-page="3"
-              style="display: none"
-              role="tabpanel"
-              aria-label="證書第3頁"
-            >
-              <div class="row">
-                <!-- 證書卡片將由JavaScript動態生成 -->
+
+              <!-- 第三頁 (移到容器內) -->
+              <div
+                class="cert-page"
+                data-page="3"
+                style="display: none"
+                role="tabpanel"
+                aria-label="證書第3頁"
+              >
+                <div class="row">
+                  <!-- 證書卡片將由JavaScript動態生成 -->
+                </div>
               </div>
             </div>
+            <!-- cert-pagination-container 結束 -->
+
             <!-- 分頁導航 -->
             <nav class="cert-pagination-wrapper" aria-label="證書分頁導航">
               <!-- 主要導航 -->
