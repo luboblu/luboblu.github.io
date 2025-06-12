@@ -996,3 +996,33 @@ img {
   font-size: 1.3rem;
   margin-left: 5px;
 }
+/* 只需要加入這段 CSS 到您的 styles.css 檔案中 */
+
+/* 確保證照容器使用 Flexbox 排列 */
+.cert-page .row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+/* 確保每個證照卡片寬度正確 */
+.cert-page .col-md-4 {
+  flex: 0 0 33.333333% !important;
+  max-width: 33.333333% !important;
+}
+
+/* 平板尺寸 */
+@media (max-width: 991px) {
+  .cert-page .col-sm-6 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+/* 手機尺寸 */
+@media (max-width: 767px) {
+  .cert-page .col-sm-6,
+  .cert-page .col-md-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
