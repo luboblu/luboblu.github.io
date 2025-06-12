@@ -30,7 +30,7 @@ body {
   margin-bottom: 30px;
 }
 
-/* 統一 Bootstrap 網格系統的高度 */
+/* Bootstrap 網格系統 */
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -47,21 +47,9 @@ body {
   margin-top: var(--bs-gutter-y);
 }
 
-/* 確保欄位等高 */
-@media (min-width: 768px) {
-  .row > [class*="col-"] {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 /* 輔助類別 */
 .topspace {
   margin-top: 40px;
-}
-
-.mb-100 {
-  margin-bottom: 100px;
 }
 
 .text-end {
@@ -315,14 +303,16 @@ a:hover {
   background: white;
   padding-bottom: 50px;
 }
+
 /* 確保各區塊間距一致 */
 #Educational Background,
 #Seminar presentation,
 #certifications,
 #recentworks,
 #school {
-  padding-top: 20px; /* 為錨點預留空間 */
+  padding-top: 20px;
 }
+
 img {
   max-width: 100%;
   height: auto;
@@ -459,18 +449,6 @@ img {
   font-weight: 600;
 }
 
-/* Flex 布局 */
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
 /* 證書卡片樣式 */
 .cert-card {
   width: 100%;
@@ -517,28 +495,7 @@ img {
   margin-top: auto;
 }
 
-/* 確保有thumbnail的卡片也能正確對齊 */
-.cert-card.thumbnail {
-  background-color: #f9f9f9;
-  padding: 0;
-}
-
-.cert-card.thumbnail .img {
-  margin: 0;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
-}
-
-.cert-card.thumbnail .cert-title,
-.cert-card.thumbnail .cert-date {
-  padding: 0 15px;
-}
-
-.cert-card.thumbnail .cert-title {
-  margin-top: 20px;
-}
-
-/* Projects 區塊樣式 */
+/* 統一的 Project Card 樣式 */
 .project-card {
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -957,4 +914,85 @@ img {
 /* Modal 調整 */
 .modal-header .btn-close {
   margin-left: auto;
+}
+/* 統一卡片高度的樣式 */
+.card-with-external-date {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-with-external-date .project-card {
+  flex: 1;
+  margin-bottom: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.card-with-external-date .cert-date {
+  background-color: #f9f9f9;
+  padding: 15px;
+  text-align: center;
+  margin: 0;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* 確保所有卡片容器等高 */
+#education-cards,
+#seminar-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+#education-cards > .flex-col,
+#seminar-cards > .flex-col {
+  display: flex;
+}
+
+/* 統一 hover 效果 */
+.card-with-external-date:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-with-external-date:hover .project-card {
+  transform: none;
+}
+/* 證照總數顯示樣式 */
+.cert-count-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cert-count-badge {
+  display: inline-block;
+  background-color: #5cb3cc;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cert-count-badge:hover {
+  background-color: #46b8da;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cert-count-badge i {
+  margin-right: 8px;
+}
+
+.cert-count-badge strong {
+  font-size: 1.3rem;
+  margin-left: 5px;
 }
