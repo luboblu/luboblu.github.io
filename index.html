@@ -650,73 +650,216 @@
             <h2 class="section-title">
               <span data-i18n="section.projects">計畫 Projects</span>
             </h2>
-            <div class="row">
-              <!-- 作品 1 -->
-              <div class="col-12 col-md-4">
-                <div class="project-card">
-                  <a
-                    href="cancer.html"
-                    aria-label="查看大學專題-癌資機模人詳情"
-                  >
-                    <div class="project-img">
-                      <img
-                        src="assets/images/cancer_project.png"
-                        alt="癌資機模人專題截圖"
-                        loading="lazy"
-                      />
-                      <div class="project-overlay">
-                        <span class="more">SEE DETAILS →</span>
-                      </div>
+
+            <!-- 計畫總數顯示 -->
+            <div class="cert-count-display">
+              <span class="cert-count-badge">
+                <i class="fas fa-project-diagram"></i>
+                <span data-i18n="projects.total_count">Total Projects:</span>
+                <strong id="totalProjectCount">4</strong>
+              </span>
+            </div>
+
+            <!-- 分頁容器 -->
+            <div class="project-pagination-container">
+              <!-- 第一頁 -->
+              <div
+                class="project-page active"
+                data-page="1"
+                role="tabpanel"
+                aria-label="專案第1頁"
+              >
+                <div class="row">
+                  <!-- 作品 1 -->
+                  <div class="col-12 col-md-4">
+                    <div class="project-card">
+                      <a
+                        href="cancer.html"
+                        aria-label="查看大學專題-癌資機模人詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/cancer_project.png"
+                            alt="癌資機模人專題截圖"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <h4 class="project-title">大學專題-癌資機模人</h4>
+                      </a>
                     </div>
-                    <h4 class="project-title">大學專題-癌資機模人</h4>
-                  </a>
+                  </div>
+                  <!-- 作品 2 -->
+                  <div class="col-12 col-md-4">
+                    <div class="project-card">
+                      <a
+                        href="marketing.html"
+                        aria-label="查看國科會-氛享水晶Bot詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/氛享海報.png"
+                            alt="氛享水晶Bot海報"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <h4 class="project-title">國科會-氛享水晶Bot</h4>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- 作品 3 -->
+                  <div class="col-12 col-md-4">
+                    <div class="project-card">
+                      <a
+                        href="Smart_City.html"
+                        aria-label="查看Smart City Large Language Model Agent System詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/smart city.png"
+                            alt="智慧城市系統截圖"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <h4 class="project-title">
+                          Smart City Large Language Model Agent System
+                        </h4>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- 作品 4: ML-ESG 專案 -->
+                  <div class="col-12 col-md-4">
+                    <div class="project-card">
+                      <a
+                        href="http://nlpfin.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="查看ML-ESG Compliance Report詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/esg_project.png"
+                            alt="ML-ESG合規性報告專案"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">VISIT SITE →</span>
+                          </div>
+                        </div>
+                        <h4 class="project-title">
+                          ML-ESG Compliance Report<br />
+                          <small style="font-size: 0.8em; color: #666"
+                            >NTCIR-19 2025-2026</small
+                          >
+                        </h4>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <!-- 作品 2 -->
-              <div class="col-12 col-md-4">
-                <div class="project-card">
-                  <a
-                    href="marketing.html"
-                    aria-label="查看國科會-氛享水晶Bot詳情"
-                  >
-                    <div class="project-img">
-                      <img
-                        src="assets/images/氛享海報.png"
-                        alt="氛享水晶Bot海報"
-                        loading="lazy"
-                      />
-                      <div class="project-overlay">
-                        <span class="more">SEE DETAILS →</span>
-                      </div>
-                    </div>
-                    <h4 class="project-title">國科會-氛享水晶Bot</h4>
-                  </a>
-                </div>
-              </div>
-              <!-- 作品 3 -->
-              <div class="col-12 col-md-4">
-                <div class="project-card">
-                  <a
-                    href="Smart_City.html"
-                    aria-label="查看Smart City Large Language Model Agent System詳情"
-                  >
-                    <div class="project-img">
-                      <img
-                        src="assets/images/smart city.png"
-                        alt="智慧城市系統截圖"
-                        loading="lazy"
-                      />
-                      <div class="project-overlay">
-                        <span class="more">SEE DETAILS →</span>
-                      </div>
-                    </div>
-                    <h4 class="project-title">
-                      Smart City Large Language Model Agent System
-                    </h4>
-                  </a>
+
+              <!-- 第二頁（預留給未來專案） -->
+              <div
+                class="project-page"
+                data-page="2"
+                style="display: none"
+                role="tabpanel"
+                aria-label="專案第2頁"
+              >
+                <div class="row">
+                  <!-- 未來專案將放在這裡 -->
                 </div>
               </div>
             </div>
+            <!-- pagination-container 結束 -->
+
+            <!-- 分頁導航 -->
+            <nav class="project-pagination-wrapper" aria-label="專案分頁導航">
+              <!-- 主要導航 -->
+              <div class="cert-pagination-nav">
+                <button
+                  class="cert-nav-btn"
+                  id="projectPrevBtn"
+                  disabled
+                  aria-label="上一頁"
+                >
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="cert-page-indicators" role="tablist">
+                  <button
+                    class="page-dot active"
+                    data-page="1"
+                    role="tab"
+                    aria-selected="true"
+                    aria-label="第1頁"
+                  ></button>
+                  <button
+                    class="page-dot"
+                    data-page="2"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="第2頁"
+                    style="display: none"
+                  ></button>
+                </div>
+
+                <button
+                  class="cert-nav-btn"
+                  id="projectNextBtn"
+                  aria-label="下一頁"
+                  style="display: none"
+                >
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+
+              <!-- 跳轉功能 -->
+              <div class="page-jump-wrapper" style="display: none">
+                <div class="page-jump-container">
+                  <span class="page-info">
+                    <span data-i18n="page.current">第</span>
+                    <span id="projectCurrentPageDisplay">1</span>
+                    <span data-i18n="page.of">頁，共</span>
+                    <span id="projectTotalPageDisplay">1</span>
+                    <span data-i18n="page.total">頁</span>
+                  </span>
+                  <span class="jump-separator">|</span>
+                  <label
+                    for="projectPageJumpInput"
+                    class="page-jump-label"
+                    data-i18n="page.jump"
+                    >跳至</label
+                  >
+                  <input
+                    type="number"
+                    id="projectPageJumpInput"
+                    class="page-jump-input"
+                    min="1"
+                    max="1"
+                    value="1"
+                    aria-label="輸入頁碼"
+                  />
+                  <span data-i18n="page.page">頁</span>
+                  <button
+                    id="projectPageJumpBtn"
+                    class="page-jump-btn"
+                    data-i18n="page.go"
+                    aria-label="跳轉到指定頁面"
+                  >
+                    GO
+                  </button>
+                </div>
+              </div>
+            </nav>
           </div>
         </section>
 

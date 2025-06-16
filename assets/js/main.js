@@ -3,6 +3,10 @@ let currentPage = 1;
 let totalPages = 3;
 let currentSortOrder = "desc"; // 新增：記錄當前排序狀態
 
+// 專案分頁變數
+let currentProjectPage = 1;
+let totalProjectPages = 1;
+
 // 證照資料
 const certifications = [
   {
@@ -229,6 +233,9 @@ const resources = {
         google_ads_apps_date: "Issuance date: 2025/06/11",
         total_count: "Total Certifications:",
       },
+      projects: {
+        total_count: "Total Projects:",
+      },
       seminar: {
         title1: "International Quality Management Seminar",
         date1: "Issuance date: 2023/11/18",
@@ -317,6 +324,9 @@ const resources = {
         ai_shopping_date: "發證日期: 2025/06/11",
         google_ads_apps_date: "發證日期: 2025/06/11",
         total_count: "證照總數：",
+      },
+      projects: {
+        total_count: "專案總數：",
       },
       seminar: {
         title1: "國際品質管理研討會",
@@ -448,8 +458,8 @@ function renderCertifications() {
     return currentSortOrder === "asc" ? dateA - dateB : dateB - dateA;
   });
 
-  // 清空現有內容
-  $(".cert-page .row").empty();
+  // 清空現有內容 - 只清空證照區塊的內容
+  $("#certifications .cert-page .row").empty();
   $("#certification-modals").empty();
 
   // 計算總頁數
@@ -466,13 +476,13 @@ function renderCertifications() {
   // 分配證照到頁面（每頁6個）
   sortedCerts.forEach((cert, index) => {
     const pageNum = Math.floor(index / 6) + 1;
-    let targetPage = $(`.cert-page[data-page="${pageNum}"]`);
+    let targetPage = $(`#certifications .cert-page[data-page="${pageNum}"]`);
 
     // 如果頁面不存在，創建新頁面
     if (targetPage.length === 0) {
       const newPage = `<div class="cert-page" data-page="${pageNum}"><div class="row"></div></div>`;
-      $(".cert-pagination-container").append(newPage);
-      targetPage = $(`.cert-page[data-page="${pageNum}"]`);
+      $("#certifications .cert-pagination-container").append(newPage);
+      targetPage = $(`#certifications .cert-page[data-page="${pageNum}"]`);
     }
 
     targetPage.find(".row").append(createCertCard(cert));
@@ -490,21 +500,21 @@ function renderCertifications() {
 
 // 更新分頁指示器
 function updatePageIndicators() {
-  // 清空現有指示器
-  $(".page-dots").empty();
+  // 清空現有指示器 - 只針對證照區塊
+  $("#certifications .cert-page-indicators").empty();
 
   // 生成新的指示器
   for (let i = 1; i <= totalPages; i++) {
     const dotClass = i === currentPage ? "active" : "";
     const ariaSelected = i === currentPage ? "true" : "false";
-    const dot = `<span class="page-dot ${dotClass}" data-page="${i}" 
-                      role="button" aria-label="第 ${i} 頁" 
-                      aria-selected="${ariaSelected}"></span>`;
-    $(".page-dots").append(dot);
+    const dot = `<button class="page-dot ${dotClass}" data-page="${i}" 
+                      role="tab" aria-label="第 ${i} 頁" 
+                      aria-selected="${ariaSelected}"></button>`;
+    $("#certifications .cert-page-indicators").append(dot);
   }
 
-  // 重新綁定點擊事件
-  $(".page-dot").on("click", function () {
+  // 重新綁定點擊事件 - 只針對證照區塊的頁碼點
+  $("#certifications .page-dot").on("click", function () {
     const targetPage = parseInt($(this).data("page"));
     jumpToPage(targetPage);
   });
@@ -512,15 +522,19 @@ function updatePageIndicators() {
 
 // 更新分頁顯示
 function updatePagination() {
-  // 隱藏所有頁面
-  $(".cert-page").removeClass("active").hide();
+  // 隱藏所有頁面 - 只針對證照區塊
+  $("#certifications .cert-page").removeClass("active").hide();
 
   // 顯示當前頁面
-  $(`.cert-page[data-page="${currentPage}"]`).addClass("active").show();
+  $(`#certifications .cert-page[data-page="${currentPage}"]`)
+    .addClass("active")
+    .show();
 
-  // 更新指示器
-  $(".page-dot").removeClass("active").attr("aria-selected", "false");
-  $(`.page-dot[data-page="${currentPage}"]`)
+  // 更新指示器 - 只針對證照區塊的指示器
+  $("#certifications .page-dot")
+    .removeClass("active")
+    .attr("aria-selected", "false");
+  $(`#certifications .page-dot[data-page="${currentPage}"]`)
     .addClass("active")
     .attr("aria-selected", "true");
 
@@ -538,9 +552,12 @@ function updatePagination() {
 
   // 調整容器高度
   const activePageHeight = $(
-    `.cert-page[data-page="${currentPage}"]`
+    `#certifications .cert-page[data-page="${currentPage}"]`
   ).outerHeight();
-  $(".cert-pagination-container").css("min-height", activePageHeight + "px");
+  $("#certifications .cert-pagination-container").css(
+    "min-height",
+    activePageHeight + "px"
+  );
 }
 
 // 頁數跳轉功能
@@ -562,6 +579,152 @@ function jumpToPage(targetPage) {
     return true;
   }
   return false;
+}
+
+// 初始化專案分頁功能
+function initProjectPagination() {
+  const projectsPerPage = 6;
+  const totalProjects = 4; // 目前有4個專案
+  totalProjectPages = Math.ceil(totalProjects / projectsPerPage);
+
+  // 更新總專案數顯示
+  const projectCountElement = document.getElementById("totalProjectCount");
+  if (projectCountElement) {
+    projectCountElement.textContent = totalProjects;
+  }
+
+  // 顯示/隱藏分頁控制元件
+  const projectPrevBtn = document.getElementById("projectPrevBtn");
+  const projectNextBtn = document.getElementById("projectNextBtn");
+  const projectPageIndicators = document.querySelector(
+    "#recentworks .cert-page-indicators"
+  );
+  const projectPageJumpWrapper = document.querySelector(
+    "#recentworks .page-jump-wrapper"
+  );
+
+  // 如果只有一頁，隱藏所有分頁控制
+  if (totalProjectPages <= 1) {
+    if (projectNextBtn) projectNextBtn.style.display = "none";
+    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "none";
+    // 只顯示第一個頁碼點
+    const pageDots = projectPageIndicators?.querySelectorAll(".page-dot");
+    if (pageDots) {
+      pageDots.forEach((dot, index) => {
+        if (index > 0) dot.style.display = "none";
+      });
+    }
+  }
+
+  // 專案分頁切換函數
+  function showProjectPage(page) {
+    const projectPages = document.querySelectorAll("#recentworks .cert-page");
+
+    projectPages.forEach((pageElement) => {
+      const pageNum = parseInt(pageElement.dataset.page);
+      if (pageNum === page) {
+        pageElement.classList.add("active");
+        pageElement.style.display = "block";
+        pageElement.style.opacity = "1";
+        pageElement.style.transform = "translateX(0)";
+      } else {
+        pageElement.classList.remove("active");
+        pageElement.style.display = "none";
+        pageElement.style.opacity = "0";
+      }
+    });
+
+    // 更新頁碼指示器
+    const pageDots = document.querySelectorAll("#recentworks .page-dot");
+    pageDots.forEach((dot) => {
+      const dotPage = parseInt(dot.dataset.page);
+      if (dotPage === page) {
+        dot.classList.add("active");
+        dot.setAttribute("aria-selected", "true");
+      } else {
+        dot.classList.remove("active");
+        dot.setAttribute("aria-selected", "false");
+      }
+    });
+
+    // 更新按鈕狀態
+    if (projectPrevBtn) {
+      projectPrevBtn.disabled = page === 1;
+    }
+    if (projectNextBtn) {
+      projectNextBtn.disabled = page === totalProjectPages;
+    }
+
+    // 更新頁碼顯示
+    const currentPageDisplay = document.getElementById(
+      "projectCurrentPageDisplay"
+    );
+    const totalPageDisplay = document.getElementById("projectTotalPageDisplay");
+    const pageJumpInput = document.getElementById("projectPageJumpInput");
+
+    if (currentPageDisplay) currentPageDisplay.textContent = page;
+    if (totalPageDisplay) totalPageDisplay.textContent = totalProjectPages;
+    if (pageJumpInput) {
+      pageJumpInput.value = page;
+      pageJumpInput.max = totalProjectPages;
+    }
+
+    currentProjectPage = page;
+  }
+
+  // 綁定事件
+  if (projectPrevBtn) {
+    projectPrevBtn.addEventListener("click", () => {
+      if (currentProjectPage > 1) {
+        showProjectPage(currentProjectPage - 1);
+      }
+    });
+  }
+
+  if (projectNextBtn) {
+    projectNextBtn.addEventListener("click", () => {
+      if (currentProjectPage < totalProjectPages) {
+        showProjectPage(currentProjectPage + 1);
+      }
+    });
+  }
+
+  // 頁碼點擊事件
+  const projectPageDots = document.querySelectorAll("#recentworks .page-dot");
+  projectPageDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const page = parseInt(dot.dataset.page);
+      showProjectPage(page);
+    });
+  });
+
+  // 頁碼跳轉功能
+  const projectPageJumpBtn = document.getElementById("projectPageJumpBtn");
+  const projectPageJumpInput = document.getElementById("projectPageJumpInput");
+
+  if (projectPageJumpBtn && projectPageJumpInput) {
+    projectPageJumpBtn.addEventListener("click", () => {
+      const targetPage = parseInt(projectPageJumpInput.value);
+      if (targetPage >= 1 && targetPage <= totalProjectPages) {
+        showProjectPage(targetPage);
+        projectPageJumpInput.classList.remove("error");
+      } else {
+        projectPageJumpInput.classList.add("error");
+        setTimeout(() => {
+          projectPageJumpInput.classList.remove("error");
+        }, 500);
+      }
+    });
+
+    projectPageJumpInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        projectPageJumpBtn.click();
+      }
+    });
+  }
+
+  // 初始顯示第一頁
+  showProjectPage(1);
 }
 
 // DOM載入完成後執行
@@ -661,7 +824,7 @@ $(document).ready(function () {
     }
   });
 
-  // 鍵盤支援（左右箭頭）
+  // 鍵盤支援（左右箭頭）- 只針對證照區塊
   $(document).on("keydown", function (e) {
     if (
       $("#certifications").is(":visible") &&
@@ -700,6 +863,11 @@ $(document).ready(function () {
 
   // 分頁初始化
   updatePagination();
+
+  // 初始化專案分頁
+  if (document.getElementById("recentworks")) {
+    initProjectPagination();
+  }
 
   // 平滑滾動到錨點
   $('a[href^="#"]').on("click", function (e) {

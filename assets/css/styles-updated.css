@@ -1026,3 +1026,182 @@ img {
     max-width: 100% !important;
   }
 }
+/* 統一的 Project Card 樣式 */
+.project-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-img {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay .more {
+  background: #bd1550;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.project-title {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  min-height: 80px;
+  flex-direction: column;
+}
+
+/* Projects 區塊的分頁樣式 */
+.project-pagination-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.project-page {
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.project-page.active {
+  opacity: 1;
+  position: relative;
+}
+
+.project-pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.project-pagination-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+#recentworks .project-pagination-container {
+  margin-bottom: 0;
+}
+
+#recentworks .project-page {
+  min-height: auto;
+}
+
+/* 外部連結圖標 */
+.project-card a[target="_blank"] .project-overlay .more::after {
+  content: " ↗";
+  font-size: 1.1em;
+}
+
+/* ESG 專案的佔位圖片樣式 */
+.project-img img[src*="esg_project.png"] {
+  background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+  position: relative;
+}
+
+/* 如果圖片載入失敗，顯示佔位內容 */
+.project-img img[src*="esg_project.png"]:before {
+  content: "ML-ESG";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Projects 響應式設計 */
+@media (max-width: 767px) {
+  .project-img {
+    height: 200px;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    padding: 15px;
+    min-height: 60px;
+  }
+
+  #recentworks .col-md-4 {
+    margin-bottom: 20px;
+  }
+}
