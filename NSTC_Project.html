@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NSTC包容科技計畫 - 多模態跨語言任務導向對話系統"
+    />
+    <meta name="author" content="Hsin-Ting Lu" />
+
+    <title>NSTC包容科技計畫 | 多模態跨語言對話系統</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+
+    <style>
+      /* 現代化樣式設計 */
+      :root {
+        --primary-color: #2563eb;
+        --secondary-color: #10b981;
+        --accent-color: #f59e0b;
+        --dark-color: #1f2937;
+        --light-color: #f8fafc;
+        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background: var(--light-color);
+        overflow-x: hidden;
+      }
+
+      /* Header 區域 */
+      .nstc-header {
+        background: var(--gradient);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nstc-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(45deg);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0px);
+        }
+        50% {
+          transform: rotate(45deg) translateY(-20px);
+        }
+      }
+
+      .nstc-header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .nstc-header p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        animation: fadeInUp 1s ease 0.2s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 主導覽列 */
+      .nstc-navbar {
+        background: white;
+        box-shadow: var(--shadow);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--dark-color) !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-brand i {
+        color: var(--primary-color);
+      }
+
+      .nstc-navbar .nav-link {
+        padding: 20px 30px;
+        font-weight: 500;
+        color: var(--dark-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.1rem;
+        border-radius: 8px;
+      }
+
+      .nstc-navbar .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nstc-navbar .nav-link:hover::before,
+      .nstc-navbar .nav-link.active::before {
+        width: 100%;
+      }
+
+      .nstc-navbar .nav-link:hover,
+      .nstc-navbar .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      /* 語言切換按鈕 */
+      .language-switcher {
+        display: flex;
+        gap: 8px;
+      }
+
+      .language-switcher .btn {
+        border-radius: 25px;
+        padding: 10px 24px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .language-switcher .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 區塊樣式 */
+      .nstc-section {
+        background: white;
+        margin: 40px 0;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nstc-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient);
+      }
+
+      .section-icon {
+        color: var(--primary-color);
+        margin-right: 15px;
+        font-size: 1.5rem;
+      }
+
+      .nstc-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: var(--dark-color);
+      }
+
+      /* 卡片樣式 */
+      .partner-card {
+        background: white;
+        padding: 30px 20px;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        height: 100%;
+      }
+
+      .partner-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary-color);
+      }
+
+      .partner-card i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .partner-card:hover i {
+        transform: scale(1.1);
+        color: var(--secondary-color);
+      }
+
+      /* 使用情況統計 */
+      .usage-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background: var(--light-color);
+        border-radius: 15px;
+        flex: 1;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 10px 0;
+      }
+
+      .stat-item:hover .stat-number {
+        color: white;
+      }
+
+      .stat-item i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .stat-item:hover i {
+        color: white;
+      }
+
+      /* Demo 容器樣式 */
+      .demo-container {
+        background: var(--light-color);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 20px 0;
+        border: 2px dashed #28a745;
+        transition: all 0.3s ease;
+      }
+
+      .demo-container:hover {
+        border-color: #1e7e34;
+        background: #f0fff4;
+      }
+
+      /* 架構圖樣式 */
+      .architecture-diagram-container {
+        background: var(--light-color);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 20px 0;
+        border: 2px dashed #ddd;
+        transition: all 0.3s ease;
+      }
+
+      .architecture-diagram-container:hover {
+        border-color: var(--primary-color);
+        background: #f0f7ff;
+      }
+
+      /* 時間軸 */
+      .timeline-wrapper {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        animation: slideInLeft 0.6s ease;
+      }
+
+      .timeline-marker {
+        background: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-right: 30px;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        flex-shrink: 0;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        flex: 1;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-content:hover {
+        transform: translateX(10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* 未來規劃卡片 */
+      .future-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .future-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .future-card:hover::before {
+        left: 100%;
+      }
+
+      .future-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary-color);
+      }
+
+      .future-card i {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .future-card:hover i {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      /* CTA 區塊 */
+      .cta-section {
+        background: var(--gradient);
+        color: white;
+        padding: 60px 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 60px 0;
+      }
+
+      .cta-section .btn {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .cta-section .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        background: var(--light-color);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      /* Alert 樣式 */
+      .alert {
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .alert-info {
+        background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+        color: #01579b;
+      }
+
+      .alert-success {
+        background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+        color: #2e7d32;
+      }
+
+      /* 組織標籤樣式 */
+      .badge {
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .gap-2 {
+        gap: 0.5rem !important;
+      }
+
+      /* 圖片樣式 */
+      .demo-image {
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .demo-image:hover {
+        transform: scale(1.02);
+      }
+
+      /* 響應式設計 */
+      @media (max-width: 768px) {
+        .nstc-header h1 {
+          font-size: 2rem;
+        }
+
+        .nstc-section {
+          margin: 20px 0;
+          padding: 40px 20px;
+        }
+
+        .nstc-section h2 {
+          font-size: 2rem;
+        }
+
+        .timeline-item {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .timeline-marker {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .usage-stats {
+          flex-direction: column;
+        }
+
+        .stat-item {
+          margin: 10px 0;
+        }
+
+        .language-switcher {
+          margin-top: 15px;
+          text-align: center;
+        }
+
+        .nstc-navbar .nav-link {
+          padding: 15px 20px;
+          font-size: 1rem;
+        }
+
+        .architecture-diagram-container {
+          padding: 30px 20px;
+        }
+
+        .demo-container {
+          padding: 30px 20px;
+        }
+
+        .cta-section {
+          padding: 40px 20px;
+        }
+
+        .badge {
+          font-size: 0.75rem;
+          margin: 2px;
+        }
+      }
+
+      /* 滾動動畫 */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 輔助類別 */
+      .w-100 {
+        width: 100%;
+      }
+      .mt-3 {
+        margin-top: 1rem;
+      }
+      .me-2 {
+        margin-right: 0.5rem;
+      }
+      .ms-auto {
+        margin-left: auto;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* 響應式導航 */
+      @media (min-width: 992px) {
+        .nstc-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+        }
+
+        .nstc-navbar .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .nstc-navbar .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 0 auto;
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .navbar-nav .nav-link {
+          padding: 15px 20px;
+          font-size: 1rem;
+        }
+
+        .language-switcher {
+          margin: 15px 0;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="nstc-header">
+      <div class="container text-center">
+        <h1 data-i18n="nstc.header.title">NSTC包容科技計畫</h1>
+        <p data-i18n="nstc.header.subtitle">
+          包容溝通支持多模態跨語言任務導向對話系統
+        </p>
+        <p>
+          <i class="fas fa-university"></i>
+          <span data-i18n="nstc.header.organization"
+            >國家科學及技術委員會 × 國立臺北大學</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- 主導覽列 -->
+    <nav class="navbar navbar-expand-lg nstc-navbar">
+      <div class="container-fluid">
+        <!-- 返回首頁按鈕 - 固定在最左邊 -->
+        <a class="navbar-brand me-5" href="#" onclick="history.back()">
+          <i class="fas fa-arrow-left me-2"></i>
+          <span data-i18n="nstc.nav.back">返回首頁</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nstcNavbar"
+          aria-controls="nstcNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nstcNavbar">
+          <!-- 主導覽項目 -->
+          <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="#introduction"
+                data-i18n="nstc.nav.introduction"
+              >
+                計畫簡介
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#partners"
+                data-i18n="nstc.nav.partners"
+              >
+                合作夥伴
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#systems" data-i18n="nstc.nav.systems">
+                智慧客服系統
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#architecture"
+                data-i18n="nstc.nav.architecture"
+              >
+                技術架構
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#development"
+                data-i18n="nstc.nav.development"
+              >
+                發展歷程
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#future" data-i18n="nstc.nav.future">
+                未來規劃
+              </a>
+            </li>
+          </ul>
+
+          <!-- 語言切換按鈕 - 固定在最右邊 -->
+          <div class="language-switcher ms-auto">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              id="btn-en"
+            >
+              EN
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-zh">
+              中文
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- 計畫簡介 -->
+      <section id="introduction" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-info-circle section-icon"></i>
+          <span data-i18n="nstc.introduction.title">計畫簡介</span>
+        </h2>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 data-i18n="nstc.introduction.motivation_title">專案動機</h3>
+            <p data-i18n="nstc.introduction.motivation_desc">
+              身心障礙者及少數語言使用者在數位資訊與服務獲取上存在困難，例如尋求幫助或接收公共資訊時受限於語言障礙與不友善的使用者介面。
+            </p>
+
+            <h3 class="mt-4" data-i18n="nstc.introduction.goal_title">
+              計畫目標
+            </h3>
+            <p data-i18n="nstc.introduction.goal_desc">
+              為促進教育、醫療及公共參與的公平性，亟需開發包容性溝通技術，以滿足不同溝通需求。本計畫開發多模態跨語言任務導向對話系統，整合語音、文字、影像等多種輸入方式，支援中文、英文、閩南語、客家語、越南語等多語言，為語言障礙者提供無障礙的溝通輔具。
+            </p>
+
+            <div class="alert alert-info mt-3">
+              <i class="fas fa-bullseye"></i>
+              <strong data-i18n="nstc.introduction.target_label"
+                >服務對象：</strong
+              >
+              <span data-i18n="nstc.introduction.target_groups"
+                >語言障礙者、身心障礙者、少數語言使用者、移工族群</span
+              >
+            </div>
+
+            <div class="alert alert-success mt-3">
+              <i class="fas fa-cogs"></i>
+              <strong data-i18n="nstc.introduction.tech_label"
+                >核心技術：</strong
+              >
+              <span data-i18n="nstc.introduction.tech_features"
+                >多模態對話、跨語言理解、RAG檢索增強、LINE Bot整合</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 合作夥伴 -->
+      <section id="partners" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-handshake section-icon"></i>
+          <span data-i18n="nstc.partners.title">合作夥伴</span>
+        </h2>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <h4 data-i18n="nstc.partners.selection_title">合作夥伴選擇</h4>
+            <p data-i18n="nstc.partners.selection_desc">
+              目前與五個非營利組織合作，包括中華民國腦性麻痺協會、漸凍人協會、陽光社會福利基金會、勵友中心、行無礙協會，這些組織直接服務於有溝通障礙的個體。未來會再增加一個高雄無礙玩家。
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h4 data-i18n="nstc.partners.data_title">數據來源與處理</h4>
+            <p data-i18n="nstc.partners.data_desc">
+              從合作組織的網站、內部文件及訪談中收集領域特定內容，進行文本清理與分割，形成結構化語料庫，並通過FAISS進行向量化索引。
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4
+              class="text-center mb-4"
+              data-i18n="nstc.partners.organizations_title"
+            >
+              合作組織
+            </h4>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-wheelchair"></i>
+                  <h6 data-i18n="nstc.partners.org1">中華民國腦性麻痺協會</h6>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-user-md"></i>
+                  <h6 data-i18n="nstc.partners.org2">漸凍人協會</h6>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-sun"></i>
+                  <h6 data-i18n="nstc.partners.org3">陽光社會福利基金會</h6>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-heart"></i>
+                  <h6 data-i18n="nstc.partners.org4">勵友中心</h6>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-universal-access"></i>
+                  <h6 data-i18n="nstc.partners.org5">行無礙資源推廣協會</h6>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="partner-card">
+                  <i class="fas fa-university"></i>
+                  <h6 data-i18n="nstc.partners.org6">AIITNTPU</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 智慧客服系統 -->
+      <section id="systems" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-robot section-icon"></i>
+          <span data-i18n="nstc.systems.title">智慧客服系統</span>
+        </h2>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="lead" data-i18n="nstc.systems.description">
+              我們已成功建置6套專屬的LINE
+              Bot智慧客服系統，每套系統都針對特定組織的需求進行客製化，提供24小時不間斷的溝通支援服務。
+            </p>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <h4 data-i18n="nstc.systems.features_title">系統特色</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <span data-i18n="nstc.systems.feature1"
+                  >多模態輸入：支援文字、語音、圖片</span
+                >
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <span data-i18n="nstc.systems.feature2"
+                  >專屬資料庫：每個組織擁有客製化知識庫</span
+                >
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <span data-i18n="nstc.systems.feature3"
+                  >RAG技術：檢索增強生成，提升回答準確性</span
+                >
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <span data-i18n="nstc.systems.feature4"
+                  >跨語言支援：中英文、閩南語、客家語</span
+                >
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <span data-i18n="nstc.systems.feature5"
+                  >即時回應：24/7不間斷服務</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4 data-i18n="nstc.systems.usage_title">使用情況</h4>
+            <div class="usage-stats">
+              <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span class="stat-number">100+</span>
+                <span class="stat-label" data-i18n="nstc.systems.users"
+                  >服務人次</span
+                >
+              </div>
+              <div class="stat-item">
+                <i class="fas fa-comments"></i>
+                <span class="stat-number">1000+</span>
+                <span class="stat-label" data-i18n="nstc.systems.messages"
+                  >對話次數</span
+                >
+              </div>
+              <div class="stat-item">
+                <i class="fas fa-chart-line"></i>
+                <span class="stat-number">85%</span>
+                <span class="stat-label" data-i18n="nstc.systems.satisfaction"
+                  >滿意度</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINE Bot Demo 展示區 -->
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <h4 class="mb-4">
+              <i class="fab fa-line text-success me-2"></i>
+              <span data-i18n="nstc.systems.demo_title"
+                >LINE Bot 實際對話展示</span
+              >
+            </h4>
+            <div class="demo-container">
+              <img
+                src="assets/images/NSTC_LineBot.png"
+                alt="LINE Bot 對話展示 - 6個合作組織的智慧客服系統"
+                class="demo-image w-100"
+                style="max-height: 800px; object-fit: contain"
+              />
+              <p
+                class="mt-3 text-muted small"
+                data-i18n="nstc.systems.demo_caption"
+              >
+                6套專屬LINE Bot智慧客服系統實際對話介面展示
+              </p>
+            </div>
+
+            <!-- 組織標籤展示 -->
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <h6
+                  class="text-muted mb-3"
+                  data-i18n="nstc.systems.organizations_label"
+                >
+                  服務組織：
+                </h6>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                  <span class="badge bg-success px-3 py-2 rounded-pill"
+                    >AIITNTPU</span
+                  >
+                  <span
+                    class="badge bg-primary px-3 py-2 rounded-pill"
+                    data-i18n="nstc.partners.org1"
+                    >中華民國腦性麻痺協會</span
+                  >
+                  <span
+                    class="badge bg-info px-3 py-2 rounded-pill"
+                    data-i18n="nstc.partners.org2"
+                    >漸凍人協會</span
+                  >
+                  <span
+                    class="badge bg-warning px-3 py-2 rounded-pill"
+                    data-i18n="nstc.partners.org3"
+                    >陽光社會福利基金會</span
+                  >
+                  <span
+                    class="badge bg-secondary px-3 py-2 rounded-pill"
+                    data-i18n="nstc.partners.org5"
+                    >行無礙資源推廣協會</span
+                  >
+                  <span
+                    class="badge bg-dark px-3 py-2 rounded-pill"
+                    data-i18n="nstc.partners.org4"
+                    >勵友中心</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 技術架構 -->
+      <section id="architecture" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-sitemap section-icon"></i>
+          <span data-i18n="nstc.architecture.title">技術架構</span>
+        </h2>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="lead" data-i18n="nstc.architecture.description">
+              本系統採用RAG（檢索增強生成）架構，結合多模態嵌入模型、向量資料庫和大型語言模型，實現精準的跨語言對話服務。
+            </p>
+          </div>
+        </div>
+
+        <!-- 系統架構圖展示區 -->
+        <div class="row mt-5 mb-5">
+          <div class="col-md-12 text-center">
+            <div class="architecture-diagram-container">
+              <img
+                src="assets/images/NSTC_architecture.png"
+                alt="RAG增強的多模態跨語言對話系統架構圖"
+                class="demo-image w-100"
+                style="max-height: 600px; object-fit: contain"
+              />
+              <p
+                class="mt-3 text-muted small"
+                data-i18n="nstc.architecture.diagram_caption"
+              >
+                RAG增強的多模態跨語言對話系統架構
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <h5>
+              <i class="fas fa-download text-primary"></i>
+              <span data-i18n="nstc.architecture.input_title">輸入處理</span>
+            </h5>
+            <ul class="list-unstyled">
+              <li data-i18n="nstc.architecture.input1">• 多模態嵌入模型</li>
+              <li data-i18n="nstc.architecture.input2">• 語音轉文字（ASR）</li>
+              <li data-i18n="nstc.architecture.input3">• 圖像識別處理</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>
+              <i class="fas fa-search text-warning"></i>
+              <span data-i18n="nstc.architecture.process_title">檢索處理</span>
+            </h5>
+            <ul class="list-unstyled">
+              <li data-i18n="nstc.architecture.process1">• 向量資料庫檢索</li>
+              <li data-i18n="nstc.architecture.process2">• 上下文感知過濾</li>
+              <li data-i18n="nstc.architecture.process3">• 相關性重新排序</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>
+              <i class="fas fa-upload text-success"></i>
+              <span data-i18n="nstc.architecture.output_title">生成輸出</span>
+            </h5>
+            <ul class="list-unstyled">
+              <li data-i18n="nstc.architecture.output1">• GPT-4o mini 生成</li>
+              <li data-i18n="nstc.architecture.output2">• 多語言回應</li>
+              <li data-i18n="nstc.architecture.output3">• 文字轉語音（TTS）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 發展歷程 -->
+      <section id="development" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-history section-icon"></i>
+          <span data-i18n="nstc.development.title">發展歷程</span>
+        </h2>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <h5 data-i18n="nstc.development.phase1_title">
+                第一階段：本地Python與Flask實現
+              </h5>
+              <p data-i18n="nstc.development.phase1_desc">
+                使用SentenceTransformer嵌入與FAISS檢索，OpenAI的GPT-4o-mini
+                API生成響應。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <h5 data-i18n="nstc.development.phase2_title">
+                第二階段：遷移至Google Cloud Run
+              </h5>
+              <p data-i18n="nstc.development.phase2_desc">
+                加入語音功能，使用Whisper模型。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <h5 data-i18n="nstc.development.phase3_title">
+                第三階段：採用多語言模型
+              </h5>
+              <p data-i18n="nstc.development.phase3_desc">
+                採用multilingual-e5-base模型嵌入，OpenAI的GPT-4.1
+                API生成，NVIDIA NIM API與Gemma-3 27B模型處理圖像。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 未來規劃 -->
+      <section id="future" class="nstc-section animate-on-scroll">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-rocket section-icon"></i>
+          <span data-i18n="nstc.future.title">未來規劃</span>
+        </h2>
+
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="future-card">
+              <i class="fas fa-globe-asia"></i>
+              <h5 data-i18n="nstc.future.lang_title">多語支援擴展</h5>
+              <p data-i18n="nstc.future.lang_desc">
+                新增越南語，強化跨語言應用能力。
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="future-card">
+              <i class="fas fa-eye"></i>
+              <h5 data-i18n="nstc.future.multimodal_title">多模態互動設計</h5>
+              <p data-i18n="nstc.future.multimodal_desc">
+                Web端支援多模態輸入與問答；LINE端維持輕量文字對話，確保穩定性。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="future-card">
+              <i class="fas fa-cogs"></i>
+              <h5 data-i18n="nstc.future.tech_title">技術與模型更新</h5>
+              <p data-i18n="nstc.future.tech_desc">
+                導入Gemma
+                3、Whisper與LLaVA-NeXT等模型，建構RAG核心架構，提升多語與多模態效能。
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="future-card">
+              <i class="fas fa-chart-line"></i>
+              <h5 data-i18n="nstc.future.optimization_title">持續優化系統</h5>
+              <p data-i18n="nstc.future.optimization_desc">
+                蒐集使用回饋，優化回應品質與操作介面。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="future-card">
+              <i class="fas fa-users"></i>
+              <h5 data-i18n="nstc.future.expansion_title">實地推廣部署</h5>
+              <p data-i18n="nstc.future.expansion_desc">
+                拓展至6+1個場域，驗證系統穩定性與實用性。目標服務人次超過100人次，持續改善使用者體驗。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta-section">
+        <h3 data-i18n="nstc.cta.title">共同打造包容性溝通環境</h3>
+        <p class="lead" data-i18n="nstc.cta.subtitle">
+          讓科技成為連結每個人的橋樑
+        </p>
+        <a href="mailto:hsintinglubob@gmail.com" class="btn btn-lg mt-3">
+          <i class="fas fa-envelope"></i>
+          <span data-i18n="nstc.cta.button">聯絡我們</span>
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p data-i18n="nstc.footer.copyright">
+              NSTC包容科技計畫 © 2025 | 國立臺北大學資訊管理研究所
+            </p>
+            <p>
+              <span data-i18n="nstc.footer.team"
+                >研究團隊：戴敏育教授、吳承祐研究助理、盧信廷研究助理</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // 完整的國際化翻譯
+      const translations = {
+        en: {
+          // 導覽列
+          "nstc.nav.back": "Back to Home",
+          "nstc.nav.introduction": "Introduction",
+          "nstc.nav.partners": "Partners",
+          "nstc.nav.systems": "Smart Customer Service",
+          "nstc.nav.architecture": "Architecture",
+          "nstc.nav.development": "Development",
+          "nstc.nav.future": "Future Plans",
+
+          // Header
+          "nstc.header.title": "NSTC Inclusive Technology Project",
+          "nstc.header.subtitle":
+            "Inclusive Communication Support Multimodal Cross-lingual Task-Oriented Dialogue System",
+          "nstc.header.organization":
+            "National Science and Technology Council × National Taipei University",
+
+          // 計畫簡介
+          "nstc.introduction.title": "Project Introduction",
+          "nstc.introduction.motivation_title": "Project Motivation",
+          "nstc.introduction.motivation_desc":
+            "People with disabilities and minority language users face difficulties in accessing digital information and services, such as seeking help or receiving public information due to language barriers and unfriendly user interfaces.",
+          "nstc.introduction.goal_title": "Project Goals",
+          "nstc.introduction.goal_desc":
+            "To promote equity in education, healthcare, and public participation, there is an urgent need to develop inclusive communication technologies to meet different communication needs. This project develops a multimodal cross-lingual task-oriented dialogue system that integrates voice, text, image and other input methods, supports Chinese, English, Taiwanese, Hakka, Vietnamese and other languages, providing barrier-free communication tools for people with language barriers.",
+          "nstc.introduction.target_label": "Target Users:",
+          "nstc.introduction.target_groups":
+            "People with language barriers, disabilities, minority language users, migrant workers",
+          "nstc.introduction.tech_label": "Core Technologies:",
+          "nstc.introduction.tech_features":
+            "Multimodal dialogue, cross-lingual understanding, RAG retrieval enhancement, LINE Bot integration",
+
+          // 合作夥伴
+          "nstc.partners.title": "Partners",
+          "nstc.partners.selection_title": "Partner Selection",
+          "nstc.partners.selection_desc":
+            "Currently cooperating with five non-profit organizations, including the Cerebral Palsy Association of R.O.C., ALS Association, Sunshine Social Welfare Foundation, Friend of Hearts Center, and Accessible Resource Promotion Association, which directly serve individuals with communication barriers. We will add one more partner, Kaohsiung Barrier-Free Players, in the future.",
+          "nstc.partners.data_title": "Data Sources and Processing",
+          "nstc.partners.data_desc":
+            "Collect domain-specific content from partner organizations' websites, internal documents, and interviews, perform text cleaning and segmentation to form structured corpora, and create vectorized indexes through FAISS.",
+          "nstc.partners.organizations_title": "Partner Organizations",
+          "nstc.partners.org1": "Cerebral Palsy Association of R.O.C.",
+          "nstc.partners.org2": "ALS Association",
+          "nstc.partners.org3": "Sunshine Social Welfare Foundation",
+          "nstc.partners.org4": "Friend of Hearts Center",
+          "nstc.partners.org5": "Accessible Resource Promotion Association",
+          "nstc.partners.org6": "AIITNTPU",
+
+          // 智慧客服系統
+          "nstc.systems.title": "Smart Customer Service System",
+          "nstc.systems.description":
+            "We have successfully built 6 dedicated LINE Bot smart customer service systems. Each system is customized for specific organizational needs, providing 24-hour uninterrupted communication support services.",
+          "nstc.systems.features_title": "System Features",
+          "nstc.systems.feature1":
+            "Multimodal Input: Supports text, voice, and images",
+          "nstc.systems.feature2":
+            "Dedicated Database: Each organization has a customized knowledge base",
+          "nstc.systems.feature3":
+            "RAG Technology: Retrieval-augmented generation improves answer accuracy",
+          "nstc.systems.feature4":
+            "Cross-language Support: Chinese, English, Taiwanese, Hakka",
+          "nstc.systems.feature5":
+            "Real-time Response: 24/7 uninterrupted service",
+          "nstc.systems.usage_title": "Usage Statistics",
+          "nstc.systems.users": "Users Served",
+          "nstc.systems.messages": "Conversations",
+          "nstc.systems.satisfaction": "Satisfaction Rate",
+          "nstc.systems.demo_title": "LINE Bot Live Conversation Demo",
+          "nstc.systems.demo_caption":
+            "6 Dedicated LINE Bot Smart Customer Service Systems - Live Conversation Interface Demo",
+          "nstc.systems.organizations_label": "Serving Organizations:",
+
+          // 技術架構
+          "nstc.architecture.title": "Technical Architecture",
+          "nstc.architecture.description":
+            "This system adopts RAG (Retrieval-Augmented Generation) architecture, combining multimodal embedding models, vector databases, and large language models to achieve precise cross-lingual dialogue services.",
+          "nstc.architecture.diagram_caption":
+            "RAG-Enhanced Multimodal Cross-lingual Dialogue System Architecture",
+          "nstc.architecture.input_title": "Input Processing",
+          "nstc.architecture.input1": "• Multimodal Embedding Model",
+          "nstc.architecture.input2": "• Automatic Speech Recognition (ASR)",
+          "nstc.architecture.input3": "• Image Recognition Processing",
+          "nstc.architecture.process_title": "Retrieval Processing",
+          "nstc.architecture.process1": "• Vector Database Retrieval",
+          "nstc.architecture.process2": "• Context-aware Filtering",
+          "nstc.architecture.process3": "• Relevance Re-ranking",
+          "nstc.architecture.output_title": "Generation Output",
+          "nstc.architecture.output1": "• GPT-4o mini Generation",
+          "nstc.architecture.output2": "• Multilingual Response",
+          "nstc.architecture.output3": "• Text-to-Speech (TTS)",
+
+          // 發展歷程
+          "nstc.development.title": "Development Timeline",
+          "nstc.development.phase1_title":
+            "Phase 1: Local Python and Flask Implementation",
+          "nstc.development.phase1_desc":
+            "Using SentenceTransformer embedding with FAISS retrieval, OpenAI's GPT-4o-mini API for response generation.",
+          "nstc.development.phase2_title":
+            "Phase 2: Migration to Google Cloud Run",
+          "nstc.development.phase2_desc":
+            "Added voice functionality using Whisper model.",
+          "nstc.development.phase3_title":
+            "Phase 3: Adoption of Multilingual Models",
+          "nstc.development.phase3_desc":
+            "Adopted multilingual-e5-base model embedding, OpenAI's GPT-4.1 API generation, NVIDIA NIM API with Gemma-3 27B model for image processing.",
+
+          // 未來規劃
+          "nstc.future.title": "Future Plans",
+          "nstc.future.lang_title": "Multilingual Support Expansion",
+          "nstc.future.lang_desc":
+            "Adding Vietnamese to enhance cross-lingual application capabilities.",
+          "nstc.future.multimodal_title": "Multimodal Interaction Design",
+          "nstc.future.multimodal_desc":
+            "Web platform supports multimodal input and Q&A; LINE platform maintains lightweight text dialogue to ensure stability.",
+          "nstc.future.tech_title": "Technology and Model Updates",
+          "nstc.future.tech_desc":
+            "Introducing Gemma 3, Whisper, and LLaVA-NeXT models, building RAG core architecture to enhance multilingual and multimodal performance.",
+          "nstc.future.optimization_title": "Continuous System Optimization",
+          "nstc.future.optimization_desc":
+            "Collecting user feedback to optimize response quality and user interface.",
+          "nstc.future.expansion_title": "Field Deployment and Promotion",
+          "nstc.future.expansion_desc":
+            "Expanding to 6+1 venues to verify system stability and practicality. Target of serving over 100 users while continuously improving user experience.",
+
+          // CTA 和 Footer
+          "nstc.cta.title":
+            "Building an Inclusive Communication Environment Together",
+          "nstc.cta.subtitle":
+            "Let technology become a bridge connecting everyone",
+          "nstc.cta.button": "Contact Us",
+          "nstc.footer.copyright":
+            "NSTC Inclusive Technology Project © 2025 | Graduate Institute of Information Management, National Taipei University",
+          "nstc.footer.team":
+            "Research Team: Prof. Min-Yuh Day, Research Assistant Cheng-Yu Wu, Research Assistant Hsin-Ting Lu",
+        },
+        zh: {
+          // 導覽列
+          "nstc.nav.back": "返回首頁",
+          "nstc.nav.introduction": "計畫簡介",
+          "nstc.nav.partners": "合作夥伴",
+          "nstc.nav.systems": "智慧客服系統",
+          "nstc.nav.architecture": "技術架構",
+          "nstc.nav.development": "發展歷程",
+          "nstc.nav.future": "未來規劃",
+
+          // Header
+          "nstc.header.title": "NSTC包容科技計畫",
+          "nstc.header.subtitle": "包容溝通支持多模態跨語言任務導向對話系統",
+          "nstc.header.organization": "國家科學及技術委員會 × 國立臺北大學",
+
+          // 計畫簡介
+          "nstc.introduction.title": "計畫簡介",
+          "nstc.introduction.motivation_title": "專案動機",
+          "nstc.introduction.motivation_desc":
+            "身心障礙者及少數語言使用者在數位資訊與服務獲取上存在困難，例如尋求幫助或接收公共資訊時受限於語言障礙與不友善的使用者介面。",
+          "nstc.introduction.goal_title": "計畫目標",
+          "nstc.introduction.goal_desc":
+            "為促進教育、醫療及公共參與的公平性，亟需開發包容性溝通技術，以滿足不同溝通需求。本計畫開發多模態跨語言任務導向對話系統，整合語音、文字、影像等多種輸入方式，支援中文、英文、閩南語、客家語、越南語等多語言，為語言障礙者提供無障礙的溝通輔具。",
+          "nstc.introduction.target_label": "服務對象：",
+          "nstc.introduction.target_groups":
+            "語言障礙者、身心障礙者、少數語言使用者、移工族群",
+          "nstc.introduction.tech_label": "核心技術：",
+          "nstc.introduction.tech_features":
+            "多模態對話、跨語言理解、RAG檢索增強、LINE Bot整合",
+
+          // 合作夥伴
+          "nstc.partners.title": "合作夥伴",
+          "nstc.partners.selection_title": "合作夥伴選擇",
+          "nstc.partners.selection_desc":
+            "目前與五個非營利組織合作，包括中華民國腦性麻痺協會、漸凍人協會、陽光社會福利基金會、勵友中心、行無礙協會，這些組織直接服務於有溝通障礙的個體。未來會再增加一個高雄無礙玩家。",
+          "nstc.partners.data_title": "數據來源與處理",
+          "nstc.partners.data_desc":
+            "從合作組織的網站、內部文件及訪談中收集領域特定內容，進行文本清理與分割，形成結構化語料庫，並通過FAISS進行向量化索引。",
+          "nstc.partners.organizations_title": "合作組織",
+          "nstc.partners.org1": "中華民國腦性麻痺協會",
+          "nstc.partners.org2": "漸凍人協會",
+          "nstc.partners.org3": "陽光社會福利基金會",
+          "nstc.partners.org4": "勵友中心",
+          "nstc.partners.org5": "行無礙資源推廣協會",
+          "nstc.partners.org6": "AIITNTPU",
+
+          // 智慧客服系統
+          "nstc.systems.title": "智慧客服系統",
+          "nstc.systems.description":
+            "我們已成功建置6套專屬的LINE Bot智慧客服系統，每套系統都針對特定組織的需求進行客製化，提供24小時不間斷的溝通支援服務。",
+          "nstc.systems.features_title": "系統特色",
+          "nstc.systems.feature1": "多模態輸入：支援文字、語音、圖片",
+          "nstc.systems.feature2": "專屬資料庫：每個組織擁有客製化知識庫",
+          "nstc.systems.feature3": "RAG技術：檢索增強生成，提升回答準確性",
+          "nstc.systems.feature4": "跨語言支援：中英文、閩南語、客家語",
+          "nstc.systems.feature5": "即時回應：24/7不間斷服務",
+          "nstc.systems.usage_title": "使用情況",
+          "nstc.systems.users": "服務人次",
+          "nstc.systems.messages": "對話次數",
+          "nstc.systems.satisfaction": "滿意度",
+          "nstc.systems.demo_title": "LINE Bot 實際對話展示",
+          "nstc.systems.demo_caption":
+            "6套專屬LINE Bot智慧客服系統實際對話介面展示",
+          "nstc.systems.organizations_label": "服務組織：",
+
+          // 技術架構
+          "nstc.architecture.title": "技術架構",
+          "nstc.architecture.description":
+            "本系統採用RAG（檢索增強生成）架構，結合多模態嵌入模型、向量資料庫和大型語言模型，實現精準的跨語言對話服務。",
+          "nstc.architecture.diagram_caption":
+            "RAG增強的多模態跨語言對話系統架構",
+          "nstc.architecture.input_title": "輸入處理",
+          "nstc.architecture.input1": "• 多模態嵌入模型",
+          "nstc.architecture.input2": "• 語音轉文字（ASR）",
+          "nstc.architecture.input3": "• 圖像識別處理",
+          "nstc.architecture.process_title": "檢索處理",
+          "nstc.architecture.process1": "• 向量資料庫檢索",
+          "nstc.architecture.process2": "• 上下文感知過濾",
+          "nstc.architecture.process3": "• 相關性重新排序",
+          "nstc.architecture.output_title": "生成輸出",
+          "nstc.architecture.output1": "• GPT-4o mini 生成",
+          "nstc.architecture.output2": "• 多語言回應",
+          "nstc.architecture.output3": "• 文字轉語音（TTS）",
+
+          // 發展歷程
+          "nstc.development.title": "發展歷程",
+          "nstc.development.phase1_title": "第一階段：本地Python與Flask實現",
+          "nstc.development.phase1_desc":
+            "使用SentenceTransformer嵌入與FAISS檢索，OpenAI的GPT-4o-mini API生成響應。",
+          "nstc.development.phase2_title": "第二階段：遷移至Google Cloud Run",
+          "nstc.development.phase2_desc": "加入語音功能，使用Whisper模型。",
+          "nstc.development.phase3_title": "第三階段：採用多語言模型",
+          "nstc.development.phase3_desc":
+            "採用multilingual-e5-base模型嵌入，OpenAI的GPT-4.1 API生成，NVIDIA NIM API與Gemma-3 27B模型處理圖像。",
+
+          // 未來規劃
+          "nstc.future.title": "未來規劃",
+          "nstc.future.lang_title": "多語支援擴展",
+          "nstc.future.lang_desc": "新增越南語，強化跨語言應用能力。",
+          "nstc.future.multimodal_title": "多模態互動設計",
+          "nstc.future.multimodal_desc":
+            "Web端支援多模態輸入與問答；LINE端維持輕量文字對話，確保穩定性。",
+          "nstc.future.tech_title": "技術與模型更新",
+          "nstc.future.tech_desc":
+            "導入Gemma 3、Whisper與LLaVA-NeXT等模型，建構RAG核心架構，提升多語與多模態效能。",
+          "nstc.future.optimization_title": "持續優化系統",
+          "nstc.future.optimization_desc":
+            "蒐集使用回饋，優化回應品質與操作介面。",
+          "nstc.future.expansion_title": "實地推廣部署",
+          "nstc.future.expansion_desc":
+            "拓展至6+1個場域，驗證系統穩定性與實用性。目標服務人次超過100人次，持續改善使用者體驗。",
+
+          // CTA 和 Footer
+          "nstc.cta.title": "共同打造包容性溝通環境",
+          "nstc.cta.subtitle": "讓科技成為連結每個人的橋樑",
+          "nstc.cta.button": "聯絡我們",
+          "nstc.footer.copyright":
+            "NSTC包容科技計畫 © 2025 | 國立臺北大學資訊管理研究所",
+          "nstc.footer.team":
+            "研究團隊：戴敏育教授、吳承祐研究助理、盧信廷研究助理",
+        },
+      };
+
+      let currentLang = "en";
+
+      function updateTranslations() {
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          const translation = translations[currentLang][key];
+          if (translation) {
+            element.textContent = translation;
+          }
+        });
+      }
+
+      // 語言切換功能
+      document.getElementById("btn-en").addEventListener("click", () => {
+        currentLang = "en";
+        updateTranslations();
+        document
+          .getElementById("btn-en")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-en").classList.add("btn-primary");
+        document.getElementById("btn-zh").classList.remove("btn-primary");
+        document.getElementById("btn-zh").classList.add("btn-outline-primary");
+      });
+
+      document.getElementById("btn-zh").addEventListener("click", () => {
+        currentLang = "zh";
+        updateTranslations();
+        document
+          .getElementById("btn-zh")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-zh").classList.add("btn-primary");
+        document.getElementById("btn-en").classList.remove("btn-primary");
+        document.getElementById("btn-en").classList.add("btn-outline-primary");
+      });
+
+      // 滾動動畫
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // 平滑滾動
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // 導覽列活躍狀態
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nstc-navbar .nav-link");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          if (scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // 初始化
+      updateTranslations();
+    </script>
+  </body>
+</html>
