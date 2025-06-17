@@ -1,8 +1,15 @@
+/* ========================================
+   完整修正版 styles-updated.css
+   包含滾動導覽、進度條、動畫效果
+======================================== */
+
 /* 基礎樣式 */
 html {
   font-size: 100%;
   overflow-x: hidden;
   height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* 為固定導覽列留出空間 */
 }
 
 body {
@@ -79,88 +86,447 @@ body {
   white-space: normal !important;
 }
 
+/* 輔助樣式變數 */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #10b981;
+  --dark-color: #1f2937;
+  --light-color: #f8fafc;
+}
+
 /*********************************************************************
-                            Navigation in header
+                   🚀 滾動進度條 - 新增功能
 **********************************************************************/
+
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color, #2563eb) 0%,
+    var(--secondary-color, #10b981) 50%,
+    #f59e0b 100%
+  );
+  z-index: 1001;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4), 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* 響應式進度條 */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    height: 2px;
+  }
+}
+
+/*********************************************************************
+                  🎯 Navigation in header - 增強滾動模式
+**********************************************************************/
+
+/* 主導覽列樣式 - 基礎設定 */
 .navbar {
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 0;
   border-width: 1px 0;
   border-radius: 0;
   width: 100%;
-  background-color: #ffffff;
   border-color: #cccccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity, background;
 }
 
+/* 🚀 手動固定導覽列的樣式 */
+.navbar-is-fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1050 !important;
+  width: 100% !important;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 空間佔位元素 */
+#navbar-spacer {
+  width: 100%;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+/* 🚀 強制固定定位 - 確保導覽列能正確 sticky */
 .navbar.sticky-top {
-  opacity: 0.95;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1050 !important; /* Bootstrap 的最高層級 */
+  opacity: 0.98;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 確保 header 不會影響 sticky 定位 */
+#header {
+  position: relative;
+  /* 移除任何可能影響子元素 sticky 的屬性 */
+  overflow: visible;
+}
+
+/* 🌟 滾動時的增強效果 */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
+}
+
+/* 導覽品牌（左側按鈕）*/
+.navbar-brand {
+  font-weight: 600;
+  color: var(--dark-color, #1f2937) !important;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.2rem; /* 從 1.1rem 調整到 1.2rem */
+  padding: 20px 30px;
+}
+
+.navbar-brand:hover {
+  color: var(--primary-color, #2563eb) !important;
+}
+
+.navbar-brand i {
+  color: var(--primary-color, #2563eb);
+}
+
+/* 滾動時品牌的變化 */
+.navbar.scrolled .navbar-brand {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+.navbar.scrolled .navbar-brand:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* 導覽列整體結構 */
 .navbar-collapse {
   font-family: "Open sans", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: uppercase;
 }
 
+/* 導覽連結樣式 - 增強版 */
 .navbar-nav {
   text-align: center;
 }
 
 .navbar-nav .nav-link {
-  padding: 20px 30px;
+  padding: 20px 25px;
   color: #454545;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-size: 1.1rem; /* 從 1rem 調整到 1.1rem */
+  border-radius: 8px;
+  text-decoration: none;
+  will-change: transform, color, background;
 }
 
+/* 🎨 底線動畫效果 - 增強版 */
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-color, #2563eb),
+    transparent
+  );
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+  width: 85%;
+  opacity: 1;
+}
+
+/* 懸停效果增強 */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  color: #000000;
+  color: var(--primary-color, #2563eb);
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
 }
 
+/* 活躍狀態的強化效果 */
 .navbar-nav .nav-link.active {
-  color: #000000;
-  font-weight: 400;
+  color: var(--primary-color, #2563eb) !important;
+  font-weight: 600;
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 8px;
+  transform: translateY(-1px);
 }
 
-/* 語言切換按鈕 */
+/* 🌟 額外的視覺效果 */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(37, 99, 235, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.navbar-nav .nav-link:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 語言切換按鈕樣式 */
 .language-switcher {
-  margin-left: 20px;
+  display: flex;
+  gap: 8px;
+  margin: 0;
 }
 
 .language-switcher .btn {
-  margin-left: 5px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem; /* 從 0.9rem 調整到 1rem */
+  border: 2px solid var(--primary-color, #2563eb);
+  margin-left: 0;
 }
 
-/* 修正導覽列置中 - Bootstrap 5 方式 */
+.language-switcher .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.language-switcher .btn-outline-secondary {
+  color: var(--primary-color, #2563eb);
+  border-color: var(--primary-color, #2563eb);
+  background: transparent;
+}
+
+.language-switcher .btn-outline-secondary:hover {
+  background: var(--primary-color, #2563eb);
+  color: white;
+  border-color: var(--primary-color, #2563eb);
+}
+
+.language-switcher .btn-secondary {
+  background: var(--primary-color, #2563eb);
+  color: white;
+  border-color: var(--primary-color, #2563eb);
+}
+
+/* 滾動時語言切換按鈕效果 */
+.navbar.scrolled .language-switcher .btn {
+  opacity: 0.9;
+  transform: scale(0.95);
+}
+
+.navbar.scrolled .language-switcher .btn:hover {
+  opacity: 1;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* 響應式設計 - 三分佈局 */
 @media (min-width: 992px) {
-  .navbar-collapse {
-    display: flex !important;
-    justify-content: center;
+  .navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
   }
 
-  .navbar-nav {
+  .navbar .navbar-collapse {
+    display: flex !important;
+    width: 100%;
+  }
+
+  .navbar .navbar-nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 auto;
+    gap: 5px;
+    justify-content: center;
+    flex: 1;
   }
 
   .language-switcher {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 0;
+    margin-left: auto;
+    position: static;
   }
 }
 
-/* 響應式導航 */
 @media (max-width: 991px) {
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
   .navbar-nav .nav-link {
-    padding: 10px 20px;
+    padding: 15px 20px;
+    font-size: 1.05rem; /* 從 1rem 調整到 1.05rem */
+  }
+
+  .navbar-nav .nav-link:hover {
+    transform: none; /* 移動設備上移除 Y 軸位移 */
+    box-shadow: none;
+  }
+
+  .navbar-nav .nav-link.active {
+    transform: none;
   }
 
   .language-switcher {
     margin: 15px 0;
     text-align: center;
+    justify-content: center;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem; /* 從 1rem 調整到 1.1rem */
+    padding: 15px 20px;
+  }
+}
+
+/* 漢堡按鈕樣式 */
+.navbar-toggler {
+  border: none;
+  padding: 10px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* 導覽項目的交錯動畫效果 */
+.navbar-nav .nav-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-nav .nav-item:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.navbar-nav .nav-item:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.navbar-nav .nav-item:nth-child(3) {
+  transition-delay: 0.15s;
+}
+.navbar-nav .nav-item:nth-child(4) {
+  transition-delay: 0.2s;
+}
+.navbar-nav .nav-item:nth-child(5) {
+  transition-delay: 0.25s;
+}
+.navbar-nav .nav-item:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+/* 頁面頂部時的特殊效果 */
+.navbar.at-top {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 滾動性能優化 */
+.navbar,
+.navbar-nav,
+.nav-link {
+  will-change: transform, opacity;
+}
+
+/* 確保在不同設備上的兼容性 */
+@supports not (backdrop-filter: blur(15px)) {
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .navbar.scrolled {
+    background: rgba(31, 41, 55, 0.95) !important;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar.scrolled .nav-link {
+    color: #e5e7eb;
+  }
+
+  .navbar.scrolled .nav-link.active {
+    color: #60a5fa !important;
+    background: rgba(96, 165, 250, 0.1);
+  }
+
+  .navbar.scrolled .nav-link:hover {
+    background: rgba(96, 165, 250, 0.05);
+  }
+}
+
+/* 減少動畫的選項（尊重用戶偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-nav .nav-link,
+  .navbar-brand,
+  .language-switcher .btn {
+    transition: none;
+  }
+
+  .navbar-nav .nav-link::before,
+  .navbar-nav .nav-link::after {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-indicator {
+    transition: none;
   }
 }
 
@@ -236,10 +602,17 @@ a:hover {
 /*********************************************************************
                                 HEADER
 **********************************************************************/
+#header {
+  position: relative;
+  /* 移除任何可能影響子元素 sticky 的屬性 */
+  overflow: visible;
+}
+
 #head {
   position: relative;
   color: #333;
   padding: 90px 0;
+  /* 恢復正常間距，不需要為導覽列預留空間 */
 }
 
 #head::before {
@@ -392,6 +765,9 @@ img {
   position: relative;
   overflow: visible;
   margin-bottom: 100px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section.topspace {
@@ -580,6 +956,7 @@ img {
   justify-content: center;
   background-color: #fff;
   min-height: 80px;
+  flex-direction: column;
 }
 
 /* Projects 響應式設計 */
@@ -915,6 +1292,7 @@ img {
 .modal-header .btn-close {
   margin-left: auto;
 }
+
 /* 統一卡片高度的樣式 */
 .card-with-external-date {
   display: flex;
@@ -965,6 +1343,7 @@ img {
 .card-with-external-date:hover .project-card {
   transform: none;
 }
+
 /* 證照總數顯示樣式 */
 .cert-count-display {
   text-align: center;
@@ -996,7 +1375,6 @@ img {
   font-size: 1.3rem;
   margin-left: 5px;
 }
-/* 只需要加入這段 CSS 到您的 styles.css 檔案中 */
 
 /* 確保證照容器使用 Flexbox 排列 */
 .cert-page .row {
@@ -1025,93 +1403,6 @@ img {
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }
-}
-/* 統一的 Project Card 樣式 */
-.project-card {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.project-card a {
-  text-decoration: none;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.project-img {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-}
-
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-img img {
-  transform: scale(1.05);
-}
-
-.project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-.project-overlay .more {
-  background: #bd1550;
-  color: white;
-  padding: 10px 25px;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.project-title {
-  padding: 20px;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  min-height: 80px;
-  flex-direction: column;
 }
 
 /* Projects 區塊的分頁樣式 */
@@ -1203,58 +1494,6 @@ img {
 
   #recentworks .col-md-4 {
     margin-bottom: 20px;
-  }
-}
-/*********************************************************************
-                                ESG PAGE STYLES
-**********************************************************************/
-
-/* ESG 頁面的 Header */
-.esg-header {
-  background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
-  color: white;
-  padding: 80px 0;
-  margin-bottom: 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.esg-header::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 50%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.05);
-  transform: rotate(35deg);
-}
-
-.esg-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 1s ease;
-}
-
-.esg-header p {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 1s ease 0.2s both;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -1557,6 +1796,7 @@ img {
     padding: 25px 15px;
   }
 }
+
 /* ESG 頁面特殊導覽列樣式 */
 .esg-navbar {
   background: #ffffff;
@@ -1714,6 +1954,7 @@ img {
     padding: 12px 8px;
   }
 }
+
 /* IFIT Lab 連結特殊樣式 */
 .ifit-link {
   color: #bd1550 !important;
@@ -1734,4 +1975,48 @@ img {
   outline: 2px solid #bd1550;
   outline-offset: 2px;
   color: #bd1550 !important;
+}
+
+/* 🎨 區塊進入動畫效果 */
+.section-in-view {
+  animation: sectionHighlight 0.6s ease-in-out;
+}
+
+@keyframes sectionHighlight {
+  0% {
+    transform: translateY(10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 🎯 性能優化 - 只在需要時應用 will-change */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  will-change: transform, background-color;
+}
+
+.project-card:hover,
+.cert-card:hover {
+  will-change: transform, box-shadow;
+}
+
+/* 確保滑順滾動在所有設備上正常工作 */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* 最終的清理和確保 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }

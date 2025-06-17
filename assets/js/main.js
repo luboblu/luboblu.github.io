@@ -1,11 +1,19 @@
+// ========================================
+// 🚀 完整修正版 main.js - 統一的滾動導覽與分頁功能
+// ========================================
+
 // 全域變數
 let currentPage = 1;
 let totalPages = 3;
-let currentSortOrder = "desc"; // 新增：記錄當前排序狀態
+let currentSortOrder = "desc"; // 記錄當前排序狀態
 
 // 專案分頁變數
 let currentProjectPage = 1;
 let totalProjectPages = 1;
+
+// 滾動相關變數
+let scrollThrottleTimer = null;
+let lastScrollTop = 0;
 
 // 證照資料
 const certifications = [
@@ -556,6 +564,10 @@ const resources = {
   },
 };
 
+// ========================================
+// 🔧 工具函數
+// ========================================
+
 // 排序功能
 function sortCards(container, order) {
   const cards = container.find(".flex-col").get();
@@ -584,13 +596,8 @@ function sortCards(container, order) {
 
 // 證照專用排序
 function sortCertifications(order) {
-  // 記錄當前排序狀態
   currentSortOrder = order;
-
-  // 重新渲染證照（會根據currentSortOrder排序）
   renderCertifications();
-
-  // 保持在當前頁面，不要重置到第一頁
   updatePagination();
 }
 
@@ -649,21 +656,17 @@ function createCertModal(cert) {
 
 // 渲染證照
 function renderCertifications() {
-  // 根據當前排序狀態排序證照
   const sortedCerts = [...certifications].sort((a, b) => {
     const dateA = new Date(a.dateValue.replace(/\//g, "-"));
     const dateB = new Date(b.dateValue.replace(/\//g, "-"));
     return currentSortOrder === "asc" ? dateA - dateB : dateB - dateA;
   });
 
-  // 清空現有內容 - 只清空證照區塊的內容
   $("#certifications .cert-page .row").empty();
   $("#certification-modals").empty();
 
-  // 計算總頁數
   totalPages = Math.ceil(sortedCerts.length / 6);
 
-  // 確保當前頁面有效
   if (currentPage > totalPages) {
     currentPage = totalPages;
   }
@@ -671,12 +674,10 @@ function renderCertifications() {
     currentPage = 1;
   }
 
-  // 分配證照到頁面（每頁6個）
   sortedCerts.forEach((cert, index) => {
     const pageNum = Math.floor(index / 6) + 1;
     let targetPage = $(`#certifications .cert-page[data-page="${pageNum}"]`);
 
-    // 如果頁面不存在，創建新頁面
     if (targetPage.length === 0) {
       const newPage = `<div class="cert-page" data-page="${pageNum}"><div class="row"></div></div>`;
       $("#certifications .cert-pagination-container").append(newPage);
@@ -684,24 +685,17 @@ function renderCertifications() {
     }
 
     targetPage.find(".row").append(createCertCard(cert));
-
-    // 生成對應的Modal
     $("#certification-modals").append(createCertModal(cert));
   });
 
-  // 更新分頁指示器
   updatePageIndicators();
-
-  // 重新本地化
   $("body").localize();
 }
 
 // 更新分頁指示器
 function updatePageIndicators() {
-  // 清空現有指示器 - 只針對證照區塊
   $("#certifications .cert-page-indicators").empty();
 
-  // 生成新的指示器
   for (let i = 1; i <= totalPages; i++) {
     const dotClass = i === currentPage ? "active" : "";
     const ariaSelected = i === currentPage ? "true" : "false";
@@ -711,7 +705,6 @@ function updatePageIndicators() {
     $("#certifications .cert-page-indicators").append(dot);
   }
 
-  // 重新綁定點擊事件 - 只針對證照區塊的頁碼點
   $("#certifications .page-dot").on("click", function () {
     const targetPage = parseInt($(this).data("page"));
     jumpToPage(targetPage);
@@ -720,15 +713,11 @@ function updatePageIndicators() {
 
 // 更新分頁顯示
 function updatePagination() {
-  // 隱藏所有頁面 - 只針對證照區塊
   $("#certifications .cert-page").removeClass("active").hide();
-
-  // 顯示當前頁面
   $(`#certifications .cert-page[data-page="${currentPage}"]`)
     .addClass("active")
     .show();
 
-  // 更新指示器 - 只針對證照區塊的指示器
   $("#certifications .page-dot")
     .removeClass("active")
     .attr("aria-selected", "false");
@@ -736,19 +725,15 @@ function updatePagination() {
     .addClass("active")
     .attr("aria-selected", "true");
 
-  // 更新按鈕狀態
   $("#certPrevBtn").prop("disabled", currentPage === 1);
   $("#certNextBtn").prop("disabled", currentPage === totalPages);
 
-  // 更新跳轉輸入框
   $("#pageJumpInput").val(currentPage);
   $("#pageJumpInput").attr("max", totalPages);
 
-  // 更新頁面顯示
   $("#currentPageDisplay").text(currentPage);
   $("#totalPageDisplay").text(totalPages);
 
-  // 調整容器高度
   const activePageHeight = $(
     `#certifications .cert-page[data-page="${currentPage}"]`
   ).outerHeight();
@@ -782,16 +767,14 @@ function jumpToPage(targetPage) {
 // 初始化專案分頁功能
 function initProjectPagination() {
   const projectsPerPage = 6;
-  const totalProjects = 4; // 目前有4個專案
+  const totalProjects = 5;
   totalProjectPages = Math.ceil(totalProjects / projectsPerPage);
 
-  // 更新總專案數顯示
   const projectCountElement = document.getElementById("totalProjectCount");
   if (projectCountElement) {
     projectCountElement.textContent = totalProjects;
   }
 
-  // 顯示/隱藏分頁控制元件
   const projectPrevBtn = document.getElementById("projectPrevBtn");
   const projectNextBtn = document.getElementById("projectNextBtn");
   const projectPageIndicators = document.querySelector(
@@ -801,11 +784,9 @@ function initProjectPagination() {
     "#recentworks .page-jump-wrapper"
   );
 
-  // 如果只有一頁，隱藏所有分頁控制
   if (totalProjectPages <= 1) {
     if (projectNextBtn) projectNextBtn.style.display = "none";
     if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "none";
-    // 只顯示第一個頁碼點
     const pageDots = projectPageIndicators?.querySelectorAll(".page-dot");
     if (pageDots) {
       pageDots.forEach((dot, index) => {
@@ -814,9 +795,10 @@ function initProjectPagination() {
     }
   }
 
-  // 專案分頁切換函數
   function showProjectPage(page) {
-    const projectPages = document.querySelectorAll("#recentworks .cert-page");
+    const projectPages = document.querySelectorAll(
+      "#recentworks .project-page"
+    );
 
     projectPages.forEach((pageElement) => {
       const pageNum = parseInt(pageElement.dataset.page);
@@ -832,7 +814,6 @@ function initProjectPagination() {
       }
     });
 
-    // 更新頁碼指示器
     const pageDots = document.querySelectorAll("#recentworks .page-dot");
     pageDots.forEach((dot) => {
       const dotPage = parseInt(dot.dataset.page);
@@ -845,7 +826,6 @@ function initProjectPagination() {
       }
     });
 
-    // 更新按鈕狀態
     if (projectPrevBtn) {
       projectPrevBtn.disabled = page === 1;
     }
@@ -853,7 +833,6 @@ function initProjectPagination() {
       projectNextBtn.disabled = page === totalProjectPages;
     }
 
-    // 更新頁碼顯示
     const currentPageDisplay = document.getElementById(
       "projectCurrentPageDisplay"
     );
@@ -870,7 +849,6 @@ function initProjectPagination() {
     currentProjectPage = page;
   }
 
-  // 綁定事件
   if (projectPrevBtn) {
     projectPrevBtn.addEventListener("click", () => {
       if (currentProjectPage > 1) {
@@ -887,7 +865,6 @@ function initProjectPagination() {
     });
   }
 
-  // 頁碼點擊事件
   const projectPageDots = document.querySelectorAll("#recentworks .page-dot");
   projectPageDots.forEach((dot) => {
     dot.addEventListener("click", () => {
@@ -896,7 +873,6 @@ function initProjectPagination() {
     });
   });
 
-  // 頁碼跳轉功能
   const projectPageJumpBtn = document.getElementById("projectPageJumpBtn");
   const projectPageJumpInput = document.getElementById("projectPageJumpInput");
 
@@ -921,12 +897,255 @@ function initProjectPagination() {
     });
   }
 
-  // 初始顯示第一頁
   showProjectPage(1);
 }
 
-// DOM載入完成後執行
+// ========================================
+// 🚀 統一的滾動導覽列效果 - 完全修正版本
+// ========================================
+
+// 滾動進度條功能
+function createScrollProgress() {
+  if (!$(".scroll-indicator").length) {
+    $("body").prepend('<div class="scroll-indicator"></div>');
+  }
+}
+
+function updateScrollProgress() {
+  const scrollTop = $(window).scrollTop();
+  const docHeight = $(document).height() - $(window).height();
+  const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+  $(".scroll-indicator").css("width", scrollPercent + "%");
+}
+
+// 統一的導覽狀態更新函數
+function updateNavigation(sectionId) {
+  console.log("📍 更新導覽狀態:", sectionId);
+
+  // 移除所有活躍狀態
+  $(".navbar .nav-link").removeClass("active");
+
+  if (!sectionId || sectionId === "home") {
+    // 頁面頂部或首頁
+    $(
+      `.navbar .nav-link[href="index.html"], .navbar .nav-link[href="#"]`
+    ).addClass("active");
+  } else {
+    // 特定區塊
+    $(`.navbar .nav-link[href="#${sectionId}"]`).addClass("active");
+  }
+}
+
+// 獲取當前區塊
+function getCurrentSection() {
+  const scrollTop = $(window).scrollTop();
+  const windowHeight = $(window).height();
+  let currentSection = "";
+  let maxVisibility = 0;
+
+  $("section[id]").each(function () {
+    const $section = $(this);
+    const sectionTop = $section.offset().top - 150;
+    const sectionBottom = sectionTop + $section.outerHeight();
+
+    // 計算區塊在視窗中的可見度
+    const visibleTop = Math.max(scrollTop, sectionTop);
+    const visibleBottom = Math.min(scrollTop + windowHeight, sectionBottom);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    const visibility =
+      visibleHeight / Math.min(windowHeight, $section.outerHeight());
+
+    if (visibility > maxVisibility && visibility > 0.3) {
+      maxVisibility = visibility;
+      currentSection = $section.attr("id");
+    }
+  });
+
+  // 如果沒有找到且在頁面頂部
+  if (!currentSection && scrollTop < 200) {
+    currentSection = "home";
+  }
+
+  return currentSection;
+}
+
+// 主滾動處理函數
+function handleScroll() {
+  const scrollTop = $(window).scrollTop();
+
+  // 更新進度條
+  updateScrollProgress();
+
+  // 獲取當前區塊
+  const currentSection = getCurrentSection();
+
+  // 更新導覽列狀態
+  updateNavigation(currentSection);
+
+  // 導覽列滾動效果
+  const navbar = $(".navbar");
+  if (scrollTop > 50) {
+    navbar.addClass("scrolled");
+  } else {
+    navbar.removeClass("scrolled");
+  }
+}
+
+// 平滑滾動到指定位置
+function smoothScrollTo(target, offset = 100) {
+  if (target && target.length) {
+    $("html, body").animate(
+      {
+        scrollTop: target.offset().top - offset,
+      },
+      800,
+      "swing"
+    );
+  }
+}
+
+// 頁面載入時設置正確的活躍狀態
+function updateNavOnLoad() {
+  const hash = window.location.hash;
+  console.log("🔗 頁面載入時的 hash:", hash);
+
+  if (hash) {
+    const sectionId = hash.substring(1);
+    updateNavigation(sectionId);
+
+    // 延遲滾動到目標位置
+    setTimeout(() => {
+      const target = $(hash);
+      if (target.length) {
+        smoothScrollTo(target);
+      }
+    }, 300);
+  } else {
+    updateNavigation("home");
+  }
+}
+
+// ========================================
+// 🎉 主要初始化函數
+// ========================================
+
 $(document).ready(function () {
+  console.log("🚀 完整系統初始化開始...");
+
+  // ========================================
+  // 1. 滾動功能初始化
+  // ========================================
+
+  // 創建滾動進度條
+  createScrollProgress();
+
+  // 🚀 手動控制導覽列固定效果 - 更可靠的方案
+  function initStickyNavbar() {
+    const navbar = $(".navbar");
+    const header = $("#header");
+
+    if (!navbar.length || !header.length) return;
+
+    // 計算導覽列原始位置
+    const navbarOffsetTop = navbar.offset().top;
+    const navbarHeight = navbar.outerHeight();
+
+    console.log("🎯 導覽列原始位置:", navbarOffsetTop);
+
+    // 為 body 預留空間元素（當導覽列變 fixed 時使用）
+    if (!$("#navbar-spacer").length) {
+      $('<div id="navbar-spacer"></div>').insertBefore(navbar);
+    }
+
+    function handleNavbarFixed() {
+      const scrollTop = $(window).scrollTop();
+
+      if (scrollTop >= navbarOffsetTop) {
+        // 滾動超過導覽列位置，固定導覽列
+        if (!navbar.hasClass("navbar-is-fixed")) {
+          navbar.addClass("navbar-is-fixed");
+          $("#navbar-spacer").height(navbarHeight);
+          console.log("🔒 導覽列已固定");
+        }
+      } else {
+        // 滾動回到頂部，恢復正常位置
+        if (navbar.hasClass("navbar-is-fixed")) {
+          navbar.removeClass("navbar-is-fixed");
+          $("#navbar-spacer").height(0);
+          console.log("🔓 導覽列已解除固定");
+        }
+      }
+    }
+
+    // 綁定滾動事件
+    $(window).on("scroll.navbar", handleNavbarFixed);
+
+    // 初始檢查
+    handleNavbarFixed();
+  }
+
+  // 初始化固定導覽列
+  initStickyNavbar();
+
+  // 平滑滾動功能
+  $('a[href^="#"]').on("click", function (e) {
+    const targetHref = $(this).attr("href");
+    const target = $(targetHref);
+
+    console.log("🎯 點擊導覽連結:", targetHref);
+
+    if (target.length) {
+      e.preventDefault();
+
+      // 先更新導覽列狀態
+      const sectionId = targetHref.substring(1);
+      updateNavigation(sectionId);
+
+      // 平滑滾動
+      smoothScrollTo(target);
+    }
+  });
+
+  // 滾動監聽 - 使用節流提升性能
+  $(window).on("scroll", function () {
+    if (scrollThrottleTimer) return;
+
+    scrollThrottleTimer = setTimeout(() => {
+      handleScroll();
+      scrollThrottleTimer = null;
+    }, 16); // ~60fps
+  });
+
+  // 首頁按鈕特殊處理
+  $('.navbar-brand, a[href="index.html"], a[href="#"]').on(
+    "click",
+    function (e) {
+      // 如果已經在首頁，平滑滾動到頂部
+      if (
+        window.location.pathname.includes("index.html") ||
+        window.location.pathname === "/"
+      ) {
+        e.preventDefault();
+        updateNavigation("home");
+        $("html, body").animate({ scrollTop: 0 }, 800);
+      }
+    }
+  );
+
+  // 監聽 hash 變化
+  $(window).on("hashchange", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      updateNavigation(hash.substring(1));
+    } else {
+      updateNavigation("home");
+    }
+  });
+
+  // ========================================
+  // 2. 國際化功能初始化
+  // ========================================
+
   // 統一的 HTML 翻譯處理函數
   function processHTMLTranslations() {
     $("[data-i18n]").each(function () {
@@ -934,7 +1153,6 @@ $(document).ready(function () {
       const key = $this.attr("data-i18n");
       if (key) {
         const translatedText = i18next.t(key);
-        // 如果翻譯文本包含 HTML 標籤，使用 html() 而不是 text()
         if (
           translatedText.includes("<strong>") ||
           translatedText.includes("<br>") ||
@@ -959,8 +1177,6 @@ $(document).ready(function () {
     function (err, t) {
       jqueryI18next.init(i18next, $);
       $("body").localize();
-
-      // 延遲處理 HTML 標籤，確保 DOM 完全載入
       setTimeout(function () {
         processHTMLTranslations();
       }, 100);
@@ -986,36 +1202,35 @@ $(document).ready(function () {
     });
   });
 
+  // ========================================
+  // 3. 證照與分頁功能初始化
+  // ========================================
+
   // 排序按鈕事件
   $(".btn-sort").on("click", function () {
     const order = $(this).data("sort");
     const section = $(this).closest("section");
 
-    // 更新aria-pressed狀態
     $(this)
       .siblings(".btn-sort")
       .removeClass("active")
       .attr("aria-pressed", "false");
     $(this).addClass("active").attr("aria-pressed", "true");
 
-    // 檢查是否為證照區塊
     if (section.attr("id") === "certifications") {
       sortCertifications(order);
     } else {
-      // 其他區塊的排序
       const cardsContainer = section.find(".row").last();
       sortCards(cardsContainer, order);
     }
   });
 
-  // 初始化：先設定預設排序為 desc（新到舊）
+  // 初始化證照功能
   currentSortOrder = "desc";
-
-  // 生成證照內容
   renderCertifications();
   updateCertCount();
 
-  // 分頁事件處理
+  // 證照分頁事件處理
   $("#certPrevBtn").on("click", function () {
     if (currentPage > 1) {
       currentPage--;
@@ -1030,13 +1245,12 @@ $(document).ready(function () {
     }
   });
 
-  // 頁數跳轉按鈕
+  // 頁數跳轉功能
   $("#pageJumpBtn").on("click", function () {
     const targetPage = parseInt($("#pageJumpInput").val());
     jumpToPage(targetPage);
   });
 
-  // 頁數輸入框：Enter鍵跳轉
   $("#pageJumpInput").on("keypress", function (e) {
     if (e.which === 13) {
       const targetPage = parseInt($(this).val());
@@ -1044,7 +1258,6 @@ $(document).ready(function () {
     }
   });
 
-  // 頁數輸入框：實時驗證
   $("#pageJumpInput").on("input", function () {
     const value = parseInt($(this).val());
     if (value < 1 || value > totalPages || isNaN(value)) {
@@ -1054,44 +1267,44 @@ $(document).ready(function () {
     }
   });
 
-  // 鍵盤支援（左右箭頭）- 只針對證照區塊
+  // 鍵盤支援（左右箭頭）
   $(document).on("keydown", function (e) {
     if (
       $("#certifications").is(":visible") &&
       !$("#pageJumpInput").is(":focus")
     ) {
       if (e.keyCode === 37 && currentPage > 1) {
-        // 左箭頭
         currentPage--;
         updatePagination();
       } else if (e.keyCode === 39 && currentPage < totalPages) {
-        // 右箭頭
         currentPage++;
         updatePagination();
       }
     }
   });
 
-  // 初始化：設定每個區塊的預設排序為「新到舊」
+  // ========================================
+  // 4. 其他功能初始化
+  // ========================================
+
+  // 設定預設排序
   $(".sort-controls").each(function () {
     const section = $(this).closest("section");
     const descButton = $(this).find('.btn-sort[data-sort="desc"]');
 
-    // 設定按鈕狀態
     descButton.addClass("active").attr("aria-pressed", "true");
     descButton
       .siblings(".btn-sort")
       .removeClass("active")
       .attr("aria-pressed", "false");
 
-    // 如果不是證照區塊，執行排序
     if (section.attr("id") !== "certifications") {
       const cardsContainer = section.find(".row").last();
       sortCards(cardsContainer, "desc");
     }
   });
 
-  // 分頁初始化
+  // 初始化分頁
   updatePagination();
 
   // 初始化專案分頁
@@ -1099,25 +1312,11 @@ $(document).ready(function () {
     initProjectPagination();
   }
 
-  // 平滑滾動到錨點
-  $('a[href^="#"]').on("click", function (e) {
-    const target = $(this.getAttribute("href"));
-    if (target.length) {
-      e.preventDefault();
-      $("html, body")
-        .stop()
-        .animate(
-          {
-            scrollTop: target.offset().top - 70,
-          },
-          800
-        );
-    }
-  });
+  // ========================================
+  // 5. ESG 頁面特定功能
+  // ========================================
 
-  // ESG 頁面特定功能
   if (window.location.pathname.includes("ESG.html")) {
-    // 滾動動畫效果
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
@@ -1163,57 +1362,28 @@ $(document).ready(function () {
       section.style.transition = `all 0.8s ease ${index * 0.2}s`;
       observer.observe(section);
     });
-
-    // 導覽列活躍狀態處理
-    const navLinks = document.querySelectorAll(".esg-navbar .nav-link");
-    const sections = document.querySelectorAll("section[id]");
-
-    // 滾動監聽，更新導覽列活躍狀態
-    window.addEventListener("scroll", () => {
-      let current = "";
-      const scrollY = window.pageYOffset;
-
-      sections.forEach((section) => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute("id");
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          current = sectionId;
-        }
-      });
-
-      // 更新導覽列活躍狀態
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
-      });
-    });
-
-    // 平滑滾動到錨點
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-          const offsetTop = targetSection.offsetTop - 100;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth",
-          });
-        }
-      });
-    });
-
-    // 初始設置第一個導覽項為活躍狀態
-    if (navLinks.length > 0) {
-      navLinks[0].classList.add("active");
-    }
   }
-});
 
-// 移除視差滾動效果，避免header隨滾動移動
+  // ========================================
+  // 6. 最終初始化
+  // ========================================
+
+  // 強制更新專案總數
+  setTimeout(function () {
+    const actualProjectCount = $("#recentworks .project-card").length;
+    $("#totalProjectCount").text(actualProjectCount);
+    console.log("📊 實際專案數量:", actualProjectCount);
+  }, 500);
+
+  // 頁面完全載入後的初始化
+  $(window).on("load", function () {
+    updateNavOnLoad();
+    handleScroll(); // 觸發初始滾動檢查
+    console.log("✅ 所有功能初始化完成！滾動導覽已啟用！");
+  });
+
+  // 立即執行初始設置
+  updateNavOnLoad();
+
+  console.log("🎉 系統初始化完成！");
+});
