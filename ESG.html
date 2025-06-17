@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ML-ESG Compliance Report - NTCIR-19 2025-2026 國際合作研究計畫"
+    />
+    <meta name="author" content="Hsin-Ting Lu" />
+
+    <title>ML-ESG Compliance Report | NTCIR-19 2025-2026</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles-updated.css" />
+
+    <style>
+      .esg-header {
+        background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+        color: white;
+        padding: 80px 0;
+        margin-bottom: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .esg-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 50%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.05);
+        transform: rotate(35deg);
+      }
+
+      .esg-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease;
+      }
+
+      .esg-header p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-icon {
+        color: #bd1550;
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .intro-section {
+        background: #f8f9fa;
+        padding: 40px;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .timeline-section {
+        margin: 50px 0;
+      }
+
+      .timeline-item {
+        padding: 20px;
+        margin-bottom: 20px;
+        background: white;
+        border-left: 4px solid #bd1550;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(189, 21, 80, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .timeline-item:hover::before {
+        left: 100%;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .standards-table {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .standards-table th {
+        background: #2a7d7d;
+        color: white;
+        padding: 15px;
+        font-weight: 600;
+      }
+
+      .standards-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .standards-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .team-section {
+        background: #f8f9fa;
+        padding: 50px 0;
+        margin-top: 50px;
+      }
+
+      .team-card {
+        text-align: center;
+        padding: 30px 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .team-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #2a7d7d, #3a9191);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .team-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .team-card i {
+        font-size: 3rem;
+        color: #2a7d7d;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .team-card:hover i {
+        transform: scale(1.1);
+      }
+
+      .back-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #bd1550;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: #e93675;
+        transform: scale(1.1);
+      }
+
+      .alert-info {
+        background-color: #e3f2fd;
+        border-color: #2196f3;
+        color: #0d47a1;
+      }
+
+      .lead {
+        font-size: 1.15rem;
+        line-height: 1.8;
+      }
+
+      /* 響應式設計 */
+      @media (max-width: 768px) {
+        .esg-header h1 {
+          font-size: 2rem;
+        }
+
+        .timeline-item:hover {
+          transform: translateX(5px);
+        }
+
+        .team-card {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 簡單導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-arrow-left me-2"></i>返回首頁
+        </a>
+        <span class="navbar-text ms-auto"> ML-ESG Compliance Report </span>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="esg-header">
+      <div class="container text-center">
+        <h1>ML-ESG Compliance Report</h1>
+        <p>ESG 合規性報告 - 中文版本資料集標註任務</p>
+        <p>
+          <i class="fas fa-calendar-alt"></i> NTCIR-19 2025-2026 國際研究計畫
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Activity Introduction -->
+      <section class="intro-section">
+        <h2 class="mb-4">
+          <i class="fas fa-info-circle section-icon"></i>
+          ACTIVITY INTRODUCTION 活動介紹
+        </h2>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p class="lead">
+              我們預計參與
+              <strong>ML-ESG Compliance Report (ESG 合規性報告)</strong>
+              中文版本資料集標註任務， 這是一個國際合作的研究計畫，目標是推動
+              ESG 自動化檢測技術發展。
+            </p>
+
+            <div class="alert alert-info mt-3">
+              <i class="fas fa-users"></i> <strong>參與團隊：</strong>
+              日本團隊、台灣大學、臺北大學
+            </div>
+
+            <div class="alert alert-success mt-3">
+              <i class="fas fa-clock"></i> <strong>專案期間：</strong>
+              2025年3月1日 - 2025年5月31日（90天資料標註期）
+            </div>
+
+            <h4 class="mt-4 mb-3">為何 ESG 合規性重要？</h4>
+            <ul>
+              <li>
+                <strong>69% 的投資公司</strong>已將 ESG 標準納入監管合規策略
+              </li>
+              <li>全球前 250 大企業中，<strong>96% 已進行 ESG 報告</strong></li>
+              <li>
+                2022 年，全球
+                <strong>86% 的資產管理者</strong>已將永續投資納入其投資策略
+              </li>
+              <li>亞太地區 <strong>97% 的資產管理者</strong>已導入 ESG 策略</li>
+            </ul>
+
+            <h4 class="mt-4 mb-3">三大 ESG 全球趨勢</h4>
+            <div class="row mt-3">
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      <i class="fas fa-building text-primary"></i> ESG
+                      整合至企業營運
+                    </h6>
+                    <p class="card-text small">
+                      越來越多企業在日常營運中融入 ESG 原則
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      <i class="fas fa-leaf text-success"></i> 應對氣候變遷
+                    </h6>
+                    <p class="card-text small">
+                      企業採取更積極的環保措施來因應全球暖化
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      <i class="fas fa-gavel text-warning"></i> 監管法規日益嚴格
+                    </h6>
+                    <p class="card-text small">
+                      各國政府與國際機構對 ESG 的監管持續強化
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="timeline-section">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-clock section-icon"></i>
+          PROJECT TIMELINE 專案時程
+        </h2>
+
+        <div class="timeline-item">
+          <h5><i class="fas fa-video"></i> 2025/02/26 (三) 20:30-21:00</h5>
+          <p>第一次線上討論會議 - ML-ESG CR 2026</p>
+        </div>
+
+        <div class="timeline-item">
+          <h5><i class="fas fa-tags"></i> 2025/03/01 - 2025/05/31 (90 Days)</h5>
+          <p><strong>資料標註階段</strong> - ESG 報告標準與數據標註工作</p>
+        </div>
+
+        <div class="timeline-item">
+          <h5><i class="fas fa-check-circle"></i> 2025/06 - 2025/07</h5>
+          <p>完成 ESG 報告標註，建立精準的 ESG 數據模型</p>
+        </div>
+
+        <div class="timeline-item">
+          <h5><i class="fas fa-presentation"></i> 2026/12</h5>
+          <p>參與 NTCIR-19 國際研討會，發表研究成果</p>
+        </div>
+      </section>
+
+      <!-- Data Labeling Process -->
+      <section class="mb-5">
+        <h2 class="mb-4">
+          <i class="fas fa-tasks section-icon"></i>
+          DATA LABELING PROCESS 數據標註流程
+        </h2>
+
+        <table class="table standards-table">
+          <thead>
+            <tr>
+              <th>步驟</th>
+              <th>工作內容</th>
+              <th>詳細說明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Step 1</strong></td>
+              <td>確認 ESG 指標位置</td>
+              <td>確認 ESG 指標出現的頁面</td>
+            </tr>
+            <tr>
+              <td><strong>Step 2</strong></td>
+              <td>指標分類</td>
+              <td>量化數據（數字、百分比）或討論/分析（文字描述）</td>
+            </tr>
+            <tr>
+              <td><strong>Step 3</strong></td>
+              <td>單位驗證</td>
+              <td>百分比（%）、貨幣（$）、文字描述或其他數據類型</td>
+            </tr>
+            <tr>
+              <td><strong>Step 4</strong></td>
+              <td>合規性確認</td>
+              <td>確保 ESG 報告符合監管要求</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Multi-language Support -->
+      <section class="team-section">
+        <div class="container">
+          <h2 class="mb-5 text-center">
+            <i class="fas fa-globe section-icon"></i>
+            MULTI-LANGUAGE SUPPORT 多語言支援
+          </h2>
+
+          <div class="row g-4">
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>英文 English</h5>
+                <p>Juyeon</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>法文 French</h5>
+                <p>Juyeon</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>韓文 Korean</h5>
+                <p>Hanwool</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>中文 Chinese</h5>
+                <p>Prof. Day (NTPU Team)</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>日文 Japanese</h5>
+                <p>Prof. Seki</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="team-card">
+                <i class="fas fa-language"></i>
+                <h5>泰文 Thai</h5>
+                <p>Prof. Dittaya Wanvarie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center my-5 p-5 bg-light rounded">
+        <h3>有興趣參與國際合作研究計畫嗎？</h3>
+        <p class="lead">歡迎加入 ML-ESG CR 2026 研究團隊</p>
+        <a
+          href="http://nlpfin.com/"
+          target="_blank"
+          class="btn btn-primary btn-lg mt-3"
+        >
+          <i class="fas fa-external-link-alt"></i> 訪問 NLPFin 官方網站
+        </a>
+      </section>
+
+      <!-- Research Highlights -->
+      <section class="mb-5">
+        <h2 class="mb-4 text-center">
+          <i class="fas fa-award section-icon"></i>
+          RESEARCH HIGHLIGHTS 研究重點
+        </h2>
+
+        <div class="row g-4">
+          <div class="col-md-3 col-sm-6 text-center">
+            <div class="p-3">
+              <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+              <h5>ESG 數據分析</h5>
+              <p class="text-muted">深度分析企業 ESG 報告合規性</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 text-center">
+            <div class="p-3">
+              <i class="fas fa-robot fa-3x text-success mb-3"></i>
+              <h5>AI 自動化檢測</h5>
+              <p class="text-muted">運用機器學習技術自動檢測</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 text-center">
+            <div class="p-3">
+              <i class="fas fa-users fa-3x text-info mb-3"></i>
+              <h5>國際合作</h5>
+              <p class="text-muted">與多國團隊共同研究開發</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 text-center">
+            <div class="p-3">
+              <i class="fas fa-certificate fa-3x text-warning mb-3"></i>
+              <h5>NTCIR 認證</h5>
+              <p class="text-muted">國際頂級資訊檢索評測會議</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-btn" title="返回首頁">
+      <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="footer" class="topspace" role="contentinfo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026</p>
+            <p>
+              研究團隊：NLPFin（自然語言處理金融研究小組）| 官方網站：<a
+                href="http://nlpfin.com/"
+                target="_blank"
+                >http://nlpfin.com/</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript libs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // 滾動動畫效果
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // 為時間軸項目添加動畫
+        document.querySelectorAll(".timeline-item").forEach((item, index) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateY(20px)";
+          item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+        // 為團隊卡片添加動畫
+        document.querySelectorAll(".team-card").forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+          observer.observe(card);
+        });
+      });
+    </script>
+  </body>
+</html>
