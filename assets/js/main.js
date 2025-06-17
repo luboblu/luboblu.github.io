@@ -191,7 +191,7 @@ const resources = {
       },
       main: {
         intro:
-          "I am currently studying at the Graduate Institute of Information Management, Taipei University, and working as a research assistant at the Intelligent Financial Innovation Technology Lab (IFIT Lab).",
+          'I am currently studying at the Graduate Institute of Information Management, Taipei University, and working as a research assistant at the <a href="https://www.aifitesg.org/" target="_blank" rel="noopener noreferrer" class="ifit-link"><strong>Intelligent Financial Innovation Technology Lab (IFIT Lab)</strong></a>.',
       },
       section: {
         education: "Educational Background",
@@ -389,7 +389,7 @@ const resources = {
       },
       main: {
         intro:
-          "我目前就讀於臺北大學資訊管理研究所，並於智慧金融創新科技實驗室 (IFIT Lab) 擔任研究助理。",
+          '我目前就讀於臺北大學資訊管理研究所，並於<a href="https://www.aifitesg.org/" target="_blank" rel="noopener noreferrer" class="ifit-link"><strong>智慧金融創新科技實驗室 (IFIT Lab)</strong></a> 擔任研究助理。',
       },
       section: {
         education: "學習經歷",
@@ -928,7 +928,6 @@ function initProjectPagination() {
 // DOM載入完成後執行
 $(document).ready(function () {
   // 統一的 HTML 翻譯處理函數
-  // 統一的 HTML 翻譯處理函數
   function processHTMLTranslations() {
     $("[data-i18n]").each(function () {
       const $this = $(this);
@@ -939,7 +938,9 @@ $(document).ready(function () {
         if (
           translatedText.includes("<strong>") ||
           translatedText.includes("<br>") ||
-          translatedText.includes("<br />")
+          translatedText.includes("<br />") ||
+          translatedText.includes("<a ") ||
+          translatedText.includes("</a>")
         ) {
           $this.html(translatedText);
         }

@@ -315,14 +315,14 @@
               download_title: "📁 Downloads",
             },
             about: {
-              p1: "The 2024 STI Tech Day focuses on innovative themes such as generative AI, smart manufacturing, and sustainable net zero, inviting over 30 teams to showcase cutting‐edge technology and demonstrate our country’s strength in smart applications and technology R&D.",
-              p2: "Our research team participates with the project ‘Intelligent City Large Language Model Agent System’, led by Professor Lin Dao-Tong from the Department of Computer Science, National Taipei University, co‐led by Professor Dai Min‐Yu from the Graduate Institute of Information Management, National Taipei University, with team members Su Yu‐Fan, Lu Hsin‐Ting, Lan Xu‐You, and Chen Bo‐Zhen working together on the research and demonstration.",
+              p1: "The 2024 STI Tech Day focuses on innovative themes such as generative AI, smart manufacturing, and sustainable net zero, inviting over 30 teams to showcase cutting‐edge technology and demonstrate our country's strength in smart applications and technology R&D.",
+              p2: "Our research team participates with the project 'Intelligent City Large Language Model Agent System', led by <strong>Distinguished Professor Lin Dao-Tong from the Department of Computer Science, National Taipei University</strong>, co‐led by <strong>Professor Dai Min‐Yu from the Graduate Institute of Information Management, National Taipei University</strong>, with research assistants <strong>Su Yu‐Fan, Lu Hsin‐Ting, Lan Xu‐You, and Chen Bo‐Zhen</strong> working together on the research and demonstration.",
               p3: "The team presented the system architecture, application scenarios, and future development potential on site, receiving enthusiastic feedback and recognition from many experts and industry professionals.",
               website_label: "Event Official Website:",
             },
             award: {
-              p1: "Awarded the STI Forward-looking Technology Award, recognizing the potential of our system in smart city applications.",
-              p2: "Featured in the STI STAR Software Technology Annual Report, pages 86–87.",
+              p1: "Awarded the <strong>STI Forward-looking Technology Award</strong>, recognizing the potential of our system in smart city applications.",
+              p2: "Featured in the <strong>STI STAR Software Technology Annual Report</strong>, pages 86–87.",
             },
             download: {
               ppt: "📊 PPT: Tech Day Presentation",
@@ -331,7 +331,7 @@
             footer: {
               contact: "Contact Information",
               contact_text:
-                "Contact: Lu Hsin-Ting  E-mail: hsintinglubob@gmail.com",
+                "Contact: Lu Hsin-Ting<br />E-mail: <a href='mailto:hsintinglubob@gmail.com'>hsintinglubob@gmail.com</a>",
               partner: "Partners",
               partner_text:
                 "Graduate Institute of Information Management, National Taipei University",
@@ -409,6 +409,63 @@
       $("#btn-zh").on("click", function () {
         i18next.changeLanguage("zh", function () {
           $("body").localize();
+        });
+      });
+    </script>
+    <!-- HTML 標籤修正 -->
+    <script>
+      // 處理 HTML 標籤顯示問題
+      function processHTMLTags() {
+        $("[data-i18n]").each(function () {
+          const $this = $(this);
+          const text = $this.text();
+
+          if (text.includes("<strong>") && text.includes("</strong>")) {
+            // 將文本中的 <strong> 標籤轉換為實際的 HTML
+            const htmlContent = text
+              .replace(/&lt;strong&gt;/g, "<strong>")
+              .replace(/&lt;\/strong&gt;/g, "</strong>")
+              .replace(/<strong>/g, "<strong>")
+              .replace(/<\/strong>/g, "</strong>");
+            $this.html(htmlContent);
+          }
+
+          if (text.includes("<br>") || text.includes("<br />")) {
+            // 處理換行標籤
+            const htmlContent = text
+              .replace(/&lt;br&gt;/g, "<br>")
+              .replace(/&lt;br \/&gt;/g, "<br />")
+              .replace(/&lt;a href=/g, "<a href=")
+              .replace(/&gt;/g, ">")
+              .replace(/&lt;\/a&gt;/g, "</a>");
+            $this.html(htmlContent);
+          }
+        });
+      }
+
+      // 頁面載入完成後執行
+      $(document).ready(function () {
+        setTimeout(function () {
+          processHTMLTags();
+        }, 200);
+      });
+
+      // 語言切換時也執行
+      $("#btn-en").on("click", function () {
+        i18next.changeLanguage("en", function () {
+          $("body").localize();
+          setTimeout(function () {
+            processHTMLTags();
+          }, 100);
+        });
+      });
+
+      $("#btn-zh").on("click", function () {
+        i18next.changeLanguage("zh", function () {
+          $("body").localize();
+          setTimeout(function () {
+            processHTMLTags();
+          }, 100);
         });
       });
     </script>

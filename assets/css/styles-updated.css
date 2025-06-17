@@ -1714,3 +1714,24 @@ img {
     padding: 12px 8px;
   }
 }
+/* IFIT Lab 連結特殊樣式 */
+.ifit-link {
+  color: #bd1550 !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.ifit-link:hover {
+  color: #e93675 !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid #e93675;
+  transform: translateY(-1px);
+}
+
+.ifit-link:focus {
+  outline: 2px solid #bd1550;
+  outline-offset: 2px;
+  color: #bd1550 !important;
+}
