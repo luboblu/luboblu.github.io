@@ -264,6 +264,112 @@ const resources = {
         page: "",
         go: "GO",
       },
+      esg: {
+        nav: {
+          back: "Back to Home",
+          introduction: "Introduction",
+          timeline: "Timeline",
+          process: "Process",
+          languages: "Languages",
+          highlights: "Highlights",
+        },
+        header: {
+          title: "ML-ESG Compliance Report",
+          subtitle: "ESG Compliance Report - Chinese Dataset Annotation Task",
+          project: "NTCIR-19 2025-2026 International Research Project",
+        },
+        introduction: {
+          title: "ACTIVITY INTRODUCTION",
+          description:
+            "We plan to participate in the <strong>ML-ESG Compliance Report</strong> Chinese dataset annotation task, which is an international collaborative research project aimed at advancing ESG automated detection technology.",
+          team_label: "Participating Teams:",
+          team_members:
+            "Japanese Team, National Taiwan University, National Taipei University",
+          duration_label: "Project Duration:",
+          duration: "March 1, 2025 - May 31, 2025 (90-day annotation period)",
+          importance_title: "Why is ESG Compliance Important?",
+          stat1:
+            "<strong>69% of investment companies</strong> have incorporated ESG standards into their regulatory compliance strategies",
+          stat2:
+            "Among the top 250 global companies, <strong>96% have conducted ESG reporting</strong>",
+          stat3:
+            "In 2022, <strong>86% of global asset managers</strong> have integrated sustainable investing into their investment strategies",
+          stat4:
+            "<strong>97% of asset managers</strong> in the Asia-Pacific region have adopted ESG strategies",
+          trends_title: "Three Major Global ESG Trends",
+          trend1_title: "ESG Integration into Corporate Operations",
+          trend1_desc:
+            "More companies are incorporating ESG principles into their daily operations",
+          trend2_title: "Climate Change Response",
+          trend2_desc:
+            "Companies are adopting more proactive environmental measures to address global warming",
+          trend3_title: "Increasingly Strict Regulatory Framework",
+          trend3_desc:
+            "Governments and international organizations continue to strengthen ESG regulations",
+        },
+        timeline: {
+          title: "PROJECT TIMELINE",
+          meeting: "2025/02/26 (Wed) 20:30-21:00",
+          meeting_desc: "First Online Discussion Meeting - ML-ESG CR 2026",
+          labeling: "2025/03/01 - 2025/05/31 (90 Days)",
+          labeling_desc:
+            "<strong>Data Annotation Phase</strong> - ESG reporting standards and data annotation work",
+          completion: "2025/06 - 2025/07",
+          completion_desc:
+            "Complete ESG report annotation and establish precise ESG data models",
+          conference: "2026/12",
+          conference_desc:
+            "Participate in NTCIR-19 International Conference and present research findings",
+        },
+        process: {
+          title: "DATA LABELING PROCESS",
+          step: "Step",
+          task: "Task",
+          description: "Description",
+          step1_task: "Confirm ESG Indicator Location",
+          step1_desc: "Confirm the pages where ESG indicators appear",
+          step2_task: "Indicator Classification",
+          step2_desc:
+            "Quantitative data (numbers, percentages) or discussion/analysis (text description)",
+          step3_task: "Unit Verification",
+          step3_desc:
+            "Percentage (%), currency ($), text description, or other data types",
+          step4_task: "Compliance Confirmation",
+          step4_desc: "Ensure ESG reports comply with regulatory requirements",
+        },
+        languages: {
+          title: "MULTI-LANGUAGE SUPPORT",
+          english: "English",
+          french: "French",
+          korean: "Korean",
+          chinese: "Chinese",
+          japanese: "Japanese",
+          thai: "Thai",
+        },
+        highlights: {
+          title: "RESEARCH HIGHLIGHTS",
+          analysis_title: "ESG Data Analysis",
+          analysis_desc: "In-depth analysis of corporate ESG report compliance",
+          ai_title: "AI Automated Detection",
+          ai_desc: "Using machine learning technology for automated detection",
+          cooperation_title: "International Cooperation",
+          cooperation_desc:
+            "Joint research and development with multinational teams",
+          ntcir_title: "NTCIR Certification",
+          ntcir_desc:
+            "International top-tier information retrieval evaluation conference",
+        },
+        cta: {
+          title:
+            "Interested in participating in international collaborative research projects?",
+          subtitle: "Welcome to join the ML-ESG CR 2026 research team",
+          button: "Visit NLPFin Official Website",
+        },
+        footer: {
+          copyright: "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
+          team: "Research Team: NLPFin (Natural Language Processing Finance Research Group) | Official Website:",
+        },
+      },
     },
   },
   zh: {
@@ -353,6 +459,98 @@ const resources = {
         jump: "跳至",
         page: "頁",
         go: "GO",
+      },
+      esg: {
+        nav: {
+          back: "返回首頁",
+          introduction: "活動介紹",
+          timeline: "專案時程",
+          process: "標註流程",
+          languages: "多語言支援",
+          highlights: "研究重點",
+        },
+        header: {
+          title: "ML-ESG Compliance Report",
+          subtitle: "ESG 合規性報告 - 中文版本資料集標註任務",
+          project: "NTCIR-19 2025-2026 國際研究計畫",
+        },
+        introduction: {
+          title: "ACTIVITY INTRODUCTION 活動介紹",
+          description:
+            "我們預計參與 <strong>ML-ESG Compliance Report (ESG 合規性報告)</strong> 中文版本資料集標註任務， 這是一個國際合作的研究計畫，目標是推動 ESG 自動化檢測技術發展。",
+          team_label: "參與團隊：",
+          team_members: "日本團隊、台灣大學、臺北大學",
+          duration_label: "專案期間：",
+          duration: "2025年3月1日 - 2025年5月31日（90天資料標註期）",
+          importance_title: "為何 ESG 合規性重要？",
+          stat1: "<strong>69% 的投資公司</strong>已將 ESG 標準納入監管合規策略",
+          stat2: "全球前 250 大企業中，<strong>96% 已進行 ESG 報告</strong>",
+          stat3:
+            "2022 年，全球 <strong>86% 的資產管理者</strong>已將永續投資納入其投資策略",
+          stat4: "亞太地區 <strong>97% 的資產管理者</strong>已導入 ESG 策略",
+          trends_title: "三大 ESG 全球趨勢",
+          trend1_title: "ESG 整合至企業營運",
+          trend1_desc: "越來越多企業在日常營運中融入 ESG 原則",
+          trend2_title: "應對氣候變遷",
+          trend2_desc: "企業採取更積極的環保措施來因應全球暖化",
+          trend3_title: "監管法規日益嚴格",
+          trend3_desc: "各國政府與國際機構對 ESG 的監管持續強化",
+        },
+        timeline: {
+          title: "PROJECT TIMELINE 專案時程",
+          meeting: "2025/02/26 (三) 20:30-21:00",
+          meeting_desc: "第一次線上討論會議 - ML-ESG CR 2026",
+          labeling: "2025/03/01 - 2025/05/31 (90 Days)",
+          labeling_desc:
+            "<strong>資料標註階段</strong> - ESG 報告標準與數據標註工作",
+          completion: "2025/06 - 2025/07",
+          completion_desc: "完成 ESG 報告標註，建立精準的 ESG 數據模型",
+          conference: "2026/12",
+          conference_desc: "參與 NTCIR-19 國際研討會，發表研究成果",
+        },
+        process: {
+          title: "DATA LABELING PROCESS 數據標註流程",
+          step: "步驟",
+          task: "工作內容",
+          description: "詳細說明",
+          step1_task: "確認 ESG 指標位置",
+          step1_desc: "確認 ESG 指標出現的頁面",
+          step2_task: "指標分類",
+          step2_desc: "量化數據（數字、百分比）或討論/分析（文字描述）",
+          step3_task: "單位驗證",
+          step3_desc: "百分比（%）、貨幣（$）、文字描述或其他數據類型",
+          step4_task: "合規性確認",
+          step4_desc: "確保 ESG 報告符合監管要求",
+        },
+        languages: {
+          title: "MULTI-LANGUAGE SUPPORT 多語言支援",
+          english: "英文 English",
+          french: "法文 French",
+          korean: "韓文 Korean",
+          chinese: "中文 Chinese",
+          japanese: "日文 Japanese",
+          thai: "泰文 Thai",
+        },
+        highlights: {
+          title: "RESEARCH HIGHLIGHTS 研究重點",
+          analysis_title: "ESG 數據分析",
+          analysis_desc: "深度分析企業 ESG 報告合規性",
+          ai_title: "AI 自動化檢測",
+          ai_desc: "運用機器學習技術自動檢測",
+          cooperation_title: "國際合作",
+          cooperation_desc: "與多國團隊共同研究開發",
+          ntcir_title: "NTCIR 認證",
+          ntcir_desc: "國際頂級資訊檢索評測會議",
+        },
+        cta: {
+          title: "有興趣參與國際合作研究計畫嗎？",
+          subtitle: "歡迎加入 ML-ESG CR 2026 研究團隊",
+          button: "訪問 NLPFin 官方網站",
+        },
+        footer: {
+          copyright: "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
+          team: "研究團隊：NLPFin（自然語言處理金融研究小組）| 官方網站：",
+        },
       },
     },
   },
@@ -729,6 +927,26 @@ function initProjectPagination() {
 
 // DOM載入完成後執行
 $(document).ready(function () {
+  // 統一的 HTML 翻譯處理函數
+  // 統一的 HTML 翻譯處理函數
+  function processHTMLTranslations() {
+    $("[data-i18n]").each(function () {
+      const $this = $(this);
+      const key = $this.attr("data-i18n");
+      if (key) {
+        const translatedText = i18next.t(key);
+        // 如果翻譯文本包含 HTML 標籤，使用 html() 而不是 text()
+        if (
+          translatedText.includes("<strong>") ||
+          translatedText.includes("<br>") ||
+          translatedText.includes("<br />")
+        ) {
+          $this.html(translatedText);
+        }
+      }
+    });
+  }
+
   // 初始化i18next
   i18next.init(
     {
@@ -740,6 +958,11 @@ $(document).ready(function () {
     function (err, t) {
       jqueryI18next.init(i18next, $);
       $("body").localize();
+
+      // 延遲處理 HTML 標籤，確保 DOM 完全載入
+      setTimeout(function () {
+        processHTMLTranslations();
+      }, 100);
     }
   );
 
@@ -747,12 +970,18 @@ $(document).ready(function () {
   $("#btn-en").on("click", function () {
     i18next.changeLanguage("en", function () {
       $("body").localize();
+      setTimeout(function () {
+        processHTMLTranslations();
+      }, 50);
     });
   });
 
   $("#btn-zh").on("click", function () {
     i18next.changeLanguage("zh", function () {
       $("body").localize();
+      setTimeout(function () {
+        processHTMLTranslations();
+      }, 50);
     });
   });
 
@@ -884,6 +1113,106 @@ $(document).ready(function () {
         );
     }
   });
+
+  // ESG 頁面特定功能
+  if (window.location.pathname.includes("ESG.html")) {
+    // 滾動動畫效果
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, observerOptions);
+
+    // 為時間軸項目添加動畫
+    document.querySelectorAll(".timeline-item").forEach((item, index) => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(20px)";
+      item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(item);
+    });
+
+    // 為團隊卡片添加動畫
+    document.querySelectorAll(".team-card").forEach((card, index) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    // 為研究重點卡片添加動畫
+    document.querySelectorAll(".highlight-card").forEach((card, index) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    // 為 ESG 區塊添加動畫
+    document.querySelectorAll(".esg-section").forEach((section, index) => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(30px)";
+      section.style.transition = `all 0.8s ease ${index * 0.2}s`;
+      observer.observe(section);
+    });
+
+    // 導覽列活躍狀態處理
+    const navLinks = document.querySelectorAll(".esg-navbar .nav-link");
+    const sections = document.querySelectorAll("section[id]");
+
+    // 滾動監聽，更新導覽列活躍狀態
+    window.addEventListener("scroll", () => {
+      let current = "";
+      const scrollY = window.pageYOffset;
+
+      sections.forEach((section) => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute("id");
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          current = sectionId;
+        }
+      });
+
+      // 更新導覽列活躍狀態
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // 平滑滾動到錨點
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 100;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // 初始設置第一個導覽項為活躍狀態
+    if (navLinks.length > 0) {
+      navLinks[0].classList.add("active");
+    }
+  }
 });
 
 // 移除視差滾動效果，避免header隨滾動移動

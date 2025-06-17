@@ -1205,3 +1205,512 @@ img {
     margin-bottom: 20px;
   }
 }
+/*********************************************************************
+                                ESG PAGE STYLES
+**********************************************************************/
+
+/* ESG 頁面的 Header */
+.esg-header {
+  background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+  color: white;
+  padding: 80px 0;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.esg-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: rotate(35deg);
+}
+
+.esg-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease;
+}
+
+.esg-header p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*********************************************************************
+                                ESG PAGE STYLES
+**********************************************************************/
+
+/* ESG 頁面的 Header */
+.esg-header {
+  background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+  color: white;
+  padding: 80px 0;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.esg-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: rotate(35deg);
+}
+
+.esg-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease;
+}
+
+.esg-header p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ESG 區塊樣式 */
+.esg-section {
+  background: #f8f9fa;
+  padding: 50px 40px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+
+.section-icon {
+  color: #bd1550;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* 時間軸樣式 */
+.timeline-item {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+  border-left: 4px solid #bd1550;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(189, 21, 80, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.timeline-item:hover::before {
+  left: 100%;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 表格樣式 */
+.standards-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.standards-table th {
+  background: #2a7d7d;
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  border: none;
+}
+
+.standards-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  border-left: none;
+  border-right: none;
+}
+
+.standards-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.standards-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 團隊卡片 */
+.team-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2a7d7d, #3a9191);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover::before {
+  transform: scaleX(1);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.team-card i {
+  font-size: 3rem;
+  color: #2a7d7d;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover i {
+  transform: scale(1.1);
+}
+
+/* 研究重點卡片 */
+.highlight-card {
+  text-align: center;
+  padding: 30px 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-card i {
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover i {
+  transform: scale(1.1);
+}
+
+/* 返回按鈕 */
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #bd1550;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background: #e93675;
+  color: white;
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+/* Alert 樣式 */
+.alert-info {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  color: #0d47a1;
+  border-radius: 8px;
+}
+
+.alert-success {
+  background-color: #e8f5e8;
+  border-color: #4caf50;
+  color: #2e7d32;
+  border-radius: 8px;
+}
+
+/* CTA 區塊 */
+.cta-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #dee2e6;
+  border-radius: 15px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .esg-header h1 {
+    font-size: 2rem;
+  }
+
+  .esg-header p {
+    font-size: 1rem;
+  }
+
+  .esg-section {
+    padding: 30px 20px;
+    margin-bottom: 20px;
+  }
+
+  .timeline-item:hover {
+    transform: translateX(5px);
+  }
+
+  .team-card,
+  .highlight-card {
+    margin-bottom: 15px;
+  }
+
+  .back-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .esg-header {
+    padding: 60px 0;
+  }
+
+  .esg-section {
+    padding: 25px 15px;
+  }
+}
+/* ESG 頁面特殊導覽列樣式 */
+.esg-navbar {
+  background: #ffffff;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  padding: 0;
+  margin-bottom: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.esg-navbar .container {
+  position: relative;
+}
+
+.esg-navbar .navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.esg-navbar .nav-item {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.esg-navbar .nav-link {
+  padding: 15px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.esg-navbar .nav-link:hover,
+.esg-navbar .nav-link:focus {
+  color: #bd1550;
+  background-color: #f8f9fa;
+}
+
+.esg-navbar .nav-link.active {
+  color: #bd1550;
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* 語言切換按鈕在導覽列內 */
+.esg-navbar .language-switcher {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.esg-navbar .language-switcher .btn {
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.esg-navbar .language-switcher .btn-outline-primary {
+  border-color: #bd1550;
+  color: #bd1550;
+  background: white;
+}
+
+.esg-navbar .language-switcher .btn-outline-primary:hover {
+  background-color: #bd1550;
+  color: white;
+}
+
+/* 簡化的頂部導覽 */
+.esg-top-nav {
+  background: #f8f9fa;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.esg-top-nav .navbar-brand {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  text-decoration: none;
+}
+
+.esg-top-nav .navbar-brand:hover {
+  color: #bd1550;
+  text-decoration: none;
+}
+
+.esg-top-nav .navbar-brand i {
+  margin-right: 8px;
+  color: #bd1550;
+}
+
+/* 響應式設計 */
+@media (max-width: 1200px) {
+  .esg-navbar .nav-link {
+    min-width: 100px;
+    padding: 15px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 992px) {
+  .esg-navbar .nav-link {
+    min-width: 80px;
+    padding: 15px 10px;
+    font-size: 12px;
+  }
+
+  .esg-navbar .language-switcher {
+    position: static;
+    transform: none;
+    justify-content: center;
+    margin-top: 10px;
+    order: 10;
+  }
+
+  .esg-navbar .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .esg-navbar .nav-item {
+    width: 100%;
+  }
+
+  .esg-navbar .nav-link {
+    width: 100%;
+    min-width: auto;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+@media (max-width: 768px) {
+  .esg-navbar .nav-link {
+    font-size: 11px;
+    padding: 12px 8px;
+  }
+}
