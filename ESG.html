@@ -24,23 +24,483 @@
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/styles-updated.css" />
+
+    <style>
+      /* 繼承 NSTC 樣式設計 */
+      :root {
+        --primary-color: #2a7d7d;
+        --secondary-color: #10b981;
+        --accent-color: #f59e0b;
+        --dark-color: #1f2937;
+        --light-color: #f8fafc;
+        --esg-gradient: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background: var(--light-color);
+        overflow-x: hidden;
+      }
+
+      /* ESG Header */
+      .esg-header {
+        background: var(--esg-gradient);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .esg-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 50%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.05);
+        transform: rotate(35deg);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(35deg) translateY(0px);
+        }
+        50% {
+          transform: rotate(35deg) translateY(-20px);
+        }
+      }
+
+      .esg-header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .esg-header p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        animation: fadeInUp 1s ease 0.2s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 採用 NSTC 導覽列樣式 */
+      .esg-navbar {
+        background: white;
+        box-shadow: var(--shadow);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--dark-color) !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-brand i {
+        color: var(--primary-color);
+      }
+
+      .esg-navbar .nav-link {
+        padding: 20px 30px;
+        font-weight: 500;
+        color: var(--dark-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.1rem;
+        border-radius: 8px;
+      }
+
+      .esg-navbar .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .esg-navbar .nav-link:hover::before,
+      .esg-navbar .nav-link.active::before {
+        width: 100%;
+      }
+
+      .esg-navbar .nav-link:hover,
+      .esg-navbar .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      /* 語言切換按鈕 */
+      .language-switcher {
+        display: flex;
+        gap: 8px;
+      }
+
+      .language-switcher .btn {
+        border-radius: 25px;
+        padding: 10px 24px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .language-switcher .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 響應式導航 */
+      @media (min-width: 992px) {
+        .esg-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+        }
+
+        .esg-navbar .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .esg-navbar .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 0 auto;
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .navbar-nav .nav-link {
+          padding: 15px 20px;
+          font-size: 1rem;
+        }
+
+        .language-switcher {
+          margin: 15px 0;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+        }
+      }
+
+      /* 區塊樣式 */
+      .esg-section {
+        background: white;
+        margin: 40px 0;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .esg-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--esg-gradient);
+      }
+
+      .section-icon {
+        color: var(--primary-color);
+        margin-right: 15px;
+        font-size: 1.5rem;
+      }
+
+      .esg-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: var(--dark-color);
+      }
+
+      /* Timeline 樣式 */
+      .timeline-item {
+        background: white;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--primary-color);
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* 團隊卡片 */
+      .team-card {
+        text-align: center;
+        padding: 30px 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .team-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--esg-gradient);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .team-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .team-card i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .team-card:hover i {
+        transform: scale(1.1);
+      }
+
+      /* 研究重點卡片 */
+      .highlight-card {
+        text-align: center;
+        padding: 30px 15px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .highlight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .highlight-card i {
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .highlight-card:hover i {
+        transform: scale(1.1);
+      }
+
+      /* 表格樣式 */
+      .standards-table {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .standards-table th {
+        background: var(--primary-color);
+        color: white;
+        padding: 15px;
+        font-weight: 600;
+        border: none;
+      }
+
+      .standards-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        border-left: none;
+        border-right: none;
+      }
+
+      .standards-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .standards-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* CTA 區塊 */
+      .cta-section {
+        background: var(--esg-gradient);
+        color: white;
+        padding: 60px 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 60px 0;
+      }
+
+      .cta-section .btn {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .cta-section .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        background: var(--light-color);
+      }
+
+      /* 返回按鈕 */
+      .back-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--primary-color);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: var(--secondary-color);
+        color: white;
+        transform: scale(1.1);
+        text-decoration: none;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      /* Alert 樣式 */
+      .alert {
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .alert-info {
+        background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+        color: #01579b;
+      }
+
+      .alert-success {
+        background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+        color: #2e7d32;
+      }
+
+      /* 響應式設計 */
+      @media (max-width: 768px) {
+        .esg-header h1 {
+          font-size: 2rem;
+        }
+
+        .esg-section {
+          margin: 20px 0;
+          padding: 40px 20px;
+        }
+
+        .esg-section h2 {
+          font-size: 2rem;
+        }
+
+        .cta-section {
+          padding: 40px 20px;
+        }
+
+        .back-btn {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      /* 滾動動畫 */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
 
   <body>
-    <!-- 頂部簡化導覽 -->
-    <nav class="esg-top-nav">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <i class="fas fa-arrow-left"></i>
-          <span data-i18n="esg.nav.back">Back to Home</span>
-        </a>
-      </div>
-    </nav>
-
     <!-- Header -->
     <div class="esg-header">
       <div class="container text-center">
@@ -57,9 +517,15 @@
       </div>
     </div>
 
-    <!-- 主導覽列 -->
+    <!-- 主導覽列 - 採用 NSTC 模式 -->
     <nav class="navbar navbar-expand-lg esg-navbar">
-      <div class="container">
+      <div class="container-fluid">
+        <!-- 返回首頁按鈕 - 固定在最左邊 -->
+        <a class="navbar-brand me-5" href="#" onclick="history.back()">
+          <i class="fas fa-arrow-left me-2"></i>
+          <span data-i18n="esg.nav.back">Back to Home</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -73,7 +539,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="esgNavbar">
-          <ul class="navbar-nav">
+          <!-- 主導覽項目 -->
+          <ul class="navbar-nav flex-grow-1 justify-content-center">
             <li class="nav-item">
               <a
                 class="nav-link active"
@@ -113,8 +580,8 @@
             </li>
           </ul>
 
-          <!-- 語言切換按鈕 -->
-          <div class="language-switcher">
+          <!-- 語言切換按鈕 - 固定在最右邊 -->
+          <div class="language-switcher ms-auto">
             <button
               type="button"
               class="btn btn-outline-primary btn-sm"
@@ -137,7 +604,7 @@
     <!-- Main Content -->
     <main class="container">
       <!-- Activity Introduction -->
-      <section id="introduction" class="esg-section topspace">
+      <section id="introduction" class="esg-section animate-on-scroll">
         <h2 class="mb-4 text-center">
           <i class="fas fa-info-circle section-icon"></i>
           <span data-i18n="esg.introduction.title">ACTIVITY INTRODUCTION</span>
@@ -263,7 +730,7 @@
       </section>
 
       <!-- Timeline -->
-      <section id="timeline" class="esg-section">
+      <section id="timeline" class="esg-section animate-on-scroll">
         <h2 class="mb-4 text-center">
           <i class="fas fa-clock section-icon"></i>
           <span data-i18n="esg.timeline.title">PROJECT TIMELINE</span>
@@ -317,7 +784,7 @@
       </section>
 
       <!-- Data Labeling Process -->
-      <section id="process" class="esg-section">
+      <section id="process" class="esg-section animate-on-scroll">
         <h2 class="mb-4 text-center">
           <i class="fas fa-tasks section-icon"></i>
           <span data-i18n="esg.process.title">DATA LABELING PROCESS</span>
@@ -373,7 +840,7 @@
       </section>
 
       <!-- Multi-language Support -->
-      <section id="languages" class="esg-section">
+      <section id="languages" class="esg-section animate-on-scroll">
         <h2 class="mb-5 text-center">
           <i class="fas fa-globe section-icon"></i>
           <span data-i18n="esg.languages.title">MULTI-LANGUAGE SUPPORT</span>
@@ -426,7 +893,7 @@
       </section>
 
       <!-- Research Highlights -->
-      <section id="highlights" class="esg-section">
+      <section id="highlights" class="esg-section animate-on-scroll">
         <h2 class="mb-4 text-center">
           <i class="fas fa-award section-icon"></i>
           <span data-i18n="esg.highlights.title">RESEARCH HIGHLIGHTS</span>
@@ -482,7 +949,7 @@
       </section>
 
       <!-- Call to Action -->
-      <section class="esg-section cta-section text-center">
+      <section class="cta-section">
         <h3 data-i18n="esg.cta.title">
           Interested in participating in international collaborative research
           projects?
@@ -490,24 +957,15 @@
         <p class="lead" data-i18n="esg.cta.subtitle">
           Welcome to join the ML-ESG CR 2026 research team
         </p>
-        <a
-          href="http://nlpfin.com/"
-          target="_blank"
-          class="btn btn-primary btn-lg mt-3"
-        >
+        <a href="http://nlpfin.com/" target="_blank" class="btn btn-lg mt-3">
           <i class="fas fa-external-link-alt"></i>
           <span data-i18n="esg.cta.button">Visit NLPFin Official Website</span>
         </a>
       </section>
     </main>
 
-    <!-- Back to Home Button -->
-    <a href="index.html" class="back-btn" title="Back to Home">
-      <i class="fas fa-home"></i>
-    </a>
-
     <!-- Footer -->
-    <footer id="footer" class="topspace" role="contentinfo">
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
@@ -528,11 +986,330 @@
       </div>
     </footer>
 
-    <!-- JavaScript libs -->
+    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.8/i18next.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script>
+      // 完整的國際化翻譯 (ESG 專用)
+      const translations = {
+        en: {
+          // 導覽列
+          "esg.nav.back": "Back to Home",
+          "esg.nav.introduction": "Introduction",
+          "esg.nav.timeline": "Timeline",
+          "esg.nav.process": "Process",
+          "esg.nav.languages": "Languages",
+          "esg.nav.highlights": "Highlights",
+
+          // Header
+          "esg.header.title": "ML-ESG Compliance Report",
+          "esg.header.subtitle":
+            "ESG Compliance Report - Chinese Dataset Annotation Task",
+          "esg.header.project":
+            "NTCIR-19 2025-2026 International Research Project",
+
+          // Introduction
+          "esg.introduction.title": "ACTIVITY INTRODUCTION",
+          "esg.introduction.description":
+            "We plan to participate in the <strong>ML-ESG Compliance Report</strong> Chinese dataset annotation task, which is an international collaborative research project aimed at advancing ESG automated detection technology.",
+          "esg.introduction.team_label": "Participating Teams:",
+          "esg.introduction.team_members":
+            "Japanese Team, National Taiwan University, National Taipei University",
+          "esg.introduction.duration_label": "Project Duration:",
+          "esg.introduction.duration":
+            "March 1, 2025 - May 31, 2025 (90-day annotation period)",
+          "esg.introduction.importance_title":
+            "Why is ESG Compliance Important?",
+          "esg.introduction.stat1":
+            "<strong>69% of investment companies</strong> have incorporated ESG standards into their regulatory compliance strategies",
+          "esg.introduction.stat2":
+            "Among the top 250 global companies, <strong>96% have conducted ESG reporting</strong>",
+          "esg.introduction.stat3":
+            "In 2022, <strong>86% of global asset managers</strong> have integrated sustainable investing into their investment strategies",
+          "esg.introduction.stat4":
+            "<strong>97% of asset managers</strong> in the Asia-Pacific region have adopted ESG strategies",
+          "esg.introduction.trends_title": "Three Major Global ESG Trends",
+          "esg.introduction.trend1_title":
+            "ESG Integration into Corporate Operations",
+          "esg.introduction.trend1_desc":
+            "More companies are incorporating ESG principles into their daily operations",
+          "esg.introduction.trend2_title": "Climate Change Response",
+          "esg.introduction.trend2_desc":
+            "Companies are adopting more proactive environmental measures to address global warming",
+          "esg.introduction.trend3_title":
+            "Increasingly Strict Regulatory Framework",
+          "esg.introduction.trend3_desc":
+            "Governments and international organizations continue to strengthen ESG regulations",
+
+          // Timeline
+          "esg.timeline.title": "PROJECT TIMELINE",
+          "esg.timeline.meeting": "2025/02/26 (Wed) 20:30-21:00",
+          "esg.timeline.meeting_desc":
+            "First Online Discussion Meeting - ML-ESG CR 2026",
+          "esg.timeline.labeling": "2025/03/01 - 2025/05/31 (90 Days)",
+          "esg.timeline.labeling_desc":
+            "<strong>Data Annotation Phase</strong> - ESG reporting standards and data annotation work",
+          "esg.timeline.completion": "2025/06 - 2025/07",
+          "esg.timeline.completion_desc":
+            "Complete ESG report annotation and establish precise ESG data models",
+          "esg.timeline.conference": "2026/12",
+          "esg.timeline.conference_desc":
+            "Participate in NTCIR-19 International Conference and present research findings",
+
+          // Process
+          "esg.process.title": "DATA LABELING PROCESS",
+          "esg.process.step": "Step",
+          "esg.process.task": "Task",
+          "esg.process.description": "Description",
+          "esg.process.step1_task": "Confirm ESG Indicator Location",
+          "esg.process.step1_desc":
+            "Confirm the pages where ESG indicators appear",
+          "esg.process.step2_task": "Indicator Classification",
+          "esg.process.step2_desc":
+            "Quantitative data (numbers, percentages) or discussion/analysis (text description)",
+          "esg.process.step3_task": "Unit Verification",
+          "esg.process.step3_desc":
+            "Percentage (%), currency ($), text description, or other data types",
+          "esg.process.step4_task": "Compliance Confirmation",
+          "esg.process.step4_desc":
+            "Ensure ESG reports comply with regulatory requirements",
+
+          // Languages
+          "esg.languages.title": "MULTI-LANGUAGE SUPPORT",
+          "esg.languages.english": "English",
+          "esg.languages.french": "French",
+          "esg.languages.korean": "Korean",
+          "esg.languages.chinese": "Chinese",
+          "esg.languages.japanese": "Japanese",
+          "esg.languages.thai": "Thai",
+
+          // Highlights
+          "esg.highlights.title": "RESEARCH HIGHLIGHTS",
+          "esg.highlights.analysis_title": "ESG Data Analysis",
+          "esg.highlights.analysis_desc":
+            "In-depth analysis of corporate ESG report compliance",
+          "esg.highlights.ai_title": "AI Automated Detection",
+          "esg.highlights.ai_desc":
+            "Using machine learning technology for automated detection",
+          "esg.highlights.cooperation_title": "International Cooperation",
+          "esg.highlights.cooperation_desc":
+            "Joint research and development with multinational teams",
+          "esg.highlights.ntcir_title": "NTCIR Certification",
+          "esg.highlights.ntcir_desc":
+            "International top-tier information retrieval evaluation conference",
+
+          // CTA & Footer
+          "esg.cta.title":
+            "Interested in participating in international collaborative research projects?",
+          "esg.cta.subtitle":
+            "Welcome to join the ML-ESG CR 2026 research team",
+          "esg.cta.button": "Visit NLPFin Official Website",
+          "esg.footer.copyright":
+            "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
+          "esg.footer.team":
+            "Research Team: NLPFin (Natural Language Processing Finance Research Group) | Official Website:",
+        },
+        zh: {
+          // 導覽列
+          "esg.nav.back": "返回首頁",
+          "esg.nav.introduction": "活動介紹",
+          "esg.nav.timeline": "專案時程",
+          "esg.nav.process": "標註流程",
+          "esg.nav.languages": "多語言支援",
+          "esg.nav.highlights": "研究重點",
+
+          // Header
+          "esg.header.title": "ML-ESG Compliance Report",
+          "esg.header.subtitle": "ESG 合規性報告 - 中文版本資料集標註任務",
+          "esg.header.project": "NTCIR-19 2025-2026 國際研究計畫",
+
+          // Introduction
+          "esg.introduction.title": "ACTIVITY INTRODUCTION 活動介紹",
+          "esg.introduction.description":
+            "我們預計參與 <strong>ML-ESG Compliance Report (ESG 合規性報告)</strong> 中文版本資料集標註任務， 這是一個國際合作的研究計畫，目標是推動 ESG 自動化檢測技術發展。",
+          "esg.introduction.team_label": "參與團隊：",
+          "esg.introduction.team_members": "日本團隊、台灣大學、臺北大學",
+          "esg.introduction.duration_label": "專案期間：",
+          "esg.introduction.duration":
+            "2025年3月1日 - 2025年5月31日（90天資料標註期）",
+          "esg.introduction.importance_title": "為何 ESG 合規性重要？",
+          "esg.introduction.stat1":
+            "<strong>69% 的投資公司</strong>已將 ESG 標準納入監管合規策略",
+          "esg.introduction.stat2":
+            "全球前 250 大企業中，<strong>96% 已進行 ESG 報告</strong>",
+          "esg.introduction.stat3":
+            "2022 年，全球 <strong>86% 的資產管理者</strong>已將永續投資納入其投資策略",
+          "esg.introduction.stat4":
+            "亞太地區 <strong>97% 的資產管理者</strong>已導入 ESG 策略",
+          "esg.introduction.trends_title": "三大 ESG 全球趨勢",
+          "esg.introduction.trend1_title": "ESG 整合至企業營運",
+          "esg.introduction.trend1_desc":
+            "越來越多企業在日常營運中融入 ESG 原則",
+          "esg.introduction.trend2_title": "應對氣候變遷",
+          "esg.introduction.trend2_desc":
+            "企業採取更積極的環保措施來因應全球暖化",
+          "esg.introduction.trend3_title": "監管法規日益嚴格",
+          "esg.introduction.trend3_desc":
+            "各國政府與國際機構對 ESG 的監管持續強化",
+
+          // Timeline
+          "esg.timeline.title": "PROJECT TIMELINE 專案時程",
+          "esg.timeline.meeting": "2025/02/26 (三) 20:30-21:00",
+          "esg.timeline.meeting_desc": "第一次線上討論會議 - ML-ESG CR 2026",
+          "esg.timeline.labeling": "2025/03/01 - 2025/05/31 (90 Days)",
+          "esg.timeline.labeling_desc":
+            "<strong>資料標註階段</strong> - ESG 報告標準與數據標註工作",
+          "esg.timeline.completion": "2025/06 - 2025/07",
+          "esg.timeline.completion_desc":
+            "完成 ESG 報告標註，建立精準的 ESG 數據模型",
+          "esg.timeline.conference": "2026/12",
+          "esg.timeline.conference_desc":
+            "參與 NTCIR-19 國際研討會，發表研究成果",
+
+          // Process
+          "esg.process.title": "DATA LABELING PROCESS 數據標註流程",
+          "esg.process.step": "步驟",
+          "esg.process.task": "工作內容",
+          "esg.process.description": "詳細說明",
+          "esg.process.step1_task": "確認 ESG 指標位置",
+          "esg.process.step1_desc": "確認 ESG 指標出現的頁面",
+          "esg.process.step2_task": "指標分類",
+          "esg.process.step2_desc":
+            "量化數據（數字、百分比）或討論/分析（文字描述）",
+          "esg.process.step3_task": "單位驗證",
+          "esg.process.step3_desc":
+            "百分比（%）、貨幣（$）、文字描述或其他數據類型",
+          "esg.process.step4_task": "合規性確認",
+          "esg.process.step4_desc": "確保 ESG 報告符合監管要求",
+
+          // Languages
+          "esg.languages.title": "MULTI-LANGUAGE SUPPORT 多語言支援",
+          "esg.languages.english": "英文 English",
+          "esg.languages.french": "法文 French",
+          "esg.languages.korean": "韓文 Korean",
+          "esg.languages.chinese": "中文 Chinese",
+          "esg.languages.japanese": "日文 Japanese",
+          "esg.languages.thai": "泰文 Thai",
+
+          // Highlights
+          "esg.highlights.title": "RESEARCH HIGHLIGHTS 研究重點",
+          "esg.highlights.analysis_title": "ESG 數據分析",
+          "esg.highlights.analysis_desc": "深度分析企業 ESG 報告合規性",
+          "esg.highlights.ai_title": "AI 自動化檢測",
+          "esg.highlights.ai_desc": "運用機器學習技術自動檢測",
+          "esg.highlights.cooperation_title": "國際合作",
+          "esg.highlights.cooperation_desc": "與多國團隊共同研究開發",
+          "esg.highlights.ntcir_title": "NTCIR 認證",
+          "esg.highlights.ntcir_desc": "國際頂級資訊檢索評測會議",
+
+          // CTA & Footer
+          "esg.cta.title": "有興趣參與國際合作研究計畫嗎？",
+          "esg.cta.subtitle": "歡迎加入 ML-ESG CR 2026 研究團隊",
+          "esg.cta.button": "訪問 NLPFin 官方網站",
+          "esg.footer.copyright":
+            "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
+          "esg.footer.team":
+            "研究團隊：NLPFin（自然語言處理金融研究小組）| 官方網站：",
+        },
+      };
+
+      let currentLang = "en";
+
+      function updateTranslations() {
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          const translation = translations[currentLang][key];
+          if (translation) {
+            // 檢查是否包含HTML標籤
+            if (
+              translation.includes("<strong>") ||
+              translation.includes("<br>")
+            ) {
+              element.innerHTML = translation;
+            } else {
+              element.textContent = translation;
+            }
+          }
+        });
+      }
+
+      // 語言切換功能
+      document.getElementById("btn-en").addEventListener("click", () => {
+        currentLang = "en";
+        updateTranslations();
+        document
+          .getElementById("btn-en")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-en").classList.add("btn-primary");
+        document.getElementById("btn-zh").classList.remove("btn-primary");
+        document.getElementById("btn-zh").classList.add("btn-outline-primary");
+      });
+
+      document.getElementById("btn-zh").addEventListener("click", () => {
+        currentLang = "zh";
+        updateTranslations();
+        document
+          .getElementById("btn-zh")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-zh").classList.add("btn-primary");
+        document.getElementById("btn-en").classList.remove("btn-primary");
+        document.getElementById("btn-en").classList.add("btn-outline-primary");
+      });
+
+      // 滾動動畫
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // 平滑滾動
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // 導覽列活躍狀態
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".esg-navbar .nav-link");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          if (scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // 初始化
+      updateTranslations();
+    </script>
   </body>
 </html>
