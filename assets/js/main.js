@@ -1,19 +1,14 @@
 // ========================================
-// 🚀 完整修正版 main.js - 統一的滾動導覽與分頁功能
+// 🚀 完整修正版 main.js - 統一導覽與分頁功能
 // ========================================
 
 // 全域變數
 let currentPage = 1;
 let totalPages = 3;
-let currentSortOrder = "desc"; // 記錄當前排序狀態
-
-// 專案分頁變數
+let currentSortOrder = "desc";
 let currentProjectPage = 1;
 let totalProjectPages = 1;
-
-// 滾動相關變數
 let scrollThrottleTimer = null;
-let lastScrollTop = 0;
 
 // 證照資料
 const certifications = [
@@ -568,6 +563,52 @@ const resources = {
 // 🔧 工具函數
 // ========================================
 
+// 統一的平滑滾動函數
+function smoothScrollTo(target, offset = 100) {
+  if (!target || !target.length) return;
+
+  // 暫時禁用CSS smooth scroll避免衝突
+  $("html").css("scroll-behavior", "auto");
+
+  // 使用jQuery動畫
+  $("html, body").animate(
+    {
+      scrollTop: target.offset().top - offset,
+    },
+    {
+      duration: 600,
+      easing: "swing",
+      complete: function () {
+        // 恢復CSS smooth scroll
+        setTimeout(() => {
+          $("html").css("scroll-behavior", "smooth");
+        }, 100);
+      },
+    }
+  );
+}
+
+// 滾動到頂部函數
+window.scrollToTop = function () {
+  $("html").css("scroll-behavior", "auto");
+  $("html, body").animate(
+    { scrollTop: 0 },
+    {
+      duration: 600,
+      complete: function () {
+        setTimeout(() => {
+          $("html").css("scroll-behavior", "smooth");
+        }, 100);
+      },
+    }
+  );
+
+  // 立即更新導覽狀態
+  setTimeout(() => {
+    updateNavigation("home");
+  }, 50);
+};
+
 // 排序功能
 function sortCards(container, order) {
   const cards = container.find(".flex-col").get();
@@ -901,7 +942,7 @@ function initProjectPagination() {
 }
 
 // ========================================
-// 🚀 統一的滾動導覽列效果 - 完全修正版本
+// 🚀 統一的滾動導覽列效果
 // ========================================
 
 // 滾動進度條功能
@@ -922,17 +963,24 @@ function updateScrollProgress() {
 function updateNavigation(sectionId) {
   console.log("📍 更新導覽狀態:", sectionId);
 
-  // 移除所有活躍狀態
-  $(".navbar .nav-link").removeClass("active");
+  // 移除所有活躍狀態 - 支援兩種類型的導覽列
+  $(".navbar .nav-link, .index-navbar .nav-link").removeClass("active");
 
   if (!sectionId || sectionId === "home") {
     // 頁面頂部或首頁
-    $(
-      `.navbar .nav-link[href="index.html"], .navbar .nav-link[href="#"]`
-    ).addClass("active");
+    $(`
+      .navbar .nav-link[href="index.html"], 
+      .navbar .nav-link[href="#"],
+      .navbar .nav-link[onclick*="scrollToTop"],
+      .index-navbar .nav-link[href="index.html"], 
+      .index-navbar .nav-link[href="#"],
+      .index-navbar .nav-link[onclick*="scrollToTop"]
+    `).addClass("active");
   } else {
     // 特定區塊
-    $(`.navbar .nav-link[href="#${sectionId}"]`).addClass("active");
+    $(
+      `.navbar .nav-link[href="#${sectionId}"], .index-navbar .nav-link[href="#${sectionId}"]`
+    ).addClass("active");
   }
 }
 
@@ -969,7 +1017,7 @@ function getCurrentSection() {
   return currentSection;
 }
 
-// 主滾動處理函數
+// 主滾動處理函數 - 統一版本
 function handleScroll() {
   const scrollTop = $(window).scrollTop();
 
@@ -982,25 +1030,12 @@ function handleScroll() {
   // 更新導覽列狀態
   updateNavigation(currentSection);
 
-  // 導覽列滾動效果
-  const navbar = $(".navbar");
+  // 導覽列滾動效果 - 支援兩種導覽列
+  const navbar = $(".navbar, .index-navbar");
   if (scrollTop > 50) {
     navbar.addClass("scrolled");
   } else {
     navbar.removeClass("scrolled");
-  }
-}
-
-// 平滑滾動到指定位置
-function smoothScrollTo(target, offset = 100) {
-  if (target && target.length) {
-    $("html, body").animate(
-      {
-        scrollTop: target.offset().top - offset,
-      },
-      800,
-      "swing"
-    );
   }
 }
 
@@ -1039,9 +1074,9 @@ $(document).ready(function () {
   // 創建滾動進度條
   createScrollProgress();
 
-  // 🚀 手動控制導覽列固定效果 - 更可靠的方案
+  // 🚀 手動控制導覽列固定效果
   function initStickyNavbar() {
-    const navbar = $(".navbar");
+    const navbar = $(".navbar, .index-navbar");
     const header = $("#header");
 
     if (!navbar.length || !header.length) return;
@@ -1087,38 +1122,36 @@ $(document).ready(function () {
   // 初始化固定導覽列
   initStickyNavbar();
 
-  // 平滑滾動功能
-  $('a[href^="#"]').on("click", function (e) {
-    const targetHref = $(this).attr("href");
-    const target = $(targetHref);
+  // 🚀 統一的導覽連結點擊處理 - 只註冊一次
+  $(document).off("click.navigation"); // 移除之前的事件
+  $(document).on(
+    "click.navigation",
+    'a[href^="#"]:not([href="#"])',
+    function (e) {
+      const targetHref = $(this).attr("href");
+      const target = $(targetHref);
 
-    console.log("🎯 點擊導覽連結:", targetHref);
+      console.log("🎯 點擊導覽連結:", targetHref);
 
-    if (target.length) {
-      e.preventDefault();
+      if (target.length) {
+        e.preventDefault();
+        e.stopPropagation();
 
-      // 先更新導覽列狀態
-      const sectionId = targetHref.substring(1);
-      updateNavigation(sectionId);
+        // 立即更新導覽列狀態
+        const sectionId = targetHref.substring(1);
+        updateNavigation(sectionId);
 
-      // 平滑滾動
-      smoothScrollTo(target);
+        // 平滑滾動
+        smoothScrollTo(target);
+      }
     }
-  });
-
-  // 滾動監聽 - 使用節流提升性能
-  $(window).on("scroll", function () {
-    if (scrollThrottleTimer) return;
-
-    scrollThrottleTimer = setTimeout(() => {
-      handleScroll();
-      scrollThrottleTimer = null;
-    }, 16); // ~60fps
-  });
+  );
 
   // 首頁按鈕特殊處理
-  $('.navbar-brand, a[href="index.html"], a[href="#"]').on(
-    "click",
+  $(document).off("click.home"); // 移除之前的事件
+  $(document).on(
+    "click.home",
+    '.navbar-brand, a[href="index.html"], a[href="#"], a[onclick*="scrollToTop"]',
     function (e) {
       // 如果已經在首頁，平滑滾動到頂部
       if (
@@ -1126,11 +1159,22 @@ $(document).ready(function () {
         window.location.pathname === "/"
       ) {
         e.preventDefault();
-        updateNavigation("home");
-        $("html, body").animate({ scrollTop: 0 }, 800);
+        e.stopPropagation();
+        window.scrollToTop();
       }
     }
   );
+
+  // 統一的滾動監聽 - 只註冊一次，使用節流提升性能
+  $(window).off("scroll.main"); // 移除之前的事件
+  $(window).on("scroll.main", function () {
+    if (scrollThrottleTimer) return;
+
+    scrollThrottleTimer = setTimeout(() => {
+      handleScroll();
+      scrollThrottleTimer = null;
+    }, 16); // ~60fps
+  });
 
   // 監聽 hash 變化
   $(window).on("hashchange", function () {
@@ -1387,3 +1431,151 @@ $(document).ready(function () {
 
   console.log("🎉 系統初始化完成！");
 });
+// 🚀 進階導覽優化 - 加入到 main.js 的最後
+// 更精確的區塊檢測
+function getVisibleSection() {
+  const sections = $("section[id]");
+  let maxVisibleSection = null;
+  let maxVisibleArea = 0;
+
+  const scrollTop = $(window).scrollTop();
+  const windowHeight = $(window).height();
+  const threshold = windowHeight * 0.3; // 30% 可見度閾值
+
+  sections.each(function () {
+    const $section = $(this);
+    const sectionTop = $section.offset().top;
+    const sectionHeight = $section.outerHeight();
+    const sectionBottom = sectionTop + sectionHeight;
+
+    // 計算與視窗的交集
+    const visibleTop = Math.max(scrollTop, sectionTop);
+    const visibleBottom = Math.min(scrollTop + windowHeight, sectionBottom);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+    // 只考慮可見度超過閾值的區塊
+    if (visibleHeight > threshold && visibleHeight > maxVisibleArea) {
+      maxVisibleArea = visibleHeight;
+      maxVisibleSection = $section.attr("id");
+    }
+  });
+
+  // 如果在頁面最頂部（滾動距離 < 100px），視為首頁
+  if (scrollTop < 100) {
+    maxVisibleSection = "home";
+  }
+
+  return maxVisibleSection;
+}
+
+// 🎯 快速導覽功能（鍵盤快捷鍵）
+$(document).on("keydown", function (e) {
+  // 確保不在輸入框中
+  if ($("input, textarea").is(":focus")) return;
+
+  const sections = [
+    "education",
+    "seminar",
+    "certifications",
+    "recentworks",
+    "school",
+  ];
+  const currentSection = getCurrentSection();
+  const currentIndex = sections.indexOf(currentSection);
+
+  switch (e.keyCode) {
+    case 72: // H - Home
+      e.preventDefault();
+      window.scrollToTop();
+      break;
+
+    case 38: // 上箭頭 - 上一個區塊
+      if (currentIndex > 0) {
+        e.preventDefault();
+        const prevSection = sections[currentIndex - 1];
+        const target = $(`#${prevSection}`);
+        if (target.length) {
+          updateNavigation(prevSection);
+          smoothScrollTo(target);
+        }
+      } else if (currentSection !== "home") {
+        e.preventDefault();
+        window.scrollToTop();
+      }
+      break;
+
+    case 40: // 下箭頭 - 下一個區塊
+      if (currentIndex >= 0 && currentIndex < sections.length - 1) {
+        e.preventDefault();
+        const nextSection = sections[currentIndex + 1];
+        const target = $(`#${nextSection}`);
+        if (target.length) {
+          updateNavigation(nextSection);
+          smoothScrollTo(target);
+        }
+      } else if (currentSection === "home") {
+        e.preventDefault();
+        const target = $("#education");
+        if (target.length) {
+          updateNavigation("education");
+          smoothScrollTo(target);
+        }
+      }
+      break;
+  }
+});
+
+// 🔄 頁面可見性 API - 當頁面重新獲得焦點時檢查位置
+document.addEventListener("visibilitychange", function () {
+  if (!document.hidden) {
+    setTimeout(() => {
+      handleScroll(); // 重新檢查滾動位置
+    }, 100);
+  }
+});
+
+// 📱 觸控裝置專用：改善移動端的導覽體驗
+if ("ontouchstart" in window) {
+  let touchStartY = 0;
+  let isScrolling = false;
+
+  $(window).on("touchstart", function (e) {
+    touchStartY = e.originalEvent.touches[0].clientY;
+    isScrolling = false;
+  });
+
+  $(window).on("touchmove", function (e) {
+    if (!isScrolling) {
+      isScrolling = true;
+      // 在移動端滾動時減少更新頻率
+      if (scrollThrottleTimer) return;
+      scrollThrottleTimer = setTimeout(() => {
+        handleScroll();
+        scrollThrottleTimer = null;
+      }, 32); // 移動端使用較低的更新頻率
+    }
+  });
+}
+
+// 🎨 頁面載入動畫
+$(window).on("load", function () {
+  // 為所有section添加載入動畫
+  $("section[id]").each(function (index) {
+    const $section = $(this);
+    $section.css({
+      opacity: 0,
+      transform: "translateY(20px)",
+    });
+
+    setTimeout(() => {
+      $section.css({
+        opacity: 1,
+        transform: "translateY(0)",
+        transition: "all 0.6s ease",
+      });
+    }, index * 100);
+  });
+});
+
+console.log("🚀 進階導覽功能已啟用！");
+console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊");

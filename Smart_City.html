@@ -11,226 +11,812 @@
     <title data-i18n="title">智慧城市大型語言模型代理人系統 專案介紹</title>
     <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5 -->
     <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Icon font -->
+    <!-- Font Awesome -->
     <link
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- 引入 i18next 與 jquery-i18next -->
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
-    <!-- 自訂樣式 -->
     <style>
+      /* 現代化樣式設計 - 智慧城市主題 */
+      :root {
+        --primary-color: #3b82f6; /* 藍色 - 科技主色 */
+        --secondary-color: #10b981; /* 綠色 - 智慧環保 */
+        --accent-color: #8b5cf6; /* 紫色 - 創新科技 */
+        --dark-color: #1f2937;
+        --light-color: #f8fafc;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+        --tech-gradient: linear-gradient(
+          135deg,
+          #3b82f6 0%,
+          #8b5cf6 50%,
+          #10b981 100%
+        );
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
+        font-family: "Inter", sans-serif;
         font-size: 20px;
         line-height: 1.8;
+        color: var(--dark-color);
+        background: var(--light-color);
+        overflow-x: hidden;
       }
-      .main-title {
+
+      /* Header 區域 */
+      .smart-city-header {
+        background: var(--tech-gradient);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .smart-city-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(45deg);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .smart-city-header::after {
+        content: "🏙️";
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        font-size: 4rem;
+        opacity: 0.3;
+        animation: glow 4s ease-in-out infinite;
+      }
+
+      /* 添加網格背景 */
+      .smart-city-header {
+        background-image: var(--tech-gradient),
+          radial-gradient(
+            circle at 25% 25%,
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 2px
+          );
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        background-position: 0 0, 0 0, 25px 25px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0px);
+        }
+        50% {
+          transform: rotate(45deg) translateY(-20px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          opacity: 0.3;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        50% {
+          opacity: 0.7;
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+      }
+
+      .smart-city-header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .smart-city-header .main-title {
         font-size: 42px;
         font-weight: bold;
-        margin-top: 20px;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       }
-      .sub-title {
+
+      .smart-city-header .sub-title {
         font-size: 28px;
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 20px;
       }
-      .small-title {
+
+      .smart-city-header .small-title {
         font-size: 24px;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 2px;
       }
+
+      .smart-city-header p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        animation: fadeInUp 1s ease 0.2s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      .smart-city-header img.img-circle {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        margin: 0 auto 30px;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      .smart-city-header img.img-circle:hover {
+        transform: scale(1.1);
+        animation-play-state: paused;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 🚀 NSTC 風格導覽列 */
+      .smart-city-navbar {
+        background: white;
+        box-shadow: var(--shadow);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .smart-city-navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--dark-color) !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+        padding: 20px 30px;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-brand i {
+        color: var(--primary-color);
+        margin-right: 8px;
+      }
+
+      .smart-city-navbar .nav-link {
+        padding: 20px 25px;
+        font-weight: 500;
+        color: var(--dark-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .smart-city-navbar .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+
+      .smart-city-navbar .nav-link:hover::before,
+      .smart-city-navbar .nav-link.active::before {
+        width: 85%;
+      }
+
+      .smart-city-navbar .nav-link:hover,
+      .smart-city-navbar .nav-link.active {
+        color: var(--primary-color);
+        background: rgba(59, 130, 246, 0.05);
+        transform: translateY(-1px);
+      }
+
+      /* 語言切換按鈕 - NSTC 風格 */
+      .language-switcher {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .language-switcher .btn {
+        border-radius: 25px;
+        padding: 10px 24px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        border: 2px solid var(--primary-color);
+      }
+
+      .language-switcher .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+      }
+
+      .language-switcher .btn-outline-primary {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        background: transparent !important;
+      }
+
+      .language-switcher .btn-outline-primary:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+      }
+
+      .language-switcher .btn-primary {
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-color: var(--primary-color) !important;
+      }
+
+      /* 內容區塊樣式 */
+      .content-section {
+        background: white;
+        margin: 40px 0;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(59, 130, 246, 0.1);
+      }
+
+      .content-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient);
+      }
+
+      .content-section::after {
+        content: "🔗";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        opacity: 0.3;
+        animation: glow 3s ease-in-out infinite;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: var(--primary-color);
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 2px;
+      }
+
+      /* 智慧城市特色卡片 */
+      .tech-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tech-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.1) 0%,
+          transparent 70%
+        );
+        transform: scale(0);
+        transition: transform 0.5s ease;
+      }
+
+      .tech-card:hover::before {
+        transform: scale(1);
+      }
+
+      .tech-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary-color);
+      }
+
+      /* 圖片樣式 */
+      .project-image {
+        display: block;
+        margin: 0 auto 30px auto;
+        max-width: 100%;
+        height: auto;
+        box-shadow: var(--shadow);
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+        border: 3px solid rgba(59, 130, 246, 0.1);
+      }
+
+      .project-image:hover {
+        transform: scale(1.02);
+        border-color: var(--primary-color);
+      }
+
+      /* 智慧城市列表樣式 */
+      ul li {
+        margin-bottom: 15px;
+        font-size: 18px;
+        position: relative;
+        padding-left: 35px;
+      }
+
+      ul li::before {
+        content: "🌐";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+      }
+
+      /* 科技元素裝飾 */
+      .tech-decoration {
+        position: absolute;
+        opacity: 0.1;
+        font-size: 2rem;
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .tech-decoration:nth-child(1) {
+        top: 10%;
+        left: 80%;
+        animation-delay: 0s;
+      }
+
+      .tech-decoration:nth-child(2) {
+        top: 60%;
+        left: 10%;
+        animation-delay: 1s;
+      }
+
+      .tech-decoration:nth-child(3) {
+        top: 80%;
+        right: 5%;
+        animation-delay: 2s;
+      }
+
+      /* 響應式設計 */
+      @media (min-width: 992px) {
+        .smart-city-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+        }
+
+        .smart-city-navbar .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .smart-city-navbar .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 0 auto;
+          gap: 5px;
+          justify-content: center;
+          flex: 1;
+        }
+
+        .language-switcher {
+          margin-left: auto;
+          position: static;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .smart-city-header h1 {
+          font-size: 2rem;
+        }
+
+        .smart-city-header .main-title {
+          font-size: 2rem;
+        }
+
+        .smart-city-header .sub-title {
+          font-size: 1.2rem;
+        }
+
+        .content-section {
+          margin: 20px 0;
+          padding: 40px 20px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .language-switcher {
+          margin: 15px 0;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .smart-city-navbar .nav-link {
+          padding: 15px 20px;
+          font-size: 1rem;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+          padding: 15px 20px;
+        }
+      }
+
+      /* 頁尾樣式 */
+      #footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient);
+      }
+
+      #footer a {
+        color: #e3f2f2;
+        transition: color 0.3s ease;
+      }
+
+      #footer a:hover {
+        color: var(--secondary-color);
+      }
+
+      #footer h3.widget-title {
+        color: white;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      #footer h3.widget-title::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      /* 滾動動畫 */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 漢堡按鈕樣式 */
+      .navbar-toggler {
+        border: none;
+        padding: 10px;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      /* 文字樣式調整 */
       p {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        line-height: 1.7;
       }
+
       h2,
       h3,
       h4 {
-        font-size: 28px;
-      }
-      .section-title {
-        margin-top: 40px;
+        font-size: 24px;
         margin-bottom: 20px;
-        font-size: 32px;
-        font-weight: bold;
-        color: #333;
+        color: var(--dark-color);
       }
-      .team-member {
-        text-align: center;
-        margin-bottom: 20px;
+
+      strong {
+        color: var(--primary-color);
+        font-weight: 600;
       }
-      .team-member img {
-        max-width: 150px;
-        border-radius: 50%;
-        margin-bottom: 10px;
+
+      /* 社交媒體圖標 */
+      .follow-me-icons a {
+        margin-right: 15px;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        color: var(--secondary-color);
       }
-      .team-member .name {
-        font-weight: bold;
-        font-size: 20px;
+
+      .follow-me-icons a:hover {
+        transform: translateY(-3px);
+        color: var(--primary-color);
       }
-      .team-member .role {
-        font-size: 18px;
-        color: #666;
-      }
-      /* 導覽列樣式 */
-      .navbar-nav > li > a {
-        font-size: 18px;
-      }
-      /* 語言切換按鈕：放在導覽列右側 */
-      .language-switcher {
-        margin-top: 8px;
-      }
-      /* 區塊式呈現 */
-      .section-block {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 30px;
-        margin-bottom: 20px;
+
+      /* 特殊效果 */
+      .highlight-text {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
       }
     </style>
-
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <!-- Header 與導覽列 -->
-    <header id="header">
-      <div
-        id="head"
-        class="parallax"
-        parallax-speed="2"
-        style="padding: 30px 0"
-      >
-        <h1 id="logo" class="text-center">
-          <img
-            class="img-circle"
-            src="assets/images/bob_photo.png"
-            alt="智慧城市 Logo"
-          />
-          <br />
-          <span class="main-title" data-i18n="header.mainTitle"
-            >Smart City Large Language Model Agent System</span
-          >
-          <br />
-          <span class="sub-title" data-i18n="header.subTitle"
-            >智慧城市大型語言模型代理人系統</span
-          >
+    <!-- 科技裝飾元素 -->
+    <div class="tech-decoration">🔮</div>
+    <div class="tech-decoration">⚡</div>
+    <div class="tech-decoration">🚀</div>
+
+    <!-- Header 區域 -->
+    <div class="smart-city-header">
+      <div class="container text-center">
+        <img
+          class="img-circle"
+          src="assets/images/bob_photo.png"
+          alt="智慧城市 Logo"
+        />
+        <p class="small-title" data-i18n="header.smallTitle">
+          III x NTPU AI Agent Project
+        </p>
+        <h1 class="main-title" data-i18n="header.mainTitle">
+          Smart City Large Language Model Agent System
         </h1>
+        <p class="sub-title" data-i18n="header.subTitle">
+          智慧城市大型語言模型代理人系統
+        </p>
       </div>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
+    </div>
+
+    <!-- 🚀 NSTC 風格導覽列 -->
+    <nav class="navbar navbar-expand-lg smart-city-navbar">
+      <div class="container-fluid">
+        <!-- 左側：返回首頁按鈕 -->
+        <a class="navbar-brand me-5" href="index.html">
+          <i class="fas fa-home"></i>
+          <span data-i18n="nav.home">返回首頁</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#smartCityNavbar"
+          aria-controls="smartCityNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="smartCityNavbar">
+          <!-- 中間：主導覽項目 -->
+          <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="#introduction"
+                data-i18n="nav.introduction"
+              >
+                專案介紹
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#background" data-i18n="nav.background">
+                背景與動機
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#functions" data-i18n="nav.functions">
+                系統功能
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#market" data-i18n="nav.market">
+                市場分析
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#contribution"
+                data-i18n="nav.contribution"
+              >
+                預期效益
+              </a>
+            </li>
+          </ul>
+
+          <!-- 右側：語言切換按鈕 -->
+          <div class="language-switcher ms-auto">
             <button
               type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#navbar-collapse"
+              class="btn btn-outline-primary btn-sm"
+              id="btn-en"
             >
-              <span class="sr-only" data-i18n="nav.toggle"
-                >Toggle navigation</span
-              >
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              English
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-zh">
+              中文
             </button>
           </div>
-          <div class="navbar-collapse collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active">
-                <a href="index.html" data-i18n="nav.home">Home</a>
-              </li>
-              <li>
-                <a href="#introduction" data-i18n="nav.introduction"
-                  >專案介紹</a
-                >
-              </li>
-              <li>
-                <a href="#background" data-i18n="nav.background">背景與動機</a>
-              </li>
-              <li>
-                <a href="#functions" data-i18n="nav.functions">系統功能</a>
-              </li>
-              <li>
-                <a href="#market" data-i18n="nav.market">市場分析</a>
-              </li>
-              <li>
-                <a href="#contribution" data-i18n="nav.contribution"
-                  >預期效益</a
-                >
-              </li>
-            </ul>
-            <div class="navbar-text pull-right language-switcher">
-              <!-- 請根據需要在此處添加語言切換按鈕 -->
-              <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
-              <button id="btn-en" class="btn btn-default btn-xs">
-                English
-              </button>
-            </div>
-          </div>
-          <!--/.nav-collapse -->
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
     <!-- 主要內容 -->
-    <main id="main">
-      <div class="container">
-        <article class="post hentry post-maincontent">
-          <header class="entry-header my-custom-header">
-            <p class="small-title" data-i18n="header.smallTitle">
-              III x NTPU AI Agent Project
-            </p>
-            <h1 class="main-title">
-              <span data-i18n="header.enTitle">
-                Smart City Large Language Model Agent System
-              </span>
-            </h1>
-          </header>
-          <p>
-            <img src="assets/images/smart city.png" alt="智慧城市圖示" />
-          </p>
-        </article>
+    <main class="container">
+      <!-- 頁首說明 -->
+      <article class="content-section animate-on-scroll">
+        <div class="text-center">
+          <h1 class="main-title highlight-text">
+            <span data-i18n="header.enTitle">
+              Smart City Large Language Model Agent System
+            </span>
+          </h1>
+          <img
+            src="assets/images/smart city.png"
+            alt="智慧城市圖示"
+            class="project-image"
+          />
+        </div>
+      </article>
 
-        <!-- 專案介紹區塊 (區塊式) -->
-        <section id="introduction" class="section section-block">
-          <h2 class="section-title">
-            <span data-i18n="section.introductionTitle">專案介紹</span>
-          </h2>
+      <!-- 專案介紹區塊 -->
+      <section id="introduction" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.introductionTitle">專案介紹</span>
+        </h2>
+        <div class="tech-card">
           <p data-i18n="introduction.text">
             本計畫由國立臺北大學團隊攜手業界共同推動，致力於打造一個先進的智慧城市大型語言模型代理人系統。該系統整合最先進的語言模型技術（採用
             Llama 3.2: 3B 模型），並結合交通部開源 API
             提供的即時路況資訊，旨在為使用者提供快速、準確的交通查詢服務。
           </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- 背景與動機 (區塊式) -->
-        <section id="background" class="section section-block">
-          <h2 class="section-title">
-            <span data-i18n="section.backgroundTitle">背景與動機</span>
-          </h2>
+      <!-- 背景與動機 -->
+      <section id="background" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.backgroundTitle">背景與動機</span>
+        </h2>
+        <div class="tech-card">
           <p data-i18n="background.text">
             隨著智慧城市概念普及及都市化進程加速，市民對交通狀況即時掌握與智慧服務的需求日益增加。本計畫結合先進語言模型與即時交通數據，提供精準的交通查詢與智能回應，進一步推動智慧城市建設。
           </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- 系統功能 (區塊式) -->
-        <section id="functions" class="section section-block">
-          <h2 class="section-title">
-            <span data-i18n="section.functionsTitle">系統功能</span>
-          </h2>
+      <!-- 系統功能 -->
+      <section id="functions" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.functionsTitle">系統功能</span>
+        </h2>
+        <div class="tech-card">
           <ul>
             <li data-i18n="functions.item1">
               <strong>即時交通查詢：</strong> 系統能即時解析使用者查詢，並透過
@@ -249,35 +835,39 @@
               定位及更多個性化服務，以提升使用體驗。
             </li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-        <!-- 市場分析 (區塊式) -->
-        <section id="market" class="section section-block">
-          <h2 class="section-title">
-            <span data-i18n="section.marketTitle">市場分析</span>
-          </h2>
+      <!-- 市場分析 -->
+      <section id="market" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.marketTitle">市場分析</span>
+        </h2>
+        <div class="tech-card">
           <p data-i18n="market.text">
             目前智慧城市相關解決方案多停留在基礎資訊查詢層面，缺乏智慧互動與全面數據整合。本計畫利用先進語言模型與即時數據，滿足市民對智慧服務的需求，並在市場中展現競爭優勢。
           </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- 預期效益 (區塊式) -->
-        <section id="contribution" class="section section-block">
-          <h2 class="section-title">
-            <span data-i18n="section.contributionTitle">預期效益</span>
-          </h2>
+      <!-- 預期效益 -->
+      <section id="contribution" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.contributionTitle">預期效益</span>
+        </h2>
+        <div class="tech-card">
           <p data-i18n="contribution.text1">
             本計畫預計將提升交通資訊服務品質、促進智慧城市建設，並推動相關產業的數位轉型。
           </p>
-        </section>
-      </div>
-      <!-- /container -->
+        </div>
+      </section>
     </main>
 
-    <footer id="footer" class="topspace">
+    <!-- 頁尾 -->
+    <footer id="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.contactTitle">
               Contact
             </h3>
@@ -289,19 +879,19 @@
             </div>
           </div>
 
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.followTitle">
               Follow us
             </h3>
             <div class="widget-body">
               <p class="follow-me-icons">
-                <a href=""><i class="fa fa-github fa-2"></i></a>
-                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
               </p>
             </div>
           </div>
 
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.textWidgetTitle">
               Text widget
             </h3>
@@ -312,7 +902,7 @@
             </div>
           </div>
 
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.formWidgetTitle">
               Form widget
             </h3>
@@ -324,41 +914,25 @@
             </div>
           </div>
         </div>
-        <!-- /row of widgets -->
       </div>
-    </footer>
 
-    <footer id="underfooter">
-      <div class="container">
+      <div class="container mt-4">
         <div class="row">
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
-            </div>
-          </div>
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p class="text-right">
-                Copyright &copy; <br />
-                Design:
-                <a href="https://www.gettemplate.com" rel="designer"
-                  >Initio by GetTemplate</a
-                >
-              </p>
-            </div>
+          <div class="col-md-12 text-center">
+            <p>
+              Copyright &copy; 2025, 智慧城市專案團隊<br />
+              Design: Initio by GetTemplate (Modified)
+            </p>
           </div>
         </div>
-        <!-- /row of widgets -->
       </div>
     </footer>
 
-    <!-- JavaScript libs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/template.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- i18next 初始化與語言切換 -->
     <script>
+      // 🚀 國際化翻譯資源
       var resources = {
         en: {
           translation: {
@@ -402,21 +976,19 @@
                 "Future Scalability: Future plans include integrating GPS positioning and additional personalized services to enhance user experience.",
             },
             market: {
-              text: "Research indicates that while many smart city solutions offer basic information, few integrate intelligent interaction and comprehensive data. Our project meets citizens’ needs by leveraging advanced language models and real-time data, offering a competitive advantage in the market.",
+              text: "Research indicates that while many smart city solutions offer basic information, few integrate intelligent interaction and comprehensive data. Our project meets citizens' needs by leveraging advanced language models and real-time data, offering a competitive advantage in the market.",
             },
             contribution: {
               text1:
                 "The project is expected to enhance traffic information service quality, promote smart city innovation, and serve as a model for digital transformation in related industries.",
-              text2:
-                "In the future, this project could expand to other traditional sectors, creating additional value through digital transformation.",
             },
             footer: {
               contactTitle: "Contact",
               textWidgetTitle: "Text widget",
               formWidgetTitle: "Form widget",
-              contactText:
-                "Phone: +886 966465569  E-mail: hsintinglubob@gmail.com",
               followTitle: "Follow us",
+              textWidget:
+                "This project combines advanced language models with real-time data to enhance smart city traffic information service quality and promote urban digital transformation.",
             },
           },
         },
@@ -427,10 +999,10 @@
               smallTitle: "III x NTPU AI Agent Project",
               mainTitle: "智慧城市大型語言模型代理人系統",
               subTitle: "專案介紹",
-              enTitle: "智慧城市大型語言模型代理人系統", // 如無特殊翻譯，保持原文
+              enTitle: "智慧城市大型語言模型代理人系統",
             },
             nav: {
-              home: "Home",
+              home: "返回首頁",
               introduction: "專案介紹",
               background: "背景與動機",
               functions: "系統功能",
@@ -466,43 +1038,156 @@
             contribution: {
               text1:
                 "本計畫預計將提升交通資訊服務品質與智能水平，促進智慧城市創新，並推動相關產業數位轉型。",
-              text2: "未來，本計畫亦可擴展至其他傳統領域，創造更多附加價值。",
             },
             footer: {
               contactTitle: "Contact",
               textWidgetTitle: "Text widget",
               formWidgetTitle: "Form widget",
-              contactText:
-                "電話：+886 966465569 E-mail: hsintinglubob@gmail.com",
               followTitle: "Follow us",
+              textWidget:
+                "本計畫結合先進語言模型與即時數據，致力於提升智慧城市交通資訊服務品質，推動城市數位轉型。",
             },
           },
         },
       };
 
+      // 🚀 NSTC 風格的簡潔導覽系統
+      let currentLang = "en";
+
+      function updateTranslations() {
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          const translation = resources[currentLang].translation;
+          const keys = key.split(".");
+          let value = translation;
+
+          for (const k of keys) {
+            value = value[k];
+          }
+
+          if (value) {
+            element.textContent = value;
+          }
+        });
+      }
+
+      // 初始化 i18next
       i18next.init(
         {
-          lng: "en", // 預設語言，您可以根據需要調整
-          debug: true,
+          lng: currentLang,
+          debug: false,
           resources: resources,
           interpolation: { escapeValue: false },
         },
         function (err, t) {
           jqueryI18next.init(i18next, $);
           $("body").localize();
+          updateTranslations();
         }
       );
 
-      $("#btn-en").on("click", function () {
-        i18next.changeLanguage("en", function () {
+      // 語言切換功能
+      document.getElementById("btn-en").addEventListener("click", () => {
+        currentLang = "en";
+        i18next.changeLanguage("en", () => {
           $("body").localize();
+          updateTranslations();
+        });
+        document
+          .getElementById("btn-en")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-en").classList.add("btn-primary");
+        document.getElementById("btn-zh").classList.remove("btn-primary");
+        document.getElementById("btn-zh").classList.add("btn-outline-primary");
+      });
+
+      document.getElementById("btn-zh").addEventListener("click", () => {
+        currentLang = "zh";
+        i18next.changeLanguage("zh", () => {
+          $("body").localize();
+          updateTranslations();
+        });
+        document
+          .getElementById("btn-zh")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-zh").classList.add("btn-primary");
+        document.getElementById("btn-en").classList.remove("btn-primary");
+        document.getElementById("btn-en").classList.add("btn-outline-primary");
+      });
+
+      // 🚀 NSTC 風格的滾動檢測（簡潔版）
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(
+          ".smart-city-navbar .nav-link"
+        );
+        const navbar = document.querySelector(".smart-city-navbar");
+
+        let current = "";
+        const scrollTop = window.pageYOffset;
+
+        // 滾動效果
+        if (scrollTop > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+
+        // 檢測當前區塊
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollTop >= sectionTop &&
+            scrollTop < sectionTop + sectionHeight
+          ) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        // 更新 active 狀態
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
         });
       });
-      $("#btn-zh").on("click", function () {
-        i18next.changeLanguage("zh", function () {
-          $("body").localize();
+
+      // 🚀 平滑滾動
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         });
       });
+
+      // 🚀 滾動動畫
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+
+      console.log("🚀 Smart City 頁面現代化導覽系統已啟用！");
     </script>
   </body>
 </html>

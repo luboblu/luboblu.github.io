@@ -7,30 +7,325 @@
     <meta name="author" content="盧信廷" />
     <title data-i18n="title">IMP2024 論文展示介紹</title>
     <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
+
+    <!-- 🔄 改用 Bootstrap 5 -->
     <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
     <link
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+    <!-- Google Fonts -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+
     <!-- 引入 i18next 與 jquery-i18next -->
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
     <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
+
     <style>
+      /* 🎨 現代化樣式設計 */
+      :root {
+        --primary-color: #2a7d7d;
+        --secondary-color: #3a9191;
+        --dark-color: #1f2937;
+        --light-color: #f8fafc;
+      }
+
       body {
         font-size: 20px;
         line-height: 1.8;
         background-color: #f8f8f8;
         margin: 0;
         padding: 0;
+        font-family: "Open Sans", Helvetica, Arial, sans-serif;
       }
+
+      /* 🚀 現代化導覽列樣式 */
+      .imp-navbar {
+        background: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .imp-navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--dark-color) !important;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 1.1rem;
+        padding: 20px 30px;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-brand i {
+        color: var(--primary-color);
+      }
+
+      .imp-navbar .nav-link {
+        padding: 20px 25px;
+        color: #454545;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .imp-navbar .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--primary-color),
+          transparent
+        );
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 2px;
+        opacity: 0;
+      }
+
+      .imp-navbar .nav-link:hover::before,
+      .imp-navbar .nav-link.active::before {
+        width: 85%;
+        opacity: 1;
+      }
+
+      .imp-navbar .nav-link:hover,
+      .imp-navbar .nav-link:focus {
+        color: var(--primary-color);
+        background: rgba(42, 125, 125, 0.05);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(42, 125, 125, 0.15);
+      }
+
+      .imp-navbar .nav-link.active {
+        color: var(--primary-color) !important;
+        font-weight: 600;
+        background: rgba(42, 125, 125, 0.08);
+        border-radius: 8px;
+        transform: translateY(-1px);
+      }
+
+      /* 語言切換按鈕 */
+      .language-switcher {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .language-switcher .btn {
+        border-radius: 25px;
+        padding: 8px 20px;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 1rem;
+        border: 2px solid var(--primary-color);
+        margin-left: 0;
+        cursor: pointer;
+      }
+
+      .language-switcher .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .language-switcher .btn-outline-primary {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        background: transparent !important;
+      }
+
+      .language-switcher .btn-outline-primary:hover,
+      .language-switcher .btn-outline-primary:focus,
+      .language-switcher .btn-outline-primary:active {
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-color: var(--primary-color) !important;
+      }
+
+      .language-switcher .btn-primary {
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-color: var(--primary-color) !important;
+      }
+
+      .language-switcher .btn-primary:hover,
+      .language-switcher .btn-primary:focus,
+      .language-switcher .btn-primary:active {
+        background: var(--secondary-color) !important;
+        border-color: var(--secondary-color) !important;
+        color: white !important;
+      }
+
+      /* 響應式設計 */
+      @media (min-width: 992px) {
+        .imp-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+        }
+
+        .imp-navbar .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .imp-navbar .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 0 auto;
+          gap: 5px;
+          justify-content: center;
+          flex: 1;
+        }
+
+        .language-switcher {
+          margin-left: auto;
+          position: static;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .imp-navbar .nav-link {
+          padding: 15px 20px;
+          font-size: 1.05rem;
+        }
+
+        .imp-navbar .nav-link:hover {
+          transform: none;
+          box-shadow: none;
+        }
+
+        .imp-navbar .nav-link.active {
+          transform: none;
+        }
+
+        .language-switcher {
+          margin: 15px 0;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+          padding: 15px 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        #head .title {
+          font-size: 2rem;
+        }
+
+        #head .tagline {
+          font-size: 1rem;
+        }
+
+        #head {
+          padding: 60px 0;
+        }
+      }
+
+      /* 🎨 現代化Header樣式 - 跟NSTC一樣 */
+      #head {
+        background: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0;
+      }
+
+      #head::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 50%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.05);
+        transform: rotate(35deg);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(35deg) translateY(0px);
+        }
+        50% {
+          transform: rotate(35deg) translateY(-20px);
+        }
+      }
+
+      #head h1 {
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease;
+      }
+
+      #head .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 20px 0 10px;
+        color: white;
+        display: block;
+        line-height: 1.2;
+      }
+
+      #head img.img-circle {
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 其餘原有樣式保持不變 */
       .main-title {
         font-size: 42px;
         font-weight: bold;
@@ -81,57 +376,83 @@
         background-color: #3a9191;
         border-color: #3a9191;
       }
-      /* 語言切換按鈕 */
-      .language-switcher {
-        margin-top: 8px;
-      }
     </style>
   </head>
   <body>
-    <!-- 頁首 -->
+    <!-- 🌟 現代化頁首區塊 -->
     <div id="head" class="parallax" parallax-speed="2">
-      <h1 id="logo" class="text-center">
-        <img class="img-circle" src="assets/images/bob_photo.png" alt="" />
-        <span class="title" data-i18n="header.title"
-          >IMP2024 第29屆資訊管理暨實務研討會</span
-        >
-      </h1>
+      <div class="container text-center">
+        <h1 id="logo">
+          <img class="img-circle" src="assets/images/bob_photo.png" alt="" />
+          <div class="title" data-i18n="header.title">
+            IMP2024 第29屆資訊管理暨實務研討會
+          </div>
+        </h1>
+      </div>
     </div>
 
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-default">
+    <!-- 🚀 新的現代化導覽列 -->
+    <nav class="navbar navbar-expand-lg imp-navbar">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target="#navbar-collapse"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="index.html" data-i18n="nav.home">首頁HOME</a>
+        <!-- 返回首頁按鈕 - 固定在最左邊 -->
+        <a class="navbar-brand me-5" href="index.html">
+          <i class="fas fa-arrow-left me-2"></i>
+          <span data-i18n="nav.home">首頁HOME</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#impNavbar"
+          aria-controls="impNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="impNavbar">
+          <!-- 主導覽項目 -->
+          <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#intro" data-i18n="nav.intro">
+                研討會簡介
+              </a>
             </li>
-            <li><a href="#intro" data-i18n="nav.intro">研討會簡介</a></li>
-            <li>
-              <a href="#certificate" data-i18n="nav.certificate">證書展示</a>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#certificate"
+                data-i18n="nav.certificate"
+              >
+                證書展示
+              </a>
             </li>
-            <li><a href="#photo" data-i18n="nav.photo">研討會照片</a></li>
-            <li>
-              <a href="#download" data-i18n="nav.download">論文與摘要下載</a>
+            <li class="nav-item">
+              <a class="nav-link" href="#photo" data-i18n="nav.photo">
+                研討會照片
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#download" data-i18n="nav.download">
+                論文與摘要下載
+              </a>
             </li>
           </ul>
-          <!-- 語言切換按鈕 -->
-          <div class="navbar-text pull-right language-switcher">
-            <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
-            <button id="btn-en" class="btn btn-default btn-xs">English</button>
+
+          <!-- 語言切換按鈕 - 固定在最右邊 -->
+          <div class="language-switcher ms-auto">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              id="btn-en"
+            >
+              EN
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-zh">
+              中文
+            </button>
           </div>
         </div>
       </div>
@@ -261,9 +582,9 @@
       </div>
     </footer>
 
-    <!-- JavaScript libs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <!-- 🔄 更新 JavaScript 使用 Bootstrap 5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- i18next 初始化與語言切換 -->
     <script>
@@ -356,25 +677,136 @@
       i18next.init(
         {
           lng: "en",
-          debug: true,
+          debug: false,
           resources: resources,
           interpolation: { escapeValue: false },
         },
         function (err, t) {
           jqueryI18next.init(i18next, $);
           $("body").localize();
+
+          // 🎯 設置初始按鈕狀態
+          $("#btn-zh")
+            .removeClass("btn-outline-primary")
+            .addClass("btn-primary");
+          $("#btn-en")
+            .removeClass("btn-primary")
+            .addClass("btn-outline-primary");
         }
       );
 
+      // 🚀 完整的滾動效果 + 導覽active狀態更新
+      $(window).on("scroll", function () {
+        const scrollTop = $(window).scrollTop();
+        const navbar = $(".imp-navbar");
+
+        // 毛玻璃滾動效果
+        if (scrollTop > 50) {
+          navbar.addClass("scrolled");
+        } else {
+          navbar.removeClass("scrolled");
+        }
+
+        // 🎯 自動更新導覽active狀態
+        updateNavActiveState();
+      });
+
+      // 獲取當前最可見的區塊
+      function getCurrentSection() {
+        const scrollTop = $(window).scrollTop();
+        const windowHeight = $(window).height();
+        let currentSection = "";
+        let maxVisibility = 0;
+
+        // 檢查所有section
+        $("section[id]").each(function () {
+          const $section = $(this);
+          const sectionTop = $section.offset().top - 120;
+          const sectionBottom = sectionTop + $section.outerHeight();
+
+          // 計算區塊在視窗中的可見度
+          const visibleTop = Math.max(scrollTop, sectionTop);
+          const visibleBottom = Math.min(
+            scrollTop + windowHeight,
+            sectionBottom
+          );
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const visibility =
+            visibleHeight / Math.min(windowHeight, $section.outerHeight());
+
+          if (visibility > maxVisibility && visibility > 0.3) {
+            maxVisibility = visibility;
+            currentSection = $section.attr("id");
+          }
+        });
+
+        return currentSection;
+      }
+
+      // 更新導覽列active狀態
+      function updateNavActiveState() {
+        const currentSection = getCurrentSection();
+
+        // 移除所有active狀態
+        $(".imp-navbar .nav-link").removeClass("active");
+
+        // 根據當前區塊設置active
+        if (currentSection) {
+          $(`.imp-navbar .nav-link[href="#${currentSection}"]`).addClass(
+            "active"
+          );
+        }
+      }
+
+      // 🎯 平滑滾動效果 + active狀態更新
+      $('a[href^="#"]').on("click", function (e) {
+        const target = $(this.getAttribute("href"));
+        if (target.length) {
+          e.preventDefault();
+
+          // 先更新導覽狀態
+          const sectionId = this.getAttribute("href").substring(1);
+          $(".imp-navbar .nav-link").removeClass("active");
+          $(this).addClass("active");
+
+          // 平滑滾動
+          $("html, body").animate(
+            {
+              scrollTop: target.offset().top - 100,
+            },
+            800,
+            "swing"
+          );
+        }
+      });
+
+      // 語言切換功能
       $("#btn-en").on("click", function () {
         i18next.changeLanguage("en", function () {
           $("body").localize();
         });
+        // 更新按鈕樣式
+        $(this).removeClass("btn-outline-primary").addClass("btn-primary");
+        $("#btn-zh").removeClass("btn-primary").addClass("btn-outline-primary");
       });
+
       $("#btn-zh").on("click", function () {
         i18next.changeLanguage("zh", function () {
           $("body").localize();
         });
+        // 更新按鈕樣式
+        $(this).removeClass("btn-outline-primary").addClass("btn-primary");
+        $("#btn-en").removeClass("btn-primary").addClass("btn-outline-primary");
+      });
+
+      // 頁面載入完成後執行
+      $(document).ready(function () {
+        updateNavActiveState(); // 🎯 初始化導覽狀態
+      });
+
+      // 頁面完全載入後也執行一次
+      $(window).on("load", function () {
+        updateNavActiveState();
       });
     </script>
   </body>

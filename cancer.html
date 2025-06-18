@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="輔仁大學癌症資訊聊天機器人專題介紹" />
     <meta name="author" content="輔仁大學癌症專題團隊" />
 
@@ -10,367 +10,720 @@
 
     <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5 -->
     <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Icon font -->
+    <!-- Font Awesome -->
     <link
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- 引入 i18next 與 jquery-i18next -->
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
-    <!-- 自訂樣式 -->
     <style>
+      /* 現代化樣式設計 - 基於 NSTC 模式 */
+      :root {
+        --primary-color: #2a7d7d;
+        --secondary-color: #3a9191;
+        --accent-color: #f59e0b;
+        --dark-color: #1f2937;
+        --light-color: #f8fafc;
+        --gradient: linear-gradient(135deg, #2a7d7d 0%, #3a9191 100%);
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
+        font-family: "Inter", sans-serif;
         font-size: 20px;
         line-height: 1.8;
-        background-color: #f8f8f8;
+        color: var(--dark-color);
+        background: var(--light-color);
+        overflow-x: hidden;
         margin: 0;
         padding: 0;
       }
-      .main-title {
+
+      /* Header 區域 */
+      .cancer-header {
+        background: var(--gradient);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cancer-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(45deg);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0px);
+        }
+        50% {
+          transform: rotate(45deg) translateY(-20px);
+        }
+      }
+
+      .cancer-header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cancer-header .main-title {
         font-size: 42px;
         font-weight: bold;
-        margin-top: 20px;
-        color: #2a7d7d;
+        color: white;
       }
-      .sub-title {
+
+      .cancer-header .sub-title {
         font-size: 28px;
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 20px;
-        color: #3a9191;
       }
-      p {
-        font-size: 20px;
+
+      .cancer-header p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        animation: fadeInUp 1s ease 0.2s both;
+        position: relative;
+        z-index: 1;
       }
-      h2,
-      h3,
-      h4 {
-        font-size: 28px;
+
+      .cancer-header img.img-circle {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        margin: 0 auto 30px;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
-      .section-title {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        font-size: 32px;
-        font-weight: bold;
-        color: #2a7d7d;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #3a9191;
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      /* 導覽列樣式 */
-      .navbar-nav > li > a {
-        font-size: 18px;
+
+      /* 🚀 NSTC 風格導覽列 */
+      .cancer-navbar {
+        background: white;
+        box-shadow: var(--shadow);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
+      .cancer-navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--dark-color) !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+        padding: 20px 30px;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-brand i {
+        color: var(--primary-color);
+        margin-right: 8px;
+      }
+
+      .cancer-navbar .nav-link {
+        padding: 20px 25px;
+        font-weight: 500;
+        color: var(--dark-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .cancer-navbar .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: var(--primary-color);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+
+      .cancer-navbar .nav-link:hover::before,
+      .cancer-navbar .nav-link.active::before {
+        width: 85%;
+      }
+
+      .cancer-navbar .nav-link:hover,
+      .cancer-navbar .nav-link.active {
+        color: var(--primary-color);
+        background: rgba(42, 125, 125, 0.05);
+        transform: translateY(-1px);
+      }
+
+      /* 語言切換按鈕 - NSTC 風格 */
+      .language-switcher {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .language-switcher .btn {
+        border-radius: 25px;
+        padding: 10px 24px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        border: 2px solid var(--primary-color);
+      }
+
+      .language-switcher .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .language-switcher .btn-outline-primary {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        background: transparent !important;
+      }
+
+      .language-switcher .btn-outline-primary:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+      }
+
+      .language-switcher .btn-primary {
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-color: var(--primary-color) !important;
+      }
+
       /* 內容區塊樣式 */
       .content-section {
-        background-color: #fff;
-        padding: 30px;
-        margin: 30px 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background: white;
+        margin: 40px 0;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
       }
-      /* 修改後的圖片樣式：讓圖片不會超出容器 */
+
+      .content-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: var(--primary-color);
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: var(--secondary-color);
+        border-radius: 2px;
+      }
+
+      /* 圖片樣式 */
       .img-inline {
         display: block;
         margin: 0 auto 30px auto;
         max-width: 100%;
         height: auto;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
+        box-shadow: var(--shadow);
+        border-radius: 15px;
+        transition: transform 0.3s ease;
       }
-      /* 點擊放大效果：增加 zoomable-img class */
+
+      .img-inline:hover {
+        transform: scale(1.02);
+      }
+
       .zoomable-img {
         cursor: pointer;
       }
+
+      /* 響應式設計 */
+      @media (min-width: 992px) {
+        .cancer-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+        }
+
+        .cancer-navbar .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .cancer-navbar .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 0 auto;
+          gap: 5px;
+          justify-content: center;
+          flex: 1;
+        }
+
+        .language-switcher {
+          margin-left: auto;
+          position: static;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .cancer-header h1 {
+          font-size: 2rem;
+        }
+
+        .cancer-header .main-title {
+          font-size: 2rem;
+        }
+
+        .cancer-header .sub-title {
+          font-size: 1.2rem;
+        }
+
+        .content-section {
+          margin: 20px 0;
+          padding: 40px 20px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .language-switcher {
+          margin: 15px 0;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .cancer-navbar .nav-link {
+          padding: 15px 20px;
+          font-size: 1rem;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+          padding: 15px 20px;
+        }
+      }
+
       /* 頁尾樣式 */
       #footer {
-        background-color: #2a7d7d;
+        background: var(--dark-color);
         color: white;
         padding: 40px 0;
       }
+
       #footer a {
         color: #e3f2f2;
       }
-      /* 按鈕樣式 */
-      .btn-primary {
-        background-color: #2a7d7d;
-        border-color: #2a7d7d;
-      }
-      .btn-primary:hover {
-        background-color: #3a9191;
-        border-color: #3a9191;
+
+      #footer h3.widget-title {
+        color: white;
+        margin-bottom: 20px;
       }
 
+      /* 按鈕樣式 */
+      .btn-primary {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        border-radius: 25px;
+        padding: 15px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(42, 125, 125, 0.3);
+      }
+
+      /* Modal 樣式 */
       .modal-dialog.modal-bigger {
         width: 90%;
         max-width: 1200px;
       }
 
-      /* 語言切換按鈕：放在導覽列右側 */
-      .language-switcher {
-        margin-top: 8px;
+      /* 滾動動畫 */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 漢堡按鈕樣式 */
+      .navbar-toggler {
+        border: none;
+        padding: 10px;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      /* 文字樣式調整 */
+      p {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      h2,
+      h3,
+      h4 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: var(--dark-color);
+      }
+
+      ul li {
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      /* CTA 按鈕特殊樣式 */
+      .cta-button {
+        background: var(--gradient);
+        border: none;
+        color: white;
+        padding: 20px 40px;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+        color: white;
       }
     </style>
   </head>
+
   <body>
-    <!-- 頁首（Logo 與聯絡資訊） -->
-    <div id="head" class="parallax" parallax-speed="2">
-      <h1 id="logo" class="text-center">
-        <img class="img-circle" src="assets/images/cancer_project.png" alt="" />
-        <span class="title" data-i18n="header.smallTitle"
-          >輔仁大學第40屆專題</span
-        >
-        <br />
-        <span class="main-title" data-i18n="header.mainTitle"
-          >癌症資訊聊天機器人專題</span
-        >
-        <br />
-        <span class="sub-title" data-i18n="header.subTitle"
-          >結合 AI 與大數據提供癌症健康資訊</span
-        >
-      </h1>
+    <!-- Header 區域 -->
+    <div class="cancer-header">
+      <div class="container text-center">
+        <img
+          class="img-circle"
+          src="assets/images/cancer_project.png"
+          alt="癌症專題圖標"
+        />
+        <p class="small-title" data-i18n="header.smallTitle">
+          輔仁大學第40屆專題
+        </p>
+        <h1 class="main-title" data-i18n="header.mainTitle">
+          癌症資訊聊天機器人專題
+        </h1>
+        <p class="sub-title" data-i18n="header.subTitle">
+          結合 AI 與大數據提供癌症健康資訊
+        </p>
+      </div>
     </div>
 
-    <!-- Header 與導覽列 -->
-    <header id="header">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
+    <!-- 🚀 NSTC 風格導覽列 -->
+    <nav class="navbar navbar-expand-lg cancer-navbar">
+      <div class="container-fluid">
+        <!-- 左側：返回首頁按鈕 -->
+        <a class="navbar-brand me-5" href="index.html">
+          <i class="fas fa-home"></i>
+          <span data-i18n="nav.home">返回首頁</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#cancerNavbar"
+          aria-controls="cancerNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="cancerNavbar">
+          <!-- 中間：主導覽項目 -->
+          <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="#introduction"
+                data-i18n="nav.introduction"
+              >
+                計畫介紹
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#background" data-i18n="nav.background">
+                背景與動機
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#functions" data-i18n="nav.functions">
+                系統功能
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#details" data-i18n="nav.details">
+                專題詳細介紹
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#future" data-i18n="nav.future">
+                未來展望
+              </a>
+            </li>
+          </ul>
+
+          <!-- 右側：語言切換按鈕 -->
+          <div class="language-switcher ms-auto">
             <button
               type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#navbar-collapse"
+              class="btn btn-outline-primary btn-sm"
+              id="btn-en"
             >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              English
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-zh">
+              中文
             </button>
           </div>
-
-          <div class="navbar-collapse collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active">
-                <a href="index.html" data-i18n="nav.home">HOME</a>
-              </li>
-              <li>
-                <a href="#introduction" data-i18n="nav.introduction"
-                  >計畫介紹</a
-                >
-              </li>
-              <li>
-                <a href="#background" data-i18n="nav.background">背景與動機</a>
-              </li>
-              <li>
-                <a href="#functions" data-i18n="nav.functions">系統功能</a>
-              </li>
-              <li>
-                <a href="#details" data-i18n="nav.details">專題詳細介紹</a>
-              </li>
-              <li><a href="#future" data-i18n="nav.future">未來展望</a></li>
-            </ul>
-            <div class="navbar-text pull-right language-switcher">
-              <button id="btn-zh" class="btn btn-default btn-xs">中文</button>
-              <button id="btn-en" class="btn btn-default btn-xs">
-                English
-              </button>
-            </div>
-          </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
     <!-- 主要內容 -->
-    <main id="main">
-      <div class="container" style="margin-top: 20px">
-        <article class="post hentry post-maincontent">
-          <header class="entry-header my-custom-header">
-            <p class="small-title" data-i18n="header.smallTitle">
-              輔仁大學第40屆專題
-            </p>
-            <h1 class="main-title" data-i18n="header.mainTitle">
-              癌症資訊聊天機器人專題
-            </h1>
-            <h2 class="sub-title" data-i18n="header.subTitle">
-              結合 AI 與大數據提供癌症健康資訊
-            </h2>
-          </header>
-          <p>
-            <img
-              src="assets/images/cancer_project.png"
-              alt="癌症專題圖"
-              class="img-inline"
-            />
-          </p>
-        </article>
-      </div>
-
+    <main class="container">
       <!-- 計畫介紹 -->
-      <div class="container">
-        <article
-          class="post hentry post-maincontent content-section"
-          id="introduction"
-        >
-          <h2 class="section-title" data-i18n="section.introductionTitle">
-            計畫介紹
-          </h2>
-          <div class="row">
-            <div class="col-md-7">
-              <p data-i18n="introduction.text">
-                本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的
-                AI
-                語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />
-                指導教授：鄭美娟<br />
-                團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤
-              </p>
-            </div>
-            <div class="col-md-5">
-              <a href="#imgModal" data-toggle="modal">
-                <img
-                  src="assets/images/cancer1.png"
-                  alt="專題介紹"
-                  class="img-inline zoomable-img"
-                  data-caption="專題介紹"
-                />
-              </a>
-            </div>
+      <section id="introduction" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.introductionTitle">
+          計畫介紹
+        </h2>
+        <div class="row">
+          <div class="col-md-7">
+            <p data-i18n="introduction.text">
+              本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的
+              AI
+              語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />
+              指導教授：鄭美娟<br />
+              團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤
+            </p>
           </div>
-        </article>
-
-        <!-- 背景與動機 -->
-        <section id="background" class="content-section">
-          <h2 class="section-title" data-i18n="section.backgroundTitle">
-            背景與動機
-          </h2>
-          <p data-i18n="background.text1">
-            疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技的進步，透過
-            AI 與大數據提供準確且即時的癌症健康資訊，
-            能有效支援癌友與其家屬面對疾病挑戰。
-          </p>
-          <p data-i18n="background.text2">
-            科技正以驚人速度進步，面對疾病蔓延的現實，迅速獲取正確健康資訊顯得尤為重要，因此癌症資訊聊天機器人應運而生！
-          </p>
-        </section>
-
-        <!-- 系統功能 -->
-        <section id="functions" class="content-section">
-          <h2 class="section-title" data-i18n="section.functionsTitle">
-            系統功能
-          </h2>
-          <div class="row">
-            <div class="col-md-6">
-              <h3 data-i18n="functions.headline">癌資機模人提供哪些服務？</h3>
-              <ul>
-                <li data-i18n="functions.item1">
-                  <strong>多元資訊整合：</strong
-                  >結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。
-                </li>
-                <li data-i18n="functions.item2">
-                  <strong>即時互動服務：</strong>利用 Line
-                  平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。
-                </li>
-                <li data-i18n="functions.item3">
-                  <strong>情緒與回饋管理：</strong
-                  >提供情緒指數分析與回饋機制，協助使用者調適心情。
-                </li>
-                <li data-i18n="functions.item4">
-                  <strong>先進技術支援：</strong>採用 AI
-                  語言模型輔助查詢，並利用大數據技術分析用戶需求。
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <a href="#imgModal1" data-toggle="modal">
-                <img
-                  src="assets/images/cancer2.png"
-                  alt="服務功能展示"
-                  class="img-inline zoomable-img"
-                  data-caption="服務功能展示"
-                />
-              </a>
-            </div>
+          <div class="col-md-5">
+            <a href="#imgModal" data-bs-toggle="modal">
+              <img
+                src="assets/images/cancer1.png"
+                alt="專題介紹"
+                class="img-inline zoomable-img"
+                data-caption="專題介紹"
+              />
+            </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 專題詳細介紹 -->
-        <section id="details" class="content-section">
-          <h2 class="section-title" data-i18n="section.detailsTitle">
-            專題詳細介紹
-          </h2>
-          <div class="row">
-            <div class="col-md-6">
-              <p data-i18n="details.text1">
-                本專題整合了大量的醫療資訊來源，並與多位臨床醫師與專業護理師合作，確保訊息的正確性與即時性。透過
-                AI、大數據、自然語言處理及雲端服務的結合，
-                讓癌症資訊能夠更快速且方便地傳遞給有需要的使用者。
-              </p>
-            </div>
-            <div class="col-md-6">
-              <ul>
-                <li data-i18n="details.listItem1">
-                  <strong>關鍵字查詢：</strong
-                  >輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。
-                </li>
-                <li data-i18n="details.listItem2">
-                  <strong>醫師健康解說：</strong>提供專業醫師解說影片及文章。
-                </li>
-                <li data-i18n="details.listItem3">
-                  <strong>常見問題與解答：</strong>彙整常見疑問並提供標準答案。
-                </li>
-                <li data-i18n="details.listItem4">
-                  <strong>情緒指數分析：</strong
-                  >記錄與分析使用者心情，提供回饋與建議。
-                </li>
-                <li data-i18n="details.listItem5">
-                  <strong>ChatGPT 查詢：</strong>整合 AI 模型進行深度查詢。
-                </li>
-                <li data-i18n="details.listItem6">
-                  <strong>回饋使用體驗：</strong
-                  >讓使用者對系統體驗進行評分與留言。
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+      <!-- 背景與動機 -->
+      <section id="background" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.backgroundTitle">
+          背景與動機
+        </h2>
+        <p data-i18n="background.text1">
+          疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技的進步，透過
+          AI 與大數據提供準確且即時的癌症健康資訊，
+          能有效支援癌友與其家屬面對疾病挑戰。
+        </p>
+        <p data-i18n="background.text2">
+          科技正以驚人速度進步，面對疾病蔓延的現實，迅速獲取正確健康資訊顯得尤為重要，因此癌症資訊聊天機器人應運而生！
+        </p>
+      </section>
 
-        <!-- 未來展望 -->
-        <section id="future" class="content-section">
-          <h2 class="section-title" data-i18n="section.futureTitle">
-            未來展望
-          </h2>
-          <p data-i18n="future.text1">
-            未來將持續整合更多醫學中心與研究單位的專業資源，並不斷優化互動介面與功能，協助更多人群在面對疾病時獲得最佳的醫療資訊與心理支持。
-          </p>
-          <p data-i18n="future.text2">
-            同時，我們也期待能將此系統擴充到其他疾病領域，例如糖尿病、高血壓等常見慢性疾病，促進全民健康。
-          </p>
-          <div class="text-center" style="margin-top: 20px">
-            <a href="#" class="btn btn-lg btn-primary" data-i18n="future.button"
-              >加入 Line Bot 好友</a
-            >
+      <!-- 系統功能 -->
+      <section id="functions" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.functionsTitle">
+          系統功能
+        </h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h3 data-i18n="functions.headline">癌資機模人提供哪些服務？</h3>
+            <ul>
+              <li data-i18n="functions.item1">
+                <strong>多元資訊整合：</strong
+                >結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。
+              </li>
+              <li data-i18n="functions.item2">
+                <strong>即時互動服務：</strong>利用 Line
+                平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。
+              </li>
+              <li data-i18n="functions.item3">
+                <strong>情緒與回饋管理：</strong
+                >提供情緒指數分析與回饋機制，協助使用者調適心情。
+              </li>
+              <li data-i18n="functions.item4">
+                <strong>先進技術支援：</strong>採用 AI
+                語言模型輔助查詢，並利用大數據技術分析用戶需求。
+              </li>
+            </ul>
           </div>
-        </section>
-      </div>
+          <div class="col-md-6">
+            <a href="#imgModal1" data-bs-toggle="modal">
+              <img
+                src="assets/images/cancer2.png"
+                alt="服務功能展示"
+                class="img-inline zoomable-img"
+                data-caption="服務功能展示"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 專題詳細介紹 -->
+      <section id="details" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.detailsTitle">
+          專題詳細介紹
+        </h2>
+        <div class="row">
+          <div class="col-md-6">
+            <p data-i18n="details.text1">
+              本專題整合了大量的醫療資訊來源，並與多位臨床醫師與專業護理師合作，確保訊息的正確性與即時性。透過
+              AI、大數據、自然語言處理及雲端服務的結合，
+              讓癌症資訊能夠更快速且方便地傳遞給有需要的使用者。
+            </p>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li data-i18n="details.listItem1">
+                <strong>關鍵字查詢：</strong
+                >輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。
+              </li>
+              <li data-i18n="details.listItem2">
+                <strong>醫師健康解說：</strong>提供專業醫師解說影片及文章。
+              </li>
+              <li data-i18n="details.listItem3">
+                <strong>常見問題與解答：</strong>彙整常見疑問並提供標準答案。
+              </li>
+              <li data-i18n="details.listItem4">
+                <strong>情緒指數分析：</strong
+                >記錄與分析使用者心情，提供回饋與建議。
+              </li>
+              <li data-i18n="details.listItem5">
+                <strong>ChatGPT 查詢：</strong>整合 AI 模型進行深度查詢。
+              </li>
+              <li data-i18n="details.listItem6">
+                <strong>回饋使用體驗：</strong
+                >讓使用者對系統體驗進行評分與留言。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 未來展望 -->
+      <section id="future" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.futureTitle">未來展望</h2>
+        <p data-i18n="future.text1">
+          未來將持續整合更多醫學中心與研究單位的專業資源，並不斷優化互動介面與功能，協助更多人群在面對疾病時獲得最佳的醫療資訊與心理支持。
+        </p>
+        <p data-i18n="future.text2">
+          同時，我們也期待能將此系統擴充到其他疾病領域，例如糖尿病、高血壓等常見慢性疾病，促進全民健康。
+        </p>
+        <div class="text-center" style="margin-top: 40px">
+          <a href="#" class="btn cta-button" data-i18n="future.button">
+            加入 Line Bot 好友
+          </a>
+        </div>
+      </section>
     </main>
 
     <!-- 頁尾 -->
-    <footer id="footer" class="topspace">
+    <footer id="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.contactTitle">
               聯絡我們
             </h3>
@@ -384,19 +737,19 @@
             </div>
           </div>
 
-          <div class="col-md-3 widget">
+          <div class="col-md-3">
             <h3 class="widget-title" data-i18n="footer.followTitle">
               關注我們
             </h3>
             <div class="widget-body">
               <p class="follow-me-icons">
-                <a href=""><i class="fa fa-github fa-2"></i></a>
-                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                <a href="#"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
               </p>
             </div>
           </div>
 
-          <div class="col-md-6 widget">
+          <div class="col-md-6">
             <h3 class="widget-title" data-i18n="footer.missionTitle">
               專題宗旨
             </h3>
@@ -408,22 +761,16 @@
             </div>
           </div>
         </div>
-        <!-- /row of widgets -->
       </div>
-    </footer>
 
-    <footer id="underfooter">
-      <div class="container">
+      <div class="container mt-4">
         <div class="row">
-          <div class="col-md-12 widget">
-            <div class="widget-body text-center">
-              <p data-i18n="underfooter.copy">
-                © 2025 輔仁大學資訊管理學系第40屆專題 - 癌症資訊聊天機器人
-              </p>
-            </div>
+          <div class="col-md-12 text-center">
+            <p data-i18n="underfooter.copy">
+              © 2025 輔仁大學資訊管理學系第40屆專題 - 癌症資訊聊天機器人
+            </p>
           </div>
         </div>
-        <!-- /row of widgets -->
       </div>
     </footer>
 
@@ -432,22 +779,18 @@
       class="modal fade"
       id="imgModal"
       tabindex="-1"
-      role="dialog"
       aria-labelledby="imgModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-bigger" role="document">
+      <div class="modal-dialog modal-bigger">
         <div class="modal-content text-center">
           <div class="modal-header">
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-              style="position: absolute; top: 10px; right: 15px"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <img
@@ -456,7 +799,6 @@
               alt="放大圖片"
               style="width: 100%; height: auto"
             />
-            <!-- 可加入圖片說明 -->
             <p id="modalCaption"></p>
           </div>
         </div>
@@ -468,22 +810,18 @@
       class="modal fade"
       id="imgModal1"
       tabindex="-1"
-      role="dialog"
       aria-labelledby="imgModalLabel1"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-bigger" role="document">
+      <div class="modal-dialog modal-bigger">
         <div class="modal-content text-center">
           <div class="modal-header">
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-              style="position: absolute; top: 10px; right: 15px"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <img
@@ -496,13 +834,11 @@
       </div>
     </div>
 
-    <!-- JavaScript libs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/template.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- i18next 初始化與語言切換 -->
     <script>
+      // 🚀 國際化翻譯資源（保持原有內容）
       var resources = {
         en: {
           translation: {
@@ -558,7 +894,7 @@
               listItem3:
                 "FAQs: Compiles common questions and provides standard answers.",
               listItem4:
-                "Mood Analysis: Records and analyzes users’ emotions, offering feedback and suggestions.",
+                "Mood Analysis: Records and analyzes users' emotions, offering feedback and suggestions.",
               listItem5:
                 "ChatGPT Query: Integrates AI models for in-depth queries.",
               listItem6:
@@ -594,7 +930,7 @@
               subTitle: "結合 AI 與大數據提供癌症健康資訊",
             },
             nav: {
-              home: "HOME",
+              home: "返回首頁",
               introduction: "計畫介紹",
               background: "背景與動機",
               functions: "系統功能",
@@ -609,7 +945,7 @@
               futureTitle: "未來展望",
             },
             introduction: {
-              text: "本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的 AI 語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。（指導教授：鄭美娟；團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤）",
+              text: "本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的 AI 語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />指導教授：鄭美娟<br />團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤",
             },
             background: {
               text1:
@@ -662,40 +998,155 @@
         },
       };
 
+      // 🚀 NSTC 風格的簡潔導覽系統
+      let currentLang = "en";
+
+      function updateTranslations() {
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          const translation = resources[currentLang].translation;
+          const keys = key.split(".");
+          let value = translation;
+
+          for (const k of keys) {
+            value = value[k];
+          }
+
+          if (value) {
+            if (value.includes("<br />") || value.includes("<strong>")) {
+              element.innerHTML = value;
+            } else {
+              element.textContent = value;
+            }
+          }
+        });
+      }
+
+      // 初始化 i18next
       i18next.init(
         {
-          lng: "en", // 預設語言
-          debug: true,
+          lng: currentLang,
+          debug: false,
           resources: resources,
           interpolation: { escapeValue: false },
         },
         function (err, t) {
           jqueryI18next.init(i18next, $);
           $("body").localize();
+          updateTranslations();
         }
       );
 
-      $("#btn-en").on("click", function () {
-        i18next.changeLanguage("en", function () {
+      // 語言切換功能
+      document.getElementById("btn-en").addEventListener("click", () => {
+        currentLang = "en";
+        i18next.changeLanguage("en", () => {
           $("body").localize();
+          updateTranslations();
         });
+        document
+          .getElementById("btn-en")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-en").classList.add("btn-primary");
+        document.getElementById("btn-zh").classList.remove("btn-primary");
+        document.getElementById("btn-zh").classList.add("btn-outline-primary");
       });
-      $("#btn-zh").on("click", function () {
-        i18next.changeLanguage("zh", function () {
+
+      document.getElementById("btn-zh").addEventListener("click", () => {
+        currentLang = "zh";
+        i18next.changeLanguage("zh", () => {
           $("body").localize();
+          updateTranslations();
+        });
+        document
+          .getElementById("btn-zh")
+          .classList.remove("btn-outline-primary");
+        document.getElementById("btn-zh").classList.add("btn-primary");
+        document.getElementById("btn-en").classList.remove("btn-primary");
+        document.getElementById("btn-en").classList.add("btn-outline-primary");
+      });
+
+      // 🚀 NSTC 風格的滾動檢測（簡潔版）
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".cancer-navbar .nav-link");
+        const navbar = document.querySelector(".cancer-navbar");
+
+        let current = "";
+        const scrollTop = window.pageYOffset;
+
+        // 滾動效果
+        if (scrollTop > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+
+        // 檢測當前區塊
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollTop >= sectionTop &&
+            scrollTop < sectionTop + sectionHeight
+          ) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        // 更新 active 狀態
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
         });
       });
 
-      // 點擊放大圖片 (若未經 template.js 處理，此段也可保留)
+      // 🚀 平滑滾動
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // 🚀 滾動動畫
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Modal 圖片功能
       $(document).ready(function () {
         $(".zoomable-img").click(function () {
           var imgSrc = $(this).attr("src");
           var captionText = $(this).data("caption") || "";
           $("#modalImg").attr("src", imgSrc);
           $("#modalCaption").text(captionText);
-          $("#imgModal").modal("show");
         });
       });
+
+      console.log("🚀 Cancer 頁面現代化導覽系統已啟用！");
     </script>
   </body>
 </html>
