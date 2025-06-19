@@ -278,7 +278,7 @@
                   </button>
                   <h4 class="cert-title">
                     <span data-i18n="education.innohack_title"
-                      >2023叡揚資訊黑克松競賽</span
+                      >2023叡揚資訊黑客松競賽</span
                     >
                   </h4>
                   <p class="cert-date" data-i18n="education.innohack_date">
@@ -665,6 +665,23 @@
               </span>
             </div>
 
+            <!-- 🆕 專案排序控制 - 移除重要性選項 -->
+            <div
+              class="project-sort-controls"
+              style="text-align: center; margin-bottom: 30px"
+            >
+              <label
+                style="margin-right: 15px; font-weight: 600; color: #495057"
+              >
+                🎯 排序方式:
+              </label>
+              <select id="projectSortSelect" class="enhanced-select">
+                <option value="yearDesc">📅 時間 (新到舊)</option>
+                <option value="yearAsc">⏰ 時間 (舊到新)</option>
+                <option value="alphabetical">🔤 字母排序</option>
+              </select>
+            </div>
+
             <!-- 分頁容器 -->
             <div class="project-pagination-container">
               <!-- 第一頁 -->
@@ -674,78 +691,18 @@
                 role="tabpanel"
                 aria-label="專案第1頁"
               >
-                <div class="row">
-                  <!-- 作品 1 -->
+                <div class="row" id="projectsContainer">
+                  <!-- 🥇 第1個位置 (左上) - ML-ESG (最重要) -->
                   <div class="col-12 col-md-4">
-                    <div class="project-card">
-                      <a
-                        href="cancer.html"
-                        aria-label="查看大學專題-癌資機模人詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/cancer_project.png"
-                            alt="癌資機模人專題截圖"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <h4 class="project-title">大學專題-癌資機模人</h4>
-                      </a>
-                    </div>
-                  </div>
-                  <!-- 作品 2 -->
-                  <div class="col-12 col-md-4">
-                    <div class="project-card">
-                      <a
-                        href="marketing.html"
-                        aria-label="查看國科會-氛享水晶Bot詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/氛享海報.png"
-                            alt="氛享水晶Bot海報"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <h4 class="project-title">國科會-氛享水晶Bot</h4>
-                      </a>
-                    </div>
-                  </div>
-                  <!-- 作品 3 -->
-                  <div class="col-12 col-md-4">
-                    <div class="project-card">
-                      <a
-                        href="Smart_City.html"
-                        aria-label="查看Smart City Large Language Model Agent System詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/smart city.png"
-                            alt="智慧城市系統截圖"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <h4 class="project-title">
-                          Smart City Large Language Model Agent System
-                        </h4>
-                      </a>
-                    </div>
-                  </div>
-                  <!-- 作品 4: ML-ESG 專案 -->
-                  <div class="col-12 col-md-4">
-                    <div class="project-card">
+                    <div
+                      class="project-card enhanced-project-card research"
+                      data-category="research"
+                      data-importance="5"
+                      data-year="2025"
+                    >
+                      <div class="category-badge">Research</div>
                       <a
                         href="ESG.html"
-                        rel="noopener noreferrer"
                         aria-label="查看ML-ESG Compliance Report詳情"
                       >
                         <div class="project-img">
@@ -758,18 +715,37 @@
                             <span class="more">SEE DETAILS →</span>
                           </div>
                         </div>
-                        <h4 class="project-title">
-                          ML-ESG Compliance Report<br />
-                          <small style="font-size: 0.8em; color: #666"
-                            >NTCIR-19 2025-2026</small
-                          >
-                        </h4>
+                        <div class="content-area">
+                          <h4 class="project-title">
+                            ML-ESG Compliance Report
+                          </h4>
+                          <div class="subtitle">
+                            NTCIR-19 2025-2026 國際研究計畫
+                          </div>
+                          <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">ESG</span>
+                            <span class="tech-tag">FINANCE</span>
+                          </div>
+                          <div class="project-meta">
+                            <span class="importance-badge">⭐ 5/5</span>
+                            <span class="year-badge">📅 2025</span>
+                          </div>
+                        </div>
                       </a>
                     </div>
                   </div>
-                  <!-- 作品 5: NSTC 包容科技計畫 -->
+
+                  <!-- 🥇 第2個位置 (中上) - NSTC (國家重點) -->
                   <div class="col-12 col-md-4">
-                    <div class="project-card">
+                    <div
+                      class="project-card enhanced-project-card government"
+                      data-category="government"
+                      data-importance="5"
+                      data-year="2025"
+                    >
+                      <div class="category-badge">Government</div>
                       <a
                         href="NSTC_Project.html"
                         aria-label="查看NSTC包容科技計畫詳情"
@@ -784,35 +760,153 @@
                             <span class="more">SEE DETAILS →</span>
                           </div>
                         </div>
-                        <h4 class="project-title">
-                          NSTC 包容科技計畫<br />
-                          <small style="font-size: 0.8em; color: #666"
-                            >多模態跨語言對話系統</small
-                          >
-                        </h4>
+                        <div class="content-area">
+                          <h4 class="project-title">NSTC 包容科技計畫</h4>
+                          <div class="subtitle">多模態跨語言對話系統</div>
+                          <div class="tech-tags">
+                            <span class="tech-tag">MULTIMODAL</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">DIALOGUE</span>
+                            <span class="tech-tag">NLP</span>
+                          </div>
+                          <div class="project-meta">
+                            <span class="importance-badge">⭐ 5/5</span>
+                            <span class="year-badge">📅 2025</span>
+                          </div>
+                        </div>
                       </a>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <!-- 第二頁（預留給未來專案） -->
-              <div
-                class="project-page"
-                data-page="2"
-                style="display: none"
-                role="tabpanel"
-                aria-label="專案第2頁"
-              >
-                <div class="row">
-                  <!-- 未來專案將放在這裡 -->
+                  <!-- 🥈 第3個位置 (右上) - Smart City (技術創新) -->
+                  <div class="col-12 col-md-4">
+                    <div
+                      class="project-card enhanced-project-card innovation"
+                      data-category="innovation"
+                      data-importance="4"
+                      data-year="2024"
+                    >
+                      <div class="category-badge">Innovation</div>
+                      <a
+                        href="Smart_City.html"
+                        aria-label="查看Smart City Large Language Model Agent System詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/smart city.png"
+                            alt="智慧城市系統截圖"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <div class="content-area">
+                          <h4 class="project-title">
+                            Smart City Large Language Model Agent System
+                          </h4>
+                          <div class="subtitle">智慧城市大語言模型代理系統</div>
+                          <div class="tech-tags">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">SMART CITY</span>
+                            <span class="tech-tag">AGENT</span>
+                            <span class="tech-tag">AI</span>
+                          </div>
+                          <div class="project-meta">
+                            <span class="importance-badge">⭐ 4/5</span>
+                            <span class="year-badge">📅 2024</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- 🥉 第4個位置 (左下) - 氛享BOT (政府合作) -->
+                  <div class="col-12 col-md-4">
+                    <div
+                      class="project-card enhanced-project-card government"
+                      data-category="government"
+                      data-importance="4"
+                      data-year="2024"
+                    >
+                      <div class="category-badge">Government</div>
+                      <a
+                        href="marketing.html"
+                        aria-label="查看國科會-氛享水晶Bot詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/氛享海報.png"
+                            alt="氛享水晶Bot海報"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <div class="content-area">
+                          <h4 class="project-title">國科會-氛享水晶Bot</h4>
+                          <div class="subtitle">智慧行銷聊天機器人</div>
+                          <div class="tech-tags">
+                            <span class="tech-tag">CHATBOT</span>
+                            <span class="tech-tag">MARKETING</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">NLP</span>
+                          </div>
+                          <div class="project-meta">
+                            <span class="importance-badge">⭐ 4/5</span>
+                            <span class="year-badge">📅 2024</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- 📋 第5個位置 (中下) - 癌症專題 (學術基礎) -->
+                  <div class="col-12 col-md-4">
+                    <div
+                      class="project-card enhanced-project-card academic"
+                      data-category="academic"
+                      data-importance="3"
+                      data-year="2023"
+                    >
+                      <div class="category-badge">Academic</div>
+                      <a
+                        href="cancer.html"
+                        aria-label="查看大學專題-癌資機模人詳情"
+                      >
+                        <div class="project-img">
+                          <img
+                            src="assets/images/cancer_project.png"
+                            alt="癌資機模人專題截圖"
+                            loading="lazy"
+                          />
+                          <div class="project-overlay">
+                            <span class="more">SEE DETAILS →</span>
+                          </div>
+                        </div>
+                        <div class="content-area">
+                          <h4 class="project-title">大學專題-癌資機模人</h4>
+                          <div class="subtitle">癌症資料智慧分析系統</div>
+                          <div class="tech-tags">
+                            <span class="tech-tag">MEDICAL AI</span>
+                            <span class="tech-tag">MACHINE LEARNING</span>
+                            <span class="tech-tag">DATA ANALYSIS</span>
+                          </div>
+                          <div class="project-meta">
+                            <span class="importance-badge">⭐ 3/5</span>
+                            <span class="year-badge">📅 2023</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- 分頁導航 -->
             <nav class="project-pagination-wrapper" aria-label="專案分頁導航">
-              <!-- 主要導航 -->
               <div class="cert-pagination-nav">
                 <button
                   class="cert-nav-btn"
@@ -831,14 +925,6 @@
                     aria-selected="true"
                     aria-label="第1頁"
                   ></button>
-                  <button
-                    class="page-dot"
-                    data-page="2"
-                    role="tab"
-                    aria-selected="false"
-                    aria-label="第2頁"
-                    style="display: none"
-                  ></button>
                 </div>
 
                 <button
@@ -849,44 +935,6 @@
                 >
                   <i class="fas fa-chevron-right"></i>
                 </button>
-              </div>
-
-              <!-- 跳轉功能 -->
-              <div class="page-jump-wrapper" style="display: none">
-                <div class="page-jump-container">
-                  <span class="page-info">
-                    <span data-i18n="page.current">第</span>
-                    <span id="projectCurrentPageDisplay">1</span>
-                    <span data-i18n="page.of">頁，共</span>
-                    <span id="projectTotalPageDisplay">1</span>
-                    <span data-i18n="page.total">頁</span>
-                  </span>
-                  <span class="jump-separator">|</span>
-                  <label
-                    for="projectPageJumpInput"
-                    class="page-jump-label"
-                    data-i18n="page.jump"
-                    >跳至</label
-                  >
-                  <input
-                    type="number"
-                    id="projectPageJumpInput"
-                    class="page-jump-input"
-                    min="1"
-                    max="1"
-                    value="1"
-                    aria-label="輸入頁碼"
-                  />
-                  <span data-i18n="page.page">頁</span>
-                  <button
-                    id="projectPageJumpBtn"
-                    class="page-jump-btn"
-                    data-i18n="page.go"
-                    aria-label="跳轉到指定頁面"
-                  >
-                    GO
-                  </button>
-                </div>
               </div>
             </nav>
           </div>
