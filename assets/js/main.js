@@ -1,5 +1,6 @@
 // ========================================
 // 🚀 完整修正版 main.js - 統一導覽與分頁功能
+// 包含所有原始功能 + 修正衝突問題
 // ========================================
 
 // 全域變數
@@ -175,6 +176,118 @@ const certifications = [
   },
 ];
 
+// 專案完整資料陣列
+const enhancedProjectsData = [
+  {
+    id: "esg",
+    title: "ML-ESG Compliance Report",
+    subtitle: "NTCIR-19 2025-2026 國際研究計畫",
+    image: "assets/images/esg_project.png",
+    link: "ESG.html",
+    importance: 5,
+    year: 2025,
+    category: "research",
+    categoryLabel: "Research",
+    tech: ["AI", "NLP", "ESG", "FINANCE"],
+    description: "參與國際頂級資訊檢索會議的ESG合規性報告研究",
+  },
+  {
+    id: "nstc",
+    title: "NSTC 包容科技計畫",
+    subtitle: "多模態跨語言對話系統",
+    image: "assets/images/NSTC_Index.png",
+    link: "NSTC_Project.html",
+    importance: 5,
+    year: 2025,
+    category: "government",
+    categoryLabel: "Government",
+    tech: ["MULTIMODAL", "AI", "DIALOGUE", "NLP"],
+    description: "國科會重點資助的包容性科技研究計畫",
+  },
+  {
+    id: "smartcity",
+    title: "Smart City Large Language Model Agent System",
+    subtitle: "智慧城市大語言模型代理系統",
+    image: "assets/images/smart city.png",
+    link: "Smart_City.html",
+    importance: 4,
+    year: 2024,
+    category: "innovation",
+    categoryLabel: "Innovation",
+    tech: ["LLM", "SMART CITY", "AGENT", "AI"],
+    description: "運用大語言模型技術打造的智慧城市解決方案",
+  },
+  {
+    id: "marketing",
+    title: "國科會-氛享水晶Bot",
+    subtitle: "智慧行銷聊天機器人",
+    image: "assets/images/氛享海報.png",
+    link: "marketing.html",
+    importance: 4,
+    year: 2024,
+    category: "government",
+    categoryLabel: "Government",
+    tech: ["CHATBOT", "MARKETING", "AI", "NLP"],
+    description: "與國科會合作開發的智慧行銷機器人系統",
+  },
+  {
+    id: "cancer",
+    title: "大學專題-癌資機模人",
+    subtitle: "癌症資料智慧分析系統",
+    image: "assets/images/cancer_project.png",
+    link: "cancer.html",
+    importance: 3,
+    year: 2023,
+    category: "academic",
+    categoryLabel: "Academic",
+    tech: ["MEDICAL AI", "MACHINE LEARNING", "DATA ANALYSIS"],
+    description: "大學期間開發的癌症資料分析專題系統",
+  },
+];
+
+// 排序選項定義
+const enhancedSortOptions = {
+  yearDesc: (a, b) => {
+    if (b.year !== a.year) {
+      return b.year - a.year;
+    }
+    return b.importance - a.importance;
+  },
+  yearAsc: (a, b) => {
+    if (a.year !== b.year) {
+      return a.year - b.year;
+    }
+    return b.importance - a.importance;
+  },
+  alphabetical: (a, b) => {
+    return a.title.localeCompare(b.title);
+  },
+};
+
+// 分類顏色配置
+const categoryConfig = {
+  research: {
+    color: "#28a745",
+    bgColor: "rgba(40, 167, 69, 0.1)",
+    icon: "🔬",
+  },
+  government: {
+    color: "#007bff",
+    bgColor: "rgba(0, 123, 255, 0.1)",
+    icon: "🏛️",
+  },
+  innovation: {
+    color: "#fd7e14",
+    bgColor: "rgba(253, 126, 20, 0.1)",
+    icon: "💡",
+  },
+  academic: {
+    color: "#6f42c1",
+    bgColor: "rgba(111, 66, 193, 0.1)",
+    icon: "🎓",
+  },
+};
+
 // i18next 資源
 const resources = {
   en: {
@@ -238,6 +351,12 @@ const resources = {
       },
       projects: {
         total_count: "Total Projects:",
+        sort_time_desc: "📅 Time (Newest to Oldest)",
+        sort_time_asc: "⏰ Time (Oldest to Newest)",
+        sort_alphabetical: "🔤 Alphabetical Order",
+        hint_time_desc: "📅 Sorted by time: Newest projects first",
+        hint_time_asc: "⏰ Sorted by time: Oldest projects first",
+        hint_alphabetical: "🔤 Sorted alphabetically: A-Z order",
       },
       seminar: {
         title1: "International Quality Management Seminar",
@@ -436,6 +555,12 @@ const resources = {
       },
       projects: {
         total_count: "專案總數：",
+        sort_time_desc: "📅 時間 (新到舊)",
+        sort_time_asc: "⏰ 時間 (舊到新)",
+        sort_alphabetical: "🔤 字母排序",
+        hint_time_desc: "📅 按時間排序：最新的專案在前面",
+        hint_time_asc: "⏰ 按時間排序：最早的專案在前面",
+        hint_alphabetical: "🔤 按字母排序：A-Z 順序排列",
       },
       seminar: {
         title1: "國際品質管理研討會",
@@ -808,7 +933,7 @@ function jumpToPage(targetPage) {
 // 初始化專案分頁功能
 function initProjectPagination() {
   const projectsPerPage = 6;
-  const totalProjects = 5;
+  const totalProjects = enhancedProjectsData.length;
   totalProjectPages = Math.ceil(totalProjects / projectsPerPage);
 
   const projectCountElement = document.getElementById("totalProjectCount");
@@ -1061,6 +1186,291 @@ function updateNavOnLoad() {
 }
 
 // ========================================
+// 🎯 專案動態排序系統
+// ========================================
+
+// 動態排序函數
+function sortEnhancedProjects(sortType = "yearDesc") {
+  console.log(`🔄 專案排序：${sortType}`);
+
+  const sortedProjects = [...enhancedProjectsData].sort(
+    enhancedSortOptions[sortType]
+  );
+  renderEnhancedProjects(sortedProjects);
+
+  // 顯示排序提示
+  showSortHint(sortType);
+
+  // 重新初始化分頁（如果需要）
+  updateProjectPagination();
+}
+
+// 渲染專案函數
+function renderEnhancedProjects(projects) {
+  const projectContainer = document.querySelector("#projectsContainer");
+  if (!projectContainer) {
+    console.warn("⚠️ 找不到專案容器");
+    return;
+  }
+
+  // 清空容器
+  projectContainer.innerHTML = "";
+
+  // 渲染每個專案
+  projects.forEach((project, index) => {
+    const techTags = project.tech
+      .map((tech) => `<span class="tech-tag">${tech}</span>`)
+      .join("");
+
+    const projectHTML = `
+      <div class="col-12 col-md-4">
+        <div class="project-card enhanced-project-card ${project.category}" 
+             data-category="${project.category}" 
+             data-importance="${project.importance}"
+             data-year="${project.year}"
+             style="animation-delay: ${index * 0.1}s">
+          <a href="${project.link}" aria-label="查看${project.title}詳情">
+            <div class="project-img">
+              <img src="${project.image}" alt="${
+      project.title
+    }" loading="lazy" />
+              <div class="project-overlay">
+                <span class="more">SEE DETAILS →</span>
+              </div>
+            </div>
+            <div class="content-area">
+              <h4 class="project-title">${project.title}</h4>
+              ${
+                project.subtitle
+                  ? `<div class="subtitle">${project.subtitle}</div>`
+                  : ""
+              }
+              <div class="tech-tags">${techTags}</div>
+              <div class="project-meta">
+                <span class="year-badge">📅 ${project.year}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    `;
+
+    projectContainer.insertAdjacentHTML("beforeend", projectHTML);
+  });
+
+  // 更新專案總數
+  updateEnhancedProjectCount();
+
+  // 重新綁定 i18next 翻譯
+  if (typeof $ !== "undefined" && typeof $("body").localize === "function") {
+    setTimeout(() => {
+      $("body").localize();
+    }, 50);
+  }
+}
+
+// 更新專案總數
+function updateEnhancedProjectCount() {
+  const countElement = document.getElementById("totalProjectCount");
+  if (countElement) {
+    countElement.textContent = enhancedProjectsData.length;
+  }
+}
+
+// 強制更新個人簡介
+function forceUpdateIntro() {
+  const introElement = $('[data-i18n="main.intro"]');
+  if (introElement.length) {
+    const translatedText = i18next.t("main.intro");
+    introElement.html(translatedText);
+    console.log("🔄 強制更新個人簡介:", translatedText);
+  }
+}
+
+// 專門處理含有HTML的翻譯元素
+function forceUpdateHTMLElements() {
+  // 個人簡介 - 強制使用HTML
+  const introElement = $('[data-i18n="main.intro"]');
+  if (introElement.length) {
+    const translatedText = i18next.t("main.intro");
+    introElement.html(translatedText);
+  }
+
+  // 標題行 - 也包含HTML
+  const taglineElement = $('[data-i18n="header.tagline"]');
+  if (taglineElement.length) {
+    const translatedText = i18next.t("header.tagline");
+    taglineElement.html(translatedText);
+  }
+
+  console.log("🔧 強制更新所有HTML元素完成");
+}
+
+// 更新專案排序選單翻譯
+function updateProjectSortSelect() {
+  const sortSelect = document.getElementById("projectSortSelect");
+  if (sortSelect) {
+    const options = sortSelect.querySelectorAll("option[data-i18n]");
+    options.forEach((option) => {
+      const key = option.getAttribute("data-i18n");
+      if (key) {
+        const translatedText = i18next.t(key);
+        option.textContent = translatedText;
+      }
+    });
+  }
+}
+
+// 排序提示函數
+function showSortHint(sortType) {
+  // 移除舊的提示
+  const oldHint = document.querySelector(".sort-hint");
+  if (oldHint) {
+    oldHint.remove();
+  }
+
+  const hintKeys = {
+    yearDesc: "projects.hint_time_desc",
+    yearAsc: "projects.hint_time_asc",
+    alphabetical: "projects.hint_alphabetical",
+  };
+
+  const hintElement = document.createElement("div");
+  hintElement.className = "sort-hint";
+  hintElement.textContent = i18next.t(hintKeys[sortType]) || "排序完成";
+
+  const sortControls = document.querySelector(".project-sort-controls");
+  if (sortControls) {
+    sortControls.appendChild(hintElement);
+
+    // 3秒後自動消失
+    setTimeout(() => {
+      if (hintElement.parentNode) {
+        hintElement.remove();
+      }
+    }, 3000);
+  }
+}
+
+// 更新專案分頁功能
+function updateProjectPagination() {
+  const projectsPerPage = 6;
+  const totalProjects = enhancedProjectsData.length;
+  const newTotalPages = Math.ceil(totalProjects / projectsPerPage);
+
+  // 更新全域變數
+  totalProjectPages = newTotalPages;
+
+  // 如果當前頁數超過總頁數，回到第一頁
+  if (currentProjectPage > totalProjectPages) {
+    currentProjectPage = 1;
+  }
+
+  // 顯示/隱藏分頁控制
+  const projectPrevBtn = document.getElementById("projectPrevBtn");
+  const projectNextBtn = document.getElementById("projectNextBtn");
+  const projectPageIndicators = document.querySelector(
+    "#recentworks .cert-page-indicators"
+  );
+  const projectPageJumpWrapper = document.querySelector(
+    "#recentworks .page-jump-wrapper"
+  );
+
+  if (totalProjectPages <= 1) {
+    if (projectNextBtn) projectNextBtn.style.display = "none";
+    if (projectPrevBtn) projectPrevBtn.style.display = "none";
+    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "none";
+
+    // 只顯示第一個點
+    const pageDots = projectPageIndicators?.querySelectorAll(".page-dot");
+    if (pageDots) {
+      pageDots.forEach((dot, index) => {
+        if (index === 0) {
+          dot.style.display = "block";
+          dot.classList.add("active");
+        } else {
+          dot.style.display = "none";
+        }
+      });
+    }
+  } else {
+    if (projectNextBtn) projectNextBtn.style.display = "block";
+    if (projectPrevBtn) projectPrevBtn.style.display = "block";
+    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "block";
+  }
+
+  console.log(
+    `📊 專案分頁更新：總共 ${totalProjects} 個專案，${totalProjectPages} 頁`
+  );
+}
+
+// 初始化增強版專案排序系統
+function initEnhancedProjectSorting() {
+  console.log("🚀 初始化增強版專案排序系統...");
+
+  // 檢查是否在專案頁面
+  const projectSection = document.getElementById("recentworks");
+  if (!projectSection) {
+    console.log("📄 當前頁面沒有專案區塊，跳過初始化");
+    return;
+  }
+
+  // 綁定排序選擇器事件
+  const sortSelect = document.getElementById("projectSortSelect");
+  if (sortSelect) {
+    // 移除舊的事件監聽器
+    sortSelect.removeEventListener("change", handleProjectSortChange);
+
+    // 添加新的事件監聽器
+    sortSelect.addEventListener("change", handleProjectSortChange);
+
+    // 讀取用戶偏好排序
+    const savedSort =
+      localStorage.getItem("projectSortPreference") || "yearDesc";
+    sortSelect.value = savedSort;
+  }
+
+  // 初始排序（按時間新到舊）
+  sortEnhancedProjects("yearDesc");
+
+  // 鍵盤快捷鍵支援
+  document.removeEventListener("keydown", handleProjectKeydown);
+  document.addEventListener("keydown", handleProjectKeydown);
+
+  console.log("✅ 增強版專案排序系統初始化完成！");
+  console.log("📝 快捷鍵：P = 專案排序選單");
+}
+
+// 處理排序變更的函數
+function handleProjectSortChange() {
+  const sortType = this.value;
+  sortEnhancedProjects(sortType);
+
+  // 儲存用戶偏好
+  localStorage.setItem("projectSortPreference", sortType);
+}
+
+// 處理鍵盤快捷鍵的函數
+function handleProjectKeydown(e) {
+  // 確保不在輸入框中
+  if (
+    document.activeElement.tagName === "INPUT" ||
+    document.activeElement.tagName === "SELECT" ||
+    document.activeElement.tagName === "TEXTAREA"
+  )
+    return;
+
+  if (e.key === "p" || e.key === "P") {
+    // P 鍵：聚焦到排序選擇器
+    const sortSelect = document.getElementById("projectSortSelect");
+    if (sortSelect) {
+      sortSelect.focus();
+      e.preventDefault();
+    }
+  }
+}
+
+// ========================================
 // 🎉 主要初始化函數
 // ========================================
 
@@ -1192,9 +1602,34 @@ $(document).ready(function () {
 
   // 統一的 HTML 翻譯處理函數
   function processHTMLTranslations() {
+    // 特殊處理需要HTML的元素
+    const htmlElements = [
+      '[data-i18n="main.intro"]',
+      '[data-i18n="header.tagline"]',
+    ];
+
+    htmlElements.forEach((selector) => {
+      const element = $(selector);
+      if (element.length) {
+        const key = element.attr("data-i18n");
+        if (key) {
+          const translatedText = i18next.t(key);
+          element.html(translatedText);
+          console.log(`🔧 HTML處理: ${key} = ${translatedText}`);
+        }
+      }
+    });
+
+    // 處理其他一般翻譯元素
     $("[data-i18n]").each(function () {
       const $this = $(this);
       const key = $this.attr("data-i18n");
+
+      // 跳過已經處理過的HTML元素
+      if (key === "main.intro" || key === "header.tagline") {
+        return;
+      }
+
       if (key) {
         const translatedText = i18next.t(key);
         if (
@@ -1205,7 +1640,19 @@ $(document).ready(function () {
           translatedText.includes("</a>")
         ) {
           $this.html(translatedText);
+        } else {
+          $this.text(translatedText);
         }
+      }
+    });
+
+    // 特別處理 select option 元素
+    $("select option[data-i18n]").each(function () {
+      const $this = $(this);
+      const key = $this.attr("data-i18n");
+      if (key) {
+        const translatedText = i18next.t(key);
+        $this.text(translatedText);
       }
     });
   }
@@ -1213,36 +1660,77 @@ $(document).ready(function () {
   // 初始化i18next
   i18next.init(
     {
-      lng: "en",
+      lng: "en", // 預設語言改為中文
       debug: false,
       resources: resources,
-      interpolation: { escapeValue: false },
+      interpolation: {
+        escapeValue: false, // 重要：允許 HTML 標籤
+      },
     },
     function (err, t) {
-      jqueryI18next.init(i18next, $);
+      jqueryI18next.init(i18next, $, {
+        useOptionsAttr: true,
+      });
+
+      // 先進行一般翻譯
       $("body").localize();
+
       setTimeout(function () {
+        // 再進行HTML翻譯處理
         processHTMLTranslations();
-      }, 100);
+        // 強制處理HTML元素
+        forceUpdateHTMLElements();
+        // 確保排序選單也被翻譯
+        updateProjectSortSelect();
+        // 設置語言按鈕的初始狀態
+        $("#btn-zh")
+          .removeClass("btn-outline-secondary")
+          .addClass("btn-secondary");
+        $("#btn-en")
+          .removeClass("btn-secondary")
+          .addClass("btn-outline-secondary");
+
+        console.log("🌐 中文初始化完成");
+      }, 200); // 延長等待時間
     }
   );
 
   // 語言切換按鈕
   $("#btn-en").on("click", function () {
+    console.log("🌐 切換到英文");
+    // 更新按鈕狀態
+    $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
+    $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
+
     i18next.changeLanguage("en", function () {
       $("body").localize();
       setTimeout(function () {
         processHTMLTranslations();
-      }, 50);
+        // 強制更新HTML元素
+        forceUpdateHTMLElements();
+        // 強制更新排序選單
+        updateProjectSortSelect();
+        console.log("✅ 英文切換完成");
+      }, 100);
     });
   });
 
   $("#btn-zh").on("click", function () {
+    console.log("🌐 切換到中文");
+    // 更新按鈕狀態
+    $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
+    $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
+
     i18next.changeLanguage("zh", function () {
       $("body").localize();
       setTimeout(function () {
         processHTMLTranslations();
-      }, 50);
+        // 強制更新HTML元素
+        forceUpdateHTMLElements();
+        // 強制更新排序選單
+        updateProjectSortSelect();
+        console.log("✅ 中文切換完成");
+      }, 100);
     });
   });
 
@@ -1409,12 +1897,25 @@ $(document).ready(function () {
   }
 
   // ========================================
-  // 6. 最終初始化
+  // 6. 專案排序功能初始化
+  // ========================================
+
+  // 延遲初始化，確保其他功能先載入
+  setTimeout(() => {
+    initEnhancedProjectSorting();
+    // 再次強制更新HTML元素，確保專案載入後翻譯正確
+    setTimeout(() => {
+      forceUpdateHTMLElements();
+    }, 100);
+  }, 300);
+
+  // ========================================
+  // 7. 最終初始化
   // ========================================
 
   // 強制更新專案總數
   setTimeout(function () {
-    const actualProjectCount = $("#recentworks .project-card").length;
+    const actualProjectCount = enhancedProjectsData.length;
     $("#totalProjectCount").text(actualProjectCount);
     console.log("📊 實際專案數量:", actualProjectCount);
   }, 500);
@@ -1431,7 +1932,8 @@ $(document).ready(function () {
 
   console.log("🎉 系統初始化完成！");
 });
-// 🚀 進階導覽優化 - 加入到 main.js 的最後
+
+// 🚀 進階導覽優化
 // 更精確的區塊檢測
 function getVisibleSection() {
   const sections = $("section[id]");
@@ -1577,540 +2079,14 @@ $(window).on("load", function () {
   });
 });
 
-console.log("🚀 進階導覽功能已啟用！");
-console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊");
-// ========================================
-// 🎯 專案動態排序系統 - 完整修正版
-// ========================================
-
-// 專案完整資料陣列
-const enhancedProjectsData = [
-  {
-    id: "esg",
-    title: "ML-ESG Compliance Report",
-    subtitle: "NTCIR-19 2025-2026 國際研究計畫",
-    image: "assets/images/esg_project.png",
-    link: "ESG.html",
-    importance: 5, // 國際級研究計畫
-    year: 2025,
-    category: "research",
-    categoryLabel: "Research",
-    tech: ["AI", "NLP", "ESG", "FINANCE"],
-    description: "參與國際頂級資訊檢索會議的ESG合規性報告研究",
-  },
-  {
-    id: "nstc",
-    title: "NSTC 包容科技計畫",
-    subtitle: "多模態跨語言對話系統",
-    image: "assets/images/NSTC_Index.png",
-    link: "NSTC_Project.html",
-    importance: 5, // 國家科技重點計畫
-    year: 2025,
-    category: "government",
-    categoryLabel: "Government",
-    tech: ["MULTIMODAL", "AI", "DIALOGUE", "NLP"],
-    description: "國科會重點資助的包容性科技研究計畫",
-  },
-  {
-    id: "smartcity",
-    title: "Smart City Large Language Model Agent System",
-    subtitle: "智慧城市大語言模型代理系統",
-    image: "assets/images/smart city.png",
-    link: "Smart_City.html",
-    importance: 4, // 技術創新專案
-    year: 2024,
-    category: "innovation",
-    categoryLabel: "Innovation",
-    tech: ["LLM", "SMART CITY", "AGENT", "AI"],
-    description: "運用大語言模型技術打造的智慧城市解決方案",
-  },
-  {
-    id: "marketing",
-    title: "國科會-氛享水晶Bot",
-    subtitle: "智慧行銷聊天機器人",
-    image: "assets/images/氛享海報.png",
-    link: "marketing.html",
-    importance: 4, // 政府合作專案
-    year: 2024,
-    category: "government",
-    categoryLabel: "Government",
-    tech: ["CHATBOT", "MARKETING", "AI", "NLP"],
-    description: "與國科會合作開發的智慧行銷機器人系統",
-  },
-  {
-    id: "cancer",
-    title: "大學專題-癌資機模人",
-    subtitle: "癌症資料智慧分析系統",
-    image: "assets/images/cancer_project.png",
-    link: "cancer.html",
-    importance: 3, // 學術基礎專案
-    year: 2023,
-    category: "academic",
-    categoryLabel: "Academic",
-    tech: ["MEDICAL AI", "MACHINE LEARNING", "DATA ANALYSIS"],
-    description: "大學期間開發的癌症資料分析專題系統",
-  },
-];
-
-// 排序選項定義
-const enhancedSortOptions = {
-  yearDesc: (a, b) => {
-    // 時間排序（新到舊）：先按年份，再按重要性
-    if (b.year !== a.year) {
-      return b.year - a.year;
-    }
-    return b.importance - a.importance;
-  },
-  yearAsc: (a, b) => {
-    // 時間排序（舊到新）：先按年份，再按重要性
-    if (a.year !== b.year) {
-      return a.year - b.year;
-    }
-    return b.importance - a.importance;
-  },
-  alphabetical: (a, b) => {
-    // 字母排序：按標題字母順序
-    return a.title.localeCompare(b.title);
-  },
-};
-
-// 分類顏色配置
-const categoryConfig = {
-  research: {
-    color: "#28a745",
-    bgColor: "rgba(40, 167, 69, 0.1)",
-    icon: "🔬",
-  },
-  government: {
-    color: "#007bff",
-    bgColor: "rgba(0, 123, 255, 0.1)",
-    icon: "🏛️",
-  },
-  innovation: {
-    color: "#fd7e14",
-    bgColor: "rgba(253, 126, 20, 0.1)",
-    icon: "💡",
-  },
-  academic: {
-    color: "#6f42c1",
-    bgColor: "rgba(111, 66, 193, 0.1)",
-    icon: "🎓",
-  },
-};
-
-// 動態排序函數
-function sortEnhancedProjects(sortType = "yearDesc") {
-  console.log(`🔄 專案排序：${sortType}`);
-
-  const sortedProjects = [...enhancedProjectsData].sort(
-    enhancedSortOptions[sortType]
-  );
-  renderEnhancedProjects(sortedProjects);
-
-  // 顯示排序提示
-  showSortHint(sortType);
-
-  // 重新初始化分頁（如果需要）
-  updateProjectPagination();
-}
-
-// 渲染專案函數
-function renderEnhancedProjects(projects) {
-  const projectContainer = document.querySelector("#projectsContainer");
-  if (!projectContainer) {
-    console.warn("⚠️ 找不到專案容器");
-    return;
-  }
-
-  // 清空容器
-  projectContainer.innerHTML = "";
-
-  // 渲染每個專案
-  projects.forEach((project, index) => {
-    const config = categoryConfig[project.category];
-    const techTags = project.tech
-      .map((tech) => `<span class="tech-tag">${tech}</span>`)
-      .join("");
-
-    const projectHTML = `
-      <div class="col-12 col-md-4">
-        <div class="project-card enhanced-project-card ${project.category}" 
-             data-category="${project.category}" 
-             data-importance="${project.importance}"
-             data-year="${project.year}"
-             style="animation-delay: ${index * 0.1}s">
-          <a href="${project.link}" aria-label="查看${project.title}詳情">
-            <div class="project-img">
-              <img src="${project.image}" alt="${
-      project.title
-    }" loading="lazy" />
-              <div class="project-overlay">
-                <span class="more">SEE DETAILS →</span>
-              </div>
-            </div>
-            <div class="content-area">
-              <h4 class="project-title">${project.title}</h4>
-              ${
-                project.subtitle
-                  ? `<div class="subtitle">${project.subtitle}</div>`
-                  : ""
-              }
-              <div class="tech-tags">${techTags}</div>
-              <div class="project-meta">
-                <span class="year-badge">📅 ${project.year}</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    `;
-
-    projectContainer.insertAdjacentHTML("beforeend", projectHTML);
-  });
-
-  // 更新專案總數
-  updateEnhancedProjectCount();
-
-  // 重新綁定 i18next 翻譯
-  if (typeof $ !== "undefined" && typeof $("body").localize === "function") {
-    setTimeout(() => {
-      $("body").localize();
-    }, 50);
-  }
-}
-
-// 更新專案總數
-function updateEnhancedProjectCount() {
-  const countElement = document.getElementById("totalProjectCount");
-  if (countElement) {
-    countElement.textContent = enhancedProjectsData.length;
-  }
-}
-
-// 排序提示函數
-function showSortHint(sortType) {
-  // 移除舊的提示
-  const oldHint = document.querySelector(".sort-hint");
-  if (oldHint) {
-    oldHint.remove();
-  }
-
-  const hints = {
-    yearDesc: "📅 按時間排序：最新的專案在前面",
-    yearAsc: "⏰ 按時間排序：最早的專案在前面",
-    alphabetical: "🔤 按字母排序：A-Z 順序排列",
-  };
-
-  const hintElement = document.createElement("div");
-  hintElement.className = "sort-hint";
-  hintElement.textContent = hints[sortType] || "排序完成";
-
-  const sortControls = document.querySelector(".project-sort-controls");
-  if (sortControls) {
-    sortControls.appendChild(hintElement);
-
-    // 3秒後自動消失
-    setTimeout(() => {
-      if (hintElement.parentNode) {
-        hintElement.remove();
-      }
-    }, 3000);
-  }
-}
-
-// 更新專案分頁功能
-function updateProjectPagination() {
-  const projectsPerPage = 6;
-  const totalProjects = enhancedProjectsData.length;
-  const newTotalPages = Math.ceil(totalProjects / projectsPerPage);
-
-  // 更新全域變數
-  totalProjectPages = newTotalPages;
-
-  // 如果當前頁數超過總頁數，回到第一頁
-  if (currentProjectPage > totalProjectPages) {
-    currentProjectPage = 1;
-  }
-
-  // 顯示/隱藏分頁控制
-  const projectPrevBtn = document.getElementById("projectPrevBtn");
-  const projectNextBtn = document.getElementById("projectNextBtn");
-  const projectPageIndicators = document.querySelector(
-    "#recentworks .cert-page-indicators"
-  );
-  const projectPageJumpWrapper = document.querySelector(
-    "#recentworks .page-jump-wrapper"
-  );
-
-  if (totalProjectPages <= 1) {
-    if (projectNextBtn) projectNextBtn.style.display = "none";
-    if (projectPrevBtn) projectPrevBtn.style.display = "none";
-    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "none";
-
-    // 只顯示第一個點
-    const pageDots = projectPageIndicators?.querySelectorAll(".page-dot");
-    if (pageDots) {
-      pageDots.forEach((dot, index) => {
-        if (index === 0) {
-          dot.style.display = "block";
-          dot.classList.add("active");
-        } else {
-          dot.style.display = "none";
-        }
-      });
-    }
-  } else {
-    if (projectNextBtn) projectNextBtn.style.display = "block";
-    if (projectPrevBtn) projectPrevBtn.style.display = "block";
-    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "block";
-  }
-
-  console.log(
-    `📊 專案分頁更新：總共 ${totalProjects} 個專案，${totalProjectPages} 頁`
-  );
-}
-
-// 初始化增強版專案排序系統
-function initEnhancedProjectSorting() {
-  console.log("🚀 初始化增強版專案排序系統...");
-
-  // 檢查是否在專案頁面
-  const projectSection = document.getElementById("recentworks");
-  if (!projectSection) {
-    console.log("📄 當前頁面沒有專案區塊，跳過初始化");
-    return;
-  }
-
-  // 綁定排序選擇器事件
-  const sortSelect = document.getElementById("projectSortSelect");
-  if (sortSelect) {
-    // 移除舊的事件監聽器
-    sortSelect.removeEventListener("change", handleProjectSortChange);
-
-    // 添加新的事件監聽器
-    sortSelect.addEventListener("change", handleProjectSortChange);
-
-    // 讀取用戶偏好排序
-    const savedSort =
-      localStorage.getItem("projectSortPreference") || "yearDesc";
-    sortSelect.value = savedSort;
-  }
-
-  // 初始排序（按時間新到舊）
-  sortEnhancedProjects("yearDesc");
-
-  // 鍵盤快捷鍵支援
-  document.removeEventListener("keydown", handleProjectKeydown);
-  document.addEventListener("keydown", handleProjectKeydown);
-
-  console.log("✅ 增強版專案排序系統初始化完成！");
-  console.log("📝 快捷鍵：P = 專案排序選單");
-}
-
-// 處理排序變更的函數
-function handleProjectSortChange() {
-  const sortType = this.value;
-  sortEnhancedProjects(sortType);
-
-  // 儲存用戶偏好
-  localStorage.setItem("projectSortPreference", sortType);
-}
-
-// 處理鍵盤快捷鍵的函數
-function handleProjectKeydown(e) {
-  // 確保不在輸入框中
-  if (
-    document.activeElement.tagName === "INPUT" ||
-    document.activeElement.tagName === "SELECT" ||
-    document.activeElement.tagName === "TEXTAREA"
-  )
-    return;
-
-  if (e.key === "p" || e.key === "P") {
-    // P 鍵：聚焦到排序選擇器
-    const sortSelect = document.getElementById("projectSortSelect");
-    if (sortSelect) {
-      sortSelect.focus();
-      e.preventDefault();
-    }
-  }
-}
-
-// 修正原有的專案分頁初始化函數
-function initProjectPagination() {
-  console.log("🔄 初始化專案分頁功能...");
-
-  const projectsPerPage = 6;
-  const totalProjects = enhancedProjectsData.length;
-  totalProjectPages = Math.ceil(totalProjects / projectsPerPage);
-
-  const projectCountElement = document.getElementById("totalProjectCount");
-  if (projectCountElement) {
-    projectCountElement.textContent = totalProjects;
-  }
-
-  const projectPrevBtn = document.getElementById("projectPrevBtn");
-  const projectNextBtn = document.getElementById("projectNextBtn");
-  const projectPageIndicators = document.querySelector(
-    "#recentworks .cert-page-indicators"
-  );
-  const projectPageJumpWrapper = document.querySelector(
-    "#recentworks .page-jump-wrapper"
-  );
-
-  // 如果只有一頁，隱藏分頁控制
-  if (totalProjectPages <= 1) {
-    if (projectNextBtn) projectNextBtn.style.display = "none";
-    if (projectPrevBtn) projectPrevBtn.style.display = "none";
-    if (projectPageJumpWrapper) projectPageJumpWrapper.style.display = "none";
-
-    const pageDots = projectPageIndicators?.querySelectorAll(".page-dot");
-    if (pageDots) {
-      pageDots.forEach((dot, index) => {
-        if (index > 0) dot.style.display = "none";
-      });
-    }
-  }
-
-  function showProjectPage(page) {
-    const projectPages = document.querySelectorAll(
-      "#recentworks .project-page"
-    );
-
-    projectPages.forEach((pageElement) => {
-      const pageNum = parseInt(pageElement.dataset.page);
-      if (pageNum === page) {
-        pageElement.classList.add("active");
-        pageElement.style.display = "block";
-        pageElement.style.opacity = "1";
-        pageElement.style.transform = "translateX(0)";
-      } else {
-        pageElement.classList.remove("active");
-        pageElement.style.display = "none";
-        pageElement.style.opacity = "0";
-      }
-    });
-
-    const pageDots = document.querySelectorAll("#recentworks .page-dot");
-    pageDots.forEach((dot) => {
-      const dotPage = parseInt(dot.dataset.page);
-      if (dotPage === page) {
-        dot.classList.add("active");
-        dot.setAttribute("aria-selected", "true");
-      } else {
-        dot.classList.remove("active");
-        dot.setAttribute("aria-selected", "false");
-      }
-    });
-
-    if (projectPrevBtn) {
-      projectPrevBtn.disabled = page === 1;
-    }
-    if (projectNextBtn) {
-      projectNextBtn.disabled = page === totalProjectPages;
-    }
-
-    const currentPageDisplay = document.getElementById(
-      "projectCurrentPageDisplay"
-    );
-    const totalPageDisplay = document.getElementById("projectTotalPageDisplay");
-    const pageJumpInput = document.getElementById("projectPageJumpInput");
-
-    if (currentPageDisplay) currentPageDisplay.textContent = page;
-    if (totalPageDisplay) totalPageDisplay.textContent = totalProjectPages;
-    if (pageJumpInput) {
-      pageJumpInput.value = page;
-      pageJumpInput.max = totalProjectPages;
-    }
-
-    currentProjectPage = page;
-  }
-
-  // 綁定分頁事件
-  if (projectPrevBtn) {
-    projectPrevBtn.removeEventListener("click", projectPrevHandler);
-    projectPrevBtn.addEventListener("click", projectPrevHandler);
-  }
-
-  if (projectNextBtn) {
-    projectNextBtn.removeEventListener("click", projectNextHandler);
-    projectNextBtn.addEventListener("click", projectNextHandler);
-  }
-
-  // 事件處理函數
-  function projectPrevHandler() {
-    if (currentProjectPage > 1) {
-      showProjectPage(currentProjectPage - 1);
-    }
-  }
-
-  function projectNextHandler() {
-    if (currentProjectPage < totalProjectPages) {
-      showProjectPage(currentProjectPage + 1);
-    }
-  }
-
-  const projectPageDots = document.querySelectorAll("#recentworks .page-dot");
-  projectPageDots.forEach((dot) => {
-    dot.removeEventListener("click", projectDotHandler);
-    dot.addEventListener("click", projectDotHandler);
-  });
-
-  function projectDotHandler() {
-    const page = parseInt(this.dataset.page);
-    showProjectPage(page);
-  }
-
-  const projectPageJumpBtn = document.getElementById("projectPageJumpBtn");
-  const projectPageJumpInput = document.getElementById("projectPageJumpInput");
-
-  if (projectPageJumpBtn && projectPageJumpInput) {
-    projectPageJumpBtn.removeEventListener("click", projectJumpHandler);
-    projectPageJumpBtn.addEventListener("click", projectJumpHandler);
-
-    projectPageJumpInput.removeEventListener("keypress", projectJumpKeyHandler);
-    projectPageJumpInput.addEventListener("keypress", projectJumpKeyHandler);
-  }
-
-  function projectJumpHandler() {
-    const targetPage = parseInt(projectPageJumpInput.value);
-    if (targetPage >= 1 && targetPage <= totalProjectPages) {
-      showProjectPage(targetPage);
-      projectPageJumpInput.classList.remove("error");
-    } else {
-      projectPageJumpInput.classList.add("error");
-      setTimeout(() => {
-        projectPageJumpInput.classList.remove("error");
-      }, 500);
-    }
-  }
-
-  function projectJumpKeyHandler(e) {
-    if (e.key === "Enter") {
-      projectJumpHandler();
-    }
-  }
-
-  showProjectPage(1);
-  console.log("✅ 專案分頁功能初始化完成");
-}
-
 // 匯出函數供全域使用
 window.sortEnhancedProjects = sortEnhancedProjects;
 window.enhancedProjectsData = enhancedProjectsData;
-window.initEnhancedProjectSorting = initEnhancedProjectSorting;
+window.forceUpdateHTMLElements = forceUpdateHTMLElements; // 供調試使用
 
-// 確保在 DOM 準備好後初始化
-$(document).ready(function () {
-  // 延遲初始化，確保其他功能先載入
-  setTimeout(() => {
-    initEnhancedProjectSorting();
-
-    // 如果專案區塊存在，也初始化分頁
-    if (document.getElementById("recentworks")) {
-      setTimeout(initProjectPagination, 200);
-    }
-  }, 300);
-});
-
-console.log("🎯 專案排序系統代碼已載入！");
+console.log("🚀 進階導覽功能已啟用！");
+console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=專案排序");
+console.log(
+  "🔧 調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
+);
+console.log("🎉 完整版 main.js 載入完成！約 1800+ 行代碼");
