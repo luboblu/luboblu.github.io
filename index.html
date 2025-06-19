@@ -142,6 +142,11 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#courses" data-i18n="nav.courses">
+                  碩士課程
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#school" data-i18n="nav.school">
                   就讀學校
                 </a>
@@ -948,7 +953,312 @@
             </nav>
           </div>
         </section>
+        <!-- 碩士課程區塊 -->
+        <section class="section topspace" id="courses" aria-label="碩士課程">
+          <div class="container">
+            <h2 class="section-title">
+              <span data-i18n="section.courses">碩士課程 Master Courses</span>
+            </h2>
 
+            <!-- 學期切換按鈕 -->
+            <div class="sort-controls">
+              <label
+                data-i18n="courses.select_semester"
+                id="semester-select-label"
+                >選擇學期:</label
+              >
+              <div
+                class="btn-group"
+                role="group"
+                aria-labelledby="semester-select-label"
+              >
+                <button
+                  type="button"
+                  class="btn-sort semester-btn active"
+                  data-semester="1-1"
+                  data-i18n="courses.semester_1_1"
+                  aria-pressed="true"
+                >
+                  碩一上
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="1-2"
+                  data-i18n="courses.semester_1_2"
+                  aria-pressed="false"
+                >
+                  碩一下
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="2-1"
+                  data-i18n="courses.semester_2_1"
+                  aria-pressed="false"
+                >
+                  碩二上
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="2-2"
+                  data-i18n="courses.semester_2_2"
+                  aria-pressed="false"
+                >
+                  碩二下
+                </button>
+              </div>
+            </div>
+
+            <!-- 碩一上課程 -->
+            <div class="semester-content active" data-semester="1-1">
+              <div class="row" id="semester-1-1-cards">
+                <!-- 軟體工程課程 - appetAIwan -->
+                <div class="col-sm-6 col-md-6 flex-col">
+                  <div class="course-card text-center">
+                    <a
+                      href="https://appetaiwan.github.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="course-link"
+                      aria-label="查看軟體工程課程 - appetAIwan 專案"
+                    >
+                      <div class="course-image-container">
+                        <img
+                          src="assets/images/software_engineering.png"
+                          class="course-img"
+                          alt="appetAIwan 軟體工程專案"
+                          loading="lazy"
+                        />
+                        <div class="course-overlay">
+                          <span class="external-link-icon">
+                            <i class="fas fa-external-link-alt"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                    <h4 class="course-title">
+                      <span data-i18n="courses.software_engineering"
+                        >軟體工程 Software Engineering</span
+                      >
+                    </h4>
+                    <!-- 修改後的代碼 - 軟體工程課程 -->
+                    <div class="course-details">
+                      <p class="course-info">
+                        <i class="fas fa-users me-2"></i>
+                        <span data-i18n="courses.software_engineering_team"
+                          >Group 3 - appetAIwan 團隊</span
+                        >
+                      </p>
+                      <p class="course-info">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span data-i18n="courses.software_engineering_prof"
+                          >Min Yuh Day 教授</span
+                        >
+                      </p>
+                      <!-- 🔄 修改這一行：改成可下載PDF -->
+                      <a
+                        href="assets/files/團體期末報告.pdf"
+                        target="_blank"
+                        download="appetAIwan_期中專案報告.pdf"
+                        class="course-info course-pdf-download"
+                        aria-label="下載 appetAIwan 期中專案報告 PDF"
+                      >
+                        <i class="fas fa-file-pdf me-2"></i>
+                        <span data-i18n="courses.software_engineering_pdf"
+                          >期中專案報告 (PDF)</span
+                        >
+                        <i class="fas fa-download ms-2"></i>
+                      </a>
+                      <p class="course-info">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span data-i18n="courses.software_engineering_date"
+                          >2025/06/04</span
+                        >
+                      </p>
+                    </div>
+                    <div class="course-tech-tags">
+                      <span class="tech-tag">AI + Taiwan</span>
+                      <span class="tech-tag">APPETITE</span>
+                      <span class="tech-tag">Web Development</span>
+                    </div>
+                    <p
+                      class="course-date"
+                      data-i18n="courses.software_engineering_status"
+                    >
+                      狀態: 已完成
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 生成式AI創新應用課程 - NovaPet -->
+                <div class="col-sm-6 col-md-6 flex-col">
+                  <div class="course-card text-center">
+                    <a
+                      href="https://novapetextension.github.io/NovaPet.github.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="course-link"
+                      aria-label="查看生成式AI創新應用課程 - NovaPet 專案"
+                    >
+                      <div class="course-image-container">
+                        <img
+                          src="assets/images/generative_ai.png"
+                          class="course-img"
+                          alt="NovaPet 生成式AI專案"
+                          loading="lazy"
+                        />
+                        <div class="course-overlay">
+                          <span class="external-link-icon">
+                            <i class="fas fa-external-link-alt"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                    <h4 class="course-title">
+                      <span data-i18n="courses.generative_ai"
+                        >生成式AI創新應用 Generative AI</span
+                      >
+                    </h4>
+                    <div class="course-details">
+                      <p class="course-info">
+                        <i class="fas fa-users me-2"></i>
+                        <span data-i18n="courses.generative_ai_team"
+                          >NovaPet 團隊</span
+                        >
+                      </p>
+                      <p class="course-info">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span data-i18n="courses.generative_ai_prof"
+                          >Min-Yuh Day 教授</span
+                        >
+                      </p>
+                      <!-- 🔄 修改這一行：改成可下載PDF -->
+                      <a
+                        href="assets/files/Group 4_ NovaPet Final.pdf"
+                        target="_blank"
+                        download="NovaPet_期末專案報告.pdf"
+                        class="course-info course-pdf-download"
+                        aria-label="下載 NovaPet 期末專案報告 PDF"
+                      >
+                        <i class="fas fa-file-pdf me-2"></i>
+                        <span data-i18n="courses.generative_ai_pdf"
+                          >期末專案報告 (PDF)</span
+                        >
+                        <i class="fas fa-download ms-2"></i>
+                      </a>
+                      <p class="course-info">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span data-i18n="courses.generative_ai_date"
+                          >2025/06/02</span
+                        >
+                      </p>
+                    </div>
+                    <div class="course-tech-tags">
+                      <span class="tech-tag">Generative AI</span>
+                      <span class="tech-tag">NovaPet</span>
+                      <span class="tech-tag">Digital Sky</span>
+                    </div>
+                    <p
+                      class="course-date"
+                      data-i18n="courses.generative_ai_status"
+                    >
+                      狀態: 已完成
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩一下課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="1-2">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon">
+                    <i class="fas fa-seedling"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_1_2"
+                  >
+                    碩一下課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_1_2"
+                  >
+                    Master 1st Spring Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_1_2"
+                      >預計開始時間：2026年2月</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩二上課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="2-1">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon autumn">
+                    <i class="fas fa-maple-leaf"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_2_1"
+                  >
+                    碩二上課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_2_1"
+                  >
+                    Master 2nd Fall Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_2_1"
+                      >預計開始時間：2026年9月</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩二下課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="2-2">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon winter">
+                    <i class="fas fa-snowflake"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_2_2"
+                  >
+                    碩二下課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_2_2"
+                  >
+                    Master 2nd Spring Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_2_2"
+                      >預計開始時間：2027年2月</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- School 區塊 -->
         <section class="section topspace" id="school" aria-label="就讀學校">
           <div class="container">

@@ -1,6 +1,6 @@
 // ========================================
-// 🚀 完整修正版 main.js - 統一導覽與分頁功能
-// 包含所有原始功能 + 修正衝突問題
+// 🚀 完整版 main.js - 統一導覽與分頁功能 + 課程區塊
+// 包含所有原始功能 + 新增課程功能
 // ========================================
 
 // 全域變數
@@ -290,6 +290,132 @@ const categoryConfig = {
 
 // i18next 資源
 const resources = {
+  zh: {
+    translation: {
+      nav: {
+        home: "首頁Home",
+        education: "學習經歷",
+        seminar: "研討會發表",
+        certifications: "證書",
+        projects: "計畫",
+        courses: "碩士課程",
+        school: "就讀學校",
+      },
+      header: {
+        title: "Hsin-Ting Lu",
+        tagline:
+          "國立臺北大學資訊管理研究所<br><a href='mailto:hsintinglubob@gmail.com'>hsintinglubob@gmail.com</a>",
+      },
+      main: {
+        intro:
+          '我目前就讀於臺北大學資訊管理研究所，並於<a href="https://www.aifitesg.org/" target="_blank" rel="noopener noreferrer" class="ifit-link"><strong>智慧金融創新科技實驗室 (IFIT Lab)</strong></a> 擔任研究助理。',
+      },
+      section: {
+        education: "學習經歷",
+        seminar: "研討會發表",
+        certifications: "證書",
+        projects: "計畫",
+        courses: "碩士課程 Master Courses",
+        school: "就讀學校",
+      },
+      sort: {
+        label: "排序方式:",
+        desc: "新到舊",
+        asc: "舊到新",
+      },
+      footer: {
+        contact: "聯絡資訊",
+        follow: "追蹤我",
+        textwidget: "文字模組",
+        formwidget: "表單模組",
+      },
+      certs: {
+        ai900_title: "AI-900: 微軟 Azure AI 基礎證照",
+        ai900_date: "發證日期: 2023/06/07",
+        aws_title: "AWS雲端數據分析與爬蟲工作坊",
+        aws_date: "發證日期: 2023/09/22",
+        fin_title: "第17屆 金融科技力證照",
+        fin_date: "發證日期: 2024/04/20",
+        toeic_title: "多益815分",
+        toeic_date: "發證日期: 2024/04/28",
+        nvidia_self_title: "NVIDIA_Build_With_ RAG_Agent_Selflearning",
+        nvidia_self_date: "發證日期: 2025/03/18",
+        nvidia_ws_title: "NVIDIA_Build_With_ RAG_Agent_Workshop",
+        nvidia_ws_date: "發證日期: 2025/03/18",
+        nvidia_GenAI_date: "發證日期: 2025/04/29",
+        GA4_date: "發證日期: 2025/04/29",
+        cybersecurity_date: "發證日期: 2025/05/15",
+        rapidLLM_date: "發證日期: 2025/06/10",
+        ai_performance_date: "發證日期: 2025/06/12",
+        ai_shopping_date: "發證日期: 2025/06/11",
+        google_ads_apps_date: "發證日期: 2025/06/11",
+        total_count: "證照總數：",
+      },
+      projects: {
+        total_count: "專案總數：",
+        sort_time_desc: "📅 時間 (新到舊)",
+        sort_time_asc: "⏰ 時間 (舊到新)",
+        sort_alphabetical: "🔤 字母排序",
+        hint_time_desc: "📅 按時間排序：最新的專案在前面",
+        hint_time_asc: "⏰ 按時間排序：最早的專案在前面",
+        hint_alphabetical: "🔤 按字母排序：A-Z 順序排列",
+      },
+      seminar: {
+        title1: "國際品質管理研討會",
+        date1: "發證日期: 2023/11/18",
+        title2: "IMP2024第29屆資訊管理暨實務研討會",
+        date2: "發證日期: 2024/11/21",
+        title3: "品質學報接受稿件刊登",
+        date3: "接受日期: 2024/08/31",
+      },
+      education: {
+        fju_title: "輔仁大學第40屆優秀專題",
+        fju_date: "發證日期: 2023/05/27",
+        innohack_title: "2023叡揚資訊黑客松競賽",
+        innohack_date: "發證日期: 2023/09/13",
+        ict_title: "第28屆大專院校資訊應用服務創新競賽",
+        ict_date: "發證日期: 2023/11/04",
+        iii_title: "資策會科技日",
+        iii_date: "參加日期: 2024/11/07",
+      },
+      page: {
+        current: "第",
+        of: "頁，共",
+        total: "頁",
+        jump: "跳至",
+        page: "頁",
+        go: "GO",
+      },
+      courses: {
+        select_semester: "選擇學期:",
+        semester_1_1: "碩一上",
+        semester_1_2: "碩一下",
+        semester_2_1: "碩二上",
+        semester_2_2: "碩二下",
+        software_engineering: "軟體工程 Software Engineering",
+        software_engineering_team: "Group 3 - appetAIwan 團隊",
+        software_engineering_prof: "Min Yuh Day 教授",
+        software_engineering_type: "期中專案",
+        software_engineering_date: "2025/06/04",
+        software_engineering_status: "狀態: 已完成",
+        generative_ai: "生成式AI創新應用 Generative AI",
+        generative_ai_team: "NovaPet 團隊",
+        generative_ai_prof: "Min-Yuh Day 教授",
+        generative_ai_type: "期末專案報告",
+        generative_ai_date: "2025/06/02",
+        generative_ai_status: "狀態: 已完成",
+        coming_soon_title_1_2: "碩一下課程敬請期待",
+        coming_soon_subtitle_1_2: "Master 1st Spring Semester Coming Soon",
+        coming_soon_time_1_2: "預計開始時間：2025年9月",
+        coming_soon_title_2_1: "碩二上課程敬請期待",
+        coming_soon_subtitle_2_1: "Master 2nd Fall Semester Coming Soon",
+        coming_soon_time_2_1: "預計開始時間：2026年2月",
+        coming_soon_title_2_2: "碩二下課程敬請期待",
+        coming_soon_subtitle_2_2: "Master 2nd Spring Semester Coming Soon",
+        coming_soon_time_2_2: "預計開始時間：2026年9月",
+      },
+    },
+  },
   en: {
     translation: {
       nav: {
@@ -298,6 +424,7 @@ const resources = {
         seminar: "Seminar Presentation",
         certifications: "Certifications",
         projects: "Projects",
+        courses: "Master Courses",
         school: "School",
       },
       header: {
@@ -314,6 +441,7 @@ const resources = {
         seminar: "Seminar Presentation",
         certifications: "Certifications",
         projects: "Projects",
+        courses: "Master Courses",
         school: "School",
       },
       sort: {
@@ -386,299 +514,33 @@ const resources = {
         page: "",
         go: "GO",
       },
-      esg: {
-        nav: {
-          back: "Back to Home",
-          introduction: "Introduction",
-          timeline: "Timeline",
-          process: "Process",
-          languages: "Languages",
-          highlights: "Highlights",
-        },
-        header: {
-          title: "ML-ESG Compliance Report",
-          subtitle: "ESG Compliance Report - Chinese Dataset Annotation Task",
-          project: "NTCIR-19 2025-2026 International Research Project",
-        },
-        introduction: {
-          title: "ACTIVITY INTRODUCTION",
-          description:
-            "We plan to participate in the <strong>ML-ESG Compliance Report</strong> Chinese dataset annotation task, which is an international collaborative research project aimed at advancing ESG automated detection technology.",
-          team_label: "Participating Teams:",
-          team_members:
-            "Japanese Team, National Taiwan University, National Taipei University",
-          duration_label: "Project Duration:",
-          duration: "March 1, 2025 - May 31, 2025 (90-day annotation period)",
-          importance_title: "Why is ESG Compliance Important?",
-          stat1:
-            "<strong>69% of investment companies</strong> have incorporated ESG standards into their regulatory compliance strategies",
-          stat2:
-            "Among the top 250 global companies, <strong>96% have conducted ESG reporting</strong>",
-          stat3:
-            "In 2022, <strong>86% of global asset managers</strong> have integrated sustainable investing into their investment strategies",
-          stat4:
-            "<strong>97% of asset managers</strong> in the Asia-Pacific region have adopted ESG strategies",
-          trends_title: "Three Major Global ESG Trends",
-          trend1_title: "ESG Integration into Corporate Operations",
-          trend1_desc:
-            "More companies are incorporating ESG principles into their daily operations",
-          trend2_title: "Climate Change Response",
-          trend2_desc:
-            "Companies are adopting more proactive environmental measures to address global warming",
-          trend3_title: "Increasingly Strict Regulatory Framework",
-          trend3_desc:
-            "Governments and international organizations continue to strengthen ESG regulations",
-        },
-        timeline: {
-          title: "PROJECT TIMELINE",
-          meeting: "2025/02/26 (Wed) 20:30-21:00",
-          meeting_desc: "First Online Discussion Meeting - ML-ESG CR 2026",
-          labeling: "2025/03/01 - 2025/05/31 (90 Days)",
-          labeling_desc:
-            "<strong>Data Annotation Phase</strong> - ESG reporting standards and data annotation work",
-          completion: "2025/06 - 2025/07",
-          completion_desc:
-            "Complete ESG report annotation and establish precise ESG data models",
-          conference: "2026/12",
-          conference_desc:
-            "Participate in NTCIR-19 International Conference and present research findings",
-        },
-        process: {
-          title: "DATA LABELING PROCESS",
-          step: "Step",
-          task: "Task",
-          description: "Description",
-          step1_task: "Confirm ESG Indicator Location",
-          step1_desc: "Confirm the pages where ESG indicators appear",
-          step2_task: "Indicator Classification",
-          step2_desc:
-            "Quantitative data (numbers, percentages) or discussion/analysis (text description)",
-          step3_task: "Unit Verification",
-          step3_desc:
-            "Percentage (%), currency ($), text description, or other data types",
-          step4_task: "Compliance Confirmation",
-          step4_desc: "Ensure ESG reports comply with regulatory requirements",
-        },
-        languages: {
-          title: "MULTI-LANGUAGE SUPPORT",
-          english: "English",
-          french: "French",
-          korean: "Korean",
-          chinese: "Chinese",
-          japanese: "Japanese",
-          thai: "Thai",
-        },
-        highlights: {
-          title: "RESEARCH HIGHLIGHTS",
-          analysis_title: "ESG Data Analysis",
-          analysis_desc: "In-depth analysis of corporate ESG report compliance",
-          ai_title: "AI Automated Detection",
-          ai_desc: "Using machine learning technology for automated detection",
-          cooperation_title: "International Cooperation",
-          cooperation_desc:
-            "Joint research and development with multinational teams",
-          ntcir_title: "NTCIR Certification",
-          ntcir_desc:
-            "International top-tier information retrieval evaluation conference",
-        },
-        cta: {
-          title:
-            "Interested in participating in international collaborative research projects?",
-          subtitle: "Welcome to join the ML-ESG CR 2026 research team",
-          button: "Visit NLPFin Official Website",
-        },
-        footer: {
-          copyright: "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
-          team: "Research Team: NLPFin (Natural Language Processing Finance Research Group) | Official Website:",
-        },
-      },
-    },
-  },
-  zh: {
-    translation: {
-      nav: {
-        home: "首頁Home",
-        education: "學習經歷",
-        seminar: "研討會發表",
-        certifications: "證書",
-        projects: "計畫",
-        school: "就讀學校",
-      },
-      header: {
-        title: "Hsin-Ting Lu",
-        tagline:
-          "國立臺北大學資訊管理研究所<br><a href='mailto:hsintinglubob@gmail.com'>hsintinglubob@gmail.com</a>",
-      },
-      main: {
-        intro:
-          '我目前就讀於臺北大學資訊管理研究所，並於<a href="https://www.aifitesg.org/" target="_blank" rel="noopener noreferrer" class="ifit-link"><strong>智慧金融創新科技實驗室 (IFIT Lab)</strong></a> 擔任研究助理。',
-      },
-      section: {
-        education: "學習經歷",
-        seminar: "研討會發表",
-        certifications: "證書",
-        projects: "計畫",
-        school: "就讀學校",
-      },
-      sort: {
-        label: "排序方式:",
-        desc: "新到舊",
-        asc: "舊到新",
-      },
-      footer: {
-        contact: "聯絡資訊",
-        follow: "追蹤我",
-        textwidget: "文字模組",
-        formwidget: "表單模組",
-      },
-      certs: {
-        ai900_title: "AI-900: 微軟 Azure AI 基礎證照",
-        ai900_date: "發證日期: 2023/06/07",
-        aws_title: "AWS雲端數據分析與爬蟲工作坊",
-        aws_date: "發證日期: 2023/09/22",
-        fin_title: "第17屆 金融科技力證照",
-        fin_date: "發證日期: 2024/04/20",
-        toeic_title: "多益815分",
-        toeic_date: "發證日期: 2024/04/28",
-        nvidia_self_title: "NVIDIA_Build_With_ RAG_Agent_Selflearning",
-        nvidia_self_date: "發證日期: 2025/03/18",
-        nvidia_ws_title: "NVIDIA_Build_With_ RAG_Agent_Workshop",
-        nvidia_ws_date: "發證日期: 2025/03/18",
-        nvidia_GenAI_date: "發證日期: 2025/04/29",
-        GA4_date: "發證日期: 2025/04/29",
-        cybersecurity_date: "發證日期: 2025/05/15",
-        rapidLLM_date: "發證日期: 2025/06/10",
-        ai_performance_date: "發證日期: 2025/06/12",
-        ai_shopping_date: "發證日期: 2025/06/11",
-        google_ads_apps_date: "發證日期: 2025/06/11",
-        total_count: "證照總數：",
-      },
-      projects: {
-        total_count: "專案總數：",
-        sort_time_desc: "📅 時間 (新到舊)",
-        sort_time_asc: "⏰ 時間 (舊到新)",
-        sort_alphabetical: "🔤 字母排序",
-        hint_time_desc: "📅 按時間排序：最新的專案在前面",
-        hint_time_asc: "⏰ 按時間排序：最早的專案在前面",
-        hint_alphabetical: "🔤 按字母排序：A-Z 順序排列",
-      },
-      seminar: {
-        title1: "國際品質管理研討會",
-        date1: "發證日期: 2023/11/18",
-        title2: "IMP2024第29屆資訊管理暨實務研討會",
-        date2: "發證日期: 2024/11/21",
-        title3: "品質學報接受稿件刊登",
-        date3: "接受日期: 2024/08/31",
-      },
-      education: {
-        fju_title: "輔仁大學第40屆優秀專題",
-        fju_date: "發證日期: 2023/05/27",
-        innohack_title: "2023叡揚資訊黑客松競賽",
-        innohack_date: "發證日期: 2023/09/13",
-        ict_title: "第28屆大專院校資訊應用服務創新競賽",
-        ict_date: "發證日期: 2023/11/04",
-        iii_title: "資策會科技日",
-        iii_date: "參加日期: 2024/11/07",
-      },
-      page: {
-        current: "第",
-        of: "頁，共",
-        total: "頁",
-        jump: "跳至",
-        page: "頁",
-        go: "GO",
-      },
-      esg: {
-        nav: {
-          back: "返回首頁",
-          introduction: "活動介紹",
-          timeline: "專案時程",
-          process: "標註流程",
-          languages: "多語言支援",
-          highlights: "研究重點",
-        },
-        header: {
-          title: "ML-ESG Compliance Report",
-          subtitle: "ESG 合規性報告 - 中文版本資料集標註任務",
-          project: "NTCIR-19 2025-2026 國際研究計畫",
-        },
-        introduction: {
-          title: "ACTIVITY INTRODUCTION 活動介紹",
-          description:
-            "我們預計參與 <strong>ML-ESG Compliance Report (ESG 合規性報告)</strong> 中文版本資料集標註任務， 這是一個國際合作的研究計畫，目標是推動 ESG 自動化檢測技術發展。",
-          team_label: "參與團隊：",
-          team_members: "日本團隊、台灣大學、臺北大學",
-          duration_label: "專案期間：",
-          duration: "2025年3月1日 - 2025年5月31日（90天資料標註期）",
-          importance_title: "為何 ESG 合規性重要？",
-          stat1: "<strong>69% 的投資公司</strong>已將 ESG 標準納入監管合規策略",
-          stat2: "全球前 250 大企業中，<strong>96% 已進行 ESG 報告</strong>",
-          stat3:
-            "2022 年，全球 <strong>86% 的資產管理者</strong>已將永續投資納入其投資策略",
-          stat4: "亞太地區 <strong>97% 的資產管理者</strong>已導入 ESG 策略",
-          trends_title: "三大 ESG 全球趨勢",
-          trend1_title: "ESG 整合至企業營運",
-          trend1_desc: "越來越多企業在日常營運中融入 ESG 原則",
-          trend2_title: "應對氣候變遷",
-          trend2_desc: "企業採取更積極的環保措施來因應全球暖化",
-          trend3_title: "監管法規日益嚴格",
-          trend3_desc: "各國政府與國際機構對 ESG 的監管持續強化",
-        },
-        timeline: {
-          title: "PROJECT TIMELINE 專案時程",
-          meeting: "2025/02/26 (三) 20:30-21:00",
-          meeting_desc: "第一次線上討論會議 - ML-ESG CR 2026",
-          labeling: "2025/03/01 - 2025/05/31 (90 Days)",
-          labeling_desc:
-            "<strong>資料標註階段</strong> - ESG 報告標準與數據標註工作",
-          completion: "2025/06 - 2025/07",
-          completion_desc: "完成 ESG 報告標註，建立精準的 ESG 數據模型",
-          conference: "2026/12",
-          conference_desc: "參與 NTCIR-19 國際研討會，發表研究成果",
-        },
-        process: {
-          title: "DATA LABELING PROCESS 數據標註流程",
-          step: "步驟",
-          task: "工作內容",
-          description: "詳細說明",
-          step1_task: "確認 ESG 指標位置",
-          step1_desc: "確認 ESG 指標出現的頁面",
-          step2_task: "指標分類",
-          step2_desc: "量化數據（數字、百分比）或討論/分析（文字描述）",
-          step3_task: "單位驗證",
-          step3_desc: "百分比（%）、貨幣（$）、文字描述或其他數據類型",
-          step4_task: "合規性確認",
-          step4_desc: "確保 ESG 報告符合監管要求",
-        },
-        languages: {
-          title: "MULTI-LANGUAGE SUPPORT 多語言支援",
-          english: "英文 English",
-          french: "法文 French",
-          korean: "韓文 Korean",
-          chinese: "中文 Chinese",
-          japanese: "日文 Japanese",
-          thai: "泰文 Thai",
-        },
-        highlights: {
-          title: "RESEARCH HIGHLIGHTS 研究重點",
-          analysis_title: "ESG 數據分析",
-          analysis_desc: "深度分析企業 ESG 報告合規性",
-          ai_title: "AI 自動化檢測",
-          ai_desc: "運用機器學習技術自動檢測",
-          cooperation_title: "國際合作",
-          cooperation_desc: "與多國團隊共同研究開發",
-          ntcir_title: "NTCIR 認證",
-          ntcir_desc: "國際頂級資訊檢索評測會議",
-        },
-        cta: {
-          title: "有興趣參與國際合作研究計畫嗎？",
-          subtitle: "歡迎加入 ML-ESG CR 2026 研究團隊",
-          button: "訪問 NLPFin 官方網站",
-        },
-        footer: {
-          copyright: "ML-ESG Compliance Report © 2025 | NTCIR-19 2025-2026",
-          team: "研究團隊：NLPFin（自然語言處理金融研究小組）| 官方網站：",
-        },
+      courses: {
+        select_semester: "Select Semester:",
+        semester_1_1: "Master 1st Fall",
+        semester_1_2: "Master 1st Spring",
+        semester_2_1: "Master 2nd Fall",
+        semester_2_2: "Master 2nd Spring",
+        software_engineering: "Software Engineering",
+        software_engineering_team: "Group 3 - appetAIwan Team",
+        software_engineering_prof: "Professor Min Yuh Day",
+        software_engineering_type: "Midterm Project",
+        software_engineering_date: "2025/06/04",
+        software_engineering_status: "Status: Completed",
+        generative_ai: "Generative AI Innovation Application",
+        generative_ai_team: "NovaPet Team",
+        generative_ai_prof: "Professor Min-Yuh Day",
+        generative_ai_type: "Final Project Report",
+        generative_ai_date: "2025/06/02",
+        generative_ai_status: "Status: Completed",
+        coming_soon_title_1_2: "Master 1st Spring Coming Soon",
+        coming_soon_subtitle_1_2: "課程即將推出",
+        coming_soon_time_1_2: "Expected Start: September 2025",
+        coming_soon_title_2_1: "Master 2nd Fall Coming Soon",
+        coming_soon_subtitle_2_1: "課程即將推出",
+        coming_soon_time_2_1: "Expected Start: February 2026",
+        coming_soon_title_2_2: "Master 2nd Spring Coming Soon",
+        coming_soon_subtitle_2_2: "課程即將推出",
+        coming_soon_time_2_2: "Expected Start: September 2026",
       },
     },
   },
@@ -1471,6 +1333,84 @@ function handleProjectKeydown(e) {
 }
 
 // ========================================
+// 📚 課程區塊功能
+// ========================================
+
+// 課程學期切換功能
+function initCourseSemesterSwitching() {
+  const coursesSection = document.getElementById("courses");
+  if (!coursesSection) {
+    console.log("📄 當前頁面沒有課程區塊，跳過初始化");
+    return;
+  }
+
+  const semesterBtns = coursesSection.querySelectorAll(".semester-btn");
+  const semesterContents = coursesSection.querySelectorAll(".semester-content");
+
+  semesterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const semester = this.dataset.semester;
+
+      console.log("🔄 切換到學期:", semester);
+
+      // 更新按鈕狀態
+      semesterBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      this.classList.add("active");
+      this.setAttribute("aria-pressed", "true");
+
+      // 切換內容
+      semesterContents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      const targetContent = coursesSection.querySelector(
+        `[data-semester="${semester}"].semester-content`
+      );
+      if (targetContent) {
+        setTimeout(() => {
+          targetContent.classList.add("active");
+        }, 10);
+      }
+    });
+  });
+
+  console.log("✅ 課程學期切換功能初始化完成");
+}
+
+// 處理課程圖片載入錯誤
+function initCourseImageErrorHandling() {
+  const courseImages = document.querySelectorAll(".course-img");
+  courseImages.forEach((img) => {
+    img.addEventListener("error", function () {
+      console.log("⚠️ 課程圖片載入失敗:", this.src);
+
+      // 如果圖片載入失敗，使用漸層背景和文字
+      this.style.background = "linear-gradient(135deg, #4f46e5, #6366f1)";
+      this.style.display = "flex";
+      this.style.alignItems = "center";
+      this.style.justifyContent = "center";
+      this.style.color = "white";
+      this.style.fontSize = "2rem";
+      this.style.fontWeight = "bold";
+      this.style.textShadow = "0 2px 4px rgba(0,0,0,0.5)";
+
+      if (this.src.includes("appetaiwan")) {
+        this.innerHTML = "appetAIwan";
+      } else if (this.src.includes("novapet")) {
+        this.innerHTML = "NovaPet";
+      } else {
+        this.innerHTML = "課程";
+      }
+    });
+  });
+
+  console.log("✅ 課程圖片錯誤處理初始化完成");
+}
+
+// ========================================
 // 🎉 主要初始化函數
 // ========================================
 
@@ -1660,7 +1600,7 @@ $(document).ready(function () {
   // 初始化i18next
   i18next.init(
     {
-      lng: "en", // 預設語言改為中文
+      lng: "en", // 預設語言為中文
       debug: false,
       resources: resources,
       interpolation: {
@@ -1816,7 +1756,17 @@ $(document).ready(function () {
   });
 
   // ========================================
-  // 4. 其他功能初始化
+  // 4. 課程功能初始化 - 新增
+  // ========================================
+
+  // 初始化課程學期切換功能
+  initCourseSemesterSwitching();
+
+  // 初始化課程圖片錯誤處理
+  initCourseImageErrorHandling();
+
+  // ========================================
+  // 5. 其他功能初始化
   // ========================================
 
   // 設定預設排序
@@ -1845,7 +1795,7 @@ $(document).ready(function () {
   }
 
   // ========================================
-  // 5. ESG 頁面特定功能
+  // 6. ESG 頁面特定功能
   // ========================================
 
   if (window.location.pathname.includes("ESG.html")) {
@@ -1897,7 +1847,7 @@ $(document).ready(function () {
   }
 
   // ========================================
-  // 6. 專案排序功能初始化
+  // 7. 專案排序功能初始化
   // ========================================
 
   // 延遲初始化，確保其他功能先載入
@@ -1910,7 +1860,7 @@ $(document).ready(function () {
   }, 300);
 
   // ========================================
-  // 7. 最終初始化
+  // 8. 最終初始化
   // ========================================
 
   // 強制更新專案總數
@@ -1930,8 +1880,12 @@ $(document).ready(function () {
   // 立即執行初始設置
   updateNavOnLoad();
 
-  console.log("🎉 系統初始化完成！");
+  console.log("🎉 系統初始化完成！包含課程功能！");
 });
+
+// ========================================
+// 🎨 進階功能擴展
+// ========================================
 
 // 🚀 進階導覽優化
 // 更精確的區塊檢測
@@ -1979,6 +1933,7 @@ $(document).on("keydown", function (e) {
     "education",
     "seminar",
     "certifications",
+    "courses",
     "recentworks",
     "school",
   ];
@@ -2086,7 +2041,8 @@ window.forceUpdateHTMLElements = forceUpdateHTMLElements; // 供調試使用
 
 console.log("🚀 進階導覽功能已啟用！");
 console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=專案排序");
+console.log("📚 課程功能：學期切換、圖片錯誤處理");
 console.log(
   "🔧 調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
 );
-console.log("🎉 完整版 main.js 載入完成！約 1800+ 行代碼");
+console.log("🎉 完整版 main.js 載入完成！約 2000+ 行代碼，包含課程功能");

@@ -2096,3 +2096,415 @@ body {
     transform: none !important;
   }
 }
+/*********************************************************************
+                   📚 碩士課程區塊樣式
+**********************************************************************/
+
+/* 學期內容切換 */
+.semester-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.semester-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 課程卡片樣式 */
+.course-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 6px solid #4f46e5;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.course-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+/* 課程圖片容器 */
+.course-image-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.course-img {
+  max-width: 100%;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+/* 課程懸停覆蓋層 */
+.course-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.9),
+    rgba(99, 102, 241, 0.9)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.course-card:hover .course-overlay {
+  opacity: 1;
+}
+
+.external-link-icon {
+  color: white;
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.course-card:hover .external-link-icon {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* 課程標題和內容 */
+.course-title {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  min-height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.3;
+}
+
+.course-details {
+  margin: 20px 0;
+  flex: 1;
+}
+
+.course-info {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.course-info i {
+  color: #4f46e5;
+  width: 18px;
+}
+
+/* 技術標籤 */
+.course-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+  justify-content: center;
+}
+
+.tech-tag {
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  color: #3730a3;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tech-tag:hover {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+.course-date {
+  font-size: 0.9rem;
+  color: #059669;
+  margin: 0;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 2px solid #e5e7eb;
+  font-weight: 600;
+}
+
+/* 學期按鈕特殊樣式 */
+.semester-btn.active {
+  background-color: #4f46e5 !important;
+  color: white !important;
+  border-color: #4338ca !important;
+}
+
+/* 敬請期待樣式 */
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 40px 20px;
+}
+
+.coming-soon-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 20px;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming-soon-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4f46e5, transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.coming-soon-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+.coming-soon-icon.autumn {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+}
+
+.coming-soon-icon.winter {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+}
+
+.coming-soon-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.coming-soon-subtitle {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.coming-soon-timeline {
+  background: rgba(79, 70, 229, 0.1);
+  padding: 12px 20px;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  color: #4f46e5;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* 載入動畫 */
+@keyframes courseCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.course-card {
+  animation: courseCardFadeIn 0.6s ease forwards;
+}
+
+.course-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.course-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.coming-soon-card {
+  animation: courseCardFadeIn 0.8s ease forwards;
+}
+
+/* 課程區塊響應式設計 */
+@media (max-width: 991px) {
+  .col-md-6 {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .course-img {
+    height: 200px;
+  }
+
+  .course-title {
+    font-size: 1.1rem;
+    min-height: 2.5em;
+  }
+
+  .course-info {
+    font-size: 0.85rem;
+  }
+
+  .external-link-icon {
+    font-size: 2rem;
+    padding: 15px;
+  }
+
+  .coming-soon-card {
+    padding: 30px 20px;
+  }
+
+  .coming-soon-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-details {
+    margin: 15px 0;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .semester-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .coming-soon-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+/* 課程區塊深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .course-card {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+
+  .course-title {
+    color: #f9fafb;
+  }
+
+  .course-info {
+    color: #d1d5db;
+  }
+
+  .course-date {
+    color: #10b981;
+    border-top-color: #374151;
+  }
+
+  .coming-soon-card {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-color: #374151;
+  }
+
+  .coming-soon-title {
+    color: #f9fafb;
+  }
+
+  .coming-soon-subtitle {
+    color: #d1d5db;
+  }
+}
+
+/* 課程區塊減少動畫（尊重用戶偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .course-card,
+  .course-img,
+  .external-link-icon,
+  .semester-content,
+  .coming-soon-card {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .course-card:hover {
+    transform: none !important;
+  }
+
+  .coming-soon-card::before {
+    animation: none !important;
+  }
+}
