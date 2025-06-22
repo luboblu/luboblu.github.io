@@ -1,6 +1,6 @@
 /* ========================================
    完整修正版 styles-updated.css
-   統一導覽、滾動效果、分頁功能 + 緊湊布局優化
+   統一導覽、滾動效果、分頁功能 + 緊湊布局優化 + 工作經驗區塊
 ======================================== */
 
 /* 基礎樣式 */
@@ -472,6 +472,9 @@ body {
 .navbar-nav .nav-item:nth-child(6) {
   transition-delay: 0.3s;
 }
+.navbar-nav .nav-item:nth-child(7) {
+  transition-delay: 0.35s;
+}
 
 /* 頁面頂部時的特殊效果 */
 .navbar.at-top,
@@ -543,6 +546,414 @@ body {
 
   .scroll-indicator {
     transition: none;
+  }
+}
+
+/*********************************************************************
+                   💼 工作經驗區塊樣式
+**********************************************************************/
+
+/* 工作經驗時間軸容器 */
+.experience-timeline {
+  position: relative;
+  padding-left: 0;
+  margin: 40px 0;
+}
+
+/* 時間軸主線 */
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* 工作經驗項目 */
+.experience-item {
+  position: relative;
+  margin-bottom: 50px;
+  padding-left: 80px;
+  opacity: 0;
+  animation: experienceFadeInUp 0.6s ease forwards;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.experience-item:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.experience-item:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.experience-item:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+@keyframes experienceFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 時間軸節點 */
+.experience-dot {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* 目前工作的特殊樣式 */
+.experience-dot.current {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  animation: experiencePulse 2s infinite;
+}
+
+@keyframes experiencePulse {
+  0% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+      0 0 0 8px rgba(16, 185, 129, 0.1);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+      0 0 0 16px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+      0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+/* 工作經驗卡片 */
+.experience-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* 目前工作卡片的特殊樣式 */
+.experience-card.current {
+  border-left-color: #10b981;
+}
+
+.experience-card.current::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+/* 時間標籤 */
+.experience-period {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.experience-period.current {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* 兼職標籤 */
+.part-time-badge {
+  font-size: 0.75rem;
+  margin-left: 8px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* 職位標題 */
+.experience-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.experience-card:hover .experience-title {
+  color: #667eea;
+}
+
+/* 公司名稱 */
+.experience-company {
+  font-size: 1.1rem;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.experience-company i {
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.experience-company.current {
+  color: #10b981;
+}
+
+.experience-company.current i {
+  color: #10b981;
+}
+
+/* 工作內容列表 */
+.experience-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-details li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.experience-details li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #667eea;
+  font-size: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.experience-details.current li::before {
+  color: #10b981;
+}
+
+.experience-details li:hover {
+  color: #2d3748;
+}
+
+/* 技能標籤 */
+.skills-tags {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+  color: #4a5568;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: default;
+  border: 1px solid transparent;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 20px;
+  }
+
+  .experience-item {
+    padding-left: 60px;
+  }
+
+  .experience-dot {
+    left: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .experience-card {
+    padding: 20px;
+  }
+
+  .experience-title {
+    font-size: 1.2rem;
+  }
+
+  .experience-company {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .experience-company i {
+    margin-right: 4px;
+  }
+
+  .experience-details li {
+    font-size: 0.9rem;
+    padding-left: 20px;
+  }
+
+  .skills-tags {
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+
+  .part-time-badge {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-item {
+    padding-left: 50px;
+    margin-bottom: 40px;
+  }
+
+  .experience-timeline::before {
+    left: 15px;
+  }
+
+  .experience-dot {
+    left: 3px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .experience-card {
+    padding: 15px;
+  }
+
+  .experience-title {
+    font-size: 1.1rem;
+  }
+
+  .experience-period {
+    font-size: 0.8rem;
+    padding: 5px 14px;
+  }
+
+  .experience-details li {
+    margin-bottom: 8px;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .experience-card {
+    background: #1f2937;
+    border-left-color: #667eea;
+  }
+
+  .experience-title {
+    color: #e2e8f0;
+  }
+
+  .experience-card:hover .experience-title {
+    color: #93c5fd;
+  }
+
+  .experience-details li {
+    color: #d1d5db;
+  }
+
+  .experience-details li:hover {
+    color: #f9fafb;
+  }
+
+  .skill-tag {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  .skill-tag:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+  }
+}
+
+/* 減少動畫（尊重用戶偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .experience-item,
+  .experience-dot,
+  .experience-card,
+  .skill-tag {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .experience-dot.current {
+    animation: none !important;
+  }
+
+  .experience-card:hover {
+    transform: none !important;
+  }
+
+  .skill-tag:hover {
+    transform: none !important;
   }
 }
 
@@ -693,6 +1104,7 @@ a:hover {
 
 /* 確保各區塊間距一致 */
 #Educational Background,
+#experience,
 #Seminar presentation,
 #certifications,
 #recentworks,
@@ -2234,6 +2646,29 @@ body {
 .course-info i {
   color: #4f46e5;
   width: 18px;
+}
+
+/* 課程PDF下載連結特殊樣式 */
+.course-pdf-download {
+  color: #dc2626 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(220, 38, 38, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.course-pdf-download:hover {
+  color: #991b1b !important;
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.course-pdf-download i {
+  color: #dc2626 !important;
 }
 
 /* 技術標籤 */

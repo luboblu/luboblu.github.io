@@ -1,6 +1,6 @@
 // ========================================
-// 🚀 完整版 main.js - 統一導覽與分頁功能 + 課程區塊
-// 包含所有原始功能 + 新增課程功能
+// 🚀 完整版 main.js - 統一導覽與分頁功能 + 課程區塊 + 工作經驗
+// 包含所有原始功能 + 新增課程功能 + 工作經驗區塊
 // ========================================
 
 // 全域變數
@@ -295,6 +295,7 @@ const resources = {
       nav: {
         home: "首頁Home",
         education: "學習經歷",
+        experience: "工作經驗",
         seminar: "研討會發表",
         certifications: "證書",
         projects: "計畫",
@@ -312,11 +313,27 @@ const resources = {
       },
       section: {
         education: "學習經歷",
+        experience: "工作經驗",
         seminar: "研討會發表",
         certifications: "證書",
         projects: "計畫",
         courses: "碩士課程 Master Courses",
         school: "就讀學校",
+      },
+      experience: {
+        researcher_period: "2024.04 - Now",
+        researcher_title: "研究助理",
+        researcher_company: "智慧金融創新科技實驗室 (IFIT Lab), NTPU",
+        researcher_task1:
+          "國科會「以包容為導向之科技計畫」推動與協調計畫，子計畫三：包容溝通支持多模態跨語言任務導向對話系統 (NSTC)",
+        researcher_task2: "資策會-智慧城市大型語言模型代理人系統",
+
+        nvidia_period: "2025.03 - Now",
+        nvidia_title: "NVIDIA師生共群計畫負責人",
+        nvidia_company: "NVIDIA Student-Faculty Collaboration Program Leader",
+        nvidia_task1: "協助在學校舉辦與NVIDIA相關講座以及課程",
+        nvidia_task2: "協助辦理AI相關競賽",
+        nvidia_task3: "完成NVIDIA課程證照",
       },
       sort: {
         label: "排序方式:",
@@ -395,24 +412,24 @@ const resources = {
         software_engineering: "軟體工程 Software Engineering",
         software_engineering_team: "Group 3 - appetAIwan 團隊",
         software_engineering_prof: "Min Yuh Day 教授",
-        software_engineering_type: "期中專案",
+        software_engineering_pdf: "期中專案報告 (PDF)",
         software_engineering_date: "2025/06/04",
         software_engineering_status: "狀態: 已完成",
         generative_ai: "生成式AI創新應用 Generative AI",
         generative_ai_team: "NovaPet 團隊",
         generative_ai_prof: "Min-Yuh Day 教授",
-        generative_ai_type: "期末專案報告",
+        generative_ai_pdf: "期末專案報告 (PDF)",
         generative_ai_date: "2025/06/02",
         generative_ai_status: "狀態: 已完成",
         coming_soon_title_1_2: "碩一下課程敬請期待",
         coming_soon_subtitle_1_2: "Master 1st Spring Semester Coming Soon",
-        coming_soon_time_1_2: "預計開始時間：2025年9月",
+        coming_soon_time_1_2: "預計開始時間：2026年2月",
         coming_soon_title_2_1: "碩二上課程敬請期待",
         coming_soon_subtitle_2_1: "Master 2nd Fall Semester Coming Soon",
-        coming_soon_time_2_1: "預計開始時間：2026年2月",
+        coming_soon_time_2_1: "預計開始時間：2026年9月",
         coming_soon_title_2_2: "碩二下課程敬請期待",
         coming_soon_subtitle_2_2: "Master 2nd Spring Semester Coming Soon",
-        coming_soon_time_2_2: "預計開始時間：2026年9月",
+        coming_soon_time_2_2: "預計開始時間：2027年2月",
       },
     },
   },
@@ -421,6 +438,7 @@ const resources = {
       nav: {
         home: "Home",
         education: "Educational Background",
+        experience: "Work Experience",
         seminar: "Seminar Presentation",
         certifications: "Certifications",
         projects: "Projects",
@@ -438,11 +456,30 @@ const resources = {
       },
       section: {
         education: "Educational Background",
+        experience: "Work Experience",
         seminar: "Seminar Presentation",
         certifications: "Certifications",
         projects: "Projects",
         courses: "Master Courses",
         school: "School",
+      },
+      experience: {
+        researcher_period: "2024.04 - Now",
+        researcher_title: "Researcher",
+        researcher_company:
+          "Intelligent Financial Innovation Technology Lab (IFIT Lab), NTPU",
+        researcher_task1:
+          "Inclusive AI Dialogue Assistive Device Project, sub-project 3: Multimodal Cross-lingual Task-Oriented Dialogue System for Inclusive Communication Support (NSTC)",
+        researcher_task2:
+          "Large Language Model Agent System for Smart City (III)",
+
+        nvidia_period: "2025.03 - Now",
+        nvidia_title: "NVIDIA Student-Faculty Collaboration Program Leader",
+        nvidia_company: "NVIDIA Student-Faculty Collaboration Program Leader",
+        nvidia_task1:
+          "Assist in organizing NVIDIA-related lectures and courses at school",
+        nvidia_task2: "Assist in organizing AI-related competitions",
+        nvidia_task3: "Complete NVIDIA course certifications",
       },
       sort: {
         label: "Sort by:",
@@ -523,24 +560,24 @@ const resources = {
         software_engineering: "Software Engineering",
         software_engineering_team: "Group 3 - appetAIwan Team",
         software_engineering_prof: "Professor Min Yuh Day",
-        software_engineering_type: "Midterm Project",
+        software_engineering_pdf: "Midterm Project Report (PDF)",
         software_engineering_date: "2025/06/04",
         software_engineering_status: "Status: Completed",
         generative_ai: "Generative AI Innovation Application",
         generative_ai_team: "NovaPet Team",
         generative_ai_prof: "Professor Min-Yuh Day",
-        generative_ai_type: "Final Project Report",
+        generative_ai_pdf: "Final Project Report (PDF)",
         generative_ai_date: "2025/06/02",
         generative_ai_status: "Status: Completed",
         coming_soon_title_1_2: "Master 1st Spring Coming Soon",
         coming_soon_subtitle_1_2: "課程即將推出",
-        coming_soon_time_1_2: "Expected Start: September 2025",
+        coming_soon_time_1_2: "Expected Start: February 2026",
         coming_soon_title_2_1: "Master 2nd Fall Coming Soon",
         coming_soon_subtitle_2_1: "課程即將推出",
-        coming_soon_time_2_1: "Expected Start: February 2026",
+        coming_soon_time_2_1: "Expected Start: September 2026",
         coming_soon_title_2_2: "Master 2nd Spring Coming Soon",
         coming_soon_subtitle_2_2: "課程即將推出",
-        coming_soon_time_2_2: "Expected Start: September 2026",
+        coming_soon_time_2_2: "Expected Start: February 2027",
       },
     },
   },
@@ -1600,7 +1637,7 @@ $(document).ready(function () {
   // 初始化i18next
   i18next.init(
     {
-      lng: "en", // 預設語言為中文
+      lng: "en", // 預設語言為英文
       debug: false,
       resources: resources,
       interpolation: {
@@ -1880,7 +1917,7 @@ $(document).ready(function () {
   // 立即執行初始設置
   updateNavOnLoad();
 
-  console.log("🎉 系統初始化完成！包含課程功能！");
+  console.log("🎉 系統初始化完成！包含課程功能和工作經驗！");
 });
 
 // ========================================
@@ -1931,6 +1968,7 @@ $(document).on("keydown", function (e) {
 
   const sections = [
     "education",
+    "experience",
     "seminar",
     "certifications",
     "courses",
@@ -2042,7 +2080,8 @@ window.forceUpdateHTMLElements = forceUpdateHTMLElements; // 供調試使用
 console.log("🚀 進階導覽功能已啟用！");
 console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=專案排序");
 console.log("📚 課程功能：學期切換、圖片錯誤處理");
+console.log("💼 工作經驗：完整翻譯支援，時間軸設計");
 console.log(
   "🔧 調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
 );
-console.log("🎉 完整版 main.js 載入完成！約 2000+ 行代碼，包含課程功能");
+console.log("🎉 完整版 main.js 載入完成！約 2500+ 行代碼，包含工作經驗功能");
