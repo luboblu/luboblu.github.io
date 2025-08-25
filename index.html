@@ -47,6 +47,50 @@
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
     <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
+    
+    <style>
+    /* 新增的樣式支援多連結overlay */
+    .project-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .link-btn:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      color: #007bff;
+    }
+
+    .link-btn i {
+      font-size: 14px;
+    }
+
+    .cert-subtitle {
+      font-size: 0.9em;
+      color: #666;
+      font-style: italic;
+      margin: 5px 0;
+    }
+    </style>
   </head>
   <body class="home">
     <!-- Skip to main content link for accessibility -->
@@ -497,31 +541,91 @@
               </div>
             </div>
             <div class="row" id="seminar-cards">
-              <!-- 卡片 1: 國際品質管理研討會 -->
+              <!-- 新增卡片：TWSC 2025 研討會論文 -->
               <div class="col-sm-6 col-md-4 flex-col">
-                <div class="cert-card text-center">
-                  <button
-                    type="button"
-                    class="btn-card-link"
-                    data-bs-toggle="modal"
-                    data-bs-target="#eduModal3"
-                    aria-label="查看國際品質管理研討會詳情"
-                  >
-                    <img
-                      src="assets/images/conference.png"
-                      class="cert-img"
-                      alt="研討會證書"
-                      loading="lazy"
-                    />
-                  </button>
-                  <h4 class="cert-title" data-i18n="seminar.title1">
-                    國際品質管理研討會
-                  </h4>
-                  <p class="cert-date" data-i18n="seminar.date1">
-                    發證日期: 2023/11/18
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <div class="project-img">
+                      <img
+                        src="assets/images/rag_inclusive_communication.png"
+                        alt="RAG增強包容性溝通系統研究論文"
+                        loading="lazy"
+                      />
+                      <div class="project-overlay">
+                        <div class="project-links">
+                          <a
+                            href="https://sites.google.com/view/twsc2-2025/home"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="link-btn"
+                            aria-label="查看TWSC2025研討會網站"
+                          >
+                            <i class="fas fa-globe"></i>
+                            <span>研討會</span>
+                          </a>
+                          <a
+                            href="assets/files/TWSC2-2025-Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看論文PDF"
+                          >
+                            <i class="fas fa-file-pdf"></i>
+                            <span>論文</span>
+                          </a>
+                          <a
+                            href="assets/files/TWSC2 abstract-mplementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看摘要PDF"
+                          >
+                            <i class="fas fa-file-alt"></i>
+                            <span>摘要</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="project-title" data-i18n="seminar.title4">
+                      包容性溝通系統與RAG增強多語言多模態對話能力
+                    </h4>
+                  </div>
+                  <p class="cert-subtitle text-center" data-i18n="seminar.subtitle4">
+                    TWSC 2025 - Taiwan Workshop on Software and Computing
+                  </p>
+                  <p class="cert-date" data-i18n="seminar.date4">
+                    發表日期: 2025/07/04
                   </p>
                 </div>
               </div>
+
+              <!-- 卡片 1: IMP2024 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <a
+                      href="IMP_Conference.html"
+                      aria-label="查看IMP2024研討會詳情"
+                    >
+                      <div class="project-img">
+                        <img
+                          src="assets/images/IMP_Conference.jpg"
+                          alt="IMP研討會照片"
+                          loading="lazy"
+                        />
+                        <div class="project-overlay">
+                          <span class="more">SEE DETAILS →</span>
+                        </div>
+                      </div>
+                      <h4 class="project-title" data-i18n="seminar.title2">
+                        IMP2024第29屆資訊管理暨實務研討會
+                      </h4>
+                    </a>
+                  </div>
+                  <p class="cert-date" data-i18n="seminar.date2">
+                    發證日期: 2024/11/21
+                  </p>
+                </div>
+              </div>
+
               <!-- 卡片 2: 品質學報 -->
               <div class="col-sm-6 col-md-4 flex-col">
                 <div class="card-with-external-date">
@@ -550,31 +654,29 @@
                   </p>
                 </div>
               </div>
-              <!-- 卡片 3: IMP2024 -->
+
+              <!-- 卡片 3: 國際品質管理研討會 -->
               <div class="col-sm-6 col-md-4 flex-col">
-                <div class="card-with-external-date">
-                  <div class="project-card">
-                    <a
-                      href="IMP_Conference.html"
-                      aria-label="查看IMP2024研討會詳情"
-                    >
-                      <div class="project-img">
-                        <img
-                          src="assets/images/IMP_Conference.jpg"
-                          alt="IMP研討會照片"
-                          loading="lazy"
-                        />
-                        <div class="project-overlay">
-                          <span class="more">SEE DETAILS →</span>
-                        </div>
-                      </div>
-                      <h4 class="project-title" data-i18n="seminar.title2">
-                        IMP2024第29屆資訊管理暨實務研討會
-                      </h4>
-                    </a>
-                  </div>
-                  <p class="cert-date" data-i18n="seminar.date2">
-                    發證日期: 2024/11/21
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModal3"
+                    aria-label="查看國際品質管理研討會詳情"
+                  >
+                    <img
+                      src="assets/images/conference.png"
+                      class="cert-img"
+                      alt="研討會證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title" data-i18n="seminar.title1">
+                    國際品質管理研討會
+                  </h4>
+                  <p class="cert-date" data-i18n="seminar.date1">
+                    發證日期: 2023/11/18
                   </p>
                 </div>
               </div>
