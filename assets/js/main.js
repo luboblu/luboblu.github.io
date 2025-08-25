@@ -384,6 +384,9 @@ const resources = {
         date2: "發證日期: 2024/11/21",
         title3: "品質學報接受稿件刊登",
         date3: "接受日期: 2024/08/31",
+        title4: "包容性溝通系統與RAG增強多語言多模態對話能力",
+        date4: "發表日期: 2025/07/04",
+        subtitle4: "2025台灣雲端與服務運算研討會(TWSC2 2025)"
       },
       education: {
         fju_title: "輔仁大學第40屆優秀專題",
@@ -532,6 +535,9 @@ const resources = {
         title3:
           "The Journal of Quality has accepted the manuscript for publication",
         date3: "Accepted Date: 2024/08/31",
+        title4: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
+        date4: "Presentation Date: 2025/07/04",
+        subtitle4: "2025 Taiwan Symposium On Cloud And Services Computing(TWSC2 2025)",
       },
       education: {
         fju_title: "Fu Jen Catholic University's 40th Outstanding Projects",
