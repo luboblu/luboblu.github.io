@@ -2943,3 +2943,84 @@ body {
     animation: none !important;
   }
 }
+/* 添加到你的 CSS 檔案中，用於外部連結專案的特殊樣式 */
+
+/* 外部連結指示器 */
+.external-link-indicator {
+  font-size: 0.8em;
+  margin-left: 4px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* 外部連結徽章 */
+.external-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+/* 外部專案卡片懸停效果 */
+.project-card a[target="_blank"]:hover .external-link-indicator {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* 外部連結專案卡片邊框 */
+.project-card:has(a[target="_blank"]) {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #4f46e5, #7c3aed) border-box;
+  border-radius: 12px;
+}
+
+/* 外部連結懸停效果 */
+.project-card:has(a[target="_blank"]):hover {
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 外部連結 overlay 特殊效果 */
+.project-card a[target="_blank"] .project-overlay {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(124, 58, 237, 0.9));
+}
+
+/* 外部連結標題特殊樣式 */
+.project-card a[target="_blank"] .project-title {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* 外部連結技術標籤特殊樣式 */
+.project-card:has(a[target="_blank"]) .tech-tag {
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.project-card:has(a[target="_blank"]) .tech-tag:hover {
+  border-color: #4f46e5;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .external-badge {
+    font-size: 0.65em;
+    padding: 3px 6px;
+  }
+  
+  .external-link-indicator {
+    font-size: 0.7em;
+  }
+}
