@@ -176,7 +176,7 @@ const certifications = [
   },
 ];
 
-// 專案完整資料陣列
+// 在 main.js 中更新 enhancedProjectsData 陣列
 const enhancedProjectsData = [
   {
     id: "esg",
@@ -184,6 +184,7 @@ const enhancedProjectsData = [
     subtitle: "NTCIR-19 2025-2026 國際研究計畫",
     image: "assets/images/esg_project.png",
     link: "ESG.html",
+    isExternal: false, // 內部連結
     importance: 5,
     year: 2025,
     category: "research",
@@ -192,11 +193,26 @@ const enhancedProjectsData = [
     description: "參與國際頂級資訊檢索會議的ESG合規性報告研究",
   },
   {
+    id: "veripromise",
+    title: "VeriPromiseESG 2026",
+    subtitle: "ESG 永續承諾驗證競賽與標註資料蒐集計畫",
+    image: "assets/images/veripromise_esg.png", // 你需要準備這個圖片
+    link: "AI_Cup.html", // 待填入外部連結
+    isExternal: false, 
+    importance: 5,
+    year: 2026,
+    category: "research",
+    categoryLabel: "Research",
+    tech: ["ESG", "DATA COLLECTION", "VERIFICATION", "COMPETITION"],
+    description: "ESG永續承諾驗證競賽與資料標註計畫",
+  },
+  {
     id: "nstc",
     title: "NSTC 包容科技計畫",
     subtitle: "多模態跨語言對話系統",
     image: "assets/images/NSTC_Index.png",
     link: "NSTC_Project.html",
+    isExternal: false,
     importance: 5,
     year: 2025,
     category: "government",
@@ -210,6 +226,7 @@ const enhancedProjectsData = [
     subtitle: "智慧城市大語言模型代理系統",
     image: "assets/images/smart city.png",
     link: "Smart_City.html",
+    isExternal: false,
     importance: 4,
     year: 2024,
     category: "innovation",
@@ -223,6 +240,7 @@ const enhancedProjectsData = [
     subtitle: "智慧行銷聊天機器人",
     image: "assets/images/氛享海報.png",
     link: "marketing.html",
+    isExternal: false,
     importance: 4,
     year: 2024,
     category: "government",
@@ -236,6 +254,7 @@ const enhancedProjectsData = [
     subtitle: "癌症資料智慧分析系統",
     image: "assets/images/cancer_project.png",
     link: "cancer.html",
+    isExternal: false,
     importance: 3,
     year: 2023,
     category: "academic",
@@ -293,7 +312,7 @@ const resources = {
   zh: {
     translation: {
       nav: {
-        home: "首頁Home",
+        home: "首頁 Home",
         education: "學習經歷",
         experience: "工作經驗",
         seminar: "研討會發表",
@@ -386,12 +405,15 @@ const resources = {
         date3: "接受日期: 2024/08/31",
         title4: "包容性溝通系統與RAG增強多語言多模態對話能力",
         date4: "發表日期: 2025/07/04",
-        subtitle4: "2025台灣雲端與服務運算研討會(TWSC2 2025)"
+        subtitle4: "2025台灣雲端與服務運算研討會(TWSC2 2025)",
+        title5: "ASONAM 2025 研究論文",
+        date5: "發表日期: 2025/08/15",
+        subtitle5: "ASONAM 2025 - IEEE/ACM 社群網路分析與挖掘國際會議",
       },
       education: {
         fju_title: "輔仁大學第40屆優秀專題",
         fju_date: "發證日期: 2023/05/27",
-        innohack_title: "2023叡揚資訊黑客松競賽",
+        innohack_title: "2023塗城資訊黑客松競賽",
         innohack_date: "發證日期: 2023/09/13",
         ict_title: "第28屆大專院校資訊應用服務創新競賽",
         ict_date: "發證日期: 2023/11/04",
@@ -538,6 +560,9 @@ const resources = {
         title4: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
         date4: "Presentation Date: 2025/07/04",
         subtitle4: "2025 Taiwan Symposium On Cloud And Services Computing(TWSC2 2025)",
+        title5: "ASONAM 2025 Research Paper",
+        date5: "Presentation Date: 2025/08/15",
+        subtitle5: "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining",
       },
       education: {
         fju_title: "Fu Jen Catholic University's 40th Outstanding Projects",
@@ -991,7 +1016,7 @@ function updateScrollProgress() {
 
 // 統一的導覽狀態更新函數
 function updateNavigation(sectionId) {
-  console.log("📍 更新導覽狀態:", sectionId);
+  console.log("🔍 更新導覽狀態:", sectionId);
 
   // 移除所有活躍狀態 - 支援兩種類型的導覽列
   $(".navbar .nav-link, .index-navbar .nav-link").removeClass("active");
@@ -1096,7 +1121,7 @@ function updateNavOnLoad() {
 
 // 動態排序函數
 function sortEnhancedProjects(sortType = "yearDesc") {
-  console.log(`🔄 專案排序：${sortType}`);
+  console.log(`📄 專案排序：${sortType}`);
 
   const sortedProjects = [...enhancedProjectsData].sort(
     enhancedSortOptions[sortType]
@@ -1110,7 +1135,7 @@ function sortEnhancedProjects(sortType = "yearDesc") {
   updateProjectPagination();
 }
 
-// 渲染專案函數
+// 在 main.js 中更新 renderEnhancedProjects 函數
 function renderEnhancedProjects(projects) {
   const projectContainer = document.querySelector("#projectsContainer");
   if (!projectContainer) {
@@ -1127,6 +1152,16 @@ function renderEnhancedProjects(projects) {
       .map((tech) => `<span class="tech-tag">${tech}</span>`)
       .join("");
 
+    // 判斷是內部連結還是外部連結
+    const linkAttributes = project.isExternal 
+      ? `href="${project.link}" target="_blank" rel="noopener noreferrer"` 
+      : `href="${project.link}"`;
+    
+    // 為外部連結添加特殊圖示
+    const externalIcon = project.isExternal 
+      ? '<i class="fas fa-external-link-alt external-link-indicator"></i>' 
+      : '';
+
     const projectHTML = `
       <div class="col-12 col-md-4">
         <div class="project-card enhanced-project-card ${project.category}" 
@@ -1134,17 +1169,21 @@ function renderEnhancedProjects(projects) {
              data-importance="${project.importance}"
              data-year="${project.year}"
              style="animation-delay: ${index * 0.1}s">
-          <a href="${project.link}" aria-label="查看${project.title}詳情">
+          <a ${linkAttributes} aria-label="查看${project.title}詳情">
             <div class="project-img">
-              <img src="${project.image}" alt="${
-      project.title
-    }" loading="lazy" />
+              <img src="${project.image}" alt="${project.title}" loading="lazy" />
               <div class="project-overlay">
-                <span class="more">SEE DETAILS →</span>
+                <span class="more">
+                  ${project.isExternal ? 'VISIT SITE →' : 'SEE DETAILS →'}
+                  ${externalIcon}
+                </span>
               </div>
             </div>
             <div class="content-area">
-              <h4 class="project-title">${project.title}</h4>
+              <h4 class="project-title">
+                ${project.title}
+                ${externalIcon}
+              </h4>
               ${
                 project.subtitle
                   ? `<div class="subtitle">${project.subtitle}</div>`
@@ -1153,6 +1192,7 @@ function renderEnhancedProjects(projects) {
               <div class="tech-tags">${techTags}</div>
               <div class="project-meta">
                 <span class="year-badge">📅 ${project.year}</span>
+                ${project.isExternal ? '<span class="external-badge">🔗 外部連結</span>' : ''}
               </div>
             </div>
           </a>
@@ -1188,7 +1228,7 @@ function forceUpdateIntro() {
   if (introElement.length) {
     const translatedText = i18next.t("main.intro");
     introElement.html(translatedText);
-    console.log("🔄 強制更新個人簡介:", translatedText);
+    console.log("📄 強制更新個人簡介:", translatedText);
   }
 }
 
@@ -1338,12 +1378,12 @@ function initEnhancedProjectSorting() {
   // 初始排序（按時間新到舊）
   sortEnhancedProjects("yearDesc");
 
-  // 鍵盤快捷鍵支援
+  // 鍵盤快速鍵支持
   document.removeEventListener("keydown", handleProjectKeydown);
   document.addEventListener("keydown", handleProjectKeydown);
 
   console.log("✅ 增強版專案排序系統初始化完成！");
-  console.log("📝 快捷鍵：P = 專案排序選單");
+  console.log("🔍 快速鍵：P = 專案排序選單");
 }
 
 // 處理排序變更的函數
@@ -1355,7 +1395,7 @@ function handleProjectSortChange() {
   localStorage.setItem("projectSortPreference", sortType);
 }
 
-// 處理鍵盤快捷鍵的函數
+// 處理鍵盤快速鍵的函數
 function handleProjectKeydown(e) {
   // 確保不在輸入框中
   if (
@@ -1394,7 +1434,7 @@ function initCourseSemesterSwitching() {
     btn.addEventListener("click", function () {
       const semester = this.dataset.semester;
 
-      console.log("🔄 切換到學期:", semester);
+      console.log("📄 切換到學期:", semester);
 
       // 更新按鈕狀態
       semesterBtns.forEach((b) => {
@@ -1673,14 +1713,14 @@ $(document).ready(function () {
           .removeClass("btn-secondary")
           .addClass("btn-outline-secondary");
 
-        console.log("🌐 中文初始化完成");
+        console.log("🌍 中文初始化完成");
       }, 200); // 延長等待時間
     }
   );
 
   // 語言切換按鈕
   $("#btn-en").on("click", function () {
-    console.log("🌐 切換到英文");
+    console.log("🌍 切換到英文");
     // 更新按鈕狀態
     $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
     $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
@@ -1699,7 +1739,7 @@ $(document).ready(function () {
   });
 
   $("#btn-zh").on("click", function () {
-    console.log("🌐 切換到中文");
+    console.log("🌍 切換到中文");
     // 更新按鈕狀態
     $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
     $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
@@ -1920,7 +1960,7 @@ $(document).ready(function () {
     console.log("✅ 所有功能初始化完成！滾動導覽已啟用！");
   });
 
-  // 立即執行初始設置
+  // 立即執行初設置
   updateNavOnLoad();
 
   console.log("🎉 系統初始化完成！包含課程功能和工作經驗！");
@@ -1967,14 +2007,14 @@ function getVisibleSection() {
   return maxVisibleSection;
 }
 
-// 🎯 快速導覽功能（鍵盤快捷鍵）
+// 快速導覽功能（鍵盤快捷鍵）
 $(document).on("keydown", function (e) {
   // 確保不在輸入框中
   if ($("input, textarea").is(":focus")) return;
 
   const sections = [
     "education",
-    "experience",
+    "experience", 
     "seminar",
     "certifications",
     "courses",
@@ -2026,7 +2066,7 @@ $(document).on("keydown", function (e) {
   }
 });
 
-// 🔄 頁面可見性 API - 當頁面重新獲得焦點時檢查位置
+// 頁面可見性 API - 當頁面重新獲得焦點時檢查位置
 document.addEventListener("visibilitychange", function () {
   if (!document.hidden) {
     setTimeout(() => {
@@ -2035,7 +2075,7 @@ document.addEventListener("visibilitychange", function () {
   }
 });
 
-// 📱 觸控裝置專用：改善移動端的導覽體驗
+// 觸控裝置專用：改善移動端的導覽體驗
 if ("ontouchstart" in window) {
   let touchStartY = 0;
   let isScrolling = false;
@@ -2058,7 +2098,7 @@ if ("ontouchstart" in window) {
   });
 }
 
-// 🎨 頁面載入動畫
+// 頁面載入動畫
 $(window).on("load", function () {
   // 為所有section添加載入動畫
   $("section[id]").each(function (index) {
@@ -2083,11 +2123,11 @@ window.sortEnhancedProjects = sortEnhancedProjects;
 window.enhancedProjectsData = enhancedProjectsData;
 window.forceUpdateHTMLElements = forceUpdateHTMLElements; // 供調試使用
 
-console.log("🚀 進階導覽功能已啟用！");
-console.log("📝 鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=專案排序");
-console.log("📚 課程功能：學期切換、圖片錯誤處理");
-console.log("💼 工作經驗：完整翻譯支援，時間軸設計");
+console.log("進階導覽功能已啟用！");
+console.log("鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=專案排序");
+console.log("課程功能：學期切換、圖片錯誤處理");
+console.log("工作經驗：完整翻譯支持，時間軸設計");
 console.log(
-  "🔧 調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
+  "調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
 );
-console.log("🎉 完整版 main.js 載入完成！約 2500+ 行代碼，包含工作經驗功能");
+console.log("完整版 main.js 載入完成！約 2500+ 行代碼！包含工作經驗功能");
