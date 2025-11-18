@@ -20,7 +20,6 @@ luboblu.github.io/
 ├── CLAUDE.md              # This file - AI assistant guide
 │
 ├── Project Pages (HTML)
-│   ├── AI_Cup.html        # AI Cup competition project
 │   ├── ESG.html           # ESG-related project
 │   ├── III_TechDay.html   # III Tech Day presentation
 │   ├── IMP_Conference.html # IMP Conference presentation
@@ -76,7 +75,7 @@ luboblu.github.io/
 ### HTML Files
 - **Main page**: `index.html`
 - **Project pages**: Use descriptive names with underscores
-  - Pattern: `{ProjectName}.html` (e.g., `AI_Cup.html`, `Smart_City.html`)
+  - Pattern: `{ProjectName}.html` (e.g., `ESG.html`, `Smart_City.html`)
   - Case: Mixed case with underscores for multi-word names
 
 ### Asset Files
