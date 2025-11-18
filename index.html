@@ -112,7 +112,10 @@
           <span class="tagline" data-i18n="header.tagline">
             Institute of Information Management, National Taipei University
             <br />
-            <a href="/cdn-cgi/l/email-protection#0a627963647e63646d667f6865684a6d676b636624696567" aria-label="寄送電子郵件給 Hsin-Ting Lu"><span class="__cf_email__" data-cfemail="f29a819b9c869b9c959e87909d90b2959f939b9edc919d9f">[email&#160;protected]</span></a
+            <a
+              href="mailto:hsintinglubob@gmail.com"
+              aria-label="寄送電子郵件給 Hsin-Ting Lu"
+              >hsintinglubob@gmail.com</a
             >
           </span>
         </h1>
@@ -287,7 +290,115 @@
               </div>
             </div>
             <div class="row" id="education-cards">
-              <!-- ✨ JavaScript 動態填充 -->
+              <!-- 卡片 1: 輔仁大學第40屆優秀專題 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModal1"
+                    aria-label="查看輔仁大學第40屆優秀專題詳情"
+                  >
+                    <img
+                      src="assets/images/FJUproject.png"
+                      class="cert-img"
+                      alt="優秀專題證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title">
+                    <span data-i18n="education.fju_title"
+                      >輔仁大學第40屆優秀專題</span
+                    >
+                  </h4>
+                  <p class="cert-date" data-i18n="education.fju_date">
+                    發證日期: 2023/05/27
+                  </p>
+                </div>
+              </div>
+              <!-- 卡片 2: 2023塗城資訊黑客松競賽 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModal2"
+                    aria-label="查看2023塗城資訊黑客松競賽詳情"
+                  >
+                    <img
+                      src="assets/images/AIHackthon.png"
+                      class="cert-img"
+                      alt="AI Hackthon證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title">
+                    <span data-i18n="education.innohack_title"
+                      >2023塗城資訊黑客松競賽</span
+                    >
+                  </h4>
+                  <p class="cert-date" data-i18n="education.innohack_date">
+                    發證日期: 2023/09/13
+                  </p>
+                </div>
+              </div>
+              <!-- 卡片 3: 第28屆大專院校資訊應用服務創新競賽 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModal4"
+                    aria-label="查看第28屆大專院校資訊應用服務創新競賽詳情"
+                  >
+                    <img
+                      src="assets/images/ICT.png"
+                      class="cert-img"
+                      alt="ICT競賽證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title">
+                    <span data-i18n="education.ict_title"
+                      >第28屆大專院校資訊應用服務創新競賽</span
+                    >
+                  </h4>
+                  <p class="cert-date" data-i18n="education.ict_date">
+                    發證日期: 2023/11/04
+                  </p>
+                </div>
+              </div>
+              <!-- 卡片 4: 資策會科技日 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <a
+                      href="III_TechDay.html"
+                      aria-label="查看資策會科技日詳情"
+                    >
+                      <div class="project-img">
+                        <img
+                          src="assets/images/III_TechDay_PPT_photo.png"
+                          alt="資策會科技日簡報照片"
+                          loading="lazy"
+                        />
+                        <div class="project-overlay">
+                          <span class="more">SEE DETAILS →</span>
+                        </div>
+                      </div>
+                      <h4 class="project-title" data-i18n="education.iii_title">
+                        資策會科技日
+                      </h4>
+                    </a>
+                  </div>
+                  <p class="cert-date" data-i18n="education.iii_date">
+                    參加日期: 2024/11/07
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -296,10 +407,99 @@
         <section class="section topspace" id="experience" aria-label="工作經驗">
           <div class="container">
             <h2 class="section-title">
-              <span data-i18n="section.experience">工作經驗 Work Experience</span>
+              <span data-i18n="section.experience"
+                >工作經驗 Work Experience</span
+              >
             </h2>
-            <!-- ✨ JavaScript 動態填充容器 -->
-            <div class="experience-timeline" id="experience-container"></div>
+
+            <div class="experience-timeline">
+              <!-- 目前工作 1: IFIT Lab 研究員 -->
+              <div class="experience-item">
+                <div class="experience-dot current"></div>
+                <div class="experience-card current">
+                  <div
+                    class="experience-period current"
+                    data-i18n="experience.researcher_period"
+                  >
+                    2024.04 - Now
+                  </div>
+                  <h3
+                    class="experience-title"
+                    data-i18n="experience.researcher_title"
+                  >
+                    Researcher
+                  </h3>
+                  <div class="experience-company current">
+                    <i class="fas fa-flask"></i>
+                    <span data-i18n="experience.researcher_company">
+                      Intelligent Financial Innovation Technology Lab (IFIT
+                      Lab), NTPU
+                    </span>
+                  </div>
+                  <ul class="experience-details current">
+                    <li data-i18n="experience.researcher_task1">
+                      Inclusive AI Dialogue Assistive Device Project,
+                      sub-project 3: Multimodal Cross-lingual Task-Oriented
+                      Dialogue System for Inclusive Communication Support (NSTC)
+                    </li>
+                    <li data-i18n="experience.researcher_task2">
+                      Large Language Model Agent System for Smart City (III)
+                    </li>
+                  </ul>
+                  <div class="skills-tags">
+                    <span class="skill-tag">AI Research</span>
+                    <span class="skill-tag">Multimodal AI</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">LLM</span>
+                    <span class="skill-tag">Smart City</span>
+                    <span class="skill-tag">Cross-lingual</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 目前工作 2: NVIDIA師生共群計畫負責人 -->
+              <div class="experience-item">
+                <div class="experience-dot current"></div>
+                <div class="experience-card current">
+                  <div class="experience-period current">
+                    <span data-i18n="experience.nvidia_period"
+                      >2025.03 - Now</span
+                    >
+                  </div>
+                  <h3
+                    class="experience-title"
+                    data-i18n="experience.nvidia_title"
+                  >
+                    NVIDIA師生共群計畫負責人
+                  </h3>
+                  <div class="experience-company current">
+                    <i class="fas fa-microchip"></i>
+                    <span data-i18n="experience.nvidia_company">
+                      NVIDIA Student-Faculty Collaboration Program Leader
+                    </span>
+                  </div>
+                  <ul class="experience-details current">
+                    <li data-i18n="experience.nvidia_task1">
+                      協助在學校舉辦與NVIDIA相關講座以及課程
+                    </li>
+                    <li data-i18n="experience.nvidia_task2">
+                      協助辦理AI相關競賽
+                    </li>
+                    <li data-i18n="experience.nvidia_task3">
+                      完成NVIDIA課程證照
+                    </li>
+                  </ul>
+                  <div class="skills-tags">
+                    <span class="skill-tag">NVIDIA</span>
+                    <span class="skill-tag">AI Education</span>
+                    <span class="skill-tag">Event Management</span>
+                    <span class="skill-tag">Competition Organization</span>
+                    <span class="skill-tag">Certification</span>
+                    <span class="skill-tag">Leadership</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -307,20 +507,240 @@
         <section class="section topspace" id="seminar" aria-label="研討會發表">
           <div class="container">
             <h2 class="section-title">
-              <span data-i18n="section.seminar">研討會發表 Seminar presentation</span>
+              <span data-i18n="section.seminar"
+                >研討會發表 Seminar presentation</span
+              >
             </h2>
             <div class="sort-controls">
-              <label data-i18n="sort.label" id="sort-seminar-label">排序方式:</label>
-              <div class="btn-group" role="group" aria-labelledby="sort-seminar-label">
-                <button type="button" class="btn-sort" data-sort="desc" data-i18n="sort.desc" aria-pressed="true">新到舊</button>
-                <button type="button" class="btn-sort" data-sort="asc" data-i18n="sort.asc" aria-pressed="false">舊到新</button>
+              <label data-i18n="sort.label" id="sort-seminar-label"
+                >排序方式:</label
+              >
+              <div
+                class="btn-group"
+                role="group"
+                aria-labelledby="sort-seminar-label"
+              >
+                <button
+                  type="button"
+                  class="btn-sort"
+                  data-sort="desc"
+                  data-i18n="sort.desc"
+                  aria-pressed="true"
+                >
+                  新到舊
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort"
+                  data-sort="asc"
+                  data-i18n="sort.asc"
+                  aria-pressed="false"
+                >
+                  舊到新
+                </button>
               </div>
             </div>
-            <!-- ✨ JavaScript 動態填充容器 -->
-            <div class="row" id="seminar-cards"></div>
+            <div class="row" id="seminar-cards">
+              <!-- 新增卡片：ASONAM 2025 研討會論文 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <div class="project-img">
+                      <img
+                        src="assets/images/asonam_2025.png"
+                        alt="ASONAM 2025 研究論文"
+                        loading="lazy"
+                      />
+                      <div class="project-overlay">
+                        <div class="project-links">
+                          <a
+                            href="https://asonam.cpsc.ucalgary.ca/2025/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="link-btn"
+                            aria-label="查看ASONAM 2025研討會網站"
+                          >
+                            <i class="fas fa-globe"></i>
+                            <span>研討會</span>
+                          </a>
+                          <a
+                            href="assets/files/Slide_Fine-Tuning and Prompt-Based Methods for Temporal Reasoning in Multilingual Financial Texts_CRV.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看報告投影片PDF"
+                          >
+                            <i class="fas fa-presentation"></i>
+                            <span>投影片</span>
+                          </a>
+                          <a
+                            href="assets/files/Fine-Tuning and Prompt-Based Methods for Temporal Reasoning in Multilingual Financial Texts_CRV.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看全文PDF"
+                          >
+                            <i class="fas fa-file-pdf"></i>
+                            <span>全文</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="project-title" data-i18n="seminar.title5">
+                      ASONAM 2025 研究論文
+                    </h4>
+                  </div>
+                  <p class="cert-subtitle text-center" data-i18n="seminar.subtitle5">
+                    ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining
+                  </p>
+                  <p class="cert-date" data-i18n="seminar.date5">
+                    發表日期: 2025/08/15
+                  </p>
+                </div>
+              </div>
+
+              <!-- 新增卡片：TWSC 2025 研討會論文 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <div class="project-img">
+                      <img
+                        src="assets/images/rag_inclusive_communication.png"
+                        alt="RAG增強包容性溝通系統研究論文"
+                        loading="lazy"
+                      />
+                      <div class="project-overlay">
+                        <div class="project-links">
+                          <a
+                            href="https://sites.google.com/view/twsc2-2025/home"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="link-btn"
+                            aria-label="查看TWSC2025研討會網站"
+                          >
+                            <i class="fas fa-globe"></i>
+                            <span>研討會</span>
+                          </a>
+                          <a
+                            href="assets/files/TWSC2-2025-Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看論文PDF"
+                          >
+                            <i class="fas fa-file-pdf"></i>
+                            <span>論文</span>
+                          </a>
+                          <a
+                            href="assets/files/TWSC2 abstract-mplementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看摘要PDF"
+                          >
+                            <i class="fas fa-file-alt"></i>
+                            <span>摘要</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="project-title" data-i18n="seminar.title4">
+                      包容性溝通系統與RAG增強多語言多模態對話能力
+                    </h4>
+                  </div>
+                  <p class="cert-subtitle text-center" data-i18n="seminar.subtitle4">
+                    TWSC 2025 - Taiwan Workshop on Software and Computing
+                  </p>
+                  <p class="cert-date" data-i18n="seminar.date4">
+                    發表日期: 2025/07/04
+                  </p>
+                </div>
+              </div>
+
+              <!-- 卡片 1: IMP2024 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <a
+                      href="IMP_Conference.html"
+                      aria-label="查看IMP2024研討會詳情"
+                    >
+                      <div class="project-img">
+                        <img
+                          src="assets/images/IMP_Conference.jpg"
+                          alt="IMP研討會照片"
+                          loading="lazy"
+                        />
+                        <div class="project-overlay">
+                          <span class="more">SEE DETAILS →</span>
+                        </div>
+                      </div>
+                      <h4 class="project-title" data-i18n="seminar.title2">
+                        IMP2024第29屆資訊管理暨實務研討會
+                      </h4>
+                    </a>
+                  </div>
+                  <p class="cert-date" data-i18n="seminar.date2">
+                    發證日期: 2024/11/21
+                  </p>
+                </div>
+              </div>
+
+              <!-- 卡片 2: 品質學報 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <a
+                      href="quality.html"
+                      aria-label="查看品質學報接受稿件詳情"
+                    >
+                      <div class="project-img">
+                        <img
+                          src="assets/images/quality.png"
+                          alt="品質學報稿件"
+                          loading="lazy"
+                        />
+                        <div class="project-overlay">
+                          <span class="more">SEE DETAILS →</span>
+                        </div>
+                      </div>
+                      <h4 class="project-title" data-i18n="seminar.title3">
+                        品質學報接受稿件刊登
+                      </h4>
+                    </a>
+                  </div>
+                  <p class="cert-date" data-i18n="seminar.date3">
+                    接受日期: 2024/08/31
+                  </p>
+                </div>
+              </div>
+
+              <!-- 卡片 3: 國際品質管理研討會 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModal3"
+                    aria-label="查看國際品質管理研討會詳情"
+                  >
+                    <img
+                      src="assets/images/conference.png"
+                      class="cert-img"
+                      alt="研討會證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title" data-i18n="seminar.title1">
+                    國際品質管理研討會
+                  </h4>
+                  <p class="cert-date" data-i18n="seminar.date1">
+                    發證日期: 2023/11/18
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
+        <!-- 證書部分 -->
         <section class="section topspace" id="certifications" aria-label="證書">
           <div class="container">
             <h2 class="section-title">
@@ -801,7 +1221,6 @@
           </div>
         </section>
         <!-- 碩士課程區塊 -->
-        <!-- 碩士課程區塊 -->
         <section class="section topspace" id="courses" aria-label="碩士課程">
           <div class="container">
             <h2 class="section-title">
@@ -810,22 +1229,304 @@
 
             <!-- 學期切換按鈕 -->
             <div class="sort-controls">
-              <label data-i18n="courses.select_semester" id="semester-select-label">選擇學期:</label>
-              <div class="btn-group" role="group" aria-labelledby="semester-select-label">
-                <button type="button" class="btn-sort semester-btn active" data-semester="1-1" data-i18n="courses.semester_1_1" aria-pressed="true">碩一上</button>
-                <button type="button" class="btn-sort semester-btn" data-semester="1-2" data-i18n="courses.semester_1_2" aria-pressed="false">碩一下</button>
-                <button type="button" class="btn-sort semester-btn" data-semester="2-1" data-i18n="courses.semester_2_1" aria-pressed="false">碩二上</button>
-                <button type="button" class="btn-sort semester-btn" data-semester="2-2" data-i18n="courses.semester_2_2" aria-pressed="false">碩二下</button>
+              <label
+                data-i18n="courses.select_semester"
+                id="semester-select-label"
+                >選擇學期:</label
+              >
+              <div
+                class="btn-group"
+                role="group"
+                aria-labelledby="semester-select-label"
+              >
+                <button
+                  type="button"
+                  class="btn-sort semester-btn active"
+                  data-semester="1-1"
+                  data-i18n="courses.semester_1_1"
+                  aria-pressed="true"
+                >
+                  碩一上
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="1-2"
+                  data-i18n="courses.semester_1_2"
+                  aria-pressed="false"
+                >
+                  碩一下
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="2-1"
+                  data-i18n="courses.semester_2_1"
+                  aria-pressed="false"
+                >
+                  碩二上
+                </button>
+                <button
+                  type="button"
+                  class="btn-sort semester-btn"
+                  data-semester="2-2"
+                  data-i18n="courses.semester_2_2"
+                  aria-pressed="false"
+                >
+                  碩二下
+                </button>
               </div>
             </div>
 
-            <!-- ✨ JavaScript 動態填充容器 -->
-            <div id="courses-container">
-              <!-- 各學期課程將由 JavaScript 動態生成 -->
+            <!-- 碩一上課程 -->
+            <div class="semester-content active" data-semester="1-1">
+              <div class="row" id="semester-1-1-cards">
+                <!-- 軟體工程課程 - appetAIwan -->
+                <div class="col-sm-6 col-md-6 flex-col">
+                  <div class="course-card text-center">
+                    <a
+                      href="https://appetaiwan.github.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="course-link"
+                      aria-label="查看軟體工程課程 - appetAIwan 專案"
+                    >
+                      <div class="course-image-container">
+                        <img
+                          src="assets/images/software_engineering.png"
+                          class="course-img"
+                          alt="appetAIwan 軟體工程專案"
+                          loading="lazy"
+                        />
+                        <div class="course-overlay">
+                          <span class="external-link-icon">
+                            <i class="fas fa-external-link-alt"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                    <h4 class="course-title">
+                      <span data-i18n="courses.software_engineering"
+                        >軟體工程 Software Engineering</span
+                      >
+                    </h4>
+                    <!-- 修改後的代碼 - 軟體工程課程 -->
+                    <div class="course-details">
+                      <p class="course-info">
+                        <i class="fas fa-users me-2"></i>
+                        <span data-i18n="courses.software_engineering_team"
+                          >Group 3 - appetAIwan 團隊</span
+                        >
+                      </p>
+                      <p class="course-info">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span data-i18n="courses.software_engineering_prof"
+                          >Min Yuh Day 教授</span
+                        >
+                      </p>
+                      <!-- 📄 修改這一行：改成可下載PDF -->
+                      <a
+                        href="assets/files/團體期末報告.pdf"
+                        target="_blank"
+                        download="appetAIwan_期中專案報告.pdf"
+                        class="course-info course-pdf-download"
+                        aria-label="下載 appetAIwan 期中專案報告 PDF"
+                      >
+                        <i class="fas fa-file-pdf me-2"></i>
+                        <span data-i18n="courses.software_engineering_pdf"
+                          >期中專案報告 (PDF)</span
+                        >
+                        <i class="fas fa-download ms-2"></i>
+                      </a>
+                      <p class="course-info">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span data-i18n="courses.software_engineering_date"
+                          >2025/06/04</span
+                        >
+                      </p>
+                    </div>
+                    <div class="course-tech-tags">
+                      <span class="tech-tag">AI + Taiwan</span>
+                      <span class="tech-tag">APPETITE</span>
+                      <span class="tech-tag">Web Development</span>
+                    </div>
+                    <p
+                      class="course-date"
+                      data-i18n="courses.software_engineering_status"
+                    >
+                      狀態: 已完成
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 生成式AI創新應用課程 - NovaPet -->
+                <div class="col-sm-6 col-md-6 flex-col">
+                  <div class="course-card text-center">
+                    <a
+                      href="https://novapetextension.github.io/NovaPet.github.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="course-link"
+                      aria-label="查看生成式AI創新應用課程 - NovaPet 專案"
+                    >
+                      <div class="course-image-container">
+                        <img
+                          src="assets/images/generative_ai.png"
+                          class="course-img"
+                          alt="NovaPet 生成式AI專案"
+                          loading="lazy"
+                        />
+                        <div class="course-overlay">
+                          <span class="external-link-icon">
+                            <i class="fas fa-external-link-alt"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                    <h4 class="course-title">
+                      <span data-i18n="courses.generative_ai"
+                        >生成式AI創新應用 Generative AI</span
+                      >
+                    </h4>
+                    <div class="course-details">
+                      <p class="course-info">
+                        <i class="fas fa-users me-2"></i>
+                        <span data-i18n="courses.generative_ai_team"
+                          >NovaPet 團隊</span
+                        >
+                      </p>
+                      <p class="course-info">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span data-i18n="courses.generative_ai_prof"
+                          >Min-Yuh Day 教授</span
+                        >
+                      </p>
+                      <!-- 📄 修改這一行：改成可下載PDF -->
+                      <a
+                        href="assets/files/Group 4_ NovaPet Final.pdf"
+                        target="_blank"
+                        download="NovaPet_期末專案報告.pdf"
+                        class="course-info course-pdf-download"
+                        aria-label="下載 NovaPet 期末專案報告 PDF"
+                      >
+                        <i class="fas fa-file-pdf me-2"></i>
+                        <span data-i18n="courses.generative_ai_pdf"
+                          >期末專案報告 (PDF)</span
+                        >
+                        <i class="fas fa-download ms-2"></i>
+                      </a>
+                      <p class="course-info">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span data-i18n="courses.generative_ai_date"
+                          >2025/06/02</span
+                        >
+                      </p>
+                    </div>
+                    <div class="course-tech-tags">
+                      <span class="tech-tag">Generative AI</span>
+                      <span class="tech-tag">NovaPet</span>
+                      <span class="tech-tag">Digital Sky</span>
+                    </div>
+                    <p
+                      class="course-date"
+                      data-i18n="courses.generative_ai_status"
+                    >
+                      狀態: 已完成
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩一下課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="1-2">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon">
+                    <i class="fas fa-seedling"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_1_2"
+                  >
+                    碩一下課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_1_2"
+                  >
+                    Master 1st Spring Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_1_2"
+                      >預計開始時間：2026年2月</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩二上課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="2-1">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon autumn">
+                    <i class="fas fa-maple-leaf"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_2_1"
+                  >
+                    碩二上課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_2_1"
+                  >
+                    Master 2nd Fall Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_2_1"
+                      >預計開始時間：2026年9月</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 碩二下課程 - 敬請期待 -->
+            <div class="semester-content" data-semester="2-2">
+              <div class="coming-soon-container">
+                <div class="coming-soon-card">
+                  <div class="coming-soon-icon winter">
+                    <i class="fas fa-snowflake"></i>
+                  </div>
+                  <h3
+                    class="coming-soon-title"
+                    data-i18n="courses.coming_soon_title_2_2"
+                  >
+                    碩二下課程敬請期待
+                  </h3>
+                  <p
+                    class="coming-soon-subtitle"
+                    data-i18n="courses.coming_soon_subtitle_2_2"
+                  >
+                    Master 2nd Spring Semester Coming Soon
+                  </p>
+                  <div class="coming-soon-timeline">
+                    <i class="fas fa-calendar-check me-2"></i>
+                    <span data-i18n="courses.coming_soon_time_2_2"
+                      >預計開始時間：2027年2月</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
+        <!-- School 區塊 -->
         <section class="section topspace" id="school" aria-label="就讀學校">
           <div class="container">
             <h2 class="section-title">
@@ -886,7 +1587,8 @@
             <div class="widget-body">
               <p>
                 +234 23 9873237<br />
-                <a href="/cdn-cgi/l/email-protection#e18992888f95888f868d94838e83a1868c80888dcf828e8c"><span class="__cf_email__" data-cfemail="375f445e59435e59505b4255585577505a565e5b1954585a">[email&#160;protected]</span></a
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
                 ><br />
               </p>
             </div>
@@ -943,7 +1645,8 @@
             <div class="widget-body">
               <p>
                 +886 966465569<br />
-                <a href="/cdn-cgi/l/email-protection#b3dbc0daddc7daddd4dfc6d1dcd1f3d4ded2dadf9dd0dcde"><span class="__cf_email__" data-cfemail="81e9f2e8eff5e8efe6edf4e3eee3c1e6ece0e8edafe2eeec">[email&#160;protected]</span></a
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
                 ><br />
               </p>
             </div>
@@ -1132,16 +1835,14 @@
       </div>
     </div>
 
-    <!-- 🆕 證照 Modals 容器 -->
-    <div id="certification-modals">
-      <!-- 證照 Modals 將由 JavaScript 動態生成 -->
-    </div>
+    <!-- 證照Modals將由JavaScript動態生成 -->
+    <div id="certification-modals"></div>
 
-    <!-- Bootstrap JS -->
+    <!-- JavaScript libs -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript -->
     <script src="assets/js/template.js"></script>
-    <script src="assets/js/html5shiv.js"></script>
+
+    <!-- 主要功能腳本 -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
