@@ -196,9 +196,9 @@ const enhancedProjectsData = [
     id: "veripromise",
     title: "VeriPromiseESG 2026",
     subtitle: "ESG 永續承諾驗證競賽與標註資料蒐集計畫",
-    image: "assets/images/veripromise_esg.png", // 你需要準備這個圖片
-    link: "AI_Cup.html", // 待填入外部連結
-    isExternal: false, 
+    image: "assets/images/veripromise_esg.png",
+    link: "https://veripromiseesg.github.io/",
+    isExternal: true,
     importance: 5,
     year: 2026,
     category: "research",
