@@ -1,4 +1,808 @@
 // ========================================
+// 🆕 新增資料區塊 - 添加到 main.js 開頭
+// ========================================
+// 將以下代碼添加到原有 main.js 的最前面（在 certifications 定義之前）
+// ========================================
+
+// ========================================
+// 1️⃣ 學習經歷資料 (Education Background)
+// ========================================
+const educationData = [
+  {
+    id: "edu1",
+    modalId: "eduModal1",
+    image: "assets/images/FJUproject.png",
+    title: {
+      zh: "輔仁大學第40屆優秀專題",
+      en: "Fu Jen Catholic University 40th Outstanding Project"
+    },
+    date: { zh: "發證日期: 2023/05/27", en: "Issue Date: 2023/05/27" },
+    dateValue: "2023-05-27",
+    type: "modal",
+    category: "award"
+  },
+  {
+    id: "edu2",
+    modalId: "eduModal2",
+    image: "assets/images/AIHackthon.png",
+    title: {
+      zh: "2023塗城資訊黑客松競賽",
+      en: "2023 Tucheng Information Hackathon"
+    },
+    date: { zh: "發證日期: 2023/09/13", en: "Issue Date: 2023/09/13" },
+    dateValue: "2023-09-13",
+    type: "modal",
+    category: "competition"
+  },
+  {
+    id: "edu3",
+    modalId: "eduModal4",
+    image: "assets/images/ICT.png",
+    title: {
+      zh: "第28屆大專院校資訊應用服務創新競賽",
+      en: "28th College Information Application Service Innovation Competition"
+    },
+    date: { zh: "發證日期: 2023/11/04", en: "Issue Date: 2023/11/04" },
+    dateValue: "2023-11-04",
+    type: "modal",
+    category: "competition"
+  },
+  {
+    id: "edu4",
+    image: "assets/images/III_TechDay_PPT_photo.png",
+    title: {
+      zh: "資策會科技日",
+      en: "III Tech Day"
+    },
+    date: { zh: "參加日期: 2024/11/07", en: "Participation Date: 2024/11/07" },
+    dateValue: "2024-11-07",
+    type: "link",
+    link: "III_TechDay.html",
+    category: "event"
+  }
+];
+
+// ========================================
+// 2️⃣ 工作經驗資料 (Work Experience)
+// ========================================
+const experienceData = [
+  {
+    id: "exp1",
+    period: {
+      zh: "2024.04 - 現在",
+      en: "2024.04 - Now"
+    },
+    title: {
+      zh: "研究員",
+      en: "Researcher"
+    },
+    company: {
+      zh: "國立臺北大學 智能金融創新科技實驗室 (IFIT Lab)",
+      en: "Intelligent Financial Innovation Technology Lab (IFIT Lab), NTPU"
+    },
+    icon: "fas fa-flask",
+    tasks: [
+      {
+        zh: "包容性AI對話輔助裝置計畫，子計畫三：多模態跨語言任務導向對話系統於包容性溝通支援(國科會)",
+        en: "Inclusive AI Dialogue Assistive Device Project, sub-project 3: Multimodal Cross-lingual Task-Oriented Dialogue System for Inclusive Communication Support (NSTC)"
+      },
+      {
+        zh: "智慧城市大語言模型代理系統(資策會)",
+        en: "Large Language Model Agent System for Smart City (III)"
+      }
+    ],
+    skills: ["AI Research", "Multimodal AI", "NLP", "LLM", "Smart City", "Cross-lingual"],
+    current: true,
+    startDate: "2024-04",
+    category: "research"
+  },
+  {
+    id: "exp2",
+    period: {
+      zh: "2025.03 - 現在",
+      en: "2025.03 - Now"
+    },
+    title: {
+      zh: "NVIDIA師生共群計畫負責人",
+      en: "NVIDIA Student-Faculty Collaboration Program Leader"
+    },
+    company: {
+      zh: "NVIDIA師生共群計畫",
+      en: "NVIDIA Student-Faculty Collaboration Program"
+    },
+    icon: "fas fa-microchip",
+    tasks: [
+      {
+        zh: "協助在學校舉辦與NVIDIA相關講座以及課程",
+        en: "Assist in organizing NVIDIA-related lectures and courses at school"
+      },
+      {
+        zh: "協助辦理AI相關競賽",
+        en: "Assist in organizing AI-related competitions"
+      },
+      {
+        zh: "完成NVIDIA課程證照",
+        en: "Complete NVIDIA course certifications"
+      }
+    ],
+    skills: ["NVIDIA", "AI Education", "Event Management", "Competition Organization", "Certification", "Leadership"],
+    current: true,
+    startDate: "2025-03",
+    category: "education"
+  }
+];
+
+// ========================================
+// 3️⃣ 研討會發表資料 (Seminar Presentation)
+// ========================================
+const seminarData = [
+  {
+    id: "sem1",
+    image: "assets/images/asonam_2025.png",
+    title: {
+      zh: "ASONAM 2025 研究論文",
+      en: "ASONAM 2025 Research Paper"
+    },
+    subtitle: {
+      zh: "ASONAM 2025 - IEEE/ACM 社交網絡分析與挖掘國際會議",
+      en: "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining"
+    },
+    date: { zh: "發表日期: 2025/08/15", en: "Publication Date: 2025/08/15" },
+    dateValue: "2025-08-15",
+    type: "links",
+    links: [
+      {
+        type: "conference",
+        url: "https://asonam.cpsc.ucalgary.ca/2025/",
+        icon: "fas fa-globe",
+        label: { zh: "研討會", en: "Conference" }
+      },
+      {
+        type: "slides",
+        url: "assets/files/Slide_Fine-Tuning and Prompt-Based Methods for Temporal Reasoning in Multilingual Financial Texts_CRV.pdf",
+        icon: "fas fa-presentation",
+        label: { zh: "投影片", en: "Slides" }
+      },
+      {
+        type: "paper",
+        url: "assets/files/Fine-Tuning and Prompt-Based Methods for Temporal Reasoning in Multilingual Financial Texts_CRV.pdf",
+        icon: "fas fa-file-pdf",
+        label: { zh: "全文", en: "Full Paper" }
+      }
+    ],
+    category: "international",
+    year: 2025
+  },
+  {
+    id: "sem2",
+    image: "assets/images/rag_inclusive_communication.png",
+    title: {
+      zh: "包容性溝通系統與RAG增強多語言多模態對話能力",
+      en: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities"
+    },
+    subtitle: {
+      zh: "TWSC 2025 - 台灣軟體與運算研討會",
+      en: "TWSC 2025 - Taiwan Workshop on Software and Computing"
+    },
+    date: { zh: "發表日期: 2025/07/04", en: "Publication Date: 2025/07/04" },
+    dateValue: "2025-07-04",
+    type: "links",
+    links: [
+      {
+        type: "conference",
+        url: "https://sites.google.com/view/twsc2-2025/home",
+        icon: "fas fa-globe",
+        label: { zh: "研討會", en: "Conference" }
+      },
+      {
+        type: "paper",
+        url: "assets/files/TWSC2-2025-Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf",
+        icon: "fas fa-file-pdf",
+        label: { zh: "論文", en: "Paper" }
+      },
+      {
+        type: "abstract",
+        url: "assets/files/TWSC2 abstract-mplementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities.pdf",
+        icon: "fas fa-file-alt",
+        label: { zh: "摘要", en: "Abstract" }
+      }
+    ],
+    category: "domestic",
+    year: 2025
+  },
+  {
+    id: "sem3",
+    image: "assets/images/IMP_Conference.jpg",
+    title: {
+      zh: "IMP2024第29屆資訊管理暨實務研討會",
+      en: "IMP2024 29th Information Management and Practice Conference"
+    },
+    date: { zh: "發證日期: 2024/11/21", en: "Issue Date: 2024/11/21" },
+    dateValue: "2024-11-21",
+    type: "link",
+    link: "IMP_Conference.html",
+    category: "domestic",
+    year: 2024
+  },
+  {
+    id: "sem4",
+    image: "assets/images/quality.png",
+    title: {
+      zh: "品質學報接受稿件刊登",
+      en: "Quality Journal Accepted Paper Publication"
+    },
+    date: { zh: "接受日期: 2024/08/31", en: "Acceptance Date: 2024/08/31" },
+    dateValue: "2024-08-31",
+    type: "link",
+    link: "quality.html",
+    category: "journal",
+    year: 2024
+  },
+  {
+    id: "sem5",
+    modalId: "eduModal3",
+    image: "assets/images/conference.png",
+    title: {
+      zh: "國際品質管理研討會",
+      en: "International Quality Management Conference"
+    },
+    date: { zh: "發證日期: 2023/11/18", en: "Issue Date: 2023/11/18" },
+    dateValue: "2023-11-18",
+    type: "modal",
+    category: "international",
+    year: 2023
+  }
+];
+
+// ========================================
+// 4️⃣ 碩士課程資料 (Master Courses)
+// ========================================
+const coursesData = {
+  "1-1": [ // 碩一上
+    {
+      id: "course1",
+      title: {
+        zh: "軟體工程",
+        en: "Software Engineering"
+      },
+      image: "assets/images/software_engineering.png",
+      link: "https://appetaiwan.github.io/",
+      isExternal: true,
+      team: {
+        zh: "Group 3 - appetAIwan 團隊",
+        en: "Group 3 - appetAIwan Team"
+      },
+      professor: {
+        zh: "Min Yuh Day 教授",
+        en: "Professor Min Yuh Day"
+      },
+      pdfFile: "assets/files/團體期末報告.pdf",
+      pdfName: "appetAIwan_期中專案報告.pdf",
+      date: "2025/06/04",
+      techTags: ["AI + Taiwan", "APPETITE", "Web Development"],
+      status: {
+        zh: "狀態: 已完成",
+        en: "Status: Completed"
+      }
+    },
+    {
+      id: "course2",
+      title: {
+        zh: "生成式AI創新應用",
+        en: "Generative AI"
+      },
+      image: "assets/images/generative_ai.png",
+      link: "https://novapetextension.github.io/NovaPet.github.io/",
+      isExternal: true,
+      team: {
+        zh: "NovaPet 團隊",
+        en: "NovaPet Team"
+      },
+      professor: {
+        zh: "Min-Yuh Day 教授",
+        en: "Professor Min-Yuh Day"
+      },
+      pdfFile: "assets/files/Group 4_ NovaPet Final.pdf",
+      pdfName: "NovaPet_期末專案報告.pdf",
+      date: "2025/06/02",
+      techTags: ["Generative AI", "NovaPet", "Digital Sky"],
+      status: {
+        zh: "狀態: 已完成",
+        en: "Status: Completed"
+      }
+    }
+  ],
+  "1-2": { // 碩一下
+    comingSoon: true,
+    icon: "fas fa-seedling",
+    title: {
+      zh: "碩一下課程敬請期待",
+      en: "Master 1st Spring Semester Coming Soon"
+    },
+    subtitle: {
+      zh: "Master 1st Spring Semester Coming Soon",
+      en: "Master 1st Spring Semester Coming Soon"
+    },
+    expectedTime: {
+      zh: "預計開始時間：2026年2月",
+      en: "Expected start time: February 2026"
+    }
+  },
+  "2-1": { // 碩二上
+    comingSoon: true,
+    icon: "fas fa-maple-leaf",
+    iconClass: "autumn",
+    title: {
+      zh: "碩二上課程敬請期待",
+      en: "Master 2nd Fall Semester Coming Soon"
+    },
+    subtitle: {
+      zh: "Master 2nd Fall Semester Coming Soon",
+      en: "Master 2nd Fall Semester Coming Soon"
+    },
+    expectedTime: {
+      zh: "預計開始時間：2026年9月",
+      en: "Expected start time: September 2026"
+    }
+  },
+  "2-2": { // 碩二下
+    comingSoon: true,
+    icon: "fas fa-graduation-cap",
+    iconClass: "winter",
+    title: {
+      zh: "碩二下課程敬請期待",
+      en: "Master 2nd Spring Semester Coming Soon"
+    },
+    subtitle: {
+      zh: "Master 2nd Spring Semester Coming Soon",
+      en: "Master 2nd Spring Semester Coming Soon"
+    },
+    expectedTime: {
+      zh: "預計開始時間：2027年2月",
+      en: "Expected start time: February 2027"
+    }
+  }
+};
+
+// ========================================
+// 🎨 渲染函數區塊
+// ========================================
+
+// 🎓 渲染學習經歷
+function renderEducation(data, container, currentLang = 'zh') {
+  const html = data.map(item => {
+    const title = item.title[currentLang];
+    const date = item.date[currentLang];
+    
+    if (item.type === 'modal') {
+      return `
+        <div class="col-sm-6 col-md-4 flex-col" data-date="${item.dateValue}">
+          <div class="cert-card text-center">
+            <button
+              type="button"
+              class="btn-card-link"
+              data-bs-toggle="modal"
+              data-bs-target="#${item.modalId}"
+              aria-label="查看${title}詳情"
+            >
+              <img
+                src="${item.image}"
+                class="cert-img"
+                alt="${title}"
+                loading="lazy"
+              />
+            </button>
+            <h4 class="cert-title">${title}</h4>
+            <p class="cert-date">${date}</p>
+          </div>
+        </div>
+      `;
+    } else if (item.type === 'link') {
+      return `
+        <div class="col-sm-6 col-md-4 flex-col" data-date="${item.dateValue}">
+          <div class="card-with-external-date">
+            <div class="project-card">
+              <a href="${item.link}" aria-label="查看${title}詳情">
+                <div class="project-img">
+                  <img
+                    src="${item.image}"
+                    alt="${title}"
+                    loading="lazy"
+                  />
+                  <div class="project-overlay">
+                    <span class="more">SEE DETAILS →</span>
+                  </div>
+                </div>
+                <h4 class="project-title">${title}</h4>
+              </a>
+            </div>
+            <p class="cert-date">${date}</p>
+          </div>
+        </div>
+      `;
+    }
+  }).join('');
+  
+  $(container).html(html);
+}
+
+// 💼 渲染工作經驗
+function renderExperience(data, container, currentLang = 'zh') {
+  const html = data.map(item => {
+    const period = item.period[currentLang];
+    const title = item.title[currentLang];
+    const company = item.company[currentLang];
+    const currentClass = item.current ? 'current' : '';
+    
+    const tasksHTML = item.tasks.map(task => 
+      `<li>${task[currentLang]}</li>`
+    ).join('');
+    
+    const skillsHTML = item.skills.map(skill => 
+      `<span class="skill-tag">${skill}</span>`
+    ).join('');
+    
+    return `
+      <div class="experience-item">
+        <div class="experience-dot ${currentClass}"></div>
+        <div class="experience-card ${currentClass}">
+          <div class="experience-period ${currentClass}">${period}</div>
+          <h3 class="experience-title">${title}</h3>
+          <div class="experience-company ${currentClass}">
+            <i class="${item.icon}"></i>
+            <span>${company}</span>
+          </div>
+          <ul class="experience-details ${currentClass}">
+            ${tasksHTML}
+          </ul>
+          <div class="skills-tags">
+            ${skillsHTML}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  $(container).html(html);
+}
+
+// 📝 渲染研討會
+function renderSeminar(data, container, currentLang = 'zh') {
+  const html = data.map(item => {
+    const title = item.title[currentLang];
+    const date = item.date[currentLang];
+    const subtitle = item.subtitle ? item.subtitle[currentLang] : '';
+    
+    if (item.type === 'links') {
+      const linksHTML = item.links.map(link => `
+        <a
+          href="${link.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-btn"
+          aria-label="${link.label[currentLang]}"
+        >
+          <i class="${link.icon}"></i>
+          <span>${link.label[currentLang]}</span>
+        </a>
+      `).join('');
+      
+      return `
+        <div class="col-sm-6 col-md-4 flex-col" data-date="${item.dateValue}">
+          <div class="card-with-external-date">
+            <div class="project-card">
+              <div class="project-img">
+                <img
+                  src="${item.image}"
+                  alt="${title}"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <div class="project-links">
+                    ${linksHTML}
+                  </div>
+                </div>
+              </div>
+              <h4 class="project-title">${title}</h4>
+            </div>
+            ${subtitle ? `<p class="cert-subtitle text-center">${subtitle}</p>` : ''}
+            <p class="cert-date">${date}</p>
+          </div>
+        </div>
+      `;
+    } else if (item.type === 'link') {
+      return `
+        <div class="col-sm-6 col-md-4 flex-col" data-date="${item.dateValue}">
+          <div class="card-with-external-date">
+            <div class="project-card">
+              <a href="${item.link}" aria-label="查看${title}詳情">
+                <div class="project-img">
+                  <img
+                    src="${item.image}"
+                    alt="${title}"
+                    loading="lazy"
+                  />
+                  <div class="project-overlay">
+                    <span class="more">SEE DETAILS →</span>
+                  </div>
+                </div>
+                <h4 class="project-title">${title}</h4>
+              </a>
+            </div>
+            <p class="cert-date">${date}</p>
+          </div>
+        </div>
+      `;
+    } else if (item.type === 'modal') {
+      return `
+        <div class="col-sm-6 col-md-4 flex-col" data-date="${item.dateValue}">
+          <div class="cert-card text-center">
+            <button
+              type="button"
+              class="btn-card-link"
+              data-bs-toggle="modal"
+              data-bs-target="#${item.modalId}"
+              aria-label="查看${title}詳情"
+            >
+              <img
+                src="${item.image}"
+                class="cert-img"
+                alt="${title}"
+                loading="lazy"
+              />
+            </button>
+            <h4 class="cert-title">${title}</h4>
+            <p class="cert-date">${date}</p>
+          </div>
+        </div>
+      `;
+    }
+  }).join('');
+  
+  $(container).html(html);
+}
+
+// 📚 渲染課程
+function renderCourses(semester, data, container, currentLang = 'zh') {
+  const semesterData = data[semester];
+  
+  if (!semesterData) {
+    $(container).html('<p class="text-center">暫無課程資料</p>');
+    return;
+  }
+  
+  // Coming Soon 狀態
+  if (semesterData.comingSoon) {
+    const title = semesterData.title[currentLang];
+    const subtitle = semesterData.subtitle[currentLang];
+    const expectedTime = semesterData.expectedTime[currentLang];
+    const iconClass = semesterData.iconClass || '';
+    
+    const html = `
+      <div class="semester-content active" data-semester="${semester}">
+        <div class="coming-soon-container">
+          <div class="coming-soon-card">
+            <div class="coming-soon-icon ${iconClass}">
+              <i class="${semesterData.icon}"></i>
+            </div>
+            <h3 class="coming-soon-title">${title}</h3>
+            <p class="coming-soon-subtitle">${subtitle}</p>
+            <div class="coming-soon-timeline">
+              <i class="fas fa-calendar-check me-2"></i>
+              <span>${expectedTime}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    $(container).html(html);
+    return;
+  }
+  
+  // 有課程資料
+  const coursesHTML = semesterData.map(course => {
+    const title = course.title[currentLang];
+    const team = course.team[currentLang];
+    const professor = course.professor[currentLang];
+    const status = course.status[currentLang];
+    
+    const techTagsHTML = course.techTags.map(tag => 
+      `<span class="tech-tag">${tag}</span>`
+    ).join('');
+    
+    return `
+      <div class="col-sm-6 col-md-6 flex-col">
+        <div class="course-card text-center">
+          <a
+            href="${course.link}"
+            target="${course.isExternal ? '_blank' : '_self'}"
+            rel="${course.isExternal ? 'noopener noreferrer' : ''}"
+            class="course-link"
+            aria-label="查看${title}專案"
+          >
+            <div class="course-image-container">
+              <img
+                src="${course.image}"
+                class="course-img"
+                alt="${title}"
+                loading="lazy"
+              />
+              <div class="course-overlay">
+                <span class="external-link-icon">
+                  <i class="fas fa-external-link-alt"></i>
+                </span>
+              </div>
+            </div>
+          </a>
+          <h4 class="course-title">${title}</h4>
+          <div class="course-details">
+            <p class="course-info">
+              <i class="fas fa-users me-2"></i>
+              <span>${team}</span>
+            </p>
+            <p class="course-info">
+              <i class="fas fa-user-tie me-2"></i>
+              <span>${professor}</span>
+            </p>
+            <a
+              href="${course.pdfFile}"
+              target="_blank"
+              download="${course.pdfName}"
+              class="course-info course-pdf-download"
+              aria-label="下載 ${course.pdfName}"
+            >
+              <i class="fas fa-file-pdf me-2"></i>
+              <span>${currentLang === 'zh' ? '期末專案報告 (PDF)' : 'Final Project Report (PDF)'}</span>
+              <i class="fas fa-download ms-2"></i>
+            </a>
+            <p class="course-info">
+              <i class="fas fa-calendar-alt me-2"></i>
+              <span>${course.date}</span>
+            </p>
+          </div>
+          <div class="course-tech-tags">
+            ${techTagsHTML}
+          </div>
+          <p class="course-date">${status}</p>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  const html = `
+    <div class="semester-content active" data-semester="${semester}">
+      <div class="row" id="semester-${semester}-cards">
+        ${coursesHTML}
+      </div>
+    </div>
+  `;
+  
+  $(container).html(html);
+}
+
+// ========================================
+// 📌 初始化函數（添加到 $(document).ready 中）
+// ========================================
+
+// 🎯 初始化所有新區塊的函數
+function initNewSections() {
+  const currentLang = i18next.language || 'zh';
+  
+  // 初始化學習經歷
+  renderEducation(educationData, '#education-cards', currentLang);
+  
+  // 初始化工作經驗
+  renderExperience(experienceData, '#experience-container', currentLang);
+  
+  // 初始化研討會
+  renderSeminar(seminarData, '#seminar-cards', currentLang);
+  
+  // 初始化課程（預設顯示碩一上）
+  renderCourses('1-1', coursesData, '#courses-container', currentLang);
+  
+  console.log('✅ 所有新區塊初始化完成！');
+}
+
+// 🌍 語言切換時重新渲染
+function updateNewSectionsLanguage(lang) {
+  renderEducation(educationData, '#education-cards', lang);
+  renderExperience(experienceData, '#experience-container', lang);
+  renderSeminar(seminarData, '#seminar-cards', lang);
+  
+  // 獲取當前選中的學期
+  const activeSemester = $('.semester-btn.active').data('semester') || '1-1';
+  renderCourses(activeSemester, coursesData, '#courses-container', lang);
+}
+
+// 📚 課程學期切換功能
+function initCourseSemesterSwitching() {
+  $('.semester-btn').on('click', function() {
+    const semester = $(this).data('semester');
+    const currentLang = i18next.language || 'zh';
+    
+    // 更新按鈕狀態
+    $('.semester-btn').removeClass('active').attr('aria-pressed', 'false');
+    $(this).addClass('active').attr('aria-pressed', 'true');
+    
+    // 渲染對應學期的課程
+    renderCourses(semester, coursesData, '#courses-container', currentLang);
+  });
+}
+
+// ========================================
+// 🔧 排序功能支援
+// ========================================
+
+// 為學習經歷和研討會添加排序功能
+function initSortingForNewSections() {
+  // 學習經歷排序
+  $('#education .btn-sort').on('click', function() {
+    const sortOrder = $(this).data('sort');
+    const container = '#education-cards';
+    sortCardsByDate(educationData, container, sortOrder, i18next.language || 'zh');
+  });
+  
+  // 研討會排序
+  $('#seminar .btn-sort').on('click', function() {
+    const sortOrder = $(this).data('sort');
+    const container = '#seminar-cards';
+    sortCardsByDate(seminarData, container, sortOrder, i18next.language || 'zh');
+  });
+}
+
+// 排序輔助函數
+function sortCardsByDate(data, container, order, lang) {
+  const sortedData = [...data].sort((a, b) => {
+    const dateA = new Date(a.dateValue);
+    const dateB = new Date(b.dateValue);
+    return order === 'desc' ? dateB - dateA : dateA - dateB;
+  });
+  
+  // 根據類型決定使用哪個渲染函數
+  if (container.includes('education')) {
+    renderEducation(sortedData, container, lang);
+  } else if (container.includes('seminar')) {
+    renderSeminar(sortedData, container, lang);
+  }
+}
+
+// ========================================
+// 💡 使用說明
+// ========================================
+/*
+將此文件的內容添加到原有 main.js 的最前面（在證照資料定義之前）
+
+然後在原有的 $(document).ready 函數中添加以下初始化代碼：
+
+$(document).ready(function() {
+  // ... 原有的初始化代碼 ...
+  
+  // 🆕 初始化新區塊
+  initNewSections();
+  initCourseSemesterSwitching();
+  initSortingForNewSections();
+  
+  // 🆕 語言切換時更新新區塊
+  $('#btn-zh, #btn-en').on('click', function() {
+    // ... 原有的語言切換代碼 ...
+    
+    // 更新新區塊的語言
+    setTimeout(() => {
+      const currentLang = i18next.language;
+      updateNewSectionsLanguage(currentLang);
+    }, 100);
+  });
+  
+  // ... 原有的其他代碼 ...
+});
+*/
+
+console.log('🆕 新增資料和渲染函數已載入！');
+console.log('📊 學習經歷項目數:', educationData.length);
+console.log('💼 工作經驗項目數:', experienceData.length);
+console.log('📝 研討會項目數:', seminarData.length);
+console.log('📚 課程學期數:', Object.keys(coursesData).length);
+// ========================================
 // 🚀 完整版 main.js - 統一導覽與分頁功能 + 課程區塊 + 工作經驗
 // 包含所有原始功能 + 新增課程功能 + 工作經驗區塊
 // ========================================
@@ -1718,44 +2522,45 @@ $(document).ready(function () {
     }
   );
 
-  // 語言切換按鈕
   $("#btn-en").on("click", function () {
-    console.log("🌍 切換到英文");
-    // 更新按鈕狀態
-    $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
-    $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
+  console.log("🌍 切換到英文");
+  $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
+  $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
 
-    i18next.changeLanguage("en", function () {
-      $("body").localize();
-      setTimeout(function () {
-        processHTMLTranslations();
-        // 強制更新HTML元素
-        forceUpdateHTMLElements();
-        // 強制更新排序選單
-        updateProjectSortSelect();
-        console.log("✅ 英文切換完成");
-      }, 100);
-    });
+  i18next.changeLanguage("en", function () {
+    $("body").localize();
+    setTimeout(function () {
+      processHTMLTranslations();
+      forceUpdateHTMLElements();
+      updateProjectSortSelect();
+      
+      // 🆕 添加這一行
+      updateNewSectionsLanguage("en");
+      
+      console.log("✅ 英文切換完成");
+    }, 100);
   });
+});
 
   $("#btn-zh").on("click", function () {
-    console.log("🌍 切換到中文");
-    // 更新按鈕狀態
-    $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
-    $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
+  console.log("🌍 切換到中文");
+  $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
+  $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
 
-    i18next.changeLanguage("zh", function () {
-      $("body").localize();
-      setTimeout(function () {
-        processHTMLTranslations();
-        // 強制更新HTML元素
-        forceUpdateHTMLElements();
-        // 強制更新排序選單
-        updateProjectSortSelect();
-        console.log("✅ 中文切換完成");
-      }, 100);
-    });
+  i18next.changeLanguage("zh", function () {
+    $("body").localize();
+    setTimeout(function () {
+      processHTMLTranslations();
+      forceUpdateHTMLElements();
+      updateProjectSortSelect();
+      
+      // 🆕 添加這一行
+      updateNewSectionsLanguage("zh");
+      
+      console.log("✅ 中文切換完成");
+    }, 100);
   });
+});
 
   // ========================================
   // 3. 證照與分頁功能初始化
@@ -1962,6 +2767,18 @@ $(document).ready(function () {
 
   // 立即執行初設置
   updateNavOnLoad();
+
+  // ========================================
+  // 🆕 新區塊初始化
+  // ========================================
+  
+  // 初始化學習經歷、工作經驗、研討會、課程
+  initNewSections();
+  
+  // 初始化新區塊的排序功能
+  initSortingForNewSections();
+  
+  console.log("✅ 新區塊（學習經歷、工作經驗、研討會、課程）初始化完成！");
 
   console.log("🎉 系統初始化完成！包含課程功能和工作經驗！");
 });
