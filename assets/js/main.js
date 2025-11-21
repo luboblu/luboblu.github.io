@@ -174,6 +174,21 @@ const certifications = [
     },
     dateValue: "2025/06/11",
   },
+
+  {
+    id: "cert14",
+    modalId: "certModal14",
+    image: "assets/images/nvidia_llm_prompt_engineering.jpg",
+    title: {
+      key: "certs.nvidia_llm_prompt_title",
+      default: "Building LLM Applications With Prompt Engineering",
+    },
+    date: {
+      key: "certs.nvidia_llm_prompt_date",
+      default: "Issuance date: 2025/11/06",
+    },
+    dateValue: "2025/11/06",
+  },
 ];
 
 // 在 main.js 中更新 enhancedProjectsData 陣列
@@ -385,6 +400,8 @@ const resources = {
         ai_performance_date: "發證日期: 2025/06/12",
         ai_shopping_date: "發證日期: 2025/06/11",
         google_ads_apps_date: "發證日期: 2025/06/11",
+        nvidia_llm_prompt_title: "Building LLM Applications With Prompt Engineering",
+        nvidia_llm_prompt_date: "發證日期: 2025/11/06",
         total_count: "證照總數：",
       },
       projects: {
@@ -409,6 +426,9 @@ const resources = {
         title5: "ASONAM 2025 研究論文",
         date5: "發表日期: 2025/08/15",
         subtitle5: "ASONAM 2025 - IEEE/ACM 社群網路分析與挖掘國際會議",
+        title6: "31st International Conference on IT Applications and Management (ITAM-31)",
+        date6: "參加日期: 2025/10/26-30",
+        subtitle6: "Gyeongsang National University, Jinju, Korea",
       },
       education: {
         fju_title: "輔仁大學第40屆優秀專題",
@@ -537,6 +557,8 @@ const resources = {
         ai_performance_date: "Issuance date: 2025/06/12",
         ai_shopping_date: "Issuance date: 2025/06/11",
         google_ads_apps_date: "Issuance date: 2025/06/11",
+        nvidia_llm_prompt_title: "Building LLM Applications With Prompt Engineering",
+        nvidia_llm_prompt_date: "Issuance date: 2025/11/06",
         total_count: "Total Certifications:",
       },
       projects: {
@@ -563,6 +585,9 @@ const resources = {
         title5: "ASONAM 2025 Research Paper",
         date5: "Presentation Date: 2025/08/15",
         subtitle5: "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining",
+        title6: "31st International Conference on IT Applications and Management (ITAM-31)",
+        date6: "Participation Date: 2025/10/26-30",
+        subtitle6: "Gyeongsang National University, Jinju, Korea",
       },
       education: {
         fju_title: "Fu Jen Catholic University's 40th Outstanding Projects",
