@@ -917,7 +917,7 @@
           </div>
         </section>
 
-        <!-- Projects 區塊 -->
+                <!-- Projects 區塊 -->
         <section
           class="section topspace"
           id="recentworks"
@@ -932,12 +932,12 @@
             <div class="cert-count-display">
               <span class="cert-count-badge">
                 <i class="fas fa-project-diagram"></i>
-                <span data-i18n="projects.total_count">Total Projects:</span>
+                <span data-i18n="projects.total_count">專案總數：</span>
                 <strong id="totalProjectCount">6</strong>
               </span>
             </div>
 
-            <!-- 🆕 專案排序控制 - 移除重要性選項 -->
+            <!-- 🆕 專案排序控制 -->
             <div
               class="project-sort-controls"
               style="text-align: center; margin-bottom: 30px"
@@ -972,215 +972,26 @@
                 role="tabpanel"
                 aria-label="專案第1頁"
               >
+                <!-- ⭐ 動態渲染容器 - 清空所有靜態內容 -->
                 <div class="row" id="projectsContainer">
-                  <!-- 🥇 第1個位置 (左上) - ML-ESG (最重要) -->
-                  <div class="col-12 col-md-4">
-                    <div
-                      class="project-card enhanced-project-card research"
-                      data-category="research"
-                      data-importance="5"
-                      data-year="2025"
-                    >
-                      <div class="category-badge">Research</div>
-                      <a
-                        href="ESG.html"
-                        aria-label="查看ML-ESG Compliance Report詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/esg_project.png"
-                            alt="ML-ESG合規性報告專案"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <div class="content-area">
-                          <h4 class="project-title">
-                            ML-ESG Compliance Report
-                          </h4>
-                          <div class="subtitle">
-                            NTCIR-19 2025-2026 國際研究計畫
-                          </div>
-                          <div class="tech-tags">
-                            <span class="tech-tag">AI</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">ESG</span>
-                            <span class="tech-tag">FINANCE</span>
-                          </div>
-                          <div class="project-meta">
-                            <span class="importance-badge">⭐ 5/5</span>
-                            <span class="year-badge">📅 2025</span>
-                          </div>
-                        </div>
-                      </a>
+                  <!-- ✨ JavaScript 會在這裡動態插入所有專案卡片 -->
+                  
+                  <!-- 🔍 SEO 友善的隱藏內容（搜尋引擎可見，但使用者看不到） -->
+                  <noscript>
+                    <div class="col-12">
+                      <div class="alert alert-warning text-center">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>請啟用 JavaScript 以查看完整的專案列表</p>
+                      </div>
                     </div>
-                  </div>
-
-                  <!-- 🥇 第2個位置 (中上) - NSTC (國家重點) -->
-                  <div class="col-12 col-md-4">
-                    <div
-                      class="project-card enhanced-project-card government"
-                      data-category="government"
-                      data-importance="5"
-                      data-year="2025"
-                    >
-                      <div class="category-badge">Government</div>
-                      <a
-                        href="NSTC_Project.html"
-                        aria-label="查看NSTC包容科技計畫詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/NSTC_Index.png"
-                            alt="NSTC包容科技計畫"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <div class="content-area">
-                          <h4 class="project-title">NSTC 包容科技計畫</h4>
-                          <div class="subtitle">多模態跨語言對話系統</div>
-                          <div class="tech-tags">
-                            <span class="tech-tag">MULTIMODAL</span>
-                            <span class="tech-tag">AI</span>
-                            <span class="tech-tag">DIALOGUE</span>
-                            <span class="tech-tag">NLP</span>
-                          </div>
-                          <div class="project-meta">
-                            <span class="importance-badge">⭐ 5/5</span>
-                            <span class="year-badge">📅 2025</span>
-                          </div>
-                        </div>
-                      </a>
+                  </noscript>
+                  
+                  <!-- 📱 載入提示（JavaScript 執行前短暫顯示） -->
+                  <div class="col-12 text-center loading-placeholder" style="padding: 60px 0;">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">載入中...</span>
                     </div>
-                  </div>
-
-                  <!-- 🥈 第3個位置 (右上) - Smart City (技術創新) -->
-                  <div class="col-12 col-md-4">
-                    <div
-                      class="project-card enhanced-project-card innovation"
-                      data-category="innovation"
-                      data-importance="4"
-                      data-year="2024"
-                    >
-                      <div class="category-badge">Innovation</div>
-                      <a
-                        href="Smart_City.html"
-                        aria-label="查看Smart City Large Language Model Agent System詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/smart city.png"
-                            alt="智慧城市系統截圖"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <div class="content-area">
-                          <h4 class="project-title">
-                            Smart City Large Language Model Agent System
-                          </h4>
-                          <div class="subtitle">智慧城市大語言模型代理系統</div>
-                          <div class="tech-tags">
-                            <span class="tech-tag">LLM</span>
-                            <span class="tech-tag">SMART CITY</span>
-                            <span class="tech-tag">AGENT</span>
-                            <span class="tech-tag">AI</span>
-                          </div>
-                          <div class="project-meta">
-                            <span class="importance-badge">⭐ 4/5</span>
-                            <span class="year-badge">📅 2024</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- 🥉 第4個位置 (左下) - 氛享BOT (政府合作) -->
-                  <div class="col-12 col-md-4">
-                    <div
-                      class="project-card enhanced-project-card government"
-                      data-category="government"
-                      data-importance="4"
-                      data-year="2024"
-                    >
-                      <div class="category-badge">Government</div>
-                      <a
-                        href="marketing.html"
-                        aria-label="查看國科會-氛享水晶Bot詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/氛享海報.png"
-                            alt="氛享水晶Bot海報"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <div class="content-area">
-                          <h4 class="project-title">國科會-氛享水晶Bot</h4>
-                          <div class="subtitle">智慧行銷聊天機器人</div>
-                          <div class="tech-tags">
-                            <span class="tech-tag">CHATBOT</span>
-                            <span class="tech-tag">MARKETING</span>
-                            <span class="tech-tag">AI</span>
-                            <span class="tech-tag">NLP</span>
-                          </div>
-                          <div class="project-meta">
-                            <span class="importance-badge">⭐ 4/5</span>
-                            <span class="year-badge">📅 2024</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- 📋 第5個位置 (中下) - 癌症專題 (學術基礎) -->
-                  <div class="col-12 col-md-4">
-                    <div
-                      class="project-card enhanced-project-card academic"
-                      data-category="academic"
-                      data-importance="3"
-                      data-year="2023"
-                    >
-                      <div class="category-badge">Academic</div>
-                      <a
-                        href="cancer.html"
-                        aria-label="查看大學專題-癌資機模人詳情"
-                      >
-                        <div class="project-img">
-                          <img
-                            src="assets/images/cancer_project.png"
-                            alt="癌資機模人專題截圖"
-                            loading="lazy"
-                          />
-                          <div class="project-overlay">
-                            <span class="more">SEE DETAILS →</span>
-                          </div>
-                        </div>
-                        <div class="content-area">
-                          <h4 class="project-title">大學專題-癌資機模人</h4>
-                          <div class="subtitle">癌症資料智慧分析系統</div>
-                          <div class="tech-tags">
-                            <span class="tech-tag">MEDICAL AI</span>
-                            <span class="tech-tag">MACHINE LEARNING</span>
-                            <span class="tech-tag">DATA ANALYSIS</span>
-                          </div>
-                          <div class="project-meta">
-                            <span class="importance-badge">⭐ 3/5</span>
-                            <span class="year-badge">📅 2023</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                    <p class="mt-3 text-muted">正在載入專案...</p>
                   </div>
                 </div>
               </div>
