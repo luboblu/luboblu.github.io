@@ -541,6 +541,66 @@
               </div>
             </div>
             <div class="row" id="seminar-cards">
+              <!-- 🆕 新增卡片：ITAM-31 國際研討會 - 完整版 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="card-with-external-date">
+                  <div class="project-card">
+                    <div class="project-img">
+                      <img
+                        src="assets/images/itam31_conference.jpg"
+                        alt="ITAM-31國際研討會證書"
+                        loading="lazy"
+                      />
+                      <div class="project-overlay">
+                        <div class="project-links">
+                          <!-- 🖼️ 查看證書大圖 - Modal -->
+                          <button
+                            type="button"
+                            class="link-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#seminarModal6"
+                            aria-label="查看ITAM-31證書大圖"
+                          >
+                            <i class="fas fa-search-plus"></i>
+                            <span>證書</span>
+                          </button>
+                          
+                          <!-- 📊 投影片連結 -->
+                          
+                            <a href="assets\files\Validating ESG Commitments with RAG-Enhanced Large Language Models Toward Transparent and Reliable Sustainability Disclosure.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看ITAM-31報告投影片PDF"
+                          >
+                            <i class="fas fa-presentation"></i>
+                            <span>投影片</span>
+                          </a>
+                          
+                          <!-- 📄 論文全文連結 -->
+                          
+                            <a href="assets\files\ITAM31_Full_Hsin-Ting Lu_Validating ESG Commitments with RAG-Enhanced Large Language Models Toward Transparent and Reliable Sustainability Disclosure.pdf"
+                            target="_blank"
+                            class="link-btn"
+                            aria-label="查看ITAM-31論文全文PDF"
+                          >
+                            <i class="fas fa-file-pdf"></i>
+                            <span>全文</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="project-title" data-i18n="seminar.title6">
+                      31st International Conference on IT Applications and Management (ITAM-31)
+                    </h4>
+                  </div>
+                  <p class="cert-subtitle text-center" data-i18n="seminar.subtitle6">
+                    Gyeongsang National University, Jinju, Korea
+                  </p>
+                  <p class="cert-date" data-i18n="seminar.date6">
+                    參加日期: 2025/10/26-30
+                  </p>
+                </div>
+              </div>
               <!-- 新增卡片：ASONAM 2025 研討會論文 -->
               <div class="col-sm-6 col-md-4 flex-col">
                 <div class="card-with-external-date">
@@ -749,12 +809,12 @@
               >
             </h2>
 
-            <!-- 新增證照總數顯示 -->
+
             <div class="cert-count-display">
               <span class="cert-count-badge">
                 <i class="fas fa-certificate"></i>
                 <span data-i18n="certs.total_count">Total Certifications:</span>
-                <strong id="totalCertCount">13</strong>
+                <strong id="totalCertCount">14</strong>  <!-- ✅ 從 13 改成 14 -->
               </span>
             </div>
 
@@ -1640,6 +1700,47 @@
             />
             <p class="mt-3" data-i18n="education.ict_date">
               發證日期: 2023/11/04
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Modal 6: ITAM-31 國際研討會 -->
+    <div
+      class="modal fade"
+      id="seminarModal6"
+      tabindex="-1"
+      aria-labelledby="seminarModalLabel6"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="seminarModalLabel6"
+              data-i18n="seminar.title6"
+            >
+              31st International Conference on IT Applications and Management (ITAM-31)
+            </h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="關閉"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/itam31_conference.jpg"
+              alt="ITAM-31研討會證書大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="seminar.subtitle6">
+              Gyeongsang National University, Jinju, Korea
+            </p>
+            <p class="mt-2" data-i18n="seminar.date6">
+              參加日期: 2025/10/26-30
             </p>
           </div>
         </div>
