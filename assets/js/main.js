@@ -191,6 +191,11 @@ const certifications = [
   },
 ];
 
+// Seminar 分頁變數
+let currentSeminarPage = 1;
+let totalSeminarPages = 2;
+let currentSeminarSortOrder = "desc";
+
 // 在 main.js 中更新 enhancedProjectsData 陣列
 const enhancedProjectsData = [
   {
@@ -426,19 +431,34 @@ const resources = {
         title5: "ASONAM 2025 研究論文",
         date5: "發表日期: 2025/08/15",
         subtitle5: "ASONAM 2025 - IEEE/ACM 社群網路分析與挖掘國際會議",
-        title6: "31st International Conference on IT Applications and Management (ITAM-31)",
+        title6: "ITAM-31 國際研討會",
         date6: "參加日期: 2025/10/26-30",
-        subtitle6: "Gyeongsang National University, Jinju, Korea",
+        subtitle6: "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
+        title7: "IMP2025 第30屆國際資訊管理暨實務研討會",
+        date7: "發表日期: 2025/12/20",
+        subtitle7: "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
+        modal7_cert_title: "參加證書",
+        modal7_photo_title: "研討會合照",
       },
       education: {
         fju_title: "輔仁大學第40屆優秀專題",
         fju_date: "發證日期: 2023/05/27",
-        innohack_title: "2023塗城資訊黑客松競賽",
+        innohack_title: "2023叡陽資訊黑客松競賽",
         innohack_date: "發證日期: 2023/09/13",
         ict_title: "第28屆大專院校資訊應用服務創新競賽",
         ict_date: "發證日期: 2023/11/04",
         iii_title: "資策會科技日",
         iii_date: "參加日期: 2024/11/07",
+        // 🆕 USR 競賽
+        usr_title: "2025 NTPU USR × REsolution 永續科技提案競賽",
+        usr_subtitle: "第一名 - CYBJ (Create Your Better Journey)",
+        usr_date: "發證日期: 2025/12/12",
+        usr_modal_title: "2025 NTPU USR × REsolution 永續科技提案競賽 第一名",
+        usr_modal_team: "團隊: CYBJ (Create Your Better Journey)",
+        usr_modal_members: "成員: 陳柏臻、蕭文欣、吳承耘、盧信廷",
+        usr_modal_date: "發證日期: 2025/12/12",
+        usr_modal_award: "獎項: 第一名 (獎金 NT$ 12,000)",
+        usr_modal_news: "觀看新聞採訪",
       },
       page: {
         current: "第",
@@ -447,6 +467,9 @@ const resources = {
         jump: "跳至",
         page: "頁",
         go: "GO",
+        current_short: "第",
+        of_short: "頁，共",
+        goto: "跳至",
       },
       courses: {
         select_semester: "選擇學期:",
@@ -579,15 +602,20 @@ const resources = {
         title3:
           "The Journal of Quality has accepted the manuscript for publication",
         date3: "Accepted Date: 2024/08/31",
-        title4: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
+        title4: "2025 Taiwan Symposium On Cloud And Services Computing (TWSC2 2025)",
         date4: "Presentation Date: 2025/07/04",
-        subtitle4: "2025 Taiwan Symposium On Cloud And Services Computing(TWSC2 2025)",
+        subtitle4: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
         title5: "ASONAM 2025 Research Paper",
         date5: "Presentation Date: 2025/08/15",
         subtitle5: "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining",
-        title6: "31st International Conference on IT Applications and Management (ITAM-31)",
+        title6: "ITAM-31 International Conference",
         date6: "Participation Date: 2025/10/26-30",
-        subtitle6: "Gyeongsang National University, Jinju, Korea",
+        subtitle6: "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
+        title7: "IMP2025 — The 30th International Conference on Information Management & Practice",
+        date7: "Presentation Date: 2025/12/20",
+        subtitle7: "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
+        modal7_cert_title: "Certificate of Participation",
+        modal7_photo_title: "Conference Group Photo",
       },
       education: {
         fju_title: "Fu Jen Catholic University's 40th Outstanding Projects",
@@ -598,6 +626,16 @@ const resources = {
         ict_date: "Issuance date: 2023/11/04",
         iii_title: "III Technology Day",
         iii_date: "Participation date: 2024/11/07",
+        // 🆕 USR Competition
+        usr_title: "2025 NTPU USR × REsolution Sustainable Technology Competition",
+        usr_subtitle: "1st Place - CYBJ (Create Your Better Journey)",
+        usr_date: "Issued: 2025/12/12",
+        usr_modal_title: "2025 NTPU USR × REsolution Competition - 1st Place",
+        usr_modal_team: "Team: CYBJ (Create Your Better Journey)",
+        usr_modal_members: "Members: Chen Po-Chen, Hsiao Wen-Hsin, Wu Cheng-Yun, Lu Hsin-Ting",
+        usr_modal_date: "Issued: December 12, 2025",
+        usr_modal_award: "Award: 1st Place (Prize: NT$ 12,000)",
+        usr_modal_news: "Watch News Interview",
       },
       page: {
         current: "Page",
@@ -606,6 +644,9 @@ const resources = {
         jump: "Go to",
         page: "",
         go: "GO",
+        current_short: "Page",
+        of_short: "of",
+        goto: "Go to",
       },
       courses: {
         select_semester: "Select Semester:",
@@ -721,6 +762,174 @@ function sortCertifications(order) {
   renderCertifications();
   updatePagination();
 }
+
+// ========================================
+// Seminar 區塊功能 - 簡化版
+// ========================================
+
+// Seminar 排序功能 - 使用簡單的 CSS order 屬性
+function sortSeminars(order) {
+  currentSeminarSortOrder = order;
+  
+  // 直接操作現有的 DOM，不移動元素
+  const $allCards = $("#seminar .flex-col");
+  
+  // 提取所有卡片的日期信息
+  const cardsWithDates = [];
+  $allCards.each(function(index) {
+    const $card = $(this);
+    const dateText = $card.find(".cert-date").text();
+    const dateMatch = dateText.match(/(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})/);
+    if (dateMatch) {
+      cardsWithDates.push({
+        element: $card,
+        date: new Date(dateMatch[1].replace(/\//g, "-")),
+        originalIndex: index
+      });
+    }
+  });
+  
+  // 排序
+  cardsWithDates.sort((a, b) => {
+    return order === "asc" ? a.date - b.date : b.date - a.date;
+  });
+  
+  // 使用 CSS order 屬性重新排列，不移動 DOM
+  cardsWithDates.forEach((item, newIndex) => {
+    item.element.css("order", newIndex);
+  });
+  
+  // 更新當前頁面顯示
+  updateSeminarPagination();
+}
+
+// 更新 Seminar 分頁顯示
+function updateSeminarPagination() {
+  // 簡單切換頁面
+  $("#seminar .seminar-page").removeClass("active").hide();
+  $(`#seminar .seminar-page[data-page="${currentSeminarPage}"]`)
+    .addClass("active")
+    .show();
+
+  // 更新分頁指示器
+  $("#seminar-page-indicators .page-dot")
+    .removeClass("active")
+    .attr("aria-selected", "false");
+  $(`#seminar-page-indicators .page-dot[data-page="${currentSeminarPage}"]`)
+    .addClass("active")
+    .attr("aria-selected", "true");
+
+  // 更新按鈕狀態
+  $("#seminarPrevBtn").prop("disabled", currentSeminarPage === 1);
+  $("#seminarNextBtn").prop("disabled", currentSeminarPage === totalSeminarPages);
+
+  // 更新頁碼顯示
+  $("#seminarPageJumpInput").val(currentSeminarPage);
+  $("#seminarPageJumpInput").attr("max", totalSeminarPages);
+  $("#seminarCurrentPageDisplay").text(currentSeminarPage);
+  $("#seminarTotalPageDisplay").text(totalSeminarPages);
+}
+
+// Seminar 頁數跳轉功能
+function jumpToSeminarPage(targetPage) {
+  targetPage = parseInt(targetPage);
+
+  if (targetPage < 1 || targetPage > totalSeminarPages || isNaN(targetPage)) {
+    $("#seminarPageJumpInput").addClass("error");
+    setTimeout(function () {
+      $("#seminarPageJumpInput").removeClass("error");
+      $("#seminarPageJumpInput").val(currentSeminarPage);
+    }, 1000);
+    return false;
+  }
+
+  if (targetPage !== currentSeminarPage) {
+    currentSeminarPage = targetPage;
+    updateSeminarPagination();
+    return true;
+  }
+  return false;
+}
+
+// 初始化 Seminar 功能
+function initSeminarFeatures() {
+  // 初始化變數
+  currentSeminarPage = 1;
+  currentSeminarSortOrder = "desc";
+  totalSeminarPages = $("#seminar .seminar-page").length;
+  
+  // 確保所有卡片的父容器使用 flexbox
+  $("#seminar .seminar-page .row").css("display", "flex");
+  $("#seminar .seminar-page .row").css("flex-wrap", "wrap");
+
+  // 初始化顯示第一頁
+  updateSeminarPagination();
+
+  // 排序按鈕事件
+  $("#seminar .btn-sort").on("click", function () {
+    const order = $(this).data("sort");
+    
+    $(this)
+      .addClass("active")
+      .attr("aria-pressed", "true")
+      .siblings(".btn-sort")
+      .removeClass("active")
+      .attr("aria-pressed", "false");
+
+    sortSeminars(order);
+  });
+
+  // 上一頁按鈕
+  $("#seminarPrevBtn").on("click", function () {
+    if (currentSeminarPage > 1) {
+      currentSeminarPage--;
+      updateSeminarPagination();
+    }
+  });
+
+  // 下一頁按鈕
+  $("#seminarNextBtn").on("click", function () {
+    if (currentSeminarPage < totalSeminarPages) {
+      currentSeminarPage++;
+      updateSeminarPagination();
+    }
+  });
+
+  // 分頁點擊
+  $("#seminar-page-indicators .page-dot").on("click", function () {
+    const targetPage = parseInt($(this).data("page"));
+    if (targetPage !== currentSeminarPage) {
+      currentSeminarPage = targetPage;
+      updateSeminarPagination();
+    }
+  });
+
+  // 頁數跳轉按鈕
+  $("#seminarPageJumpBtn").on("click", function () {
+    const targetPage = parseInt($("#seminarPageJumpInput").val());
+    jumpToSeminarPage(targetPage);
+  });
+
+  // Enter 鍵跳轉
+  $("#seminarPageJumpInput").on("keypress", function (e) {
+    if (e.which === 13) {
+      const targetPage = parseInt($(this).val());
+      jumpToSeminarPage(targetPage);
+    }
+  });
+
+  // 輸入驗證
+  $("#seminarPageJumpInput").on("input", function () {
+    const value = parseInt($(this).val());
+    if (value < 1 || value > totalSeminarPages || isNaN(value)) {
+      $(this).addClass("invalid");
+    } else {
+      $(this).removeClass("invalid");
+    }
+  });
+}
+
+// 證照專用排序
 
 // 更新證照總數顯示
 function updateCertCount() {
@@ -1810,6 +2019,11 @@ $(document).ready(function () {
   renderCertifications();
   updateCertCount();
 
+  // ========================================
+  // 3.5. Seminar 功能初始化 - 新增
+  // ========================================
+  initSeminarFeatures();
+
   // 證照分頁事件處理
   $("#certPrevBtn").on("click", function () {
     if (currentPage > 1) {
@@ -2142,6 +2356,7 @@ $(window).on("load", function () {
     }, index * 100);
   });
 });
+
 
 // 匯出函數供全域使用
 window.sortEnhancedProjects = sortEnhancedProjects;
