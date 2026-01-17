@@ -1575,34 +1575,121 @@
               </div>
             </div>
 
-            <!-- 碩一下課程 - 敬請期待 -->
-            <div class="semester-content" data-semester="1-2">
-              <div class="coming-soon-container">
-                <div class="coming-soon-card">
-                  <div class="coming-soon-icon">
-                    <i class="fas fa-seedling"></i>
-                  </div>
-                  <h3
-                    class="coming-soon-title"
-                    data-i18n="courses.coming_soon_title_1_2"
-                  >
-                    碩一下課程敬請期待
-                  </h3>
-                  <p
-                    class="coming-soon-subtitle"
-                    data-i18n="courses.coming_soon_subtitle_1_2"
-                  >
-                    Master 1st Spring Semester Coming Soon
-                  </p>
-                  <div class="coming-soon-timeline">
-                    <i class="fas fa-calendar-check me-2"></i>
-                    <span data-i18n="courses.coming_soon_time_1_2"
-                      >預計開始時間：2026年2月</span
-                    >
-                  </div>
-                </div>
-              </div>
+            <!-- 碩一下課程 - 研究方法 -->
+<div class="semester-content" data-semester="1-2">
+  <div class="row" id="semester-1-2-cards">
+    <!-- 研究方法課程 - 虛假文獻偵測系統 -->
+    <div class="col-sm-6 col-md-6 flex-col">
+      <div class="course-card text-center">
+        <div class="course-image-container">
+          <!-- 不提供圖片路徑，觸發 CSS fallback 機制 -->
+          <img
+            src="assets/images/research_methods_placeholder.png"
+            class="course-img"
+            alt="研究方法課程"
+            loading="lazy"
+          />
+          <div class="course-overlay">
+            <div class="project-links">
+              <!-- GitHub 連結 -->
+              
+               <a href="https://github.com/luboblu/reference_check/tree/english_version"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-btn"
+                aria-label="查看GitHub專案原始碼"
+              >
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              
+              <!-- 論文PDF -->
+              
+              <a href="assets/files/research_methods_paper.pdf"
+                target="_blank"
+                download="虛假文獻偵測系統_論文.pdf"
+                class="link-btn"
+                aria-label="下載論文PDF"
+              >
+                <i class="fas fa-file-pdf"></i>
+                <span>論文</span>
+              </a>
+              
+              <!-- 投影片PDF -->
+              
+              <a href="assets/files/research_methods_presentation.pdf"
+                target="_blank"
+                download="虛假文獻偵測系統_報告.pdf"
+                class="link-btn"
+                aria-label="下載報告投影片PDF"
+              >
+                <i class="fas fa-presentation"></i>
+                <span>投影片</span>
+              </a>
             </div>
+          </div>
+        </div>
+        
+        <h4 class="course-title">
+          <span data-i18n="courses.research_methods">
+            研究方法 Research Methods
+          </span>
+        </h4>
+        
+        <div class="course-details">
+          <p class="course-info">
+            <i class="fas fa-project-diagram me-2"></i>
+            <span data-i18n="courses.research_methods_project">
+              虛假文獻偵測系統發展
+            </span>
+          </p>
+          
+          <!-- 🆕 兩位指導教授 -->
+          <p class="course-info">
+            <i class="fas fa-user-tie me-2"></i>
+            <span data-i18n="courses.research_methods_prof">
+              汪志堅、賴正育 教授
+            </span>
+          </p>
+          
+          <p class="course-info">
+            <i class="fas fa-github me-2"></i>
+            <a 
+              href="https://github.com/luboblu/reference_check/tree/english_version"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #667eea; text-decoration: none;"
+            >
+              <span data-i18n="courses.research_methods_github">
+                GitHub Repository
+              </span>
+              <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8em;"></i>
+            </a>
+          </p>
+          
+          <p class="course-info">
+            <i class="fas fa-calendar-alt me-2"></i>
+            <span data-i18n="courses.research_methods_date">
+              2026/06
+            </span>
+          </p>
+        </div>
+        
+        <div class="course-tech-tags">
+          <span class="tech-tag">Reference Detection</span>
+          <span class="tech-tag">Academic Integrity</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">NLP</span>
+        </div>
+        
+        <!-- 🆕 狀態改為已完成 -->
+        <p class="course-date" data-i18n="courses.research_methods_status">
+          狀態: 已完成
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
             <!-- 碩二上課程 - 敬請期待 -->
             <div class="semester-content" data-semester="2-1">
