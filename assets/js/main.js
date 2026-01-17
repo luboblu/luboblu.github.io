@@ -498,6 +498,12 @@ const resources = {
         coming_soon_title_2_2: "碩二下課程敬請期待",
         coming_soon_subtitle_2_2: "Master 2nd Spring Semester Coming Soon",
         coming_soon_time_2_2: "預計開始時間：2027年2月",
+        research_methods: "研究方法 Research Methods",
+      research_methods_project: "虛假文獻偵測系統發展",
+      research_methods_prof: "汪志堅、賴正育 教授",  // ✅ 兩位教授
+      research_methods_github: "GitHub 專案原始碼",
+      research_methods_date: "2026/06",
+      research_methods_status: "狀態: 已完成",  // ✅ 已完成
       },
     },
   },
@@ -675,6 +681,12 @@ const resources = {
         coming_soon_title_2_2: "Master 2nd Spring Coming Soon",
         coming_soon_subtitle_2_2: "課程即將推出",
         coming_soon_time_2_2: "Expected Start: February 2027",
+        research_methods: "Research Methods",
+      research_methods_project: "Development and Evaluation of a Detection System for Identifying Fabricated References",
+      research_methods_prof: "Professor Chih-Chien Wang, Cheng-Yu Lai",  // ✅ 兩位教授
+      research_methods_github: "GitHub Repository",
+      research_methods_date: "June 2026",
+      research_methods_status: "Status: Completed",  // ✅ 已完成
       },
     },
   },
