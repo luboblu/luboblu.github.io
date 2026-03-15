@@ -420,7 +420,8 @@ const resources = {
         ai_performance_date: "發證日期: 2025/06/12",
         ai_shopping_date: "發證日期: 2025/06/11",
         google_ads_apps_date: "發證日期: 2025/06/11",
-        nvidia_llm_prompt_title: "Building LLM Applications With Prompt Engineering",
+        nvidia_llm_prompt_title:
+          "Building LLM Applications With Prompt Engineering",
         nvidia_llm_prompt_date: "發證日期: 2025/11/06",
         total_count: "證照總數：",
       },
@@ -433,7 +434,8 @@ const resources = {
         hint_time_asc: "⏰ 按時間排序：最早的專案在前面",
         hint_alphabetical: "🔤 按字母排序：A-Z 順序排列",
         napa_title: "智慧代理與實體AI機器人課程推動計畫",
-        napa_subtitle: "教育部資科司指導 | 中央大學主辦 | 台北大學、清華大學協辦",
+        napa_subtitle:
+          "教育部資科司指導 | 中央大學主辦 | 台北大學、清華大學協辦",
       },
       seminar: {
         title1: "國際品質管理研討會",
@@ -450,10 +452,12 @@ const resources = {
         subtitle5: "ASONAM 2025 - IEEE/ACM 社群網路分析與挖掘國際會議",
         title6: "ITAM-31 國際研討會",
         date6: "參加日期: 2025/10/26-30",
-        subtitle6: "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
+        subtitle6:
+          "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
         title7: "IMP2025 第30屆國際資訊管理暨實務研討會",
         date7: "發表日期: 2025/12/20",
-        subtitle7: "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
+        subtitle7:
+          "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
         modal7_cert_title: "參加證書",
         modal7_photo_title: "研討會合照",
       },
@@ -466,7 +470,6 @@ const resources = {
         ict_date: "發證日期: 2023/11/04",
         iii_title: "資策會科技日",
         iii_date: "參加日期: 2024/11/07",
-        // 🆕 USR 競賽
         usr_title: "2025 NTPU USR × REsolution 永續科技提案競賽",
         usr_subtitle: "第一名 - CYBJ (Create Your Better Journey)",
         usr_date: "發證日期: 2025/12/12",
@@ -476,6 +479,14 @@ const resources = {
         usr_modal_date: "發證日期: 2025/12/12",
         usr_modal_award: "獎項: 第一名 (獎金 NT$ 12,000)",
         usr_modal_news: "觀看新聞採訪",
+        gdg_title: "GDG on Campus NTPU 受邀講師",
+        gdg_subtitle: "跨領域經驗分享講座講者",
+        gdg_date: "日期: 2026/03/02",
+        gdg_modal_title:
+          "114-2活動【20260302 雙軌成長公式：把大學變成你的履歷養成場】",
+        gdg_modal_org: "主辦：Google 學生開發者社群 - 臺北大學",
+        gdg_modal_role: "角色：受邀講者",
+        gdg_modal_date: "日期：民國115年3月2日",
       },
       page: {
         current: "第",
@@ -516,11 +527,11 @@ const resources = {
         coming_soon_subtitle_2_2: "Master 2nd Spring Semester Coming Soon",
         coming_soon_time_2_2: "預計開始時間：2027年2月",
         research_methods: "研究方法 Research Methods",
-      research_methods_project: "虛假文獻偵測系統發展",
-      research_methods_prof: "汪志堅、賴正育 教授",  // ✅ 兩位教授
-      research_methods_github: "GitHub 專案原始碼",
-      research_methods_date: "2026/06",
-      research_methods_status: "狀態: 已完成",  // ✅ 已完成
+        research_methods_project: "虛假文獻偵測系統發展",
+        research_methods_prof: "汪志堅、賴正育 教授", // ✅ 兩位教授
+        research_methods_github: "GitHub 專案原始碼",
+        research_methods_date: "2026/06",
+        research_methods_status: "狀態: 已完成", // ✅ 已完成
       },
     },
   },
@@ -603,7 +614,8 @@ const resources = {
         ai_performance_date: "Issuance date: 2025/06/12",
         ai_shopping_date: "Issuance date: 2025/06/11",
         google_ads_apps_date: "Issuance date: 2025/06/11",
-        nvidia_llm_prompt_title: "Building LLM Applications With Prompt Engineering",
+        nvidia_llm_prompt_title:
+          "Building LLM Applications With Prompt Engineering",
         nvidia_llm_prompt_date: "Issuance date: 2025/11/06",
         total_count: "Total Certifications:",
       },
@@ -615,8 +627,10 @@ const resources = {
         hint_time_desc: "📅 Sorted by time: Newest projects first",
         hint_time_asc: "⏰ Sorted by time: Oldest projects first",
         hint_alphabetical: "🔤 Sorted alphabetically: A-Z order",
-        napa_title: "AI Agent and Physical AI Robot Curriculum Development Project",
-        napa_subtitle: "Guided by MOE DOIT | Hosted by NCU | Co-hosted by NTPU & NTHU",
+        napa_title:
+          "AI Agent and Physical AI Robot Curriculum Development Project",
+        napa_subtitle:
+          "Guided by MOE DOIT | Hosted by NCU | Co-hosted by NTPU & NTHU",
       },
       seminar: {
         title1: "International Quality Management Seminar",
@@ -627,18 +641,24 @@ const resources = {
         title3:
           "The Journal of Quality has accepted the manuscript for publication",
         date3: "Accepted Date: 2024/08/31",
-        title4: "2025 Taiwan Symposium On Cloud And Services Computing (TWSC2 2025)",
+        title4:
+          "2025 Taiwan Symposium On Cloud And Services Computing (TWSC2 2025)",
         date4: "Presentation Date: 2025/07/04",
-        subtitle4: "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
+        subtitle4:
+          "Implementing an Inclusive Communication System with RAG-enhanced Multilingual and Multimodal Dialogue Capabilities",
         title5: "ASONAM 2025 Research Paper",
         date5: "Presentation Date: 2025/08/15",
-        subtitle5: "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining",
+        subtitle5:
+          "ASONAM 2025 - IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining",
         title6: "ITAM-31 International Conference",
         date6: "Participation Date: 2025/10/26-30",
-        subtitle6: "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
-        title7: "IMP2025 — The 30th International Conference on Information Management & Practice",
+        subtitle6:
+          "31st International Conference on IT Applications and Management / Gyeongsang National University, Jinju, Korea",
+        title7:
+          "IMP2025 — The 30th International Conference on Information Management & Practice",
         date7: "Presentation Date: 2025/12/20",
-        subtitle7: "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
+        subtitle7:
+          "SentiPromiseESG: Sentiment Analysis of Sustainability Promises Across Industries",
         modal7_cert_title: "Certificate of Participation",
         modal7_photo_title: "Conference Group Photo",
       },
@@ -651,16 +671,25 @@ const resources = {
         ict_date: "Issuance date: 2023/11/04",
         iii_title: "III Technology Day",
         iii_date: "Participation date: 2024/11/07",
-        // 🆕 USR Competition
-        usr_title: "2025 NTPU USR × REsolution Sustainable Technology Competition",
+        usr_title:
+          "2025 NTPU USR × REsolution Sustainable Technology Competition",
         usr_subtitle: "1st Place - CYBJ (Create Your Better Journey)",
         usr_date: "Issued: 2025/12/12",
         usr_modal_title: "2025 NTPU USR × REsolution Competition - 1st Place",
         usr_modal_team: "Team: CYBJ (Create Your Better Journey)",
-        usr_modal_members: "Members: Chen Po-Chen, Hsiao Wen-Hsin, Wu Cheng-Yun, Lu Hsin-Ting",
+        usr_modal_members:
+          "Members: Chen Po-Chen, Hsiao Wen-Hsin, Wu Cheng-Yun, Lu Hsin-Ting",
         usr_modal_date: "Issued: December 12, 2025",
         usr_modal_award: "Award: 1st Place (Prize: NT$ 12,000)",
         usr_modal_news: "Watch News Interview",
+        gdg_title: "GDG on Campus NTPU - Invited Speaker",
+        gdg_subtitle: "Cross-disciplinary Experience Sharing Seminar Speaker",
+        gdg_date: "Date: 2026/03/02",
+        gdg_modal_title:
+          "Semester 114-2 Event【20260302 Dual-Track Growth Formula: Turn University into Your Resume】",
+        gdg_modal_org: "Organizer: Google Developer Groups on Campus - NTPU",
+        gdg_modal_role: "Role: Invited Speaker",
+        gdg_modal_date: "Date: March 2, 2026",
       },
       page: {
         current: "Page",
@@ -701,11 +730,12 @@ const resources = {
         coming_soon_subtitle_2_2: "課程即將推出",
         coming_soon_time_2_2: "Expected Start: February 2027",
         research_methods: "Research Methods",
-      research_methods_project: "Development and Evaluation of a Detection System for Identifying Fabricated References",
-      research_methods_prof: "Professor Chih-Chien Wang, Cheng-Yu Lai",  // ✅ 兩位教授
-      research_methods_github: "GitHub Repository",
-      research_methods_date: "June 2026",
-      research_methods_status: "Status: Completed",  // ✅ 已完成
+        research_methods_project:
+          "Development and Evaluation of a Detection System for Identifying Fabricated References",
+        research_methods_prof: "Professor Chih-Chien Wang, Cheng-Yu Lai", // ✅ 兩位教授
+        research_methods_github: "GitHub Repository",
+        research_methods_date: "June 2026",
+        research_methods_status: "Status: Completed", // ✅ 已完成
       },
     },
   },
@@ -736,7 +766,7 @@ function smoothScrollTo(target, offset = 100) {
           $("html").css("scroll-behavior", "smooth");
         }, 100);
       },
-    }
+    },
   );
 }
 
@@ -752,7 +782,7 @@ window.scrollToTop = function () {
           $("html").css("scroll-behavior", "smooth");
         }, 100);
       },
-    }
+    },
   );
 
   // 立即更新導覽狀態
@@ -801,13 +831,13 @@ function sortCertifications(order) {
 // Seminar 排序功能 - 使用簡單的 CSS order 屬性
 function sortSeminars(order) {
   currentSeminarSortOrder = order;
-  
+
   // 直接操作現有的 DOM，不移動元素
   const $allCards = $("#seminar .flex-col");
-  
+
   // 提取所有卡片的日期信息
   const cardsWithDates = [];
-  $allCards.each(function(index) {
+  $allCards.each(function (index) {
     const $card = $(this);
     const dateText = $card.find(".cert-date").text();
     const dateMatch = dateText.match(/(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})/);
@@ -815,21 +845,21 @@ function sortSeminars(order) {
       cardsWithDates.push({
         element: $card,
         date: new Date(dateMatch[1].replace(/\//g, "-")),
-        originalIndex: index
+        originalIndex: index,
       });
     }
   });
-  
+
   // 排序
   cardsWithDates.sort((a, b) => {
     return order === "asc" ? a.date - b.date : b.date - a.date;
   });
-  
+
   // 使用 CSS order 屬性重新排列，不移動 DOM
   cardsWithDates.forEach((item, newIndex) => {
     item.element.css("order", newIndex);
   });
-  
+
   // 更新當前頁面顯示
   updateSeminarPagination();
 }
@@ -852,7 +882,10 @@ function updateSeminarPagination() {
 
   // 更新按鈕狀態
   $("#seminarPrevBtn").prop("disabled", currentSeminarPage === 1);
-  $("#seminarNextBtn").prop("disabled", currentSeminarPage === totalSeminarPages);
+  $("#seminarNextBtn").prop(
+    "disabled",
+    currentSeminarPage === totalSeminarPages,
+  );
 
   // 更新頁碼顯示
   $("#seminarPageJumpInput").val(currentSeminarPage);
@@ -888,7 +921,7 @@ function initSeminarFeatures() {
   currentSeminarPage = 1;
   currentSeminarSortOrder = "desc";
   totalSeminarPages = $("#seminar .seminar-page").length;
-  
+
   // 確保所有卡片的父容器使用 flexbox
   $("#seminar .seminar-page .row").css("display", "flex");
   $("#seminar .seminar-page .row").css("flex-wrap", "wrap");
@@ -899,7 +932,7 @@ function initSeminarFeatures() {
   // 排序按鈕事件
   $("#seminar .btn-sort").on("click", function () {
     const order = $(this).data("sort");
-    
+
     $(this)
       .addClass("active")
       .attr("aria-pressed", "true")
@@ -1096,11 +1129,11 @@ function updatePagination() {
   $("#totalPageDisplay").text(totalPages);
 
   const activePageHeight = $(
-    `#certifications .cert-page[data-page="${currentPage}"]`
+    `#certifications .cert-page[data-page="${currentPage}"]`,
   ).outerHeight();
   $("#certifications .cert-pagination-container").css(
     "min-height",
-    activePageHeight + "px"
+    activePageHeight + "px",
   );
 }
 
@@ -1128,7 +1161,7 @@ function jumpToPage(targetPage) {
 // 初始化專案分頁功能
 function initProjectPagination() {
   console.log("🚀 初始化專案分頁功能...");
-  
+
   const projectsPerPage = 6;
   const totalProjects = enhancedProjectsData.length;
   totalProjectPages = Math.ceil(totalProjects / projectsPerPage);
@@ -1165,7 +1198,7 @@ function initProjectPagination() {
 
   if (projectPageJumpBtn && projectPageJumpInput) {
     projectPageJumpInput.max = totalProjectPages;
-    
+
     projectPageJumpBtn.addEventListener("click", () => {
       const targetPage = parseInt(projectPageJumpInput.value);
       if (targetPage >= 1 && targetPage <= totalProjectPages) {
@@ -1186,7 +1219,9 @@ function initProjectPagination() {
     });
   }
 
-  console.log(`✅ 專案分頁初始化完成：${totalProjects} 個專案，${totalProjectPages} 頁`);
+  console.log(
+    `✅ 專案分頁初始化完成：${totalProjects} 個專案，${totalProjectPages} 頁`,
+  );
 }
 
 // ========================================
@@ -1227,7 +1262,7 @@ function updateNavigation(sectionId) {
   } else {
     // 特定區塊
     $(
-      `.navbar .nav-link[href="#${sectionId}"], .index-navbar .nav-link[href="#${sectionId}"]`
+      `.navbar .nav-link[href="#${sectionId}"], .index-navbar .nav-link[href="#${sectionId}"]`,
     ).addClass("active");
   }
 }
@@ -1317,7 +1352,7 @@ function sortEnhancedProjects(sortType = "yearDesc") {
   console.log(`📄 專案排序：${sortType}`);
 
   const sortedProjects = [...enhancedProjectsData].sort(
-    enhancedSortOptions[sortType]
+    enhancedSortOptions[sortType],
   );
   renderEnhancedProjects(sortedProjects);
 
@@ -1338,7 +1373,7 @@ function renderEnhancedProjects(projects) {
 
   // 🆕 清空所有分頁容器
   const allPages = document.querySelectorAll("#recentworks .project-page");
-  allPages.forEach(page => {
+  allPages.forEach((page) => {
     const container = page.querySelector("#projectsContainer");
     if (container) {
       container.innerHTML = "";
@@ -1351,11 +1386,13 @@ function renderEnhancedProjects(projects) {
   // 🆕 計算總頁數
   const projectsPerPage = 6;
   const totalPages = Math.ceil(projects.length / projectsPerPage);
-  
+
   console.log(`📊 渲染 ${projects.length} 個專案，分成 ${totalPages} 頁`);
 
   // 🆕 確保有足夠的分頁容器
-  const paginationContainer = document.querySelector("#recentworks .project-pagination-container");
+  const paginationContainer = document.querySelector(
+    "#recentworks .project-pagination-container",
+  );
   if (paginationContainer) {
     // 移除多餘的頁面
     const existingPages = paginationContainer.querySelectorAll(".project-page");
@@ -1373,21 +1410,26 @@ function renderEnhancedProjects(projects) {
       newPage.style.display = "none";
       newPage.setAttribute("role", "tabpanel");
       newPage.setAttribute("aria-label", `專案第${i + 1}頁`);
-      
+
       const row = document.createElement("div");
       row.className = "row";
       row.id = "projectsContainer";
       newPage.appendChild(row);
-      
-      paginationContainer.insertBefore(newPage, paginationContainer.querySelector(".project-pagination-wrapper"));
+
+      paginationContainer.insertBefore(
+        newPage,
+        paginationContainer.querySelector(".project-pagination-wrapper"),
+      );
     }
   }
 
   // 🆕 渲染專案到對應的頁面
   projects.forEach((project, index) => {
     const pageNumber = Math.floor(index / projectsPerPage) + 1;
-    const targetPage = document.querySelector(`#recentworks .project-page[data-page="${pageNumber}"]`);
-    
+    const targetPage = document.querySelector(
+      `#recentworks .project-page[data-page="${pageNumber}"]`,
+    );
+
     if (!targetPage) {
       console.warn(`⚠️ 找不到第 ${pageNumber} 頁容器`);
       return;
@@ -1403,13 +1445,13 @@ function renderEnhancedProjects(projects) {
       .map((tech) => `<span class="tech-tag">${tech}</span>`)
       .join("");
 
-    const linkAttributes = project.isExternal 
-      ? `href="${project.link}" target="_blank" rel="noopener noreferrer"` 
+    const linkAttributes = project.isExternal
+      ? `href="${project.link}" target="_blank" rel="noopener noreferrer"`
       : `href="${project.link}"`;
-    
-    const externalIcon = project.isExternal 
-      ? '<i class="fas fa-external-link-alt external-link-indicator"></i>' 
-      : '';
+
+    const externalIcon = project.isExternal
+      ? '<i class="fas fa-external-link-alt external-link-indicator"></i>'
+      : "";
 
     const projectHTML = `
       <div class="col-12 col-md-4">
@@ -1423,7 +1465,7 @@ function renderEnhancedProjects(projects) {
               <img src="${project.image}" alt="${project.title}" loading="lazy" />
               <div class="project-overlay">
                 <span class="more">
-                  ${project.isExternal ? 'VISIT SITE →' : 'SEE DETAILS →'}
+                  ${project.isExternal ? "VISIT SITE →" : "SEE DETAILS →"}
                   ${externalIcon}
                 </span>
               </div>
@@ -1441,7 +1483,7 @@ function renderEnhancedProjects(projects) {
               <div class="tech-tags">${techTags}</div>
               <div class="project-meta">
                 <span class="year-badge">📅 ${project.year}</span>
-                ${project.isExternal ? '<span class="external-badge">🔗 外部連結</span>' : ''}
+                ${project.isExternal ? '<span class="external-badge">🔗 外部連結</span>' : ""}
               </div>
             </div>
           </a>
@@ -1467,12 +1509,14 @@ function renderEnhancedProjects(projects) {
       $("body").localize();
     }, 50);
   }
-  
+
   console.log("✅ 專案渲染完成！");
 }
 // 🆕 更新專案分頁指示器
 function updateProjectPaginationIndicators(totalPages) {
-  const indicatorsContainer = document.querySelector("#recentworks .cert-page-indicators");
+  const indicatorsContainer = document.querySelector(
+    "#recentworks .cert-page-indicators",
+  );
   if (!indicatorsContainer) return;
 
   // 清空現有指示器
@@ -1481,16 +1525,16 @@ function updateProjectPaginationIndicators(totalPages) {
   // 創建新的指示器
   for (let i = 1; i <= totalPages; i++) {
     const dot = document.createElement("button");
-    dot.className = `page-dot ${i === 1 ? 'active' : ''}`;
+    dot.className = `page-dot ${i === 1 ? "active" : ""}`;
     dot.dataset.page = i;
     dot.setAttribute("role", "tab");
     dot.setAttribute("aria-label", `第${i}頁`);
     dot.setAttribute("aria-selected", i === 1 ? "true" : "false");
-    
+
     dot.addEventListener("click", () => {
       showProjectPage(i);
     });
-    
+
     indicatorsContainer.appendChild(dot);
   }
 
@@ -1502,7 +1546,7 @@ function updateProjectPaginationIndicators(totalPages) {
 
   // 更新按鈕狀態
   updateProjectNavigationButtons(totalPages);
-  
+
   console.log(`📍 創建了 ${totalPages} 個分頁指示器`);
 }
 
@@ -1541,7 +1585,7 @@ function showProjectPage(pageNumber) {
   // 更新按鈕狀態
   const prevBtn = document.getElementById("projectPrevBtn");
   const nextBtn = document.getElementById("projectNextBtn");
-  
+
   if (prevBtn) {
     prevBtn.disabled = pageNumber === 1;
     prevBtn.style.display = totalPages > 1 ? "flex" : "none";
@@ -1552,13 +1596,15 @@ function showProjectPage(pageNumber) {
   }
 
   // 更新頁碼顯示
-  const currentPageDisplay = document.getElementById("projectCurrentPageDisplay");
+  const currentPageDisplay = document.getElementById(
+    "projectCurrentPageDisplay",
+  );
   if (currentPageDisplay) {
     currentPageDisplay.textContent = pageNumber;
   }
 
   currentProjectPage = pageNumber;
-  
+
   console.log(`📄 顯示第 ${pageNumber} 頁 / 共 ${totalPages} 頁`);
 }
 
@@ -1566,7 +1612,9 @@ function showProjectPage(pageNumber) {
 function updateProjectNavigationButtons(totalPages) {
   const prevBtn = document.getElementById("projectPrevBtn");
   const nextBtn = document.getElementById("projectNextBtn");
-  const pageJumpWrapper = document.querySelector("#recentworks .page-jump-wrapper");
+  const pageJumpWrapper = document.querySelector(
+    "#recentworks .page-jump-wrapper",
+  );
 
   if (totalPages <= 1) {
     if (prevBtn) prevBtn.style.display = "none";
@@ -1578,7 +1626,6 @@ function updateProjectNavigationButtons(totalPages) {
     if (pageJumpWrapper) pageJumpWrapper.style.display = "flex";
   }
 }
-
 
 // 更新專案總數
 function updateEnhancedProjectCount() {
@@ -1681,10 +1728,10 @@ function updateProjectPagination() {
   const projectPrevBtn = document.getElementById("projectPrevBtn");
   const projectNextBtn = document.getElementById("projectNextBtn");
   const projectPageIndicators = document.querySelector(
-    "#recentworks .cert-page-indicators"
+    "#recentworks .cert-page-indicators",
   );
   const projectPageJumpWrapper = document.querySelector(
-    "#recentworks .page-jump-wrapper"
+    "#recentworks .page-jump-wrapper",
   );
 
   if (totalProjectPages <= 1) {
@@ -1711,7 +1758,7 @@ function updateProjectPagination() {
   }
 
   console.log(
-    `📊 專案分頁更新：總共 ${totalProjects} 個專案，${totalProjectPages} 頁`
+    `📊 專案分頁更新：總共 ${totalProjects} 個專案，${totalProjectPages} 頁`,
   );
 }
 
@@ -1816,7 +1863,7 @@ function initCourseSemesterSwitching() {
       });
 
       const targetContent = coursesSection.querySelector(
-        `[data-semester="${semester}"].semester-content`
+        `[data-semester="${semester}"].semester-content`,
       );
       if (targetContent) {
         setTimeout(() => {
@@ -1943,7 +1990,7 @@ $(document).ready(function () {
         // 平滑滾動
         smoothScrollTo(target);
       }
-    }
+    },
   );
 
   // 首頁按鈕特殊處理
@@ -1961,7 +2008,7 @@ $(document).ready(function () {
         e.stopPropagation();
         window.scrollToTop();
       }
-    }
+    },
   );
 
   // 統一的滾動監聽 - 只註冊一次，使用節流提升性能
@@ -2081,7 +2128,7 @@ $(document).ready(function () {
 
         console.log("🌍 中文初始化完成");
       }, 200); // 延長等待時間
-    }
+    },
   );
 
   // 語言切換按鈕
@@ -2107,8 +2154,8 @@ $(document).ready(function () {
   $("#btn-zh").on("click", function () {
     console.log("🌍 切換到中文");
     // 更新按鈕狀態
-    $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
-    $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
+    $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
+    $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
 
     i18next.changeLanguage("zh", function () {
       $("body").localize();
@@ -2385,7 +2432,7 @@ $(document).on("keydown", function (e) {
 
   const sections = [
     "education",
-    "experience", 
+    "experience",
     "seminar",
     "certifications",
     "courses",
@@ -2489,7 +2536,6 @@ $(window).on("load", function () {
   });
 });
 
-
 // 匯出函數供全域使用
 window.sortEnhancedProjects = sortEnhancedProjects;
 window.enhancedProjectsData = enhancedProjectsData;
@@ -2500,6 +2546,6 @@ console.log("鍵盤快捷鍵：H=首頁, ↑=上一區塊, ↓=下一區塊, P=�
 console.log("課程功能：學期切換、圖片錯誤處理");
 console.log("工作經驗：完整翻譯支持，時間軸設計");
 console.log(
-  "調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()"
+  "調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()",
 );
 console.log("完整版 main.js 載入完成！約 2500+ 行代碼！包含工作經驗功能");
