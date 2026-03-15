@@ -113,7 +113,9 @@ body {
   );
   z-index: 1001;
   transition: width 0.1s ease;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4), 0 0 20px rgba(16, 185, 129, 0.2);
+  box-shadow:
+    0 0 10px rgba(37, 99, 235, 0.4),
+    0 0 20px rgba(16, 185, 129, 0.2);
 }
 
 /* 響應式進度條 */
@@ -634,15 +636,18 @@ body {
 
 @keyframes experiencePulse {
   0% {
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+    box-shadow:
+      0 0 0 4px rgba(16, 185, 129, 0.2),
       0 0 0 8px rgba(16, 185, 129, 0.1);
   }
   70% {
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+    box-shadow:
+      0 0 0 4px rgba(16, 185, 129, 0.2),
       0 0 0 16px rgba(16, 185, 129, 0);
   }
   100% {
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+    box-shadow:
+      0 0 0 4px rgba(16, 185, 129, 0.2),
       0 0 0 8px rgba(16, 185, 129, 0);
   }
 }
@@ -1263,7 +1268,9 @@ img {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .cert-card:hover {
@@ -1303,7 +1310,9 @@ img {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -2538,7 +2547,9 @@ body {
   background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border-left: 6px solid #4f46e5;
 }
 
@@ -2964,7 +2975,7 @@ body {
   border-radius: 12px;
   font-size: 0.75em;
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
 }
 
@@ -2977,8 +2988,9 @@ body {
 /* 外部連結專案卡片邊框 */
 .project-card:has(a[target="_blank"]) {
   border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #4f46e5, #7c3aed) border-box;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #4f46e5, #7c3aed) border-box;
   border-radius: 12px;
 }
 
@@ -2990,7 +3002,11 @@ body {
 
 /* 外部連結 overlay 特殊效果 */
 .project-card a[target="_blank"] .project-overlay {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(124, 58, 237, 0.9));
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.9),
+    rgba(124, 58, 237, 0.9)
+  );
 }
 
 /* 外部連結標題特殊樣式 */
@@ -3019,7 +3035,7 @@ body {
     font-size: 0.65em;
     padding: 3px 6px;
   }
-  
+
   .external-link-indicator {
     font-size: 0.7em;
   }
