@@ -2119,10 +2119,10 @@ $(document).ready(function () {
         // 確保排序選單也被翻譯
         updateProjectSortSelect();
         // 設置語言按鈕的初始狀態
-        $("#btn-zh")
+        $("#btn-en")
           .removeClass("btn-outline-secondary")
           .addClass("btn-secondary");
-        $("#btn-en")
+        $("#btn-zh")
           .removeClass("btn-secondary")
           .addClass("btn-outline-secondary");
 
@@ -2154,8 +2154,8 @@ $(document).ready(function () {
   $("#btn-zh").on("click", function () {
     console.log("🌍 切換到中文");
     // 更新按鈕狀態
-    $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
-    $("#btn-zh").removeClass("btn-secondary").addClass("btn-outline-secondary");
+    $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
+    $("#btn-en").removeClass("btn-secondary").addClass("btn-outline-secondary");
 
     i18next.changeLanguage("zh", function () {
       $("body").localize();
