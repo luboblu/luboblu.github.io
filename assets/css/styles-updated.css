@@ -337,7 +337,7 @@ body {
 .language-switcher .btn-outline-secondary {
   color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
-  background: transparent !important;
+  background: white !important;
 }
 
 .language-switcher .btn-outline-secondary:hover,
