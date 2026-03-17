@@ -3040,3 +3040,69 @@ body {
     font-size: 0.7em;
   }
 }
+/* ========================================
+   🎓 畢業倒數計時器
+======================================== */
+.graduation-countdown {
+  background: linear-gradient(135deg, #0d3557 0%, #1a5276 50%, #0d3557 100%);
+  border-radius: 16px;
+  padding: 28px 24px 20px;
+  text-align: center;
+  margin: 24px auto 0;
+  max-width: 540px;
+}
+
+.graduation-countdown .cd-label-top {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.graduation-countdown .cd-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.graduation-countdown .cd-box {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  padding: 14px 10px;
+  flex: 1;
+  max-width: 110px;
+}
+
+.graduation-countdown .cd-num {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.graduation-countdown .cd-unit {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.graduation-countdown .cd-label-bot {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  margin: 16px 0 0;
+}
+
+@media (max-width: 480px) {
+  .graduation-countdown .cd-num {
+    font-size: 1.7rem;
+  }
+  .graduation-countdown .cd-box {
+    padding: 10px 6px;
+  }
+}

@@ -2380,7 +2380,51 @@ $(document).ready(function () {
 
   // 立即執行初設置
   updateNavOnLoad();
+  // 🎓 畢業倒數計時器
+  (function initGraduationCountdown() {
+    const target = new Date("2026-12-31T23:59:59");
+    const pad = (n) => String(n).padStart(2, "0");
 
+    function tick() {
+      const diff = target - new Date();
+      if (diff <= 0) {
+        document.getElementById("cd-d").textContent = "🎉";
+        document.getElementById("cd-h").textContent = "00";
+        document.getElementById("cd-m").textContent = "00";
+        document.getElementById("cd-s").textContent = "00";
+        document.getElementById("cd-bot").textContent =
+          "恭喜畢業！Congratulations!";
+        return;
+      }
+      document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
+      document.getElementById("cd-h").textContent = pad(
+        Math.floor((diff % 86400000) / 3600000),
+      );
+      document.getElementById("cd-m").textContent = pad(
+        Math.floor((diff % 3600000) / 60000),
+      );
+      document.getElementById("cd-s").textContent = pad(
+        Math.floor((diff % 60000) / 1000),
+      );
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // 語言切換時更新底部文字
+    function updateCountdownLang() {
+      const bot = document.getElementById("cd-bot");
+      if (!bot) return;
+      bot.textContent =
+        i18next.language === "zh" ? bot.dataset.zh : bot.dataset.en;
+    }
+    document
+      .getElementById("btn-zh")
+      ?.addEventListener("click", updateCountdownLang);
+    document
+      .getElementById("btn-en")
+      ?.addEventListener("click", updateCountdownLang);
+  })();
   console.log("🎉 系統初始化完成！包含課程功能和工作經驗！");
 });
 
