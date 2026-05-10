@@ -832,35 +832,32 @@ function sortCertifications(order) {
 function sortSeminars(order) {
   currentSeminarSortOrder = order;
 
-  // 直接操作現有的 DOM，不移動元素
-  const $allCards = $("#seminar .flex-col");
-
-  // 提取所有卡片的日期信息
   const cardsWithDates = [];
-  $allCards.each(function (index) {
+  $("#seminar .flex-col").each(function () {
     const $card = $(this);
     const dateText = $card.find(".cert-date").text();
     const dateMatch = dateText.match(/(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})/);
     if (dateMatch) {
       cardsWithDates.push({
-        element: $card,
+        element: $card.detach(),
         date: new Date(dateMatch[1].replace(/\//g, "-")),
-        originalIndex: index,
       });
     }
   });
 
-  // 排序
-  cardsWithDates.sort((a, b) => {
-    return order === "asc" ? a.date - b.date : b.date - a.date;
+  cardsWithDates.sort((a, b) =>
+    order === "asc" ? a.date - b.date : b.date - a.date,
+  );
+
+  const cardsPerPage = 6;
+  $("#seminar .seminar-page").each(function (pageIndex) {
+    const $row = $(this).find(".row");
+    $row.empty();
+    cardsWithDates
+      .slice(pageIndex * cardsPerPage, (pageIndex + 1) * cardsPerPage)
+      .forEach((item) => $row.append(item.element));
   });
 
-  // 使用 CSS order 屬性重新排列，不移動 DOM
-  cardsWithDates.forEach((item, newIndex) => {
-    item.element.css("order", newIndex);
-  });
-
-  // 更新當前頁面顯示
   updateSeminarPagination();
 }
 
