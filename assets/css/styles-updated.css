@@ -455,8 +455,17 @@ body {
     flex: 1;
   }
 
+  /* 左右兩側等寬，讓中間導覽項目真正置中 */
+  .index-navbar .navbar-brand {
+    flex: 0 0 auto;
+    min-width: 180px;
+  }
+
   .language-switcher {
-    margin-left: auto;
+    flex: 0 0 auto;
+    min-width: 180px;
+    justify-content: flex-end;
+    margin-left: 0;
     position: static;
   }
 }
