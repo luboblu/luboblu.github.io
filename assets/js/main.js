@@ -199,9 +199,9 @@ const certifications = [
     },
     date: {
       key: "certs.ipas_date",
-      default: "Issuance date: 2026/05/16",
+      default: "Issuance date: 2026/06/03",
     },
-    dateValue: "2026/05/16",
+    dateValue: "2026/06/03",
   },
 ];
 
@@ -438,7 +438,7 @@ const resources = {
           "Building LLM Applications With Prompt Engineering",
         nvidia_llm_prompt_date: "發證日期: 2025/11/06",
         ipas_title: "iPAS AI應用規劃師初級能力鑑定",
-        ipas_date: "發證日期: 2026/05/16",
+        ipas_date: "發證日期: 2026/06/03",
         total_count: "證照總數：",
       },
       projects: {
@@ -640,7 +640,7 @@ const resources = {
           "Building LLM Applications With Prompt Engineering",
         nvidia_llm_prompt_date: "Issuance date: 2025/11/06",
         ipas_title: "iPAS AI Application Planner Certification (Basic)",
-        ipas_date: "Issuance date: 2026/05/16",
+        ipas_date: "Issuance date: 2026/06/03",
         total_count: "Total Certifications:",
       },
       projects: {
