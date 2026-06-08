@@ -194,10 +194,64 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1.2rem;
   padding: 20px 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.navbar-brand::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.navbar-brand::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(37, 99, 235, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  border-radius: 8px;
 }
 
 .navbar-brand:hover {
   color: var(--primary-color) !important;
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.navbar-brand:hover::before {
+  width: 85%;
+  opacity: 1;
+}
+
+.navbar-brand:hover::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .navbar-brand i {
@@ -213,7 +267,7 @@ body {
 
 .navbar.scrolled .navbar-brand:hover,
 .index-navbar.scrolled .navbar-brand:hover {
-  transform: scale(1);
+  transform: translateY(-1px);
   opacity: 1;
 }
 
