@@ -111,7 +111,7 @@ body {
     var(--secondary-color) 50%,
     #f59e0b 100%
   );
-  z-index: 1001;
+  z-index: 1060;
   transition: width 0.1s ease;
   box-shadow:
     0 0 10px rgba(37, 99, 235, 0.4),
