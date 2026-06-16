@@ -327,6 +327,33 @@
               </div>
             </div>
             <div class="row" id="education-cards">
+              <!-- 卡片: 商學院英語授課 資管模組 課程修習證書 -->
+              <div class="col-sm-6 col-md-4 flex-col">
+                <div class="cert-card text-center">
+                  <button
+                    type="button"
+                    class="btn-card-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eduModalEMI"
+                    aria-label="查看商學院英語授課資管模組課程修習證書詳情"
+                  >
+                    <img
+                      src="assets/images/114-2 EMI 資管模組-盧信廷.jpg"
+                      class="cert-img"
+                      alt="商學院英語授課資管模組課程修習證書"
+                      loading="lazy"
+                    />
+                  </button>
+                  <h4 class="cert-title">
+                    <span data-i18n="education.emi_title"
+                      >商學院英語授課 資管模組 課程修習證書</span
+                    >
+                  </h4>
+                  <p class="cert-date" data-i18n="education.emi_date">
+                    發證日期: 2026/04/30
+                  </p>
+                </div>
+              </div>
               <!-- GDG on Campus NTPU 受邀講師 -->
               <div class="col-sm-6 col-md-4 flex-col">
                 <div class="card-with-external-date">
@@ -2205,6 +2232,44 @@
     </footer>
 
     <!-- 所有Modal統一放在這裡 -->
+    <!-- Modal EMI: 商學院英語授課 資管模組 課程修習證書 -->
+    <div
+      class="modal fade"
+      id="eduModalEMI"
+      tabindex="-1"
+      aria-labelledby="eduModalLabelEMI"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4
+              class="modal-title w-100"
+              id="eduModalLabelEMI"
+              data-i18n="education.emi_title"
+            >
+              商學院英語授課 資管模組 課程修習證書
+            </h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="關閉"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="assets/images/114-2 EMI 資管模組-盧信廷.jpg"
+              alt="商學院英語授課資管模組課程修習證書大圖"
+              style="max-width: 100%; height: auto"
+            />
+            <p class="mt-3" data-i18n="education.emi_date">
+              發證日期: 2026/04/30
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal 1: 輔仁大學第40屆優秀專題 -->
     <div
       class="modal fade"
