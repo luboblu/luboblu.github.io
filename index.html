@@ -326,7 +326,9 @@
                 </button>
               </div>
             </div>
-            <div class="row" id="education-cards">
+            <div class="cert-pagination-container" id="edu-pagination-container">
+              <div class="cert-page active" data-page="1">
+                <div class="row">
               <!-- 卡片: 商學院英語授課 資管模組 課程修習證書 -->
               <div class="col-sm-6 col-md-4 flex-col">
                 <div class="cert-card text-center">
@@ -572,6 +574,11 @@
                   </p>
                 </div>
               </div>
+                </div>
+              </div>
+              <!-- 第二頁 -->
+              <div class="cert-page" data-page="2" style="display:none">
+                <div class="row">
               <!-- 卡片 4: 資策會科技日 -->
               <div class="col-sm-6 col-md-4 flex-col">
                 <div class="card-with-external-date">
@@ -600,7 +607,23 @@
                   </p>
                 </div>
               </div>
+                </div>
+              </div>
             </div>
+            <nav class="cert-pagination-wrapper" aria-label="學習經歷分頁導航">
+              <div class="cert-pagination-nav">
+                <button class="cert-nav-btn" id="eduPrevBtn" disabled aria-label="上一頁">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="cert-page-indicators" id="edu-page-indicators">
+                  <button class="page-dot active" data-page="1" role="tab" aria-selected="true" aria-label="第1頁"></button>
+                  <button class="page-dot" data-page="2" role="tab" aria-selected="false" aria-label="第2頁"></button>
+                </div>
+                <button class="cert-nav-btn" id="eduNextBtn" aria-label="下一頁">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </nav>
           </div>
         </section>
 

@@ -10,6 +10,8 @@ let currentSortOrder = "desc";
 let currentProjectPage = 1;
 let totalProjectPages = 1;
 let scrollThrottleTimer = null;
+let eduCurrentPage = 1;
+let eduTotalPages = 2;
 
 // 證照資料
 const certifications = [
@@ -849,6 +851,63 @@ function sortCards(container, order) {
 
   container.empty();
   $(cards).appendTo(container);
+}
+
+// 學習經歷分頁更新
+function updateEduPagination() {
+  $("#education .cert-page").removeClass("active").hide();
+  $(`#education .cert-page[data-page="${eduCurrentPage}"]`).addClass("active").show();
+
+  $("#edu-page-indicators").empty();
+  for (let i = 1; i <= eduTotalPages; i++) {
+    const dotClass = i === eduCurrentPage ? "active" : "";
+    const ariaSelected = i === eduCurrentPage ? "true" : "false";
+    const dot = `<button class="page-dot ${dotClass}" data-page="${i}" role="tab" aria-label="第 ${i} 頁" aria-selected="${ariaSelected}"></button>`;
+    $("#edu-page-indicators").append(dot);
+  }
+
+  $("#edu-page-indicators .page-dot").on("click", function () {
+    eduCurrentPage = parseInt($(this).data("page"));
+    updateEduPagination();
+  });
+
+  $("#eduPrevBtn").prop("disabled", eduCurrentPage === 1);
+  $("#eduNextBtn").prop("disabled", eduCurrentPage === eduTotalPages);
+}
+
+// 學習經歷跨頁排序
+function sortEducation(order) {
+  const allCards = [];
+  $("#education .cert-page .row .flex-col").each(function () {
+    allCards.push(this);
+  });
+
+  allCards.sort(function (a, b) {
+    const dateA_str = $(a).find(".cert-date").text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+    const dateB_str = $(b).find(".cert-date").text().match(/(\d{4}[\/-]\d{2}[\/-]\d{2})/);
+    const dateA = dateA_str ? new Date(dateA_str[1].replace(/\//g, "-")) : new Date();
+    const dateB = dateB_str ? new Date(dateB_str[1].replace(/\//g, "-")) : new Date();
+    return order === "asc" ? dateA - dateB : dateB - dateA;
+  });
+
+  const EDU_PER_PAGE = 6;
+  eduTotalPages = Math.ceil(allCards.length / EDU_PER_PAGE);
+
+  $("#education .cert-page .row").empty();
+  for (let p = 1; p <= eduTotalPages; p++) {
+    if ($(`#education .cert-page[data-page="${p}"]`).length === 0) {
+      const newPage = `<div class="cert-page" data-page="${p}" style="display:none"><div class="row"></div></div>`;
+      $("#edu-pagination-container").append(newPage);
+    }
+  }
+
+  allCards.forEach(function (card, index) {
+    const pageNum = Math.floor(index / EDU_PER_PAGE) + 1;
+    $(`#education .cert-page[data-page="${pageNum}"] .row`).append(card);
+  });
+
+  if (eduCurrentPage > eduTotalPages) eduCurrentPage = 1;
+  updateEduPagination();
 }
 
 // 證照專用排序
@@ -2218,6 +2277,8 @@ $(document).ready(function () {
 
     if (section.attr("id") === "certifications") {
       sortCertifications(order);
+    } else if (section.attr("id") === "education") {
+      sortEducation(order);
     } else {
       const cardsContainer = section.find(".row").last();
       sortCards(cardsContainer, order);
@@ -2312,7 +2373,9 @@ $(document).ready(function () {
       .removeClass("active")
       .attr("aria-pressed", "false");
 
-    if (section.attr("id") !== "certifications") {
+    if (section.attr("id") === "education") {
+      // education 由 sortEducation 統一處理
+    } else if (section.attr("id") !== "certifications") {
       const cardsContainer = section.find(".row").last();
       sortCards(cardsContainer, "desc");
     }
@@ -2320,6 +2383,23 @@ $(document).ready(function () {
 
   // 初始化分頁
   updatePagination();
+
+  // 初始化學習經歷分頁
+  sortEducation("desc");
+
+  $("#eduPrevBtn").on("click", function () {
+    if (eduCurrentPage > 1) {
+      eduCurrentPage--;
+      updateEduPagination();
+    }
+  });
+
+  $("#eduNextBtn").on("click", function () {
+    if (eduCurrentPage < eduTotalPages) {
+      eduCurrentPage++;
+      updateEduPagination();
+    }
+  });
 
   // 初始化專案分頁
   if (document.getElementById("recentworks")) {
