@@ -37,7 +37,7 @@ jobs:
             --exclude "yourwebsite\.com"
             --exclude "cdn-cgi"
             --exclude "makerpro\.cc/2024stitechday"
-            --accept 429
+            --exclude "instagram\.com"
             --timeout 30
             --max-retries 3
             ./**/*.html
