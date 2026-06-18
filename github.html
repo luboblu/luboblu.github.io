@@ -238,9 +238,16 @@
             const color = LANG_COLORS[r.language] || '#8e8e93';
             const lang = r.language || 'N/A';
             const desc = r.description || '';
+            const fullName = r.full_name || r.name;
+            const isCollab = !fullName.startsWith('luboblu/');
+            const badge = isCollab
+              ? `<span style="font-size:10px;background:#e8f4fd;color:#4a9eff;border-radius:4px;padding:1px 6px;margin-left:6px;">協作</span>`
+              : '';
             return `
               <a class="gh-repo-card" href="${r.url}" target="_blank">
-                <div class="gh-repo-name"><i class="fas fa-book" style="font-size:11px;color:#aaa;margin-right:6px;"></i>${r.name}</div>
+                <div class="gh-repo-name">
+                  <i class="fas fa-book" style="font-size:11px;color:#aaa;margin-right:6px;"></i>${fullName}${badge}
+                </div>
                 <div class="gh-repo-desc">${desc}</div>
                 <div class="gh-repo-meta">
                   <span><span class="gh-repo-lang-dot" style="background:${color};"></span>${lang}</span>

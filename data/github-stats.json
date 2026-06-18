@@ -31,6 +31,7 @@
   "recent_repos": [
     {
       "name": "luboblu.github.io",
+      "full_name": "luboblu/luboblu.github.io",
       "description": "My Resume",
       "language": "HTML",
       "stars": 2,
@@ -38,16 +39,45 @@
       "updated_at": "2026-06-18"
     },
     {
+      "name": "veripromiseesg.github.io",
+      "full_name": "veripromiseesg/veripromiseesg.github.io",
+      "description": "VeriPromise ESG",
+      "language": "HTML",
+      "stars": 1,
+      "url": "https://github.com/veripromiseesg/veripromiseesg.github.io",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "name": "smart-contract",
+      "full_name": "zhongruitsai/smart-contract",
+      "description": "",
+      "language": "Solidity",
+      "stars": 0,
+      "url": "https://github.com/zhongruitsai/smart-contract",
+      "updated_at": "2026-06-07"
+    },
+    {
       "name": "ipas-exam",
-      "description": null,
+      "full_name": "luboblu/ipas-exam",
+      "description": "",
       "language": "HTML",
       "stars": 0,
       "url": "https://github.com/luboblu/ipas-exam",
       "updated_at": "2026-05-16"
     },
     {
+      "name": "ifitntpu.github.io",
+      "full_name": "ifitntpu/ifitntpu.github.io",
+      "description": "Intelligent Financial Innovation Technology Lab (IFIT Lab), NTPU",
+      "language": "HTML",
+      "stars": 0,
+      "url": "https://github.com/ifitntpu/ifitntpu.github.io",
+      "updated_at": "2026-05-26"
+    },
+    {
       "name": "taiwan-assistant-mcp",
-      "description": null,
+      "full_name": "luboblu/taiwan-assistant-mcp",
+      "description": "",
       "language": "Python",
       "stars": 0,
       "url": "https://github.com/luboblu/taiwan-assistant-mcp",
@@ -55,7 +85,8 @@
     },
     {
       "name": "Master-Thesis",
-      "description": null,
+      "full_name": "luboblu/Master-Thesis",
+      "description": "",
       "language": "Python",
       "stars": 0,
       "url": "https://github.com/luboblu/Master-Thesis",
@@ -63,7 +94,8 @@
     },
     {
       "name": "NovaPet",
-      "description": null,
+      "full_name": "luboblu/NovaPet",
+      "description": "",
       "language": "JavaScript",
       "stars": 0,
       "url": "https://github.com/luboblu/NovaPet",
@@ -71,11 +103,21 @@
     },
     {
       "name": "III_NTPU_AIAgent",
-      "description": null,
+      "full_name": "luboblu/III_NTPU_AIAgent",
+      "description": "",
       "language": "Python",
       "stars": 0,
       "url": "https://github.com/luboblu/III_NTPU_AIAgent",
       "updated_at": "2026-02-07"
+    },
+    {
+      "name": "esg-annotator-app2",
+      "full_name": "wesleyseawatch2/esg-annotator-app2",
+      "description": "",
+      "language": "JavaScript",
+      "stars": 1,
+      "url": "https://github.com/wesleyseawatch2/esg-annotator-app2",
+      "updated_at": "2026-01-28"
     }
   ],
   "updated_at": "2026-06-18"

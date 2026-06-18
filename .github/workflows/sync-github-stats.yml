@@ -14,44 +14,95 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch repos and generate stats
+      - name: Fetch repos and events, generate stats
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # 1. Own repos (non-fork)
           gh api users/luboblu/repos --paginate \
-            --jq '[.[] | select(.fork == false)]' | python3 -c "
-          import json, sys
+            --jq '[.[] | select(.fork == false)]' > /tmp/own.json
+
+          # 2. Repos pushed to via events (last ~300 events)
+          gh api users/luboblu/events/public --paginate \
+            --jq '[.[] | select(.type=="PushEvent") | .repo.name] | unique | .[]' \
+            2>/dev/null | grep -v "^luboblu/" | sort -u > /tmp/ext_names.txt || true
+
+          # 3. Fetch each external repo's details
+          python3 -c "
+          import subprocess, json
+
+          try:
+              with open('/tmp/ext_names.txt') as f:
+                  names = [l.strip() for l in f if l.strip()]
+          except FileNotFoundError:
+              names = []
+
+          repos = []
+          for name in names:
+              r = subprocess.run(['gh', 'api', f'repos/{name}'],
+                                 capture_output=True, text=True)
+              if r.returncode == 0:
+                  repos.append(json.loads(r.stdout))
+
+          with open('/tmp/ext.json', 'w') as f:
+              json.dump(repos, f)
+          "
+
+          # 4. Merge and generate final JSON
+          python3 << 'PYEOF'
+          import json
           from datetime import datetime, timezone
 
-          repos = json.load(sys.stdin)
+          with open('/tmp/own.json') as f:
+              own = json.load(f)
+          with open('/tmp/ext.json') as f:
+              ext = json.load(f)
+
+          # Language stats from own repos only
           langs = {}
           total_stars = 0
-          for r in repos:
+          for r in own:
               total_stars += r['stargazers_count']
               if r.get('language'):
                   langs[r['language']] = langs.get(r['language'], 0) + 1
 
-          lang_list = sorted([{'language': k, 'count': v} for k, v in langs.items()], key=lambda x: -x['count'])
+          lang_list = sorted(
+              [{'language': k, 'count': v} for k, v in langs.items()],
+              key=lambda x: -x['count']
+          )
           total_with_lang = sum(l['count'] for l in lang_list) or 1
           for l in lang_list:
               l['percent'] = round(l['count'] / total_with_lang * 100)
 
-          recent = sorted(repos, key=lambda r: r['updated_at'], reverse=True)[:6]
+          # Combine own + external, dedup by full_name
+          all_repos = {r['full_name']: r for r in own + ext}
+          recent = sorted(all_repos.values(), key=lambda r: r['updated_at'], reverse=True)[:10]
 
           result = {
               'login': 'luboblu',
-              'name': '盧信廷 Lu Bob',
+              'name': 'Hsin-Ting Lu',
               'avatar_url': 'https://avatars.githubusercontent.com/u/104414704?v=4',
               'followers': 14,
               'following': 17,
-              'total_repos': len(repos),
+              'total_repos': len(own),
               'total_stars': total_stars,
               'top_languages': lang_list[:5],
-              'recent_repos': [{'name': r['name'], 'description': r['description'], 'language': r['language'], 'stars': r['stargazers_count'], 'url': r['html_url'], 'updated_at': r['updated_at'][:10]} for r in recent],
+              'recent_repos': [
+                  {
+                      'name': r['name'],
+                      'full_name': r.get('full_name', r['name']),
+                      'description': r.get('description') or '',
+                      'language': r.get('language'),
+                      'stars': r.get('stargazers_count', 0),
+                      'url': r.get('html_url', ''),
+                      'updated_at': r['updated_at'][:10]
+                  }
+                  for r in recent
+              ],
               'updated_at': datetime.now(timezone.utc).strftime('%Y-%m-%d')
           }
           print(json.dumps(result, indent=2, ensure_ascii=False))
-          " > data/github-stats.json
+          PYEOF
 
       - name: Commit if changed
         run: |
