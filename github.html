@@ -230,6 +230,20 @@
       <div class="gh-repo-grid" id="gh-repo-grid">
         <!-- JS 填入 -->
       </div>
+
+      <!-- ORCID Publications -->
+      <div class="gh-section-title" style="margin-top:40px;">論文發表 Publications</div>
+      <div id="pub-list" style="margin-bottom:40px;">
+        <div style="text-align:center;padding:30px 0;color:#aaa;">
+          <i class="fas fa-spinner fa-spin fa-2x"></i>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:0.82rem;color:#aaa;margin-bottom:32px;">
+        <a href="https://orcid.org/0009-0008-3920-4760" target="_blank" rel="noopener noreferrer" style="color:#aaa;text-decoration:none;">
+          <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" style="vertical-align:middle;margin-right:4px;">
+          ORCID: 0009-0008-3920-4760
+        </a>
+      </p>
     </div>
 
     <script>
@@ -295,6 +309,53 @@
         .catch(() => {
           document.getElementById('gh-repo-grid').innerHTML =
             '<p style="color:#aaa;text-align:center;">資料載入失敗</p>';
+        });
+
+      // ORCID publications
+      const TYPE_LABEL = {
+        'journal-article': { label: '期刊論文', color: '#2563eb' },
+        'conference-paper': { label: '研討會論文', color: '#16a34a' },
+      };
+
+      fetch('data/orcid.json')
+        .then(r => r.json())
+        .then(data => {
+          const pubs = data.publications || [];
+          if (!pubs.length) {
+            document.getElementById('pub-list').innerHTML =
+              '<p style="color:#aaa;text-align:center;">暫無論文資料</p>';
+            return;
+          }
+          const html = pubs.map(p => {
+            const t = TYPE_LABEL[p.type] || { label: p.type, color: '#666' };
+            const doi = p.doi
+              ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener noreferrer"
+                   style="font-size:0.82rem;color:#4a9eff;text-decoration:none;font-weight:500;">
+                   <i class="fas fa-external-link-alt" style="font-size:10px;"></i> DOI
+                 </a>`
+              : '';
+            return `
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;
+                          padding:18px 22px;margin-bottom:14px;
+                          transition:box-shadow 0.2s,transform 0.2s;"
+                   onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.transform='translateY(-2px)'"
+                   onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                  <span style="font-size:0.82rem;font-weight:700;color:#6b7280;
+                                background:#f3f4f6;padding:2px 10px;border-radius:20px;">${p.year || '—'}</span>
+                  <span style="font-size:0.76rem;font-weight:600;padding:2px 10px;border-radius:20px;
+                                background:${t.color}18;color:${t.color};border:1px solid ${t.color}40;">${t.label}</span>
+                </div>
+                <div style="font-size:0.97rem;font-weight:600;color:#1f2937;margin-bottom:5px;line-height:1.5;">${p.title}</div>
+                <div style="font-size:0.85rem;color:#6b7280;font-style:italic;margin-bottom:6px;">${p.venue || ''}</div>
+                ${doi}
+              </div>`;
+          }).join('');
+          document.getElementById('pub-list').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('pub-list').innerHTML =
+            '<p style="color:#aaa;text-align:center;">無法載入論文資料</p>';
         });
     </script>
   </body>
