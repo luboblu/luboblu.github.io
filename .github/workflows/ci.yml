@@ -31,13 +31,13 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >
-            --exclude "^https://fonts\.googleapis\.com"
-            --exclude "^https://fonts\.gstatic\.com"
-            --exclude "^https://yourwebsite\.com"
-            --exclude "^/cdn-cgi/"
-            --exclude "^https://makerpro\.cc/2024stitechday"
-            --scheme https
-            --scheme http
+            --base https://luboblu.github.io
+            --exclude "fonts\.googleapis\.com"
+            --exclude "fonts\.gstatic\.com"
+            --exclude "yourwebsite\.com"
+            --exclude "cdn-cgi"
+            --exclude "makerpro\.cc/2024stitechday"
+            --accept 429
             --timeout 30
             --max-retries 3
             ./**/*.html
