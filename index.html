@@ -55,6 +55,25 @@
     <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
     <style>
+      .github-profile-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        padding: 6px 18px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 20px;
+        color: #fff;
+        font-size: 13px;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .github-profile-btn:hover {
+        background: rgba(255,255,255,0.3);
+        color: #fff;
+        text-decoration: none;
+      }
       .project-links {
         display: flex;
         flex-direction: row; /* ← 改成橫排 */
@@ -124,6 +143,10 @@
                 >[email&#160;protected]</span
               ></a
             >
+            <br />
+            <a href="github.html" class="github-profile-btn" aria-label="查看 GitHub 統計">
+              <i class="fab fa-github"></i> GitHub
+            </a>
           </span>
         </h1>
       </div>
@@ -1509,21 +1532,6 @@
               </span>
             </div>
 
-            <!-- GitHub 統計列 -->
-            <div id="github-stats-bar" style="display:none; text-align:center; margin-bottom:20px; gap:16px; flex-wrap:wrap; justify-content:center;">
-              <span class="cert-count-badge">
-                <i class="fab fa-github"></i>
-                Public Repos: <strong id="gh-total-repos">—</strong>
-              </span>
-              <span class="cert-count-badge" id="gh-langs-badge">
-                <i class="fas fa-code"></i>
-                <span id="gh-top-langs">—</span>
-              </span>
-              <span class="cert-count-badge">
-                <i class="fas fa-sync-alt"></i>
-                Updated: <strong id="gh-updated-at">—</strong>
-              </span>
-            </div>
 
             <!-- 🆕 專案排序控制 -->
             <div

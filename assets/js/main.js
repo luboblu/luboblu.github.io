@@ -2691,22 +2691,6 @@ $(window).on("load", function () {
   });
 });
 
-// GitHub 統計列
-fetch("data/github-stats.json")
-  .then((r) => r.json())
-  .then((data) => {
-    document.getElementById("gh-total-repos").textContent = data.total_repos;
-    document.getElementById("gh-updated-at").textContent = data.updated_at;
-    const langs = data.top_languages
-      .slice(0, 3)
-      .map((l) => l.language)
-      .join(" · ");
-    document.getElementById("gh-top-langs").textContent = langs;
-    const bar = document.getElementById("github-stats-bar");
-    bar.style.display = "flex";
-  })
-  .catch(() => {});
-
 // 匯出函數供全域使用
 window.sortEnhancedProjects = sortEnhancedProjects;
 window.enhancedProjectsData = enhancedProjectsData;

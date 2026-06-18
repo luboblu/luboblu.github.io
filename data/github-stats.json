@@ -1,22 +1,81 @@
 {
+  "login": "luboblu",
+  "name": "¿c«H§Ê Lu Bob",
+  "avatar_url": "https://avatars.githubusercontent.com/u/104414704?v=4",
+  "followers": 14,
+  "following": 17,
   "total_repos": 14,
   "total_stars": 2,
   "top_languages": [
     {
       "language": "Python",
-      "count": 9
+      "count": 9,
+      "percent": 64
     },
     {
       "language": "HTML",
-      "count": 3
+      "count": 3,
+      "percent": 21
     },
     {
       "language": "JavaScript",
-      "count": 1
+      "count": 1,
+      "percent": 7
     },
     {
       "language": "AMPL",
-      "count": 1
+      "count": 1,
+      "percent": 7
+    }
+  ],
+  "recent_repos": [
+    {
+      "name": "luboblu.github.io",
+      "description": "My Resume",
+      "language": "HTML",
+      "stars": 2,
+      "url": "https://github.com/luboblu/luboblu.github.io",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "name": "ipas-exam",
+      "description": null,
+      "language": "HTML",
+      "stars": 0,
+      "url": "https://github.com/luboblu/ipas-exam",
+      "updated_at": "2026-05-16"
+    },
+    {
+      "name": "taiwan-assistant-mcp",
+      "description": null,
+      "language": "Python",
+      "stars": 0,
+      "url": "https://github.com/luboblu/taiwan-assistant-mcp",
+      "updated_at": "2026-04-11"
+    },
+    {
+      "name": "Master-Thesis",
+      "description": null,
+      "language": "Python",
+      "stars": 0,
+      "url": "https://github.com/luboblu/Master-Thesis",
+      "updated_at": "2026-04-01"
+    },
+    {
+      "name": "NovaPet",
+      "description": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "url": "https://github.com/luboblu/NovaPet",
+      "updated_at": "2026-02-07"
+    },
+    {
+      "name": "III_NTPU_AIAgent",
+      "description": null,
+      "language": "Python",
+      "stars": 0,
+      "url": "https://github.com/luboblu/III_NTPU_AIAgent",
+      "updated_at": "2026-02-07"
     }
   ],
   "updated_at": "2026-06-18"
