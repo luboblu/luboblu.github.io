@@ -1,0 +1,54 @@
+name: Sync GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # 每週一 UTC 03:00
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Update data/github-stats.json
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch repos and generate stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api users/luboblu/repos --paginate \
+            --jq '[.[] | select(.fork == false)]' | python3 -c "
+          import json, sys
+          from datetime import datetime, timezone
+
+          repos = json.load(sys.stdin)
+          langs = {}
+          for r in repos:
+              if r.get('language'):
+                  langs[r['language']] = langs.get(r['language'], 0) + 1
+
+          top_langs = sorted(
+              [{'language': k, 'count': v} for k, v in langs.items()],
+              key=lambda x: -x['count']
+          )[:5]
+
+          result = {
+              'total_repos': len(repos),
+              'total_stars': sum(r['stargazers_count'] for r in repos),
+              'top_languages': top_langs,
+              'updated_at': datetime.now(timezone.utc).strftime('%Y-%m-%d')
+          }
+          print(json.dumps(result, indent=2, ensure_ascii=False))
+          " > data/github-stats.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet data/github-stats.json || (
+            git add data/github-stats.json &&
+            git commit -m "chore: update github-stats.json"
+          )
+          git push
