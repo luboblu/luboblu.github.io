@@ -1,0 +1,33 @@
+name: Sync Cert Count
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/js/main.js"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Update totalCertCount in index.html
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Count certs and update index.html
+        run: |
+          count=$(grep -c 'id: "cert' assets/js/main.js)
+          echo "Cert count: $count"
+          sed -i "s|<strong id=\"totalCertCount\">[0-9]*</strong>|<strong id=\"totalCertCount\">$count</strong>|" index.html
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet index.html || (
+            git add index.html &&
+            git commit -m "chore: sync totalCertCount to $(grep -c 'id: "cert' assets/js/main.js)"
+          )
+          git push
