@@ -1,0 +1,28 @@
+{
+  "name": "HSIN-TING LU",
+  "orcid_id": "0009-0008-3920-4760",
+  "publications": [
+    {
+      "title": "Fine-Tuning and Prompt-Based Methods for Temporal Reasoning",
+      "type": "journal-article",
+      "year": "2026",
+      "venue": "Advances in Social Networks Analysis and Mining, ASONAM 2025",
+      "doi": "10.1007/978-3-032-13509-4_17"
+    },
+    {
+      "title": "Multilingual Promise Verification in ESG Reports",
+      "type": "conference-paper",
+      "year": "2025",
+      "venue": "ROCLING 2025 37th Conference on Computational Linguistics and Speech Processing",
+      "doi": null
+    },
+    {
+      "title": "The Application of ChatBot in Health Information",
+      "type": "journal-article",
+      "year": "2024",
+      "venue": "Journal of Quality",
+      "doi": "10.6220/joq.202412_31(6).0002"
+    }
+  ],
+  "updated_at": "2026-06-18"
+}

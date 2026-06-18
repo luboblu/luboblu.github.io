@@ -1,0 +1,86 @@
+name: Sync ORCID Publications
+
+on:
+  schedule:
+    - cron: "0 4 * * 1" # 每週一 UTC 04:00
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Update data/orcid.json
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch ORCID data and generate JSON
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request
+          import json
+          from datetime import datetime, timezone
+
+          ORCID_ID = "0009-0008-3920-4760"
+          BASE = "https://pub.orcid.org/v3.0"
+          HEADERS = {"Accept": "application/json"}
+
+          def fetch(url):
+              req = urllib.request.Request(url, headers=HEADERS)
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+
+          # Fetch works summary
+          data = fetch(f"{BASE}/{ORCID_ID}/works")
+
+          publications = []
+          for group in data.get("group", []):
+              summary = group.get("work-summary", [{}])[0]
+              title = (summary.get("title") or {}).get("title", {}).get("value", "")
+              year_obj = summary.get("publication-date") or {}
+              year = (year_obj.get("year") or {}).get("value", "")
+              work_type = summary.get("type", "")
+              journal = (summary.get("journal-title") or {}).get("value", "")
+
+              # Get DOI from external IDs
+              doi = None
+              ext_ids = (summary.get("external-ids") or {}).get("external-id", [])
+              for eid in ext_ids:
+                  if eid.get("external-id-type") == "doi":
+                      doi = eid.get("external-id-value")
+                      break
+
+              if title:
+                  publications.append({
+                      "title": title,
+                      "type": work_type,
+                      "year": year,
+                      "venue": journal,
+                      "doi": doi
+                  })
+
+          # Sort by year descending
+          publications.sort(key=lambda x: x.get("year") or "0", reverse=True)
+
+          result = {
+              "name": "HSIN-TING LU",
+              "orcid_id": ORCID_ID,
+              "publications": publications,
+              "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d")
+          }
+
+          with open("data/orcid.json", "w", encoding="utf-8") as f:
+              json.dump(result, f, indent=2, ensure_ascii=False)
+
+          print(f"Fetched {len(publications)} publications")
+          PYEOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet data/orcid.json || (
+            git add data/orcid.json &&
+            git commit -m "chore: update orcid.json"
+          )
+          git push

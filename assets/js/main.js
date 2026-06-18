@@ -367,6 +367,7 @@ const resources = {
         education: "學習經歷",
         experience: "工作經驗",
         seminar: "研討會發表",
+        publications: "論文發表",
         certifications: "證書",
         projects: "計畫",
         courses: "碩士課程",
@@ -385,6 +386,7 @@ const resources = {
         education: "學習經歷",
         experience: "工作經驗",
         seminar: "研討會發表",
+        publications: "論文發表 Publications",
         certifications: "證書",
         projects: "計畫",
         courses: "碩士課程 Master Courses",
@@ -568,6 +570,7 @@ const resources = {
         education: "Educational Background",
         experience: "Work Experience",
         seminar: "Seminar Presentation",
+        publications: "Publications",
         certifications: "Certifications",
         projects: "Projects",
         courses: "Master Courses",
@@ -586,6 +589,7 @@ const resources = {
         education: "Educational Background",
         experience: "Work Experience",
         seminar: "Seminar Presentation",
+        publications: "Publications",
         certifications: "Certifications",
         projects: "Projects",
         courses: "Master Courses",
@@ -2704,3 +2708,51 @@ console.log(
   "調試提示：如果HTML顯示問題，請在控制台執行 forceUpdateHTMLElements()",
 );
 console.log("完整版 main.js 載入完成！約 2500+ 行代碼！包含工作經驗功能");
+
+// ORCID Publications
+(function loadOrcidPublications() {
+  const container = document.getElementById("publications-list");
+  if (!container) return;
+
+  const typeLabel = {
+    "journal-article": { zh: "期刊論文", en: "Journal Article", color: "#2563eb" },
+    "conference-paper": { zh: "研討會論文", en: "Conference Paper", color: "#16a34a" },
+    "book-chapter": { zh: "書籍章節", en: "Book Chapter", color: "#9333ea" },
+  };
+
+  fetch("data/orcid.json")
+    .then(r => r.json())
+    .then(data => {
+      const pubs = data.publications || [];
+      if (!pubs.length) {
+        container.innerHTML = '<p class="text-center" style="color:#999;">暫無論文資料</p>';
+        return;
+      }
+
+      const isEn = document.documentElement.lang === "en";
+      const html = pubs.map((p, i) => {
+        const badge = typeLabel[p.type] || { zh: p.type, en: p.type, color: "#666" };
+        const label = isEn ? badge.en : badge.zh;
+        const doiLink = p.doi
+          ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener noreferrer" class="pub-doi-link">
+               <i class="fas fa-external-link-alt"></i> DOI
+             </a>`
+          : "";
+        return `
+          <div class="pub-item" style="animation-delay: ${i * 0.08}s">
+            <div class="pub-meta">
+              <span class="pub-year">${p.year || "—"}</span>
+              <span class="pub-type-badge" style="background:${badge.color}20;color:${badge.color};border:1px solid ${badge.color}40;">${label}</span>
+            </div>
+            <h4 class="pub-title">${p.title}</h4>
+            <p class="pub-venue">${p.venue || ""}</p>
+            ${doiLink}
+          </div>`;
+      }).join("");
+
+      container.innerHTML = html;
+    })
+    .catch(() => {
+      container.innerHTML = '<p class="text-center" style="color:#999;">無法載入論文資料</p>';
+    });
+})();
