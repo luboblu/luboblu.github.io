@@ -31,7 +31,6 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >
-            --exclude-mail
             --exclude "^https://fonts\.googleapis\.com"
             --exclude "^https://fonts\.gstatic\.com"
             --exclude "^https://yourwebsite\.com"
