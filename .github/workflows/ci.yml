@@ -34,6 +34,10 @@ jobs:
             --exclude "^https://fonts\.googleapis\.com"
             --exclude "^https://fonts\.gstatic\.com"
             --exclude "^https://yourwebsite\.com"
+            --exclude "^/cdn-cgi/"
+            --exclude "^https://makerpro\.cc/2024stitechday"
+            --scheme https
+            --scheme http
             --timeout 30
             --max-retries 3
             ./**/*.html
