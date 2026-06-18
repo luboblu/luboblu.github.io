@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 2 * * 1" # 每週一 UTC 02:00 跑死連結檢查
+  workflow_dispatch:
+
+jobs:
+  placeholder-check:
+    name: Check placeholder URLs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if placeholder URLs exist
+        run: |
+          if grep -rn "yourwebsite.com" --include="*.html" .; then
+            echo "::error::Found placeholder URL 'yourwebsite.com' in HTML files. Please replace with the real URL."
+            exit 1
+          fi
+
+  broken-links:
+    name: Check broken links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lychee link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --exclude-mail
+            --exclude "^https://fonts\.googleapis\.com"
+            --exclude "^https://fonts\.gstatic\.com"
+            --exclude "^https://yourwebsite\.com"
+            --timeout 30
+            --max-retries 3
+            ./**/*.html
+          fail: true
