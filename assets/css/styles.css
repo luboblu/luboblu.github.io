@@ -805,10 +805,10 @@ footer.entry-meta .meta-in {
 }
 .follow-me-icons {
   font-size: 30px;
+  text-align: center;
 }
 .follow-me-icons i {
-  float: left;
-  margin: 0 10px 0 0;
+  margin: 0 10px;
 }
 /* Max page width
 /////////////////////////////////////////////////////////////////////*/
