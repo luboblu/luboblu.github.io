@@ -30,14 +30,18 @@ jobs:
       - name: Lychee link checker
         uses: lycheeverse/lychee-action@v2
         with:
+          # 相對路徑改以本地檔案驗證（--base .），避免與 Pages 部署產生時間差而誤報 404
           args: >
-            --base https://luboblu.github.io
+            --base .
             --exclude "fonts\.googleapis\.com"
             --exclude "fonts\.gstatic\.com"
             --exclude "yourwebsite\.com"
             --exclude "cdn-cgi"
             --exclude "makerpro\.cc/2024stitechday"
             --exclude "instagram\.com"
+            --exclude "github-readme-stats\.vercel\.app"
+            --exclude "ghchart\.rshah\.org"
+            --exclude "streak-stats\.demolab\.com"
             --timeout 30
             --max-retries 3
             ./**/*.html

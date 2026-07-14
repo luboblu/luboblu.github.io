@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
     <meta
       name="description"
       content="智慧城市大型語言模型代理人系統 – 國科會計畫介紹"
@@ -26,11 +28,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
-
-    <!-- 引入 i18next 與 jquery-i18next -->
-    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
     <style>
       /* 現代化樣式設計 - 智慧城市主題 */
@@ -867,49 +864,49 @@
     <footer id="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h3 class="widget-title" data-i18n="footer.contactTitle">
-              Contact
+              聯絡方式
             </h3>
             <div class="widget-body">
               <p>
                 +886 966465569<br />
-                <a href="mailto:contact@nsc.gov.tw">contact@nsc.gov.tw</a><br />
+                <a href="mailto:hsintinglubob@gmail.com"
+                  >hsintinglubob@gmail.com</a
+                >
               </p>
             </div>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h3 class="widget-title" data-i18n="footer.followTitle">
-              Follow us
+              追蹤我們
             </h3>
             <div class="widget-body">
               <p class="follow-me-icons">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a
+                  href="https://github.com/luboblu"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/lu.lu.lu.788849"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-facebook"></i
+                ></a>
               </p>
             </div>
           </div>
 
-          <div class="col-md-3">
-            <h3 class="widget-title" data-i18n="footer.textWidgetTitle">
-              Text widget
+          <div class="col-md-4">
+            <h3 class="widget-title" data-i18n="footer.aboutTitle">
+              關於專案
             </h3>
             <div class="widget-body">
               <p data-i18n="footer.textWidget">
                 本計畫結合先進語言模型與即時數據，致力於提升智慧城市交通資訊服務品質，推動城市數位轉型。
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <h3 class="widget-title" data-i18n="footer.formWidgetTitle">
-              Form widget
-            </h3>
-            <div class="widget-body">
-              <p>
-                +886 966465569<br />
-                <a href="mailto:contact@nsc.gov.tw">contact@nsc.gov.tw</a><br />
               </p>
             </div>
           </div>
@@ -984,8 +981,7 @@
             },
             footer: {
               contactTitle: "Contact",
-              textWidgetTitle: "Text widget",
-              formWidgetTitle: "Form widget",
+              aboutTitle: "About the Project",
               followTitle: "Follow us",
               textWidget:
                 "This project combines advanced language models with real-time data to enhance smart city traffic information service quality and promote urban digital transformation.",
@@ -1040,10 +1036,9 @@
                 "本計畫預計將提升交通資訊服務品質與智能水平，促進智慧城市創新，並推動相關產業數位轉型。",
             },
             footer: {
-              contactTitle: "Contact",
-              textWidgetTitle: "Text widget",
-              formWidgetTitle: "Form widget",
-              followTitle: "Follow us",
+              contactTitle: "聯絡方式",
+              aboutTitle: "關於專案",
+              followTitle: "追蹤我們",
               textWidget:
                 "本計畫結合先進語言模型與即時數據，致力於提升智慧城市交通資訊服務品質，推動城市數位轉型。",
             },
@@ -1052,7 +1047,7 @@
       };
 
       // 🚀 NSTC 風格的簡潔導覽系統
-      let currentLang = "en";
+      let currentLang = "zh";
 
       function updateTranslations() {
         document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -1062,7 +1057,7 @@
           let value = translation;
 
           for (const k of keys) {
-            value = value[k];
+            value = value?.[k];
           }
 
           if (value) {
@@ -1071,49 +1066,30 @@
         });
       }
 
-      // 初始化 i18next
-      i18next.init(
-        {
-          lng: currentLang,
-          debug: false,
-          resources: resources,
-          interpolation: { escapeValue: false },
-        },
-        function (err, t) {
-          jqueryI18next.init(i18next, $);
-          $("body").localize();
-          updateTranslations();
-        }
-      );
-
       // 語言切換功能
-      document.getElementById("btn-en").addEventListener("click", () => {
-        currentLang = "en";
-        i18next.changeLanguage("en", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-en")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-en").classList.add("btn-primary");
-        document.getElementById("btn-zh").classList.remove("btn-primary");
-        document.getElementById("btn-zh").classList.add("btn-outline-primary");
-      });
+      function switchLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+        updateTranslations();
 
-      document.getElementById("btn-zh").addEventListener("click", () => {
-        currentLang = "zh";
-        i18next.changeLanguage("zh", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-zh")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-zh").classList.add("btn-primary");
-        document.getElementById("btn-en").classList.remove("btn-primary");
-        document.getElementById("btn-en").classList.add("btn-outline-primary");
-      });
+        const btnEn = document.getElementById("btn-en");
+        const btnZh = document.getElementById("btn-zh");
+        const active = lang === "en" ? btnEn : btnZh;
+        const inactive = lang === "en" ? btnZh : btnEn;
+        active.classList.remove("btn-outline-primary");
+        active.classList.add("btn-primary");
+        inactive.classList.remove("btn-primary");
+        inactive.classList.add("btn-outline-primary");
+      }
+
+      document
+        .getElementById("btn-en")
+        .addEventListener("click", () => switchLanguage("en"));
+      document
+        .getElementById("btn-zh")
+        .addEventListener("click", () => switchLanguage("zh"));
+
+      updateTranslations();
 
       // 🚀 NSTC 風格的滾動檢測（簡潔版）
       window.addEventListener("scroll", () => {
