@@ -30,9 +30,9 @@ jobs:
       - name: Lychee link checker
         uses: lycheeverse/lychee-action@v2
         with:
-          # 相對路徑改以本地檔案驗證（--base .），避免與 Pages 部署產生時間差而誤報 404
+          # 相對路徑改以本地檔案驗證，避免與 Pages 部署產生時間差而誤報 404
           args: >
-            --base .
+            --root-dir ${{ github.workspace }}
             --exclude "fonts\.googleapis\.com"
             --exclude "fonts\.gstatic\.com"
             --exclude "yourwebsite\.com"
