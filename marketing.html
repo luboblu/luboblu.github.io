@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="氛享水晶BOT – 水晶香氛行銷創新解決方案" />
-    <meta name="author" content="國科會-氛享水晶BOT專案團隊" />
+    <meta
+      name="description"
+      content="國科會大專生研究計畫「聊天機器人在傳統產業行銷之應用-以 LineBot 為例」– 氛享水晶資訊 BOT"
+    />
+    <meta name="author" content="國科會-氛享水晶資訊BOT專案團隊" />
 
-    <title data-i18n="title">氛享水晶BOT 專案介紹</title>
+    <title data-i18n="title">氛享水晶資訊 BOT 專案介紹</title>
 
 
 
@@ -25,11 +28,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
-
-    <!-- 引入 i18next 與 jquery-i18next -->
-    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
 
     <style>
       /* 現代化樣式設計 - 水晶香氛主題 */
@@ -398,6 +396,22 @@
         transform: scale(1.02);
       }
 
+      /* PDF 預覽 */
+      .pdf-preview {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+
+      .pdf-preview iframe {
+        display: block;
+        width: 100%;
+        height: 75vh;
+        min-height: 480px;
+        border: none;
+      }
+
       /* 列表樣式優化 */
       ul li {
         margin-bottom: 15px;
@@ -610,14 +624,16 @@
         <img
           class="img-circle"
           src="assets/images/bob_photo.png"
-          alt="氛享水晶BOT Logo"
+          alt="氛享水晶資訊 BOT Logo"
         />
         <p class="small-title" data-i18n="header.smallTitle">
-          國科會-氛享水晶Bot
+          國科會大專生研究計畫 NSTC 112-2813-C-030-015-H
         </p>
-        <h1 class="main-title" data-i18n="header.mainTitle">氛享水晶BOT</h1>
+        <h1 class="main-title" data-i18n="header.mainTitle">
+          氛享水晶資訊 BOT
+        </h1>
         <p class="sub-title" data-i18n="header.subTitle">
-          水晶香氛行銷創新解決方案
+          聊天機器人在傳統產業行銷之應用－以 LineBot 為例
         </p>
       </div>
     </div>
@@ -679,6 +695,11 @@
                 預期效益與展望
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#document" data-i18n="nav.document">
+                成果報告
+              </a>
+            </li>
           </ul>
 
           <!-- 右側：語言切換按鈕 -->
@@ -705,8 +726,8 @@
         <div class="text-center">
           <h1 class="main-title crystal-sparkle">
             <span data-i18n="header.enTitle">
-              National Science Council – Crystal Fragrance BOT: A Chatbot
-              Solution for Modern Traditional Marketing
+              國科會大專生研究計畫：聊天機器人在傳統產業行銷之應用－以
+              LineBot 為例
             </span>
           </h1>
           <img
@@ -724,10 +745,29 @@
         </h2>
         <div class="feature-card">
           <p data-i18n="introduction.text">
-            氛享水晶BOT 專案以水晶香氛產業為切入點，結合聊天機器人與 AI
-            技術，提供 24
-            小時即時的商品與課程資訊查詢、常見問題解答以及個性化推播服務。透過直覺式圖文介面，使用者能夠快速獲取精準資訊，同時享受與智能客服般的對話體驗。
+            本計畫為國家科學及技術委員會補助之大專生研究計畫，致力於將聊天機器人應用於傳統產業的網路行銷，以水晶香氛市場為例。團隊在
+            Line 通訊軟體上開發聊天機器人「氛享水晶資訊
+            BOT」，以圖文選單呈現功能，提供商品與課程資訊查詢、常見問題解答與個性化推播服務，並結合
+            OpenAI GPT-4
+            模型提供個性化回應，完善使用者在傳統產業中的購買體驗，提高消費者購買意願。
           </p>
+        </div>
+        <div class="feature-card">
+          <ul>
+            <li data-i18n="project.id">
+              計畫編號：NSTC 112-2813-C-030-015-H
+            </li>
+            <li data-i18n="project.period">
+              執行期間：2023 年 7 月 1 日至 2024 年 2 月 29 日
+            </li>
+            <li data-i18n="project.org">
+              執行機構及系所：輔仁大學資訊管理學系
+            </li>
+            <li data-i18n="project.pi">計畫主持人：陳璽宇</li>
+            <li data-i18n="project.copi">
+              共同主持人：劉珈妤、籃勗祐、盧信廷、楊凱傑、鄭美娟
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -738,7 +778,11 @@
         </h2>
         <div class="feature-card">
           <p data-i18n="background.text">
-            傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代來臨與通訊軟體普及，消費者對即時、互動式資訊的需求日益增加。透過聊天機器人技術，企業能提供全天候資訊服務並以數據化方式精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。
+            傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代來臨與通訊軟體普及，消費者對即時、互動式資訊的需求日益增加。團隊透過問卷調查（共回收
+            200
+            份有效問卷）了解目標客群需求，並針對三舍草本、希奧水晶、蘭果樹、Jo
+            Malone、10/10
+            等市面上競品的聊天機器人進行分析，借鏡其即時回覆、常見問題、圖文選單與卡片式回覆等設計。透過聊天機器人技術，企業能提供全天候資訊服務並以數據化方式精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。
           </p>
         </div>
       </section>
@@ -751,21 +795,36 @@
         <div class="feature-card">
           <ul>
             <li data-i18n="functions.item1">
-              <strong>商品與課程資訊查詢：</strong
-              >提供直觀圖文選單，展示產品與體驗課程的詳細資訊。
+              心理測驗：依據使用者的情緒、生活方式、色彩偏好等進行商品推薦。
             </li>
             <li data-i18n="functions.item2">
-              <strong>常見問題與解答：</strong>統整常見疑問，快速回應查詢。
+              熱門商品：統計使用者點擊行為，推薦最受歡迎與最常被搜尋的商品。
             </li>
             <li data-i18n="functions.item3">
-              <strong>即時推播：</strong
-              >根據節慶、促銷活動或熱門產品動態，定期推送個性化資訊。
+              查詢商品或種類：可依商品分類或價格區間查詢，以卡片式回覆呈現商品介紹、圖片與價格。
             </li>
             <li data-i18n="functions.item4">
-              <strong>智能回覆：</strong>結合 OpenAI GPT3.5
-              模型，提供精準且個性化的回應。
+              查詢課程或證照：提供水晶能量師資證照班等課程與證照資訊。
+            </li>
+            <li data-i18n="functions.item5">
+              常見問題與解答：統計所有使用者最常詢問的問題，快速回應查詢。
+            </li>
+            <li data-i18n="functions.item6">
+              回饋使用體驗：蒐集功能服務、使用體驗與評分等回饋，持續優化系統。
+            </li>
+            <li data-i18n="functions.item7">
+              ChatGPT 查詢：串接 OpenAI GPT-4
+              模型，針對查不到的問題提供個性化智能回應。
             </li>
           </ul>
+        </div>
+        <div class="feature-card">
+          <p data-i18n="functions.tech">
+            技術架構：以 Python 串接 LINE Messaging API 與 Webhook
+            進行系統建置，部署於 Heroku 雲端平台，搭配 MySQL
+            資料庫記錄使用者行為，並可透過 Jieba
+            分詞進行語意分析，提升回應準確度。
+          </p>
         </div>
       </section>
 
@@ -776,7 +835,12 @@
         </h2>
         <div class="feature-card">
           <p data-i18n="market.text">
-            調查顯示，消費者關注能夠清楚展示各項服務功能的介面與方便查詢的產品資訊。本專案藉由客製化、數據化推播及智能回覆，在市場中期望能脫穎而出。
+            問卷調查共回收 200 份有效回覆，其中 125
+            位曾使用過聊天機器人的受訪者中，非功能性需求以「清楚顯示提供的服務選項」最受重視（加權
+            511
+            分），其次為「流暢的使用過程」與「功能齊全」。功能性需求方面，27%
+            的受訪者期望查看商品資訊，20% 期望常見問題與解答，16.5%
+            期望查看熱門商品。本專案依據調查結果設計功能，藉由客製化、數據化推播及智能回覆，在市場中脫穎而出。
           </p>
         </div>
       </section>
@@ -788,12 +852,43 @@
         </h2>
         <div class="feature-card">
           <p data-i18n="contribution.text1">
-            氛享水晶BOT
-            將提升消費者資訊獲取效率與互動體驗，增強品牌忠誠度；透過數據分析幫助企業精準行銷；並降低客服成本，實現全天候智能服務。
+            氛享水晶資訊 BOT 具有 24
+            小時即時互動的特點，提升消費者取得購物資訊的便利度與互動體驗，增強品牌形象；透過分析聊天機器人的對話紀錄，可發現潛在的消費趨勢與需求變化，協助企業制定更精準的行銷策略。未來期望連結使用者帳號系統，協助使用者更快完成購買流程，並依偏好推播相關商品資訊。
           </p>
           <p data-i18n="contribution.text2">
-            未來，本專案亦可作為數位轉型示範，進一步拓展至其他傳統產業，創造更多附加價值。
+            雖然本研究聚焦於水晶香氛產業，但研究成果同樣可應用於醫療院所、美容美髮及餐飲業等其他傳統產業，拓展行銷手段並提升與客戶之間的互動體驗，甚至促進產業的數位轉型，帶來更可持續發展的機會。
           </p>
+        </div>
+      </section>
+
+      <!-- 成果報告文件預覽 -->
+      <section id="document" class="content-section animate-on-scroll">
+        <h2 class="section-title">
+          <span data-i18n="section.documentTitle">成果報告</span>
+        </h2>
+        <div class="feature-card">
+          <p data-i18n="document.text">
+            以下為本計畫繳交國家科學及技術委員會之完整成果報告，可直接於下方預覽或下載
+            PDF 檔案。
+          </p>
+          <div class="text-center mb-3">
+            <a
+              href="assets/docs/nstc-report.pdf"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-file-pdf me-2"></i>
+              <span data-i18n="document.download">下載成果報告 PDF</span>
+            </a>
+          </div>
+          <div class="pdf-preview">
+            <iframe
+              src="assets/docs/nstc-report.pdf"
+              title="國科會成果報告預覽"
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </section>
     </main>
@@ -802,60 +897,56 @@
     <footer id="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h3 class="widget-title" data-i18n="footer.contactTitle">
-              Contact
+              聯絡方式
             </h3>
             <div class="widget-body">
               <p>
                 +886 966465569<br />
                 <a href="mailto:hsintinglubob@gmail.com"
                   >hsintinglubob@gmail.com</a
-                ><br />
-                <br />
-                234 Hidden Pond Road, Ashland City, TN 37015
+                >
               </p>
             </div>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h3 class="widget-title" data-i18n="footer.followTitle">
-              Follow us
+              追蹤我們
             </h3>
             <div class="widget-body">
               <p class="follow-me-icons">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-dribbble"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a
+                  href="https://github.com/luboblu"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/lu.lu.lu.788849"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/bob223590?igsh=MXVyc29lZG4yZ3ByNg%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-instagram"></i
+                ></a>
               </p>
             </div>
           </div>
 
-          <div class="col-md-3">
-            <h3 class="widget-title" data-i18n="footer.textWidgetTitle">
-              Text widget
+          <div class="col-md-4">
+            <h3 class="widget-title" data-i18n="footer.aboutTitle">
+              關於專案
             </h3>
             <div class="widget-body">
               <p data-i18n="footer.textWidget">
-                氛享水晶BOT
+                氛享水晶資訊 BOT
                 專案利用創新技術與數據分析，為水晶香氛產業帶來全新行銷解決方案，協助企業與消費者建立更緊密的連結。
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <h3 class="widget-title" data-i18n="footer.formWidgetTitle">
-              Form widget
-            </h3>
-            <div class="widget-body">
-              <p>
-                +886 966465569<br />
-                <a href="mailto:hsintinglubob@gmail.com"
-                  >hsintinglubob@gmail.com</a
-                ><br />
-                <br />
-                234 Hidden Pond Road, Ashland City, TN 37015
               </p>
             </div>
           </div>
@@ -866,7 +957,7 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <p>
-              Copyright &copy; 2025, 氛享水晶BOT 專案團隊<br />
+              Copyright &copy; 2025, 氛享水晶資訊 BOT 專案團隊<br />
               Design: Initio by GetTemplate (Modified)
             </p>
           </div>
@@ -882,14 +973,15 @@
       var resources = {
         en: {
           translation: {
-            title: "Crystal Fragrance BOT Project Introduction",
+            title: "Crystal Fragrance Info BOT Project Introduction",
             header: {
-              smallTitle: "NSC – Crystal Fragrance BOT",
-              mainTitle: "Crystal Fragrance BOT",
+              smallTitle:
+                "NSTC Undergraduate Research Project NSTC 112-2813-C-030-015-H",
+              mainTitle: "Crystal Fragrance Info BOT",
               subTitle:
-                "An Innovative Chatbot Solution for Traditional Marketing",
+                "Application of Chatbots in Traditional Industry Marketing – A Line Bot Example",
               enTitle:
-                "National Science Council – Crystal Fragrance BOT: A Chatbot Solution for Modern Traditional Marketing",
+                "NSTC Undergraduate Research Project: Application of Chatbots in Traditional Industry Marketing – A Line Bot Example",
             },
             nav: {
               home: "Home",
@@ -898,6 +990,7 @@
               functions: "System Functions",
               market: "Market Analysis",
               contribution: "Expected Benefits & Outlook",
+              document: "Final Report",
             },
             section: {
               introductionTitle: "Project Introduction",
@@ -905,50 +998,69 @@
               functionsTitle: "System Functions",
               marketTitle: "Market Analysis",
               contributionTitle: "Expected Benefits & Outlook",
+              documentTitle: "Final Report",
             },
             introduction: {
-              text: "Crystal Fragrance BOT project is developed with a focus on the crystal fragrance industry. Combining chatbot and AI technology, it provides 24/7 instant product and course information inquiries, FAQ responses, and personalized push notifications. Users can quickly access accurate information via an intuitive interface and enjoy an interactive chatbot experience.",
+              text: "This project is an undergraduate research project funded by the National Science and Technology Council (NSTC), dedicated to applying chatbots to the online marketing of traditional industries, using the crystal fragrance market as an example. The team developed a chatbot on the Line messaging app, named Crystal Fragrance Info BOT, which presents its functions through graphic menus, offering product and course information inquiries, FAQ responses, and personalized push notifications. It also integrates OpenAI's GPT-4 model for personalized responses, improving the purchasing experience in traditional industries and enhancing consumers' willingness to buy.",
+            },
+            project: {
+              id: "Project Number: NSTC 112-2813-C-030-015-H",
+              period: "Duration: July 1, 2023 – February 29, 2024",
+              org: "Institution: Department of Information Management, Fu Jen Catholic University",
+              pi: "Principal Investigator: Hsi-Yu Chen",
+              copi: "Co-Investigators: Chia-Yu Liu, Hsu-Yu Lan, Hsin-Ting Lu, Kai-Chieh Yang, Mei-Chuan Cheng",
             },
             background: {
-              text: "Traditional crystal fragrance businesses rely on brand reputation and offline sales. With the digital era and widespread communication apps, consumers increasingly demand real-time and interactive information. By leveraging chatbot technology, companies can offer non-stop service and capture consumer needs through data, thereby enhancing brand loyalty and market competitiveness.",
+              text: "Traditional crystal fragrance businesses rely on brand reputation and offline sales. With the digital era and widespread communication apps, consumers increasingly demand real-time and interactive information. The team collected 200 valid questionnaires to understand target audience needs, and analyzed competitor chatbots on the market — Sanshe Herbal, SIO Crystal, Languotree, Jo Malone, and 10/10 — learning from their instant replies, FAQs, graphic menus, and card-style responses. By leveraging chatbot technology, companies can offer non-stop service and capture consumer needs through data, thereby enhancing brand loyalty and market competitiveness.",
             },
             functions: {
               item1:
-                "Product & Course Inquiry: Display detailed information via an intuitive visual menu.",
+                "Psychological Test: Recommends products based on the user's mood, lifestyle, and color preferences.",
               item2:
-                "FAQ Response: Quickly answer common inquiries to improve user experience.",
+                "Popular Products: Tracks user clicks to recommend the most popular and most searched products.",
               item3:
-                "Real-Time Push: Send personalized updates based on events, promotions, or popular products.",
+                "Product & Category Search: Browse by category or price range, with card-style replies showing product descriptions, images, and prices.",
               item4:
-                "Intelligent Reply: Utilize OpenAI GPT-3.5 model to provide precise and personalized responses.",
+                "Course & Certification Search: Provides information on courses and certifications such as crystal energy practitioner classes.",
+              item5:
+                "FAQ: Compiles the questions most frequently asked by all users for quick answers.",
+              item6:
+                "User Feedback: Collects feedback on features, user experience, and ratings for continuous improvement.",
+              item7:
+                "ChatGPT Query: Integrates OpenAI's GPT-4 model to provide personalized intelligent responses for questions not covered by preset content.",
+              tech: "Technical Architecture: Built with Python using the LINE Messaging API and Webhook, deployed on Heroku, with a MySQL database recording user behavior, and Jieba word segmentation for semantic analysis to improve response accuracy.",
             },
             market: {
-              text: "Research indicates consumers value interfaces that clearly display service features and easily accessible product information. While some brands use chatbots for promotion, most only offer basic information. Our project aims to stand out with customization, data-driven push notifications, and intelligent responses.",
+              text: "The survey collected 200 valid responses. Among the 125 respondents with chatbot experience, the most valued non-functional requirement was clearly displaying available service options (weighted score 511), followed by a smooth user flow and feature completeness. For functional requirements, 27% expected product information lookup, 20% expected FAQs, and 16.5% expected popular product recommendations. The project's features were designed based on these findings, standing out through customization, data-driven push notifications, and intelligent responses.",
             },
             contribution: {
               text1:
-                "Crystal Fragrance BOT is expected to enhance consumer information access, boost brand loyalty, provide insights through data analysis, reduce customer service costs, and serve as a model for digital transformation that can expand into other traditional industries.",
+                "Crystal Fragrance Info BOT offers 24/7 real-time interaction, improving the convenience of accessing shopping information and enhancing brand image. By analyzing chatbot conversation logs, companies can discover consumption trends and changing needs to craft more precise marketing strategies. Future plans include linking user account systems to speed up purchases and pushing product information tailored to each user's preferences.",
               text2:
-                "In the future, this project can also serve as a model for digital transformation, expanding to other traditional industries and creating greater added value.",
+                "Although this research focuses on the crystal fragrance industry, its results can equally be applied to other traditional industries such as healthcare, beauty and hair salons, and food services — expanding marketing approaches, enhancing customer interaction, and even driving the digital transformation of these industries.",
+            },
+            document: {
+              text: "Below is the complete final report submitted to the National Science and Technology Council. You can preview it directly or download the PDF file.",
+              download: "Download Final Report PDF",
             },
             footer: {
               contactTitle: "Contact",
-              textWidgetTitle: "Text widget",
-              formWidgetTitle: "Form widget",
+              aboutTitle: "About the Project",
               followTitle: "Follow us",
               textWidget:
-                "Crystal Fragrance BOT project utilizes innovative technology and data analysis to bring new marketing solutions to the crystal fragrance industry, helping businesses build closer connections with consumers.",
+                "The Crystal Fragrance Info BOT project utilizes innovative technology and data analysis to bring new marketing solutions to the crystal fragrance industry, helping businesses build closer connections with consumers.",
             },
           },
         },
         zh: {
           translation: {
-            title: "氛享水晶BOT 專案介紹",
+            title: "氛享水晶資訊 BOT 專案介紹",
             header: {
-              smallTitle: "國科會-氛享水晶Bot",
-              mainTitle: "氛享水晶BOT",
-              subTitle: "水晶香氛行銷創新解決方案",
-              enTitle: "國科會-氛享水晶Bot",
+              smallTitle: "國科會大專生研究計畫 NSTC 112-2813-C-030-015-H",
+              mainTitle: "氛享水晶資訊 BOT",
+              subTitle: "聊天機器人在傳統產業行銷之應用－以 LineBot 為例",
+              enTitle:
+                "國科會大專生研究計畫：聊天機器人在傳統產業行銷之應用－以 LineBot 為例",
             },
             nav: {
               home: "返回首頁",
@@ -957,6 +1069,7 @@
               functions: "系統功能",
               market: "市場分析",
               contribution: "預期效益與展望",
+              document: "成果報告",
             },
             section: {
               introductionTitle: "專案介紹",
@@ -964,42 +1077,64 @@
               functionsTitle: "系統功能",
               marketTitle: "市場分析",
               contributionTitle: "預期效益與展望",
+              documentTitle: "成果報告",
             },
             introduction: {
-              text: "氛享水晶BOT 專案以水晶香氛產業為切入點，結合聊天機器人與 AI 技術，提供 24 小時即時的商品與課程資訊查詢、常見問題解答以及個性化推播服務，讓使用者快速獲取精準資訊並享受智能客服對話體驗。",
+              text: "本計畫為國家科學及技術委員會補助之大專生研究計畫，致力於將聊天機器人應用於傳統產業的網路行銷，以水晶香氛市場為例。團隊在 Line 通訊軟體上開發聊天機器人「氛享水晶資訊 BOT」，以圖文選單呈現功能，提供商品與課程資訊查詢、常見問題解答與個性化推播服務，並結合 OpenAI GPT-4 模型提供個性化回應，完善使用者在傳統產業中的購買體驗，提高消費者購買意願。",
+            },
+            project: {
+              id: "計畫編號：NSTC 112-2813-C-030-015-H",
+              period: "執行期間：2023 年 7 月 1 日至 2024 年 2 月 29 日",
+              org: "執行機構及系所：輔仁大學資訊管理學系",
+              pi: "計畫主持人：陳璽宇",
+              copi: "共同主持人：劉珈妤、籃勗祐、盧信廷、楊凱傑、鄭美娟",
             },
             background: {
-              text: "傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代與通訊軟體普及，消費者對即時互動資訊的需求日益增加。透過聊天機器人技術，企業可提供全天候服務並精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。",
+              text: "傳統水晶香氛產業依賴品牌口碑與線下銷售，但隨著數位時代來臨與通訊軟體普及，消費者對即時、互動式資訊的需求日益增加。團隊透過問卷調查（共回收 200 份有效問卷）了解目標客群需求，並針對三舍草本、希奧水晶、蘭果樹、Jo Malone、10/10 等市面上競品的聊天機器人進行分析，借鏡其即時回覆、常見問題、圖文選單與卡片式回覆等設計。透過聊天機器人技術，企業能提供全天候資訊服務並以數據化方式精準捕捉消費者需求，進而提升品牌忠誠度與市場競爭力。",
             },
             functions: {
-              item1: "商品與課程查詢：以直觀圖文選單展示詳細產品及課程資訊。",
-              item2: "常見問題解答：統整常見疑問，快速回應查詢。",
-              item3: "即時推播：根據節慶或促銷定期推送個性化資訊。",
-              item4: "智能回覆：結合 OpenAI GPT-3.5 模型提供個性化回應。",
+              item1:
+                "心理測驗：依據使用者的情緒、生活方式、色彩偏好等進行商品推薦。",
+              item2:
+                "熱門商品：統計使用者點擊行為，推薦最受歡迎與最常被搜尋的商品。",
+              item3:
+                "查詢商品或種類：可依商品分類或價格區間查詢，以卡片式回覆呈現商品介紹、圖片與價格。",
+              item4:
+                "查詢課程或證照：提供水晶能量師資證照班等課程與證照資訊。",
+              item5:
+                "常見問題與解答：統計所有使用者最常詢問的問題，快速回應查詢。",
+              item6:
+                "回饋使用體驗：蒐集功能服務、使用體驗與評分等回饋，持續優化系統。",
+              item7:
+                "ChatGPT 查詢：串接 OpenAI GPT-4 模型，針對查不到的問題提供個性化智能回應。",
+              tech: "技術架構：以 Python 串接 LINE Messaging API 與 Webhook 進行系統建置，部署於 Heroku 雲端平台，搭配 MySQL 資料庫記錄使用者行為，並可透過 Jieba 分詞進行語意分析，提升回應準確度。",
             },
             market: {
-              text: "調查顯示，消費者最在意的是能清楚展示各項服務功能的介面與方便查詢的產品資訊。本專案透過客製化數據推播與智能回覆，有望在激烈競爭中脫穎而出。",
+              text: "問卷調查共回收 200 份有效回覆，其中 125 位曾使用過聊天機器人的受訪者中，非功能性需求以「清楚顯示提供的服務選項」最受重視（加權 511 分），其次為「流暢的使用過程」與「功能齊全」。功能性需求方面，27% 的受訪者期望查看商品資訊，20% 期望常見問題與解答，16.5% 期望查看熱門商品。本專案依據調查結果設計功能，藉由客製化、數據化推播及智能回覆，在市場中脫穎而出。",
             },
             contribution: {
               text1:
-                "氛享水晶BOT 將提升消費者資訊獲取效率、強化品牌忠誠度，並透過數據分析幫助企業精準行銷，同時降低客服成本，成為數位轉型的典範。",
+                "氛享水晶資訊 BOT 具有 24 小時即時互動的特點，提升消費者取得購物資訊的便利度與互動體驗，增強品牌形象；透過分析聊天機器人的對話紀錄，可發現潛在的消費趨勢與需求變化，協助企業制定更精準的行銷策略。未來期望連結使用者帳號系統，協助使用者更快完成購買流程，並依偏好推播相關商品資訊。",
               text2:
-                "未來，本專案亦可作為數位轉型示範，進一步拓展至其他傳統產業，創造更多附加價值。",
+                "雖然本研究聚焦於水晶香氛產業，但研究成果同樣可應用於醫療院所、美容美髮及餐飲業等其他傳統產業，拓展行銷手段並提升與客戶之間的互動體驗，甚至促進產業的數位轉型，帶來更可持續發展的機會。",
+            },
+            document: {
+              text: "以下為本計畫繳交國家科學及技術委員會之完整成果報告，可直接於下方預覽或下載 PDF 檔案。",
+              download: "下載成果報告 PDF",
             },
             footer: {
-              contactTitle: "Contact",
-              textWidgetTitle: "Text widget",
-              formWidgetTitle: "Form widget",
-              followTitle: "Follow us",
+              contactTitle: "聯絡方式",
+              aboutTitle: "關於專案",
+              followTitle: "追蹤我們",
               textWidget:
-                "氛享水晶BOT 專案利用創新技術與數據分析，為水晶香氛產業帶來全新行銷解決方案，協助企業與消費者建立更緊密的連結。",
+                "氛享水晶資訊 BOT 專案利用創新技術與數據分析，為水晶香氛產業帶來全新行銷解決方案，協助企業與消費者建立更緊密的連結。",
             },
           },
         },
       };
 
       // 🚀 NSTC 風格的簡潔導覽系統
-      let currentLang = "en";
+      let currentLang = "zh";
 
       function updateTranslations() {
         document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -1009,7 +1144,7 @@
           let value = translation;
 
           for (const k of keys) {
-            value = value[k];
+            value = value?.[k];
           }
 
           if (value) {
@@ -1018,49 +1153,30 @@
         });
       }
 
-      // 初始化 i18next
-      i18next.init(
-        {
-          lng: currentLang,
-          debug: false,
-          resources: resources,
-          interpolation: { escapeValue: false },
-        },
-        function (err, t) {
-          jqueryI18next.init(i18next, $);
-          $("body").localize();
-          updateTranslations();
-        }
-      );
-
       // 語言切換功能
-      document.getElementById("btn-en").addEventListener("click", () => {
-        currentLang = "en";
-        i18next.changeLanguage("en", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-en")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-en").classList.add("btn-primary");
-        document.getElementById("btn-zh").classList.remove("btn-primary");
-        document.getElementById("btn-zh").classList.add("btn-outline-primary");
-      });
+      function switchLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+        updateTranslations();
 
-      document.getElementById("btn-zh").addEventListener("click", () => {
-        currentLang = "zh";
-        i18next.changeLanguage("zh", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-zh")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-zh").classList.add("btn-primary");
-        document.getElementById("btn-en").classList.remove("btn-primary");
-        document.getElementById("btn-en").classList.add("btn-outline-primary");
-      });
+        const btnEn = document.getElementById("btn-en");
+        const btnZh = document.getElementById("btn-zh");
+        const active = lang === "en" ? btnEn : btnZh;
+        const inactive = lang === "en" ? btnZh : btnEn;
+        active.classList.remove("btn-outline-primary");
+        active.classList.add("btn-primary");
+        inactive.classList.remove("btn-primary");
+        inactive.classList.add("btn-outline-primary");
+      }
+
+      document
+        .getElementById("btn-en")
+        .addEventListener("click", () => switchLanguage("en"));
+      document
+        .getElementById("btn-zh")
+        .addEventListener("click", () => switchLanguage("zh"));
+
+      updateTranslations();
 
       // 🚀 NSTC 風格的滾動檢測（簡潔版）
       window.addEventListener("scroll", () => {
