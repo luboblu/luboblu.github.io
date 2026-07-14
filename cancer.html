@@ -26,11 +26,6 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     />
 
-    <!-- 引入 i18next 與 jquery-i18next -->
-    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery-i18next/dist/umd/jquery-i18next.min.js"></script>
-
     <style>
       /* 現代化樣式設計 - 基於 NSTC 模式 */
       :root {
@@ -314,6 +309,22 @@
         cursor: pointer;
       }
 
+      /* PDF 預覽 */
+      .pdf-preview {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(42, 125, 125, 0.2);
+      }
+
+      .pdf-preview iframe {
+        display: block;
+        width: 100%;
+        height: 75vh;
+        min-height: 480px;
+        border: none;
+      }
+
       /* 響應式設計 */
       @media (min-width: 992px) {
         .cancer-navbar .container-fluid {
@@ -557,6 +568,11 @@
                 未來展望
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#document" data-i18n="nav.document">
+                專題文件
+              </a>
+            </li>
           </ul>
 
           <!-- 右側：語言切換按鈕 -->
@@ -586,9 +602,10 @@
         <div class="row">
           <div class="col-md-7">
             <p data-i18n="introduction.text">
-              本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的
-              AI
-              語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />
+              「癌資機模人」由輔仁大學資訊管理學系第四十屆專題團隊開發，與健康資訊平台
+              Heho 健康產學合作，以旗下 Heho Cancer
+              網站作為正確資訊的來源，在 Line 上打造癌症資訊聊天機器人。系統結合
+              AI 語言模型與大數據分析技術，服務對象為癌友、癌友家屬及對癌症資訊有需求的社會大眾，協助其快速獲取正確、及時的健康資訊，並提供情緒指數分析與使用回饋等多元功能，期盼陪伴癌友一起面對癌症。<br />
               指導教授：鄭美娟<br />
               團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤
             </p>
@@ -612,12 +629,19 @@
           背景與動機
         </h2>
         <p data-i18n="background.text1">
-          疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技的進步，透過
-          AI 與大數據提供準確且即時的癌症健康資訊，
-          能有效支援癌友與其家屬面對疾病挑戰。
+          癌症已蟬聯 37 年國人十大死因榜首，臺灣每年有超過 4.8
+          萬人因癌症死亡，每年新增的癌症人數更超過 10
+          萬人。在資訊爆炸的時代，人們想快速理解資訊卻容易接收到不正確的觀念，甚至以訛傳訛。透過
+          AI
+          與大數據提供準確且即時的癌症健康資訊，能有效支援癌友與其家屬面對疾病挑戰。
         </p>
         <p data-i18n="background.text2">
-          科技正以驚人速度進步，面對疾病蔓延的現實，迅速獲取正確健康資訊顯得尤為重要，因此癌症資訊聊天機器人應運而生！
+          團隊發放問卷共回收 357 則回覆（其中 175
+          位曾使用過聊天機器人），受訪者最重視的前三名為「資料的正確性」、「流暢的使用過程」與「清楚顯示服務選項」；功能需求上，76.5%
+          期望常見問題與解答、70.2%
+          期望關鍵字查詢症狀或疾病、52.2%期望推播最新醫療消息。團隊以此為依據，在
+          Heho 健康既有 Line
+          官方帳號的基礎上，補足其缺乏的癌症功能服務並進行優化。
         </p>
       </section>
 
@@ -631,20 +655,29 @@
             <h3 data-i18n="functions.headline">癌資機模人提供哪些服務？</h3>
             <ul>
               <li data-i18n="functions.item1">
-                <strong>多元資訊整合：</strong
-                >結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。
+                <strong>關鍵字查詢症狀或疾病：</strong
+                >輸入癌症名稱或症狀，系統以分詞斷句從資料庫找出最符合的文章。
               </li>
               <li data-i18n="functions.item2">
-                <strong>即時互動服務：</strong>利用 Line
-                平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。
+                <strong>推播最新醫療消息：</strong
+                >每日定時推播最新癌症文章，附縮圖及連結。
               </li>
               <li data-i18n="functions.item3">
-                <strong>情緒與回饋管理：</strong
-                >提供情緒指數分析與回饋機制，協助使用者調適心情。
+                <strong>醫師健康解說與圖解健康知識：</strong
+                >依大腸癌、肺癌、乳癌類別提供醫師解說影片及健康知識圖。
               </li>
               <li data-i18n="functions.item4">
-                <strong>先進技術支援：</strong>採用 AI
-                語言模型輔助查詢，並利用大數據技術分析用戶需求。
+                <strong>常見問題與解答：</strong
+                >統計十大熱門關鍵字，由 ChatGPT 產生對應的常見問題與解答。
+              </li>
+              <li data-i18n="functions.item5">
+                <strong>情緒指數分析：</strong
+                >依五種心情給予鼓勵話語、附近美食地圖、正向文章、問答小遊戲或健康日曆，並可產生近七次的情緒變化圖。
+              </li>
+              <li data-i18n="functions.item6">
+                <strong>ChatGPT 查詢與使用回饋：</strong
+                >查無資料時可透過指令連結
+                ChatGPT，並提供多面向的評分與回饋管道。
               </li>
             </ul>
           </div>
@@ -669,33 +702,38 @@
         <div class="row">
           <div class="col-md-6">
             <p data-i18n="details.text1">
-              本專題整合了大量的醫療資訊來源，並與多位臨床醫師與專業護理師合作，確保訊息的正確性與即時性。透過
-              AI、大數據、自然語言處理及雲端服務的結合，
-              讓癌症資訊能夠更快速且方便地傳遞給有需要的使用者。
+              本專題以 Heho 健康擁有醫師、護理師、營養師等專家把關的 Heho
+              Cancer
+              網站作為資訊來源，確保訊息的正確性與即時性。系統除了面向使用者的
+              Line Bot 之外，也建置了後臺管理系統，管理者可登入後維護醫師解說影片、健康知識圖、關鍵字、常見問題與情緒反饋等內容。
             </p>
           </div>
           <div class="col-md-6">
             <ul>
               <li data-i18n="details.listItem1">
-                <strong>關鍵字查詢：</strong
-                >輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。
+                <strong>系統建置：</strong>以 Python 串接 LINE Messaging API
+                與 Webhook 開發。
               </li>
               <li data-i18n="details.listItem2">
-                <strong>醫師健康解說：</strong>提供專業醫師解說影片及文章。
+                <strong>資料庫：</strong>MySQL 關聯式資料庫（24
+                張資料表）儲存文章與使用紀錄，Firebase
+                記錄按鈕點擊與 ChatGPT 對話。
               </li>
               <li data-i18n="details.listItem3">
-                <strong>常見問題與解答：</strong>彙整常見疑問並提供標準答案。
+                <strong>資料擷取：</strong>以 Scrapy 爬取 Heho Cancer
+                最新文章，並用 Redis 記錄已爬取網址避免重複爬蟲。
               </li>
               <li data-i18n="details.listItem4">
-                <strong>情緒指數分析：</strong
-                >記錄與分析使用者心情，提供回饋與建議。
+                <strong>語意分析：</strong>透過 Jieba
+                分詞斷句，提升關鍵字查詢的準確度。
               </li>
               <li data-i18n="details.listItem5">
-                <strong>ChatGPT 查詢：</strong>整合 AI 模型進行深度查詢。
+                <strong>AI 整合：</strong>串接 OpenAI API，提供 ChatGPT
+                查詢並自動產生常見問題與解答。
               </li>
               <li data-i18n="details.listItem6">
-                <strong>回饋使用體驗：</strong
-                >讓使用者對系統體驗進行評分與留言。
+                <strong>使用者追蹤：</strong
+                >記錄使用路徑與行為，作為後續統計分析與優化依據。
               </li>
             </ul>
           </div>
@@ -706,15 +744,50 @@
       <section id="future" class="content-section animate-on-scroll">
         <h2 class="section-title" data-i18n="section.futureTitle">未來展望</h2>
         <p data-i18n="future.text1">
-          未來將持續整合更多醫學中心與研究單位的專業資源，並不斷優化互動介面與功能，協助更多人群在面對疾病時獲得最佳的醫療資訊與心理支持。
+          系統目前針對台灣前三名癌症（大腸癌、肺癌、乳癌）提供資訊與服務，未來希望擴充至更完整的癌症與疾病資訊，並與醫療機構合作提供更全面的服務。同時也期望將
+          ChatGPT 升級為 GPT-4，並讓機器人學習使用者的訊息資料，提供更貼近需求的個人化回應。
         </p>
         <p data-i18n="future.text2">
-          同時，我們也期待能將此系統擴充到其他疾病領域，例如糖尿病、高血壓等常見慢性疾病，促進全民健康。
+          團隊已將此技術延伸應用至下一學年度的國科會計畫，把對話式聊天機器人帶入線上商務領域，協助水晶香氛工作坊等傳統產業進行數位轉型（詳見「氛享水晶資訊
+          BOT」專案）。
         </p>
         <div class="text-center" style="margin-top: 40px">
-          <a href="#" class="btn cta-button" data-i18n="future.button">
-            加入 Line Bot 好友
+          <a
+            href="marketing.html"
+            class="btn cta-button"
+            data-i18n="future.button"
+          >
+            延伸專案：氛享水晶資訊 BOT
           </a>
+        </div>
+      </section>
+
+      <!-- 專題文件預覽 -->
+      <section id="document" class="content-section animate-on-scroll">
+        <h2 class="section-title" data-i18n="section.documentTitle">
+          專題文件
+        </h2>
+        <p data-i18n="document.text">
+          以下為本專題的完整文件，內容涵蓋系統描述、軟體需求規格、軟體設計規格與實作檢討，可直接於下方預覽或下載
+          PDF 檔案。
+        </p>
+        <div class="text-center mb-3">
+          <a
+            href="assets/docs/cancer-project-report.pdf"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fas fa-file-pdf me-2"></i>
+            <span data-i18n="document.download">下載專題文件 PDF</span>
+          </a>
+        </div>
+        <div class="pdf-preview">
+          <iframe
+            src="assets/docs/cancer-project-report.pdf"
+            title="癌資機模人專題文件預覽"
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
     </main>
@@ -743,8 +816,18 @@
             </h3>
             <div class="widget-body">
               <p class="follow-me-icons">
-                <a href="#"><i class="fab fa-github fa-2x"></i></a>
-                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a
+                  href="https://github.com/luboblu"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-github fa-2x"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/lu.lu.lu.788849"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-facebook fa-2x"></i
+                ></a>
               </p>
             </div>
           </div>
@@ -856,6 +939,7 @@
               functions: "System Functions",
               details: "Project Details",
               future: "Future Outlook",
+              document: "Project Report",
             },
             section: {
               introductionTitle: "Project Introduction",
@@ -863,49 +947,58 @@
               functionsTitle: "System Functions",
               detailsTitle: "Project Details",
               futureTitle: "Future Outlook",
+              documentTitle: "Project Report",
             },
             introduction: {
-              text: "This project is developed by the 40th Project Team of the Department of Information Management at Fu Jen University. It aims to build a cancer chatbot system by integrating advanced AI language models and big data analytics, helping patients and their families to quickly access accurate and timely health information. (Supervisor:Mei-Juan Cheng; Team: Hsi-Yu Chen,Kai-Chieh Yang,Hsin-Ting Lu,xu-You Lan,Chia-Yu Liu)",
+              text: "The Cancer Info Chatbot is developed by the 40th Project Team of the Department of Information Management at Fu Jen Catholic University, in industry-academia collaboration with the health information platform Heho Health, using its Heho Cancer website as the source of verified information. Built on the Line platform and integrating AI language models with big data analytics, it serves cancer patients, their families, and anyone seeking cancer information — helping them quickly access accurate, timely health information, with mood analysis and user feedback features to accompany patients through their journey.<br />Supervisor: Mei-Chuan Cheng<br />Team: Hsi-Yu Chen, Kai-Chieh Yang, Hsin-Ting Lu, Hsu-Yu Lan, Chia-Yu Liu",
             },
             background: {
               text1:
-                "Diseases have always been a major challenge for humanity, and cancer is a significant global public health issue. With technological advances, providing accurate and timely cancer health information through AI and big data can effectively support patients and their families.",
+                "Cancer has topped Taiwan's ten leading causes of death for 37 consecutive years, with over 48,000 deaths and more than 100,000 new cases every year. In an era of information overload, people seeking quick answers easily absorb — and spread — inaccurate ideas. Providing accurate, timely cancer health information through AI and big data can effectively support patients and their families.",
               text2:
-                "Rapid technological development calls for swift access to accurate health knowledge. The cancer chatbot was thus born to meet this need!",
+                "The team collected 357 questionnaire responses (175 respondents had used chatbots). The top three priorities were data accuracy, a smooth user flow, and clearly displayed service options. For features, 76.5% wanted FAQs, 70.2% wanted keyword search for symptoms or diseases, and 52.2% wanted the latest medical news pushed to them. Based on these findings, the team built on Heho Health's existing Line official account, adding the cancer-focused services it lacked.",
             },
             functions: {
-              headline: "What services does the cancer chatbot provide?",
+              headline: "What services does the Cancer Info Chatbot provide?",
               item1:
-                "Multi-source Information Integration: Combining doctor's explanatory videos, illustrated health knowledge, keyword search, and FAQs.",
+                "Keyword Search: Enter a cancer name or symptom; the system tokenizes the input and finds the best-matching articles from the database.",
               item2:
-                "Real-time Interactive Service: Enable interactions via the Line platform with the chatbot, allowing users to access information anytime.",
+                "Latest Medical News Push: Daily scheduled push of the latest cancer articles with thumbnails and links.",
               item3:
-                "Emotional and Feedback Management: Provide mood analysis and feedback mechanisms to help users adjust their feelings.",
+                "Doctor Explanations & Illustrated Health Knowledge: Doctor videos and infographics by category (colorectal, lung, and breast cancer).",
               item4:
-                "Advanced Technology Support: Utilize AI language models and big data analytics to assist with user queries.",
+                "FAQ: Compiles the top ten trending keywords and uses ChatGPT to generate corresponding questions and answers.",
+              item5:
+                "Mood Analysis: Based on five mood levels, responds with encouragement, nearby food maps, positive articles, quiz games, or a daily health calendar, and can chart your last seven mood entries.",
+              item6:
+                "ChatGPT Query & Feedback: Connect to ChatGPT via command when no data is found, plus multi-faceted rating and feedback channels.",
             },
             details: {
               text1:
-                "This project consolidates extensive medical information resources and collaborates with clinical doctors and professional nurses to ensure both accuracy and timeliness. Integrating AI, big data, natural language processing, and cloud services, it facilitates the rapid and convenient delivery of cancer information to those in need.",
+                "The project uses Heho Cancer — curated by doctors, nurses, and dietitians at Heho Health — as its information source to ensure accuracy and timeliness. Besides the user-facing Line Bot, a backend management system lets administrators maintain doctor videos, health infographics, keywords, FAQs, and mood feedback content.",
               listItem1:
-                "Keyword Search: Enter the name of a cancer or its symptoms and the system automatically searches for matching health information.",
+                "System: Built with Python using the LINE Messaging API and Webhook.",
               listItem2:
-                "Doctor's Health Explanations: Offers explanatory videos and articles by professional physicians.",
+                "Database: A MySQL relational database (24 tables) stores articles and usage records, while Firebase logs button clicks and ChatGPT conversations.",
               listItem3:
-                "FAQs: Compiles common questions and provides standard answers.",
+                "Data Collection: Scrapy crawls the latest Heho Cancer articles, with Redis tracking visited URLs to avoid duplicate crawling.",
               listItem4:
-                "Mood Analysis: Records and analyzes users' emotions, offering feedback and suggestions.",
+                "Semantic Analysis: Jieba word segmentation improves keyword search accuracy.",
               listItem5:
-                "ChatGPT Query: Integrates AI models for in-depth queries.",
+                "AI Integration: Connects to the OpenAI API for ChatGPT queries and automatic FAQ generation.",
               listItem6:
-                "Feedback: Allows users to rate and provide comments on their experience.",
+                "User Tracking: Records usage paths and behavior for later statistical analysis and optimization.",
             },
             future: {
               text1:
-                "In the future, we will continue to integrate more professional resources from medical centers and research institutions, and further optimize the interface and functionalities to help more people receive the best medical and emotional support.",
+                "The system currently covers Taiwan's top three cancers (colorectal, lung, and breast). Future plans include expanding to more complete cancer and disease information, partnering with medical institutions, upgrading ChatGPT to GPT-4, and letting the bot learn from user messages to deliver more personalized responses.",
               text2:
-                "We also aim to expand the system to cover other disease areas, such as diabetes and hypertension, to promote overall public health.",
-              button: "Add Line Bot Friend",
+                "The team has extended this technology to the following year's NSTC project, bringing conversational chatbots into e-commerce to help traditional businesses such as crystal fragrance workshops with digital transformation (see the Crystal Fragrance Info BOT project).",
+              button: "Extended Project: Crystal Fragrance Info BOT",
+            },
+            document: {
+              text: "Below is the complete project report, covering system description, software requirements, software design, and implementation review. You can preview it directly or download the PDF file.",
+              download: "Download Project Report PDF",
             },
             footer: {
               contactTitle: "Contact Us",
@@ -936,6 +1029,7 @@
               functions: "系統功能",
               details: "專題詳細介紹",
               future: "未來展望",
+              document: "專題文件",
             },
             section: {
               introductionTitle: "計畫介紹",
@@ -943,44 +1037,56 @@
               functionsTitle: "系統功能",
               detailsTitle: "專題詳細介紹",
               futureTitle: "未來展望",
+              documentTitle: "專題文件",
             },
             introduction: {
-              text: "本專題由輔仁大學資訊管理學系第四十屆專題團隊所開發，致力於打造一個癌症資訊聊天機器人系統。結合先進的 AI 語言模型與大數據分析技術，旨在協助癌友及其家屬快速獲取正確、及時的健康資訊，並提供情緒管理與使用回饋等多元功能。<br />指導教授：鄭美娟<br />團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤",
+              text: "「癌資機模人」由輔仁大學資訊管理學系第四十屆專題團隊開發，與健康資訊平台 Heho 健康產學合作，以旗下 Heho Cancer 網站作為正確資訊的來源，在 Line 上打造癌症資訊聊天機器人。系統結合 AI 語言模型與大數據分析技術，服務對象為癌友、癌友家屬及對癌症資訊有需求的社會大眾，協助其快速獲取正確、及時的健康資訊，並提供情緒指數分析與使用回饋等多元功能，期盼陪伴癌友一起面對癌症。<br />指導教授：鄭美娟<br />團隊成員：陳璽宇、楊凱傑、盧信廷、籃勗祐、劉珈妤",
             },
             background: {
               text1:
-                "疾病一直是人類面臨的重要挑戰，而癌症更是全球重大公共衛生議題。隨著科技進步，透過 AI 與大數據提供準確且即時的癌症健康資訊，能有效支援癌友與家屬面對疾病挑戰。",
+                "癌症已蟬聯 37 年國人十大死因榜首，臺灣每年有超過 4.8 萬人因癌症死亡，每年新增的癌症人數更超過 10 萬人。在資訊爆炸的時代，人們想快速理解資訊卻容易接收到不正確的觀念，甚至以訛傳訛。透過 AI 與大數據提供準確且即時的癌症健康資訊，能有效支援癌友與其家屬面對疾病挑戰。",
               text2:
-                "科技飛速發展，快速獲取正確健康知識尤為重要，因此癌症資訊聊天機器人應運而生！",
+                "團隊發放問卷共回收 357 則回覆（其中 175 位曾使用過聊天機器人），受訪者最重視的前三名為「資料的正確性」、「流暢的使用過程」與「清楚顯示服務選項」；功能需求上，76.5% 期望常見問題與解答、70.2% 期望關鍵字查詢症狀或疾病、52.2% 期望推播最新醫療消息。團隊以此為依據，在 Heho 健康既有 Line 官方帳號的基礎上，補足其缺乏的癌症功能服務並進行優化。",
             },
             functions: {
               headline: "癌資機模人提供哪些服務？",
               item1:
-                "多元資訊整合：結合醫師解說影片、圖解健康知識、關鍵字查詢及常見問題等功能。",
-              item2:
-                "即時互動服務：利用 Line 平台與聊天機器人進行互動，讓使用者隨時查詢所需資訊。",
+                "關鍵字查詢症狀或疾病：輸入癌症名稱或症狀，系統以分詞斷句從資料庫找出最符合的文章。",
+              item2: "推播最新醫療消息：每日定時推播最新癌症文章，附縮圖及連結。",
               item3:
-                "情緒與回饋管理：提供情緒指數分析與回饋機制，協助使用者調適心情。",
+                "醫師健康解說與圖解健康知識：依大腸癌、肺癌、乳癌類別提供醫師解說影片及健康知識圖。",
               item4:
-                "先進技術支援：採用 AI 語言模型輔助查詢，並利用大數據技術分析用戶需求。",
+                "常見問題與解答：統計十大熱門關鍵字，由 ChatGPT 產生對應的常見問題與解答。",
+              item5:
+                "情緒指數分析：依五種心情給予鼓勵話語、附近美食地圖、正向文章、問答小遊戲或健康日曆，並可產生近七次的情緒變化圖。",
+              item6:
+                "ChatGPT 查詢與使用回饋：查無資料時可透過指令連結 ChatGPT，並提供多面向的評分與回饋管道。",
             },
             details: {
               text1:
-                "本專題整合了大量醫療資訊來源，並與多位臨床醫師及專業護理師合作，確保訊息正確與即時。透過 AI、大數據、自然語言處理及雲端服務的結合，使癌症資訊能更快速、方便地傳遞給有需要者。",
+                "本專題以 Heho 健康擁有醫師、護理師、營養師等專家把關的 Heho Cancer 網站作為資訊來源，確保訊息的正確性與即時性。系統除了面向使用者的 Line Bot 之外，也建置了後臺管理系統，管理者可登入後維護醫師解說影片、健康知識圖、關鍵字、常見問題與情緒反饋等內容。",
               listItem1:
-                "關鍵字查詢：輸入癌症名稱或症狀，系統自動搜尋匹配的健康資訊。",
-              listItem2: "醫師健康解說：提供專業醫師解說影片及文章。",
-              listItem3: "常見問題與解答：彙整常見疑問並提供標準答案。",
-              listItem4: "情緒指數分析：記錄與分析使用者心情，提供回饋與建議。",
-              listItem5: "ChatGPT 查詢：整合 AI 模型進行深度查詢。",
-              listItem6: "回饋使用體驗：讓使用者對系統體驗進行評分與留言。",
+                "系統建置：以 Python 串接 LINE Messaging API 與 Webhook 開發。",
+              listItem2:
+                "資料庫：MySQL 關聯式資料庫（24 張資料表）儲存文章與使用紀錄，Firebase 記錄按鈕點擊與 ChatGPT 對話。",
+              listItem3:
+                "資料擷取：以 Scrapy 爬取 Heho Cancer 最新文章，並用 Redis 記錄已爬取網址避免重複爬蟲。",
+              listItem4: "語意分析：透過 Jieba 分詞斷句，提升關鍵字查詢的準確度。",
+              listItem5:
+                "AI 整合：串接 OpenAI API，提供 ChatGPT 查詢並自動產生常見問題與解答。",
+              listItem6:
+                "使用者追蹤：記錄使用路徑與行為，作為後續統計分析與優化依據。",
             },
             future: {
               text1:
-                "未來將持續整合更多醫學中心與研究單位的專業資源，不斷優化介面與功能，協助更多人獲得最佳醫療與心理支持。",
+                "系統目前針對台灣前三名癌症（大腸癌、肺癌、乳癌）提供資訊與服務，未來希望擴充至更完整的癌症與疾病資訊，並與醫療機構合作提供更全面的服務。同時也期望將 ChatGPT 升級為 GPT-4，並讓機器人學習使用者的訊息資料，提供更貼近需求的個人化回應。",
               text2:
-                "同時，我們也期盼將系統擴充至其他疾病領域，如糖尿病、高血壓等，促進全民健康。",
-              button: "加入 Line Bot 好友",
+                "團隊已將此技術延伸應用至下一學年度的國科會計畫，把對話式聊天機器人帶入線上商務領域，協助水晶香氛工作坊等傳統產業進行數位轉型（詳見「氛享水晶資訊 BOT」專案）。",
+              button: "延伸專案：氛享水晶資訊 BOT",
+            },
+            document: {
+              text: "以下為本專題的完整文件，內容涵蓋系統描述、軟體需求規格、軟體設計規格與實作檢討，可直接於下方預覽或下載 PDF 檔案。",
+              download: "下載專題文件 PDF",
             },
             footer: {
               contactTitle: "聯絡我們",
@@ -999,7 +1105,7 @@
       };
 
       // 🚀 NSTC 風格的簡潔導覽系統
-      let currentLang = "en";
+      let currentLang = "zh";
 
       function updateTranslations() {
         document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -1009,7 +1115,7 @@
           let value = translation;
 
           for (const k of keys) {
-            value = value[k];
+            value = value?.[k];
           }
 
           if (value) {
@@ -1022,49 +1128,30 @@
         });
       }
 
-      // 初始化 i18next
-      i18next.init(
-        {
-          lng: currentLang,
-          debug: false,
-          resources: resources,
-          interpolation: { escapeValue: false },
-        },
-        function (err, t) {
-          jqueryI18next.init(i18next, $);
-          $("body").localize();
-          updateTranslations();
-        }
-      );
-
       // 語言切換功能
-      document.getElementById("btn-en").addEventListener("click", () => {
-        currentLang = "en";
-        i18next.changeLanguage("en", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-en")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-en").classList.add("btn-primary");
-        document.getElementById("btn-zh").classList.remove("btn-primary");
-        document.getElementById("btn-zh").classList.add("btn-outline-primary");
-      });
+      function switchLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+        updateTranslations();
 
-      document.getElementById("btn-zh").addEventListener("click", () => {
-        currentLang = "zh";
-        i18next.changeLanguage("zh", () => {
-          $("body").localize();
-          updateTranslations();
-        });
-        document
-          .getElementById("btn-zh")
-          .classList.remove("btn-outline-primary");
-        document.getElementById("btn-zh").classList.add("btn-primary");
-        document.getElementById("btn-en").classList.remove("btn-primary");
-        document.getElementById("btn-en").classList.add("btn-outline-primary");
-      });
+        const btnEn = document.getElementById("btn-en");
+        const btnZh = document.getElementById("btn-zh");
+        const active = lang === "en" ? btnEn : btnZh;
+        const inactive = lang === "en" ? btnZh : btnEn;
+        active.classList.remove("btn-outline-primary");
+        active.classList.add("btn-primary");
+        inactive.classList.remove("btn-primary");
+        inactive.classList.add("btn-outline-primary");
+      }
+
+      document
+        .getElementById("btn-en")
+        .addEventListener("click", () => switchLanguage("en"));
+      document
+        .getElementById("btn-zh")
+        .addEventListener("click", () => switchLanguage("zh"));
+
+      updateTranslations();
 
       // 🚀 NSTC 風格的滾動檢測（簡潔版）
       window.addEventListener("scroll", () => {
@@ -1137,12 +1224,11 @@
       });
 
       // Modal 圖片功能
-      $(document).ready(function () {
-        $(".zoomable-img").click(function () {
-          var imgSrc = $(this).attr("src");
-          var captionText = $(this).data("caption") || "";
-          $("#modalImg").attr("src", imgSrc);
-          $("#modalCaption").text(captionText);
+      document.querySelectorAll(".zoomable-img").forEach((img) => {
+        img.addEventListener("click", () => {
+          document.getElementById("modalImg").src = img.getAttribute("src");
+          document.getElementById("modalCaption").textContent =
+            img.dataset.caption || "";
         });
       });
 
