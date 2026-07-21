@@ -9,7 +9,22 @@ on:
     - cron: "0 2 * * 1" # 每週一 UTC 02:00 跑死連結檢查
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  static-validation:
+    name: Validate HTML structure and local assets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run static validator
+        run: python3 scripts/validate_site.py
+
   placeholder-check:
     name: Check placeholder URLs
     runs-on: ubuntu-latest

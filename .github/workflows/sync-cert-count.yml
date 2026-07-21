@@ -7,6 +7,10 @@ on:
       - "assets/js/main.js"
   workflow_dispatch:
 
+concurrency:
+  group: content-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     name: Update totalCertCount in index.html
@@ -30,4 +34,5 @@ jobs:
             git add index.html &&
             git commit -m "chore: sync totalCertCount to $(grep -c 'id: "cert' assets/js/main.js)"
           )
+          git pull --rebase
           git push

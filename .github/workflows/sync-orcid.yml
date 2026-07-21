@@ -5,6 +5,10 @@ on:
     - cron: "0 4 * * 1" # 每週一 UTC 04:00
   workflow_dispatch:
 
+concurrency:
+  group: content-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     name: Update data/orcid.json
@@ -83,4 +87,5 @@ jobs:
             git add data/orcid.json &&
             git commit -m "chore: update orcid.json"
           )
+          git pull --rebase
           git push
