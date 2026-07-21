@@ -5,6 +5,10 @@ on:
     - cron: "0 3 * * 1" # 每週一 UTC 03:00
   workflow_dispatch:
 
+concurrency:
+  group: content-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     name: Update data/github-stats.json
@@ -21,6 +25,7 @@ jobs:
           # 1. Own repos (non-fork)
           gh api users/luboblu/repos --paginate \
             --jq '[.[] | select(.fork == false)]' > /tmp/own.json
+          gh api users/luboblu > /tmp/user.json
 
           # 2. Repos pushed to via events (last ~300 events)
           gh api users/luboblu/events/public --paginate \
@@ -57,6 +62,8 @@ jobs:
               own = json.load(f)
           with open('/tmp/ext.json') as f:
               ext = json.load(f)
+          with open('/tmp/user.json') as f:
+              user = json.load(f)
 
           # Language stats from own repos only
           langs = {}
@@ -82,8 +89,8 @@ jobs:
               'login': 'luboblu',
               'name': 'Hsin-Ting Lu',
               'avatar_url': 'https://avatars.githubusercontent.com/u/104414704?v=4',
-              'followers': 14,
-              'following': 17,
+              'followers': user.get('followers', 0),
+              'following': user.get('following', 0),
               'total_repos': len(own),
               'total_stars': total_stars,
               'top_languages': lang_list[:5],
@@ -112,4 +119,5 @@ jobs:
             git add data/github-stats.json &&
             git commit -m "chore: update github-stats.json"
           )
+          git pull --rebase
           git push
