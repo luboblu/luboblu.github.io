@@ -933,11 +933,16 @@ function sortSeminars(order) {
   $("#seminar .flex-col").each(function () {
     const $card = $(this);
     const dateText = $card.find(".cert-date").text();
-    const dateMatch = dateText.match(/(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})/);
+    const dateMatch = dateText.match(
+      /(\d{4})(?:[\/\-](\d{1,2})(?:[\/\-](\d{1,2}))?)?/,
+    );
     if (dateMatch) {
+      const year = Number(dateMatch[1]);
+      const month = dateMatch[2] ? Number(dateMatch[2]) - 1 : 0;
+      const day = dateMatch[3] ? Number(dateMatch[3]) : 1;
       cardsWithDates.push({
         element: $card.detach(),
-        date: new Date(dateMatch[1].replace(/\//g, "-")),
+        date: new Date(year, month, day),
       });
     }
   });
