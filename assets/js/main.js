@@ -222,7 +222,7 @@ const enhancedProjectsData = [
     isExternal: true,
     isService: true,
     importance: 5,
-    year: null,
+    year: 2026,
     category: "platform",
     description: "國立臺北大學 NTPU AI 提供全校師生免費生成式 AI 服務，落實 AI 普惠與教育平權，讓每位學生都能平等運用 AI 資源，提升學習與創新能力。",
     tech: ["GENERATIVE AI", "EDUCATION", "NTPU"],
@@ -235,7 +235,7 @@ const enhancedProjectsData = [
     isExternal: true,
     isService: true,
     importance: 5,
-    year: null,
+    year: 2026,
     category: "assistant",
     description: "國立臺北大學校園智慧問答助理，目前服務範圍：體育室、通識教育中心、語言中心、教務處、學務處、人事室、總務處，未來將逐步擴充。",
     tech: ["AI ASSISTANT", "Q&A", "NTPU"],
@@ -344,14 +344,12 @@ const enhancedProjectsData = [
 // 排序選項定義
 const enhancedSortOptions = {
   yearDesc: (a, b) => {
-    if (a.year === null || b.year === null) return Number(b.year === null) - Number(a.year === null);
     if (b.year !== a.year) {
       return b.year - a.year;
     }
     return b.importance - a.importance;
   },
   yearAsc: (a, b) => {
-    if (a.year === null || b.year === null) return Number(b.year === null) - Number(a.year === null);
     if (a.year !== b.year) {
       return a.year - b.year;
     }
@@ -1607,7 +1605,8 @@ function renderEnhancedProjects(projects) {
                 <div class="subtitle" data-i18n="projects.${project.id}_description">${project.description}</div>
                 <div class="tech-tags">${techTags}</div>
                 <div class="project-meta">
-                  <span class="year-badge" data-i18n="projects.service_status">服務中</span>
+                  <span class="year-badge">📅 ${project.year}</span>
+                  <span class="external-badge" data-i18n="projects.service_status">服務中</span>
                   <span class="external-badge">${project.domain}</span>
                 </div>
               </div>
