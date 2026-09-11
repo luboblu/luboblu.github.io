@@ -225,7 +225,7 @@ const enhancedProjectsData = [
     year: null,
     category: "platform",
     description: "國立臺北大學 NTPU AI 提供全校師生免費生成式 AI 服務，落實 AI 普惠與教育平權，讓每位學生都能平等運用 AI 資源，提升學習與創新能力。",
-    tech: [],
+    tech: ["GENERATIVE AI", "EDUCATION", "NTPU"],
   },
   {
     id: "ntpu_aia",
@@ -238,7 +238,7 @@ const enhancedProjectsData = [
     year: null,
     category: "assistant",
     description: "國立臺北大學校園智慧問答助理，目前服務範圍：體育室、通識教育中心、語言中心、教務處、學務處、人事室、總務處，未來將逐步擴充。",
-    tech: [],
+    tech: ["AI ASSISTANT", "Q&A", "NTPU"],
   },
   {
     id: "esg",
@@ -1595,13 +1595,24 @@ function renderEnhancedProjects(projects) {
     if (project.isService) {
       targetContainer.insertAdjacentHTML("beforeend", `
         <div class="col-12 col-md-4">
-          <article class="campus-service-card ${project.category}">
-            <p class="campus-service-category" data-i18n="projects.${project.category}">${project.category === "platform" ? "平台" : "問答助理"}</p>
-            <span class="campus-service-status" data-i18n="projects.service_status">服務中</span>
-            <h4>${project.title}</h4>
-            <p class="campus-service-description" data-i18n="projects.${project.id}_description">${project.description}</p>
-            <div class="campus-service-links">
-              <a href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="${project.title}">${project.domain} <span aria-hidden="true">→</span></a>
+          <article class="project-card enhanced-project-card government campus-project-card">
+            <a href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="${project.title}">
+              <div class="project-img campus-project-cover ${project.category}">
+                <i class="fas ${project.category === "platform" ? "fa-brain" : "fa-comments"}" aria-hidden="true"></i>
+                <span>${project.title}</span>
+                <div class="project-overlay"><span class="more">VISIT SITE →</span></div>
+              </div>
+              <div class="content-area">
+                <h4 class="project-title">${project.title} <i class="fas fa-external-link-alt external-link-indicator" aria-hidden="true"></i></h4>
+                <div class="subtitle" data-i18n="projects.${project.id}_description">${project.description}</div>
+                <div class="tech-tags">${techTags}</div>
+                <div class="project-meta">
+                  <span class="year-badge" data-i18n="projects.service_status">服務中</span>
+                  <span class="external-badge">${project.domain}</span>
+                </div>
+              </div>
+            </a>
+            <div class="campus-project-footer">
               <a href="https://ai4x.ntpu.edu.tw/" target="_blank" rel="noopener noreferrer" aria-label="AI4X">AI4X <span aria-hidden="true">↗</span></a>
             </div>
           </article>

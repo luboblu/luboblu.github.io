@@ -2157,49 +2157,35 @@ body {
 }
 
 /* 增強版專案卡片 */
-.campus-service-card {
-  height: 100%;
-  min-height: 390px;
+.campus-project-cover {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 28px;
-  border: 1px solid #dce1e8;
-  border-top: 4px solid #1554a5;
-  border-radius: 16px;
-  background: #fbfcfe;
-  box-shadow: 0 8px 24px rgba(25, 48, 78, 0.07);
-}
-
-.campus-service-card.assistant { border-top-color: #0eaaa5; }
-.campus-service-category { color: #087f83; letter-spacing: 0.08em; }
-.campus-service-status {
-  color: #087f83;
-  background: #def2f3;
-  border-radius: 24px;
-  padding: 6px 14px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 6px 0 18px;
-}
-.campus-service-card h4 { color: #10243a; font-size: 1.4rem; font-weight: 700; }
-.campus-service-description { color: #52677c; line-height: 1.9; margin: 16px 0 28px; }
-.campus-service-links {
-  margin-top: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
   align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #e7eefc, #dae6f7);
+  color: #244c87;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
-.campus-service-card a {
-  color: #1554a5;
+.campus-project-cover.assistant {
+  background: linear-gradient(135deg, #e4f3f4, #d9eaf6);
+  color: #226b78;
+}
+.campus-project-cover > i { font-size: 3rem; }
+.enhanced-project-card.campus-project-card > a { flex: 1; height: auto !important; }
+.campus-project-footer { padding: 0 25px 20px; }
+.enhanced-project-card .campus-project-footer a {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  gap: 8px;
+  height: auto !important;
+  color: #5269c2;
+  font-size: 0.85rem;
   font-weight: 600;
-  text-underline-offset: 5px;
-  padding: 8px 0;
 }
-.campus-service-card a:hover { color: #087f83; }
-.campus-service-card a:focus-visible { outline: 2px solid #1554a5; outline-offset: 5px; }
-
+.campus-project-footer a:hover { text-decoration: underline; }
+.campus-project-card a:focus-visible { outline: 2px solid #5269c2; outline-offset: -2px; }
 .enhanced-project-card {
   background: white;
   border-radius: 20px;
