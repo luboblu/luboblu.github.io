@@ -400,7 +400,12 @@ const resources = {
           "國科會「以包容為導向之科技計畫」推動與協調計畫，子計畫三：包容溝通支持多模態跨語言任務導向對話系統 (NSTC)",
         researcher_task2: "資策會-智慧城市大型語言模型代理人系統",
 
-        nvidia_period: "2025.03 - Now",
+        emi_period: "2026.09 - Now",
+        emi_title: "EMI 助教 — 代理式AI創新應用",
+        emi_company: "國立臺北大學",
+        emi_course: "代理式AI創新應用（Agentic AI Innovative Applications，M5276）",
+
+        nvidia_period: "2025.03 - 2025.12",
         nvidia_title: "NVIDIA師生共群計畫負責人",
         nvidia_company: "NVIDIA Student-Faculty Collaboration Program Leader",
         nvidia_task1: "協助在學校舉辦與NVIDIA相關講座以及課程",
@@ -605,7 +610,12 @@ const resources = {
         researcher_task2:
           "Large Language Model Agent System for Smart City (III)",
 
-        nvidia_period: "2025.03 - Now",
+        emi_period: "2026.09 - Now",
+        emi_title: "EMI Teaching Assistant — Agentic AI Innovative Applications",
+        emi_company: "National Taipei University",
+        emi_course: "Agentic AI Innovative Applications (M5276)",
+
+        nvidia_period: "2025.03 - 2025.12",
         nvidia_title: "NVIDIA Student-Faculty Collaboration Program Leader",
         nvidia_company: "NVIDIA Student-Faculty Collaboration Program Leader",
         nvidia_task1:
