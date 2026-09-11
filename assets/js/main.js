@@ -215,6 +215,32 @@ let currentSeminarSortOrder = "desc";
 // 在 main.js 中更新 enhancedProjectsData 陣列
 const enhancedProjectsData = [
   {
+    id: "ntpu_ai",
+    title: "NTPU AI",
+    link: "https://ai.ntpu.ai/",
+    domain: "ai.ntpu.ai",
+    isExternal: true,
+    isService: true,
+    importance: 5,
+    year: null,
+    category: "platform",
+    description: "國立臺北大學 NTPU AI 提供全校師生免費生成式 AI 服務，落實 AI 普惠與教育平權，讓每位學生都能平等運用 AI 資源，提升學習與創新能力。",
+    tech: [],
+  },
+  {
+    id: "ntpu_aia",
+    title: "NTPU AI Assistant",
+    link: "https://aia.ntpu.ai/",
+    domain: "aia.ntpu.ai",
+    isExternal: true,
+    isService: true,
+    importance: 5,
+    year: null,
+    category: "assistant",
+    description: "國立臺北大學校園智慧問答助理，目前服務範圍：體育室、通識教育中心、語言中心、教務處、學務處、人事室、總務處，未來將逐步擴充。",
+    tech: [],
+  },
+  {
     id: "esg",
     title: "ML-ESG Compliance Report",
     subtitle: "NTCIR-19 2025-2026 國際研究計畫",
@@ -318,12 +344,14 @@ const enhancedProjectsData = [
 // 排序選項定義
 const enhancedSortOptions = {
   yearDesc: (a, b) => {
+    if (a.year === null || b.year === null) return Number(b.year === null) - Number(a.year === null);
     if (b.year !== a.year) {
       return b.year - a.year;
     }
     return b.importance - a.importance;
   },
   yearAsc: (a, b) => {
+    if (a.year === null || b.year === null) return Number(b.year === null) - Number(a.year === null);
     if (a.year !== b.year) {
       return a.year - b.year;
     }
@@ -451,6 +479,11 @@ const resources = {
         total_count: "證照總數：",
       },
       projects: {
+        platform: "平台",
+        assistant: "問答助理",
+        service_status: "服務中",
+        ntpu_ai_description: "國立臺北大學 NTPU AI 提供全校師生免費生成式 AI 服務，落實 AI 普惠與教育平權，讓每位學生都能平等運用 AI 資源，提升學習與創新能力。",
+        ntpu_aia_description: "國立臺北大學校園智慧問答助理，目前服務範圍：體育室、通識教育中心、語言中心、教務處、學務處、人事室、總務處，未來將逐步擴充。",
         total_count: "專案總數：",
         sort_time_desc: "📅 時間 (新到舊)",
         sort_time_asc: "⏰ 時間 (舊到新)",
@@ -662,6 +695,11 @@ const resources = {
         total_count: "Total Certifications:",
       },
       projects: {
+        platform: "Platform",
+        assistant: "Q&A Assistant",
+        service_status: "Live",
+        ntpu_ai_description: "NTPU AI provides free generative AI services to all National Taipei University students and faculty, promoting inclusive access and educational equity so every student can use AI resources to enhance learning and innovation.",
+        ntpu_aia_description: "National Taipei University's campus Q&A assistant currently covers Physical Education, General Education, the Language Center, Academic Affairs, Student Affairs, Personnel, and General Affairs, with more services to come.",
         total_count: "Total Projects:",
         sort_time_desc: "📅 Time (Newest to Oldest)",
         sort_time_asc: "⏰ Time (Oldest to Newest)",
@@ -1553,6 +1591,24 @@ function renderEnhancedProjects(projects) {
     const techTags = project.tech
       .map((tech) => `<span class="tech-tag">${tech}</span>`)
       .join("");
+
+    if (project.isService) {
+      targetContainer.insertAdjacentHTML("beforeend", `
+        <div class="col-12 col-md-4">
+          <article class="campus-service-card ${project.category}">
+            <p class="campus-service-category" data-i18n="projects.${project.category}">${project.category === "platform" ? "平台" : "問答助理"}</p>
+            <span class="campus-service-status" data-i18n="projects.service_status">服務中</span>
+            <h4>${project.title}</h4>
+            <p class="campus-service-description" data-i18n="projects.${project.id}_description">${project.description}</p>
+            <div class="campus-service-links">
+              <a href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="${project.title}">${project.domain} <span aria-hidden="true">→</span></a>
+              <a href="https://ai4x.ntpu.edu.tw/" target="_blank" rel="noopener noreferrer" aria-label="AI4X">AI4X <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      `);
+      return;
+    }
 
     const linkAttributes = project.isExternal
       ? `href="${project.link}" target="_blank" rel="noopener noreferrer"`
