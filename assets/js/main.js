@@ -212,8 +212,24 @@ let currentSeminarPage = 1;
 let totalSeminarPages = 2;
 let currentSeminarSortOrder = "desc";
 
-// 在 main.js 中更新 enhancedProjectsData 陣列
+// 專案清單：新增專案時請一併填寫 addedAt（加入本站的時間，ISO 8601），
+// 「時間 (新到舊) / (舊到新)」排序即以此欄位為準，未填寫時才退回 year。
 const enhancedProjectsData = [
+  {
+    id: "aicup2026",
+    title: "AI CUP 2026 玉山人工智慧公開挑戰賽",
+    subtitle: "Agent 基金經理人：打造你的最佳 ETF 投資組合",
+    image: "assets/images/aicup2026_project.svg",
+    link: "https://esun-ai-challenge.tw/events/fundaiagent",
+    isExternal: true,
+    importance: 5,
+    year: 2026,
+    addedAt: "2026-09-16T23:11:37+08:00",
+    category: "innovation",
+    categoryLabel: "Innovation",
+    tech: ["AI AGENT", "ETF", "FINTECH", "COMPETITION"],
+    description: "打造自主分析台股市場、配置資產並管理 ETF 投資組合的 AI Agent。",
+  },
   {
     id: "aitcp",
     title: "AI 跨域共創 × 社會福祉服務",
@@ -223,6 +239,7 @@ const enhancedProjectsData = [
     isExternal: false,
     importance: 5,
     year: 2026,
+    addedAt: "2026-09-16T22:22:05+08:00",
     category: "government",
     categoryLabel: "Government",
     tech: ["AGENTIC AI", "RAG", "SOCIAL WELL-BEING", "EDUCATION"],
@@ -237,6 +254,7 @@ const enhancedProjectsData = [
     isService: true,
     importance: 5,
     year: 2026,
+    addedAt: "2026-09-11T22:05:48+08:00",
     category: "platform",
     description: "國立臺北大學 NTPU AI 提供全校師生免費生成式 AI 服務，落實 AI 普惠與教育平權，讓每位學生都能平等運用 AI 資源，提升學習與創新能力。",
     tech: ["GENERATIVE AI", "EDUCATION", "NTPU"],
@@ -250,6 +268,7 @@ const enhancedProjectsData = [
     isService: true,
     importance: 5,
     year: 2026,
+    addedAt: "2026-09-11T22:05:48+08:00",
     category: "assistant",
     description: "國立臺北大學校園智慧問答助理，目前服務範圍：體育室、通識教育中心、語言中心、教務處、學務處、人事室、總務處，未來將逐步擴充。",
     tech: ["AI ASSISTANT", "Q&A", "NTPU"],
@@ -263,6 +282,7 @@ const enhancedProjectsData = [
     isExternal: false, // 內部連結
     importance: 5,
     year: 2025,
+    addedAt: "2025-06-19T21:07:22+08:00",
     category: "research",
     categoryLabel: "Research",
     tech: ["AI", "NLP", "ESG", "FINANCE"],
@@ -278,6 +298,7 @@ const enhancedProjectsData = [
     isExternal: true,
     importance: 5,
     year: 2026,
+    addedAt: "2026-01-18T02:02:56+08:00",
     category: "government",
     categoryLabel: "Government",
     tech: ["AI AGENT", "ROBOTICS", "EDUCATION", "MOE"],
@@ -292,6 +313,7 @@ const enhancedProjectsData = [
     isExternal: true,
     importance: 5,
     year: 2026,
+    addedAt: "2025-09-14T17:52:08+08:00",
     category: "research",
     categoryLabel: "Research",
     tech: ["ESG", "DATA COLLECTION", "VERIFICATION", "COMPETITION"],
@@ -306,6 +328,7 @@ const enhancedProjectsData = [
     isExternal: false,
     importance: 5,
     year: 2025,
+    addedAt: "2025-06-19T21:07:22+08:00",
     category: "government",
     categoryLabel: "Government",
     tech: ["MULTIMODAL", "AI", "DIALOGUE", "NLP"],
@@ -320,6 +343,7 @@ const enhancedProjectsData = [
     isExternal: false,
     importance: 4,
     year: 2024,
+    addedAt: "2025-06-19T21:07:22+08:00",
     category: "innovation",
     categoryLabel: "Innovation",
     tech: ["LLM", "SMART CITY", "AGENT", "AI"],
@@ -334,6 +358,7 @@ const enhancedProjectsData = [
     isExternal: false,
     importance: 4,
     year: 2024,
+    addedAt: "2025-06-19T21:07:22+08:00",
     category: "government",
     categoryLabel: "Government",
     tech: ["CHATBOT", "MARKETING", "AI", "NLP"],
@@ -348,6 +373,7 @@ const enhancedProjectsData = [
     isExternal: false,
     importance: 3,
     year: 2023,
+    addedAt: "2025-06-19T21:07:22+08:00",
     category: "academic",
     categoryLabel: "Academic",
     tech: ["MEDICAL AI", "MACHINE LEARNING", "DATA ANALYSIS"],
@@ -357,22 +383,30 @@ const enhancedProjectsData = [
 
 // 排序選項定義
 const enhancedSortOptions = {
-  yearDesc: (a, b) => {
-    if (b.year !== a.year) {
-      return b.year - a.year;
-    }
-    return b.importance - a.importance;
-  },
-  yearAsc: (a, b) => {
-    if (a.year !== b.year) {
-      return a.year - b.year;
-    }
-    return b.importance - a.importance;
-  },
+  yearDesc: (a, b) => compareProjectAddedTime(b, a),
+  yearAsc: (a, b) => compareProjectAddedTime(a, b),
   alphabetical: (a, b) => {
     return a.title.localeCompare(b.title);
   },
 };
+
+// 依「計畫加入時間」由舊到新比較；時間相同時再比年份與重要度，避免同批加入的專案順序錯亂
+function compareProjectAddedTime(a, b) {
+  const timeDiff = getProjectAddedTime(a) - getProjectAddedTime(b);
+  if (timeDiff !== 0) {
+    return timeDiff;
+  }
+  if (a.year !== b.year) {
+    return a.year - b.year;
+  }
+  return a.importance - b.importance;
+}
+
+// 取得專案加入時間（addedAt）；未填寫時退回該專案年份的 1 月 1 日
+function getProjectAddedTime(project) {
+  const parsedDate = Date.parse(project.addedAt || "");
+  return Number.isNaN(parsedDate) ? Date.UTC(project.year, 0, 1) : parsedDate;
+}
 
 // 分類顏色配置
 const categoryConfig = {
@@ -1964,6 +1998,7 @@ function initEnhancedProjectSorting() {
 
   // 綁定排序選擇器事件
   const sortSelect = document.getElementById("projectSortSelect");
+  let initialSort = "yearDesc";
   if (sortSelect) {
     // 移除舊的事件監聽器
     sortSelect.removeEventListener("change", handleProjectSortChange);
@@ -1975,10 +2010,11 @@ function initEnhancedProjectSorting() {
     const savedSort =
       localStorage.getItem("projectSortPreference") || "yearDesc";
     sortSelect.value = savedSort;
+    initialSort = savedSort;
   }
 
-  // 初始排序（按時間新到舊）
-  sortEnhancedProjects("yearDesc");
+  // 依使用者上次選擇初始化排序
+  sortEnhancedProjects(initialSort);
 
   // 鍵盤快速鍵支持
   document.removeEventListener("keydown", handleProjectKeydown);

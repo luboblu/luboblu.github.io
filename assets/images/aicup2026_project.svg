@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">AI CUP 2026 玉山人工智慧公開挑戰賽</title>
+  <desc id="desc">Agent 基金經理人：打造最佳 ETF 投資組合</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#063c3a"/>
+      <stop offset="0.55" stop-color="#08766c"/>
+      <stop offset="1" stop-color="#123d61"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#70e0bd"/>
+      <stop offset="1" stop-color="#e7c66a"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <g opacity=".12" stroke="#fff" fill="none">
+    <path d="M0 100H900M0 200H900M0 300H900M0 400H900"/>
+    <path d="M120 0V500M240 0V500M360 0V500M480 0V500M600 0V500M720 0V500M840 0V500"/>
+  </g>
+  <path d="M535 366L600 300 654 325 710 220 767 254 842 132" fill="none" stroke="url(#line)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#e7c66a"><circle cx="600" cy="300" r="8"/><circle cx="710" cy="220" r="8"/><circle cx="842" cy="132" r="8"/></g>
+  <g font-family="Segoe UI,Microsoft JhengHei,sans-serif" fill="#fff">
+    <text x="58" y="88" font-size="23" letter-spacing="5" fill="#8de6cc">AI CUP 2026</text>
+    <text x="58" y="174" font-size="45" font-weight="700">玉山人工智慧</text>
+    <text x="58" y="234" font-size="45" font-weight="700">公開挑戰賽</text>
+    <text x="58" y="309" font-size="27" fill="#f5d77f">Agent 基金經理人</text>
+    <text x="58" y="357" font-size="21" fill="#d9eeea">打造你的最佳 ETF 投資組合</text>
+    <text x="58" y="430" font-size="16" letter-spacing="2" fill="#b9d8d3">AI AGENT × ETF × FINTECH</text>
+  </g>
+</svg>
