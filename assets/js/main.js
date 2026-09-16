@@ -215,6 +215,20 @@ let currentSeminarSortOrder = "desc";
 // 在 main.js 中更新 enhancedProjectsData 陣列
 const enhancedProjectsData = [
   {
+    id: "aitcp",
+    title: "AI 跨域共創 × 社會福祉服務",
+    subtitle: "教育部人工智慧跨域共創與實踐應用課程｜資管 × 社工",
+    image: "assets/images/aitcp_project.svg",
+    link: "AITCP.html",
+    isExternal: false,
+    importance: 5,
+    year: 2026,
+    category: "government",
+    categoryLabel: "Government",
+    tech: ["AGENTIC AI", "RAG", "SOCIAL WELL-BEING", "EDUCATION"],
+    description: "以代理式 AI 與人工智慧課程串連早療、兒福與新住民服務場域。",
+  },
+  {
     id: "ntpu_ai",
     title: "NTPU AI",
     link: "https://ai.ntpu.ai/",
