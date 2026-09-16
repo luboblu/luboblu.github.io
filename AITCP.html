@@ -11,8 +11,10 @@
 <body>
   <a class="skip" href="#overview">跳至計畫內容</a>
   <nav class="nav" aria-label="頁面導覽"><div class="wrap nav-inner">
-    <a class="brand" href="index.html#recentworks">← 返回計畫總覽</a>
-    <div class="nav-links"><a href="#overview">計畫概覽</a><a href="#courses">課程設計</a><a href="#fields">應用場域</a><a href="#outcomes">預期成果</a></div>
+    <a class="brand" href="index.html#recentworks">返回計畫總覽</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="開啟導覽選單"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="primary-navigation"><a href="#overview">計畫概覽</a><a href="#courses">課程設計</a><a href="#fields">應用場域</a><a href="#outcomes">預期成果</a></div>
+    <div class="language-switcher" aria-label="語言選擇"><button type="button" data-language="en" aria-pressed="false">EN</button><button type="button" data-language="zh" aria-pressed="true">中文</button></div>
   </div></nav>
   <header class="hero"><div class="wrap hero-grid">
     <div><p class="eyebrow">NTPU · AI CROSS-DOMAIN CO-CREATION</p>
@@ -94,6 +96,41 @@
       <aside class="source-note">內容依據：115 年「人工智慧跨域共創與實踐應用課程」計畫申請書（資管端）。本頁呈現申請規劃，實際執行內容依核定與課程安排調整。</aside>
     </section>
   </main>
-  <footer><div class="wrap"><strong>AI 跨域共創 × 社會福祉服務</strong><p>國立臺北大學 · 資訊管理研究所 × 社會工作學系</p><a href="index.html#recentworks">← 返回 Hsin-Ting Lu 計畫總覽</a><a href="#" class="top">回到頂端 ↑</a></div></footer>
+  <footer><div class="wrap"><strong>AI 跨域共創 × 社會福祉服務</strong><p>國立臺北大學 · 資訊管理研究所 × 社會工作學系</p><div class="footer-actions"><a href="index.html#recentworks">← 返回計畫總覽</a><a href="#">回到頂端 ↑</a></div></div></footer>
+  <script src="assets/js/aitcp-i18n.js"></script>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#primary-navigation');
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      window.updateMenuLabel(!isOpen);
+      navigation.classList.toggle('open', !isOpen);
+    });
+    navigation.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        window.updateMenuLabel(false);
+        navigation.classList.remove('open');
+      }
+    });
+    const sectionLinks = [...navigation.querySelectorAll('a[href^="#"]')];
+    const observedSections = sectionLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      sectionLinks.forEach((link) => {
+        const active = link.getAttribute('href') === `#${visible.target.id}`;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-20% 0px -65%', threshold: [0, 0.1, 0.4] });
+    observedSections.forEach((section) => sectionObserver.observe(section));
+  </script>
 </body>
 </html>

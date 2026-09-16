@@ -2285,7 +2285,7 @@ $(document).ready(function () {
   // 初始化i18next
   i18next.init(
     {
-      lng: "en", // 預設語言為英文
+      lng: localStorage.getItem("siteLanguage") || "en",
       debug: false,
       resources: resources,
       interpolation: {
@@ -2308,12 +2308,13 @@ $(document).ready(function () {
         // 確保排序選單也被翻譯
         updateProjectSortSelect();
         // 設置語言按鈕的初始狀態
+        const initialLanguage = i18next.language.startsWith("zh") ? "zh" : "en";
         $("#btn-en")
-          .removeClass("btn-outline-secondary")
-          .addClass("btn-secondary");
+          .toggleClass("btn-secondary", initialLanguage === "en")
+          .toggleClass("btn-outline-secondary", initialLanguage !== "en");
         $("#btn-zh")
-          .removeClass("btn-secondary")
-          .addClass("btn-outline-secondary");
+          .toggleClass("btn-secondary", initialLanguage === "zh")
+          .toggleClass("btn-outline-secondary", initialLanguage !== "zh");
 
         console.log("🌍 中文初始化完成");
       }, 200); // 延長等待時間
@@ -2322,6 +2323,7 @@ $(document).ready(function () {
 
   // 語言切換按鈕
   $("#btn-en").on("click", function () {
+    localStorage.setItem("siteLanguage", "en");
     console.log("🌍 切換到英文");
     // 更新按鈕狀態
     $("#btn-en").removeClass("btn-outline-secondary").addClass("btn-secondary");
@@ -2341,6 +2343,7 @@ $(document).ready(function () {
   });
 
   $("#btn-zh").on("click", function () {
+    localStorage.setItem("siteLanguage", "zh");
     console.log("🌍 切換到中文");
     // 更新按鈕狀態
     $("#btn-zh").removeClass("btn-outline-secondary").addClass("btn-secondary");
