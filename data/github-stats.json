@@ -1,31 +1,31 @@
 {
   "login": "luboblu",
-  "name": "Hsin-Ting Lu",
+  "name": "盧信廷 Lu Bob",
   "avatar_url": "https://avatars.githubusercontent.com/u/104414704?v=4",
-  "followers": 14,
-  "following": 17,
-  "total_repos": 14,
-  "total_stars": 2,
+  "followers": 13,
+  "following": 18,
+  "total_repos": 19,
+  "total_stars": 3,
   "top_languages": [
     {
       "language": "Python",
-      "count": 9,
-      "percent": 64
+      "count": 11,
+      "percent": 61
     },
     {
       "language": "HTML",
-      "count": 3,
-      "percent": 21
+      "count": 5,
+      "percent": 28
     },
     {
       "language": "JavaScript",
       "count": 1,
-      "percent": 7
+      "percent": 6
     },
     {
       "language": "AMPL",
       "count": 1,
-      "percent": 7
+      "percent": 6
     }
   ],
   "recent_repos": [
@@ -34,9 +34,27 @@
       "full_name": "luboblu/luboblu.github.io",
       "description": "My Resume",
       "language": "HTML",
-      "stars": 2,
+      "stars": 3,
       "url": "https://github.com/luboblu/luboblu.github.io",
-      "updated_at": "2026-06-18"
+      "updated_at": "2026-10-30"
+    },
+    {
+      "name": "ntpu-ai-assistant",
+      "full_name": "aintpu/ntpu-ai-assistant",
+      "description": "",
+      "language": "Python",
+      "stars": 0,
+      "url": "https://github.com/aintpu/ntpu-ai-assistant",
+      "updated_at": "2026-10-26"
+    },
+    {
+      "name": "NTPU_AIA_webcrawler",
+      "full_name": "luboblu/NTPU_AIA_webcrawler",
+      "description": "",
+      "language": null,
+      "stars": 0,
+      "url": "https://github.com/luboblu/NTPU_AIA_webcrawler",
+      "updated_at": "2026-10-03"
     },
     {
       "name": "veripromiseesg.github.io",
@@ -45,34 +63,7 @@
       "language": "HTML",
       "stars": 1,
       "url": "https://github.com/veripromiseesg/veripromiseesg.github.io",
-      "updated_at": "2026-06-10"
-    },
-    {
-      "name": "smart-contract",
-      "full_name": "zhongruitsai/smart-contract",
-      "description": "",
-      "language": "Solidity",
-      "stars": 0,
-      "url": "https://github.com/zhongruitsai/smart-contract",
-      "updated_at": "2026-06-07"
-    },
-    {
-      "name": "ipas-exam",
-      "full_name": "luboblu/ipas-exam",
-      "description": "",
-      "language": "HTML",
-      "stars": 0,
-      "url": "https://github.com/luboblu/ipas-exam",
-      "updated_at": "2026-05-16"
-    },
-    {
-      "name": "ifitntpu.github.io",
-      "full_name": "ifitntpu/ifitntpu.github.io",
-      "description": "Intelligent Financial Innovation Technology Lab (IFIT Lab), NTPU",
-      "language": "HTML",
-      "stars": 0,
-      "url": "https://github.com/ifitntpu/ifitntpu.github.io",
-      "updated_at": "2026-05-26"
+      "updated_at": "2026-09-30"
     },
     {
       "name": "taiwan-assistant-mcp",
@@ -81,44 +72,53 @@
       "language": "Python",
       "stars": 0,
       "url": "https://github.com/luboblu/taiwan-assistant-mcp",
-      "updated_at": "2026-04-11"
+      "updated_at": "2026-09-12"
     },
     {
-      "name": "Master-Thesis",
-      "full_name": "luboblu/Master-Thesis",
-      "description": "",
+      "name": "isaac-robot-control-console",
+      "full_name": "luboblu/isaac-robot-control-console",
+      "description": "Local warehouse robot control console with Mock mode and NVIDIA Isaac Sim bridge",
       "language": "Python",
       "stars": 0,
-      "url": "https://github.com/luboblu/Master-Thesis",
-      "updated_at": "2026-04-01"
+      "url": "https://github.com/luboblu/isaac-robot-control-console",
+      "updated_at": "2026-08-20"
     },
     {
-      "name": "NovaPet",
-      "full_name": "luboblu/NovaPet",
-      "description": "",
-      "language": "JavaScript",
+      "name": "agentic-ai-challenge-2026",
+      "full_name": "luboblu/agentic-ai-challenge-2026",
+      "description": "2026 Agentic AI 智慧代理人企業挑戰賽資訊網站",
+      "language": "HTML",
       "stars": 0,
-      "url": "https://github.com/luboblu/NovaPet",
-      "updated_at": "2026-02-07"
+      "url": "https://github.com/luboblu/agentic-ai-challenge-2026",
+      "updated_at": "2026-08-11"
     },
     {
-      "name": "III_NTPU_AIAgent",
-      "full_name": "luboblu/III_NTPU_AIAgent",
+      "name": "ntpu-ai",
+      "full_name": "luboblu/ntpu-ai",
       "description": "",
+      "language": "HTML",
+      "stars": 0,
+      "url": "https://github.com/luboblu/ntpu-ai",
+      "updated_at": "2026-07-21"
+    },
+    {
+      "name": "StockCouncil",
+      "full_name": "luboblu/StockCouncil",
+      "description": "多 Agent 台股投資決策系統：FinMind 資料管線 + Claude 分析師群 + 多空辯論 + 風控 + 回測 + 模擬交易",
       "language": "Python",
       "stars": 0,
-      "url": "https://github.com/luboblu/III_NTPU_AIAgent",
-      "updated_at": "2026-02-07"
+      "url": "https://github.com/luboblu/StockCouncil",
+      "updated_at": "2026-07-10"
     },
     {
-      "name": "esg-annotator-app2",
-      "full_name": "wesleyseawatch2/esg-annotator-app2",
+      "name": "travel_agent",
+      "full_name": "luboblu/travel_agent",
       "description": "",
-      "language": "JavaScript",
-      "stars": 1,
-      "url": "https://github.com/wesleyseawatch2/esg-annotator-app2",
-      "updated_at": "2026-01-28"
+      "language": "HTML",
+      "stars": 0,
+      "url": "https://github.com/luboblu/travel_agent",
+      "updated_at": "2026-07-10"
     }
   ],
-  "updated_at": "2026-06-18"
+  "updated_at": "2026-10-30"
 }
