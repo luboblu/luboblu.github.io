@@ -586,6 +586,11 @@ const resources = {
         emi_title: "商學院英語授課 資管模組 課程修習證書",
         emi_date: "發證日期: 2026/04/30",
         gdg_title: "GDG on Campus NTPU 受邀講師",
+        smu_title: "新加坡管理大學論文報告",
+        smu_subtitle: "多語言 ESG 承諾驗證與檢索增強研究分享",
+        smu_date: "日期: 2026/10/20",
+        smu_slides: "投影片",
+        smu_photos: "相簿",
         gdg_subtitle: "跨領域經驗分享講座講者",
         gdg_date: "日期: 2026/03/02",
         gdg_modal_title:
@@ -811,6 +816,11 @@ const resources = {
         emi_title: "COB EMI Information Management Module Certificate",
         emi_date: "Issuance date: 2026/04/30",
         gdg_title: "GDG on Campus NTPU - Invited Speaker",
+        smu_title: "Research Presentation at Singapore Management University",
+        smu_subtitle: "Multilingual ESG Promise Verification and Retrieval Augmentation",
+        smu_date: "Date: 2026/10/20",
+        smu_slides: "Slides",
+        smu_photos: "Photos",
         gdg_subtitle: "Cross-disciplinary Experience Sharing Seminar Speaker",
         gdg_date: "Date: 2026/03/02",
         gdg_modal_title:
