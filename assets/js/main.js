@@ -817,7 +817,7 @@ const resources = {
         emi_date: "Issuance date: 2026/04/30",
         gdg_title: "GDG on Campus NTPU - Invited Speaker",
         smu_title: "Research Presentation at Singapore Management University",
-        smu_subtitle: "Multilingual ESG Promise Verification and Retrieval Augmentation",
+        smu_subtitle: "Evaluating Retrieval Augmentation for Multilingual ESG Promise Verification Across Model Capability Tiers and Modeling Paradigms",
         smu_date: "Date: 2026/10/20",
         smu_slides: "Slides",
         smu_photos: "Photos",
