@@ -20,7 +20,7 @@ jobs:
         run: |
           # 1. Own repos (non-fork)
           gh api users/luboblu/repos --paginate --slurp \
-            --jq '[.[][] | select(.fork == false and .private == false)]' > /tmp/own.json
+            | jq '[.[][] | select(.fork == false and .private == false)]' > /tmp/own.json
           gh api users/luboblu > /tmp/profile.json
 
           # 2. Repos pushed to via events (last ~300 events)
