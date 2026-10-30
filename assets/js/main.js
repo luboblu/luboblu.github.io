@@ -587,7 +587,7 @@ const resources = {
         emi_date: "發證日期: 2026/04/30",
         gdg_title: "GDG on Campus NTPU 受邀講師",
         smu_title: "新加坡管理大學論文報告",
-        smu_subtitle: "多語言 ESG 承諾驗證與檢索增強研究分享",
+        smu_subtitle: "Evaluating Retrieval Augmentation for Multilingual ESG Promise Verification Across Model Capability Tiers and Modeling Paradigms",
         smu_date: "日期: 2026/10/20",
         smu_slides: "投影片",
         smu_photos: "相簿",
