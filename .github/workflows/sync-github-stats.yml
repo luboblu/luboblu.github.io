@@ -19,8 +19,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # 1. Own repos (non-fork)
-          gh api users/luboblu/repos --paginate \
-            --jq '[.[] | select(.fork == false)]' > /tmp/own.json
+          gh api users/luboblu/repos --paginate --slurp \
+            --jq '[.[][] | select(.fork == false and .private == false)]' > /tmp/own.json
+          gh api users/luboblu > /tmp/profile.json
 
           # 2. Repos pushed to via events (last ~300 events)
           gh api users/luboblu/events/public --paginate \
@@ -57,6 +58,8 @@ jobs:
               own = json.load(f)
           with open('/tmp/ext.json') as f:
               ext = json.load(f)
+          with open('/tmp/profile.json') as f:
+              profile = json.load(f)
 
           # Language stats from own repos only
           langs = {}
@@ -80,10 +83,10 @@ jobs:
 
           result = {
               'login': 'luboblu',
-              'name': 'Hsin-Ting Lu',
-              'avatar_url': 'https://avatars.githubusercontent.com/u/104414704?v=4',
-              'followers': 14,
-              'following': 17,
+              'name': profile.get('name') or profile['login'],
+              'avatar_url': profile['avatar_url'],
+              'followers': profile['followers'],
+              'following': profile['following'],
               'total_repos': len(own),
               'total_stars': total_stars,
               'top_languages': lang_list[:5],
@@ -101,7 +104,9 @@ jobs:
               ],
               'updated_at': datetime.now(timezone.utc).strftime('%Y-%m-%d')
           }
-          print(json.dumps(result, indent=2, ensure_ascii=False))
+          with open('data/github-stats.json', 'w', encoding='utf-8') as f:
+              json.dump(result, f, indent=2, ensure_ascii=False)
+              f.write('\n')
           PYEOF
 
       - name: Commit if changed

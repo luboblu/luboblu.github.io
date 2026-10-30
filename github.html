@@ -216,13 +216,8 @@
 
           <div>
             <div class="gh-contrib-title">整體統計</div>
-            <div class="gh-contrib-sub">Stars・Commits・PRs・Issues・貢獻排名</div>
-            <img
-              src="https://github-readme-stats.vercel.app/api?username=luboblu&show_icons=true&hide_border=true&title_color=1a1a2e&icon_color=4a9eff&text_color=555&bg_color=ffffff&include_all_commits=true&count_private=false&locale=zh-tw"
-              alt="GitHub readme stats"
-              class="gh-contrib-img"
-              onerror="this.style.display='none'"
-            />
+            <div class="gh-contrib-sub">公開原創專案・Stars・追蹤者・追蹤中（每週更新）</div>
+            <div class="gh-stat-row" id="gh-summary" aria-live="polite">載入統計資料中…</div>
           </div>
         </div>
       </div>
@@ -254,7 +249,8 @@
         AMPL: '#6e8b74', CSS: '#563d7c', TypeScript: '#2b7489',
       };
 
-      fetch('data/github-stats.json')
+      fetch('data/github-stats.json', { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('Stats request failed'); return r; })
         .then(r => r.json())
         .then(data => {
           document.getElementById('gh-avatar').src = data.avatar_url;
@@ -263,6 +259,21 @@
           document.getElementById('gh-updated').textContent = data.updated_at;
           document.getElementById('gh-repos').textContent = data.total_repos;
           document.getElementById('gh-stars').textContent = data.total_stars;
+          const summary = document.getElementById('gh-summary');
+          summary.replaceChildren();
+          [[data.total_repos, '公開原創專案'], [data.total_stars, 'Stars 獲得'],
+           [data.followers, '追蹤者'], [data.following, '追蹤中']].forEach(([value, label]) => {
+            const box = document.createElement('div');
+            box.className = 'gh-stat-box';
+            const number = document.createElement('div');
+            number.className = 'gh-stat-num';
+            number.textContent = value ?? '—';
+            const caption = document.createElement('div');
+            caption.className = 'gh-stat-label';
+            caption.textContent = label;
+            box.append(number, caption);
+            summary.append(box);
+          });
 
           // Language bars
           const maxCount = data.top_languages[0]?.count || 1;
@@ -309,6 +320,7 @@
           document.getElementById('gh-repo-grid').innerHTML = repoHtml;
         })
         .catch(() => {
+          document.getElementById('gh-summary').textContent = '統計資料暫時無法載入，請稍後重新整理。';
           document.getElementById('gh-repo-grid').innerHTML =
             '<p style="color:#aaa;text-align:center;">資料載入失敗</p>';
         });
