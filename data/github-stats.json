@@ -57,15 +57,6 @@
       "updated_at": "2026-10-03"
     },
     {
-      "name": "veripromiseesg.github.io",
-      "full_name": "veripromiseesg/veripromiseesg.github.io",
-      "description": "VeriPromise ESG",
-      "language": "HTML",
-      "stars": 1,
-      "url": "https://github.com/veripromiseesg/veripromiseesg.github.io",
-      "updated_at": "2026-09-30"
-    },
-    {
       "name": "taiwan-assistant-mcp",
       "full_name": "luboblu/taiwan-assistant-mcp",
       "description": "",
@@ -118,7 +109,16 @@
       "stars": 0,
       "url": "https://github.com/luboblu/travel_agent",
       "updated_at": "2026-07-10"
+    },
+    {
+      "name": "Thesis_Reader",
+      "full_name": "luboblu/Thesis_Reader",
+      "description": "",
+      "language": "Python",
+      "stars": 0,
+      "url": "https://github.com/luboblu/Thesis_Reader",
+      "updated_at": "2026-07-09"
     }
   ],
-  "updated_at": "2026-10-30"
+  "updated_at": "2026-11-02"
 }
