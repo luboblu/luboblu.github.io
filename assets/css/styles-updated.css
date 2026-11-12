@@ -1352,7 +1352,7 @@ img {
   display: block;
 }
 
-.cert-img--nvidia-multimodal {
+.cert-img--nvidia {
   object-fit: cover;
   object-position: center 25%;
 }
