@@ -1352,6 +1352,11 @@ img {
   display: block;
 }
 
+.cert-img--nvidia-multimodal {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
 .cert-title {
   font-size: 1.1rem;
   margin: 10px 0;

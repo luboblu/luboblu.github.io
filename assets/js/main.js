@@ -205,6 +205,23 @@ const certifications = [
     },
     dateValue: "2026/06/03",
   },
+  {
+    id: "cert16",
+    modalId: "certModal16",
+    image: "assets/images/nvidia_building_ai_agents_multimodal_2026.png",
+    title: {
+      key: "",
+      default: "NVIDIA Building AI Agents with Multimodal Models",
+    },
+    date: {
+      key: "certs.nvidia_multimodal_date",
+      default: "Issuance date: 2026/11/08",
+    },
+    dateValue: "2026/11/08",
+    verifyUrl: "https://learn.nvidia.com/certificates?id=dDn7BCevQXqBj-2kt-Z1og",
+    imageClass: "cert-img--nvidia-multimodal",
+    imageAlt: "NVIDIA Building AI Agents with Multimodal Models 證書",
+  },
 ];
 
 // Seminar 分頁變數
@@ -522,6 +539,8 @@ const resources = {
         nvidia_llm_prompt_date: "發證日期: 2025/11/06",
         ipas_title: "iPAS AI應用規劃師初級能力鑑定",
         ipas_date: "發證日期: 2026/06/03",
+        nvidia_multimodal_date: "發證日期: 2026/11/08",
+        verify_certificate: "至 NVIDIA 驗證證書",
         total_count: "證照總數：",
       },
       projects: {
@@ -743,6 +762,8 @@ const resources = {
         nvidia_llm_prompt_date: "Issuance date: 2025/11/06",
         ipas_title: "iPAS AI Application Planner Certification (Basic)",
         ipas_date: "Issuance date: 2026/06/03",
+        nvidia_multimodal_date: "Issuance date: 2026/11/08",
+        verify_certificate: "Verify on NVIDIA",
         total_count: "Total Certifications:",
       },
       projects: {
@@ -1214,7 +1235,7 @@ function createCertCard(cert) {
             <div class="cert-card text-center">
                 <button type="button" class="btn-card-link" data-bs-toggle="modal" 
                         data-bs-target="#${cert.modalId}" aria-label="查看證照詳情">
-                    <img src="${cert.image}" class="cert-img" alt="證照" loading="lazy" />
+                    <img src="${cert.image}" class="cert-img ${cert.imageClass || ""}" alt="${cert.imageAlt || "證照"}" loading="lazy" />
                 </button>
                 <h4 class="cert-title" ${titleAttr}>${cert.title.default}</h4>
                 <p class="cert-date" ${dateAttr}>${cert.date.default}</p>
@@ -1241,6 +1262,7 @@ function createCertModal(cert) {
                                 aria-label="關閉"></button>
                     </div>
                     <div class="modal-body">
+                        ${cert.verifyUrl ? `<p><a href="${cert.verifyUrl}" target="_blank" rel="noopener noreferrer" data-i18n="certs.verify_certificate">Verify on NVIDIA</a></p>` : ""}
                         <img src="${cert.image}" alt="證照大圖" 
                              style="max-width: 100%; height: auto" />
                         <p class="mt-3" ${dateAttr}>${cert.date.default}</p>
