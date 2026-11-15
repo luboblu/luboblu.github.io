@@ -264,6 +264,7 @@ const certifications = [
       default: "Issuance date: 2025/11/28",
     },
     dateValue: "2025/11/28",
+    verifyUrl: "https://learn.nvidia.com/certificates?id=OXdFIrkZR-CNMiDnIOiJLA",
     imageClass: "cert-img--nvidia",
     imageAlt: "NVIDIA Fundamentals of Deep Learning 證書",
   },
