@@ -1357,6 +1357,22 @@ img {
   object-position: center 25%;
 }
 
+.cert-image-crop {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1125 / 1138;
+  overflow: hidden;
+}
+
+.cert-image-crop img {
+  position: absolute;
+  width: 110.31%;
+  max-width: none;
+  height: auto;
+  left: -5.33%;
+  top: -20.25%;
+}
+
 .cert-title {
   font-size: 1.1rem;
   margin: 10px 0;

@@ -237,19 +237,20 @@ const certifications = [
   {
     id: "cert17",
     modalId: "certModal17",
-    image: "assets/images/nvidia_agentic_ai_llm_2026.png",
+    image: "assets/images/nvidia_agentic_ai_applications_llm_2026.png",
     title: {
       key: "certs.nvidia_agentic_llm_title",
-      default: "NVIDIA 使用大型語言模型（LLM）建構 Agentic AI 應用程式",
+      default: "NVIDIA Building Agentic AI Applications with Large Language Models",
     },
     date: {
       key: "certs.nvidia_agentic_llm_date",
-      default: "Issuance date: 2026/11/15",
+      default: "Issuance date: 2026/11/16",
     },
-    dateValue: "2026/11/15",
-    verifyUrl: "https://learn.nvidia.com/certificates?id=HiOhj9JTTxquKnyLPAQ5SQ",
+    dateValue: "2026/11/16",
+    verifyUrl: "https://learn.nvidia.com/certificates?id=GihVlCsrSCqJLnkT25bKRQ",
     imageClass: "cert-img--nvidia",
-    imageAlt: "NVIDIA Agentic AI 應用程式證書",
+    imageAlt: "NVIDIA Building Agentic AI Applications with Large Language Models 證書",
+    cropImage: true,
   },
   {
     id: "cert18",
@@ -586,8 +587,8 @@ const resources = {
         ipas_title: "iPAS AI應用規劃師初級能力鑑定",
         ipas_date: "發證日期: 2026/06/03",
         nvidia_multimodal_date: "發證日期: 2026/11/08",
-        nvidia_agentic_llm_title: "NVIDIA 使用大型語言模型（LLM）建構 Agentic AI 應用程式",
-        nvidia_agentic_llm_date: "發證日期: 2026/11/15",
+        nvidia_agentic_llm_title: "NVIDIA Building Agentic AI Applications with Large Language Models",
+        nvidia_agentic_llm_date: "發證日期: 2026/11/16",
         nvidia_deep_learning_date: "發證日期: 2025/11/28",
         verify_certificate: "至 NVIDIA 驗證證書",
         total_count: "證照總數：",
@@ -812,8 +813,8 @@ const resources = {
         ipas_title: "iPAS AI Application Planner Certification (Basic)",
         ipas_date: "Issuance date: 2026/06/03",
         nvidia_multimodal_date: "Issuance date: 2026/11/08",
-        nvidia_agentic_llm_title: "NVIDIA Building Agentic AI Applications with LLMs",
-        nvidia_agentic_llm_date: "Issuance date: 2026/11/15",
+        nvidia_agentic_llm_title: "NVIDIA Building Agentic AI Applications with Large Language Models",
+        nvidia_agentic_llm_date: "Issuance date: 2026/11/16",
         nvidia_deep_learning_date: "Issuance date: 2025/11/28",
         verify_certificate: "Verify on NVIDIA",
         total_count: "Total Certifications:",
@@ -1315,8 +1316,9 @@ function createCertModal(cert) {
                     </div>
                     <div class="modal-body">
                         ${cert.verifyUrl ? `<p><a href="${cert.verifyUrl}" target="_blank" rel="noopener noreferrer" data-i18n="certs.verify_certificate">Verify on NVIDIA</a></p>` : ""}
-                        <img src="${cert.image}" alt="證照大圖" 
-                             style="max-width: 100%; height: auto" />
+                        ${cert.cropImage
+                          ? `<div class="cert-image-crop"><img src="${cert.image}" alt="${cert.imageAlt}" /></div>`
+                          : `<img src="${cert.image}" alt="證照大圖" style="max-width: 100%; height: auto" />`}
                         <p class="mt-3" ${dateAttr}>${cert.date.default}</p>
                     </div>
                 </div>
