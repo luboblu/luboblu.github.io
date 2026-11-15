@@ -831,7 +831,7 @@ const resources = {
         ipas_title: "iPAS AI Application Planner Certification (Basic)",
         ipas_date: "Issuance date: 2026/06/03",
         nvidia_multimodal_date: "Issuance date: 2026/11/08",
-        nvidia_agentic_llm_title: "NVIDIA Building Agentic AI Applications with LLMs",
+        nvidia_agentic_llm_title: "NVIDIA 使用大型語言模型（LLM）建構 Agentic AI 應用程式",
         nvidia_agentic_llm_date: "Issuance date: 2026/11/15",
         nvidia_deep_learning_date: "Issuance date: 2025/11/28",
         nvidia_agentic_applications_date: "Issuance date: 2026/11/16",
