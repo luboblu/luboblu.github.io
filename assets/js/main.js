@@ -286,6 +286,23 @@ const certifications = [
     imageAlt: "NVIDIA Building Agentic AI Applications with Large Language Models 證書",
     cropImage: true,
   },
+  {
+    id: "cert20",
+    modalId: "certModal20",
+    image: "assets/images/nvidia_generative_ai_diffusion_models_instructor_led_2026.png",
+    title: {
+      key: "certs.nvidia_diffusion_instructor_title",
+      default: "NVIDIA Generative AI with Diffusion Models (Instructor-Led)",
+    },
+    date: {
+      key: "certs.nvidia_diffusion_instructor_date",
+      default: "Issuance date: 2026/11/16",
+    },
+    dateValue: "2026/11/16",
+    verifyUrl: "https://learn.nvidia.com/certificates?id=A5KA1pYmRH2tHNLl8VAjTw",
+    imageClass: "cert-img--nvidia",
+    imageAlt: "NVIDIA Generative AI with Diffusion Models 講師授課證書",
+  },
 ];
 
 // Seminar 分頁變數
@@ -608,6 +625,8 @@ const resources = {
         nvidia_agentic_llm_date: "發證日期: 2026/11/15",
         nvidia_deep_learning_date: "發證日期: 2025/11/28",
         nvidia_agentic_applications_date: "發證日期: 2026/11/16",
+        nvidia_diffusion_instructor_title: "NVIDIA Generative AI with Diffusion Models（講師授課）",
+        nvidia_diffusion_instructor_date: "發證日期: 2026/11/16",
         verify_certificate: "至 NVIDIA 驗證證書",
         total_count: "證照總數：",
       },
@@ -835,6 +854,8 @@ const resources = {
         nvidia_agentic_llm_date: "Issuance date: 2026/11/15",
         nvidia_deep_learning_date: "Issuance date: 2025/11/28",
         nvidia_agentic_applications_date: "Issuance date: 2026/11/16",
+        nvidia_diffusion_instructor_title: "NVIDIA Generative AI with Diffusion Models (Instructor-Led)",
+        nvidia_diffusion_instructor_date: "Issuance date: 2026/11/16",
         verify_certificate: "Verify on NVIDIA",
         total_count: "Total Certifications:",
       },
