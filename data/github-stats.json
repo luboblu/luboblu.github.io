@@ -35,6 +35,33 @@
   ],
   "recent_repos": [
     {
+      "name": "luboblu.github.io",
+      "full_name": "luboblu/luboblu.github.io",
+      "description": "My Resume",
+      "language": "HTML",
+      "stars": 3,
+      "url": "https://github.com/luboblu/luboblu.github.io",
+      "updated_at": "2026-11-12"
+    },
+    {
+      "name": "taai2026-dispatch",
+      "full_name": "luboblu/taai2026-dispatch",
+      "description": "TAAI 2026 工作分配表",
+      "language": "HTML",
+      "stars": 0,
+      "url": "https://github.com/luboblu/taai2026-dispatch",
+      "updated_at": "2026-11-11"
+    },
+    {
+      "name": "napaincu.github.io",
+      "full_name": "napaincu/napaincu.github.io",
+      "description": "",
+      "language": "Vue",
+      "stars": 0,
+      "url": "https://github.com/napaincu/napaincu.github.io",
+      "updated_at": "2026-11-10"
+    },
+    {
       "name": "bankaccount",
       "full_name": "luboblu/bankaccount",
       "description": "",
@@ -60,24 +87,6 @@
       "stars": 0,
       "url": "https://github.com/luboblu/tiida-dashboard-site",
       "updated_at": "2026-11-08"
-    },
-    {
-      "name": "taai2026-dispatch",
-      "full_name": "luboblu/taai2026-dispatch",
-      "description": "TAAI 2026 工作分配表",
-      "language": "HTML",
-      "stars": 0,
-      "url": "https://github.com/luboblu/taai2026-dispatch",
-      "updated_at": "2026-11-07"
-    },
-    {
-      "name": "luboblu.github.io",
-      "full_name": "luboblu/luboblu.github.io",
-      "description": "My Resume",
-      "language": "HTML",
-      "stars": 3,
-      "url": "https://github.com/luboblu/luboblu.github.io",
-      "updated_at": "2026-11-02"
     },
     {
       "name": "NTPU_AIA_webcrawler",
@@ -114,16 +123,7 @@
       "stars": 0,
       "url": "https://github.com/luboblu/ntpu-ai",
       "updated_at": "2026-07-21"
-    },
-    {
-      "name": "StockCouncil",
-      "full_name": "luboblu/StockCouncil",
-      "description": "多 Agent 台股投資決策系統：FinMind 資料管線 + Claude 分析師群 + 多空辯論 + 風控 + 回測 + 模擬交易",
-      "language": "Python",
-      "stars": 0,
-      "url": "https://github.com/luboblu/StockCouncil",
-      "updated_at": "2026-07-10"
     }
   ],
-  "updated_at": "2026-11-09"
+  "updated_at": "2026-11-16"
 }
