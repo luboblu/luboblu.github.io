@@ -303,6 +303,24 @@ const certifications = [
     imageClass: "cert-img--nvidia",
     imageAlt: "NVIDIA Generative AI with Diffusion Models 講師授課證書",
   },
+  {
+    id: "cert21",
+    modalId: "certModal21",
+    image: "assets/images/nvidia_accelerated_computing_cuda_python_2026.jpg",
+    title: {
+      key: "",
+      default: "NVIDIA Fundamentals of Accelerated Computing with CUDA Python",
+    },
+    date: {
+      key: "certs.nvidia_cuda_python_date",
+      default: "Issuance date: 2026/11/22",
+    },
+    dateValue: "2026/11/22",
+    verifyUrl: "https://learn.nvidia.com/certificates?id=HOk_5g-FTgCLTf24NGBdyg",
+    imageClass: "cert-img--nvidia",
+    imageAlt: "NVIDIA Fundamentals of Accelerated Computing with CUDA Python 證書",
+    cropImage: true,
+  },
 ];
 
 // Seminar 分頁變數
@@ -627,6 +645,7 @@ const resources = {
         nvidia_agentic_applications_date: "發證日期: 2026/11/16",
         nvidia_diffusion_instructor_title: "NVIDIA Generative AI with Diffusion Models（講師授課）",
         nvidia_diffusion_instructor_date: "發證日期: 2026/11/16",
+        nvidia_cuda_python_date: "發證日期: 2026/11/22",
         verify_certificate: "至 NVIDIA 驗證證書",
         total_count: "證照總數：",
       },
@@ -856,6 +875,7 @@ const resources = {
         nvidia_agentic_applications_date: "Issuance date: 2026/11/16",
         nvidia_diffusion_instructor_title: "NVIDIA Generative AI with Diffusion Models (Instructor-Led)",
         nvidia_diffusion_instructor_date: "Issuance date: 2026/11/16",
+        nvidia_cuda_python_date: "Issuance date: 2026/11/22",
         verify_certificate: "Verify on NVIDIA",
         total_count: "Total Certifications:",
       },
