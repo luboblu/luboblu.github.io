@@ -583,7 +583,7 @@ const resources = {
         school: "就讀學校",
       },
       experience: {
-        taai_period: "2026",
+        taai_period: "會期：2026.11.20–2026.11.21",
         taai_title: "工作人員統籌",
         taai_company: "TAAI 2026｜第 31 屆人工智慧技術與應用國際研討會",
         taai_task: "擔任 TAAI 2026 工作人員統籌之一",
@@ -814,7 +814,7 @@ const resources = {
         school: "School",
       },
       experience: {
-        taai_period: "2026",
+        taai_period: "Conference dates: 2026.11.20–2026.11.21",
         taai_title: "Conference Staff Coordinator",
         taai_company: "TAAI 2026 | 31st International Conference on Technologies and Applications of Artificial Intelligence",
         taai_task: "Served as one of the conference staff coordinators for TAAI 2026",
