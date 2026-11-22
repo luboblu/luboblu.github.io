@@ -812,6 +812,16 @@ body {
   flex-shrink: 0;
 }
 
+.experience-company a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.experience-company a:hover {
+  color: #4f58b5;
+}
+
 .experience-company.current {
   color: #10b981;
 }

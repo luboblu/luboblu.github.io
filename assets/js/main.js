@@ -583,6 +583,10 @@ const resources = {
         school: "就讀學校",
       },
       experience: {
+        taai_period: "2026",
+        taai_title: "工作人員統籌",
+        taai_company: "TAAI 2026｜第 31 屆人工智慧技術與應用國際研討會",
+        taai_task: "擔任 TAAI 2026 工作人員統籌之一",
         researcher_period: "2024.04 - Now",
         researcher_title: "研究助理",
         researcher_company: "智慧金融創新科技實驗室 (IFIT Lab), NTPU",
@@ -810,6 +814,10 @@ const resources = {
         school: "School",
       },
       experience: {
+        taai_period: "2026",
+        taai_title: "Conference Staff Coordinator",
+        taai_company: "TAAI 2026 | 31st International Conference on Technologies and Applications of Artificial Intelligence",
+        taai_task: "Served as one of the conference staff coordinators for TAAI 2026",
         researcher_period: "2024.04 - Now",
         researcher_title: "Researcher",
         researcher_company:
